@@ -1,0 +1,4 @@
+tile_set: "/images/war/jeep.atlas"
+default_animation: "obj_jeep1"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA
