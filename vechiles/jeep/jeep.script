@@ -1,5 +1,5 @@
 
-local alreadySelected=false
+JEEP_NAME="ARMED JEEP"
 
 function init(self)
     -- Add initialization code here
@@ -19,6 +19,8 @@ function init(self)
     
     go.set("#sprite", "scale.x", 0.3)
     go.set("#sprite", "scale.y", 0.3)
+    
+    table.insert(selectableUnits, go.get_id())
     
 end
 
@@ -60,7 +62,7 @@ end
 
 function on_message(self, message_id, message, sender)
 
-	if message_id==hash("jeepSelected") then
+	if message_id==hash("unitSelected") then
 		if message.selectedId ~= go.get_id() then
 			deselect(self)
 		end
@@ -90,12 +92,15 @@ function isSpriteHit(action)
 	return false
 end
 
-function select(self)
+function select(self,title)
 	self.selected=true
     go.set_scale(self.initialScale*1.2)
     
-    msg.post("jeep1","jeepSelected",{selectedId=go.get_id()})
-    msg.post("jeep","jeepSelected",{selectedId=go.get_id()})
+    
+    msg.post("HUD","setLeftTitle",{text=title})
+    
+    msg.post("manager","unitSelected",{selectedId=go.get_id()})
+    
 end
 
 function deselect(self)
@@ -110,7 +115,7 @@ function on_input(self, action_id, action)
     
     if action_id == hash("leftClicked") and action.pressed and isSpriteHit(action) then
     	if self.selected==false then
-    		select(self)
+    		select(self,JEEP_NAME)
     	else
     		deselect(self)
     	end

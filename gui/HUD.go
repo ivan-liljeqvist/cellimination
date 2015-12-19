@@ -1,6 +1,6 @@
 components {
-  id: "sprite"
-  component: "/buildings/lookout/lookout.sprite"
+  id: "gui"
+  component: "/gui/HUD.gui"
   position {
     x: 0.0
     y: 0.0

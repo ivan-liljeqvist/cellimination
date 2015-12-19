@@ -1,0 +1,145 @@
+
+
+
+HUDButtons={}
+
+LEFT_ACTION_BUTTON="action"
+NO_BUTTON=""
+
+currentlyHitButton=NO_BUTTON;
+
+function init(self)
+    
+   --register all buttons
+   addButton(LEFT_ACTION_BUTTON)
+   
+   msg.post(".", "acquire_input_focus")
+       
+end
+
+function checkIfAnyButtonClicked(action)
+
+	if action.pressed then
+		--go through all buttons on the HUD 
+		for _,buttonObject in  pairs(HUDButtons) do 
+		
+			local id=buttonObject.id
+			--check if click is inside the button
+			if isButtonHit(action,id) and buttonObject.visible then
+				highlightButton(id)
+				currentlyHitButton=id
+				--send the id to the handler of the click
+				handleButtonClicked(id)
+			end
+		end
+	--if released, just dehighlight the current button
+	elseif action.released then
+		dehighlightButton(currentlyHitButton)
+		currentlyHitButton=NO_BUTTON
+	end
+end
+
+function handleButtonClicked(id) 
+	print("handle click: "..id)
+end
+
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+function update(self, dt)
+    -- Add update code here
+    -- Remove this function if not needed
+
+end
+
+function on_message(self, message_id, message, sender)
+    -- Add message-handling code here
+    -- Remove this function if not needed
+    
+    if message_id == hash("setLeftTitle") then
+    	self.leftTitle = gui.get_node("leftTitle")
+    	gui.set_text(self.leftTitle,message.text)
+    	
+    	if(message.text==BASE_NAME)then
+    		showButton(LEFT_ACTION_BUTTON)
+			gui.set_text(gui.get_node("action/text"),"Build fisher")
+		else
+			hideButton(LEFT_ACTION_BUTTON)
+    	end
+    	
+    end
+    
+    --msg.post("HUD","setLeftTitle",{text="ARMED JEEP"})
+end
+
+function on_input(self, action_id, action)
+    checkIfAnyButtonClicked(action)
+end
+
+function on_reload(self)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end
+
+
+--helper methods for button management
+
+function addButton(id)
+	HUDButtons[id]={id=id,visible=false}
+	hideButton(id)
+end
+
+function getButtonBounds(id)
+
+	
+	local boxNode=gui.get_node(id.."/box")
+	local pos=gui.get_position(boxNode)
+	local size=gui.get_size(boxNode)
+	
+	local Xmin = pos.x
+	local Ymin = pos.y
+	local Xmax = pos.x+size.x
+	local Ymax = pos.y+size.y
+	
+	return {Xmin,Xmax,Ymin,Ymax}
+end
+
+function isButtonHit(action,id)
+
+	
+	if ((action.x > getButtonBounds(id)[1] and action.x < getButtonBounds(id)[2]) and 
+		(action.y > getButtonBounds(id)[3] and action.y < getButtonBounds(id)[4])) then
+    	return true
+	end
+	
+	return false
+end
+
+function hideButton(id)
+   gui.set_color(gui.get_node(id.."/text"), vmath.vector4(0, 0, 0, 0))
+   gui.set_color(gui.get_node(id.."/box"), vmath.vector4(0, 0, 0, 0))
+   
+   HUDButtons[id]={id=id,visible=false}
+end
+
+function highlightButton(id)
+	if(id~=NO_BUTTON)then
+		gui.set_color(gui.get_node(id.."/box"), vmath.vector4(0, 1, 0, 1))
+	end
+end
+
+function dehighlightButton(id)
+	if(id~=NO_BUTTON)then
+		gui.set_color(gui.get_node(id.."/box"), vmath.vector4(1, 0, 0, 1))
+	end
+end
+
+function showButton(id)
+	gui.set_color(gui.get_node(id.."/text"), vmath.vector4(1, 1, 1, 1))
+    gui.set_color(gui.get_node(id.."/box"), vmath.vector4(1, 0, 0, 1))
+    
+    HUDButtons[id]={id=id,visible=true}
+end
