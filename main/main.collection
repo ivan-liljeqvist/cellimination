@@ -3,8 +3,8 @@ instances {
   id: "jeep"
   prototype: "/vechiles/jeep/jeep.go"
   position {
-    x: 224.59962
-    y: 249.22656
+    x: 205.45763
+    y: 207.11418
     z: 1.0
   }
   rotation {
@@ -14,8 +14,28 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 0.3
-    y: 0.3
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep1"
+  prototype: "/vechiles/jeep/jeep.go"
+  position {
+    x: 585.352
+    y: 236.33682
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
