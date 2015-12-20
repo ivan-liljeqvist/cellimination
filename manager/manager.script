@@ -2,8 +2,12 @@
 require "modules.state"
 
 function init(self)
-    -- Add initialization code here
-    -- Remove this function if not needed
+    
+    --give the global tilemap object to this function (globals.lua) and create
+    --a table of nodes that will be used for pathfinding
+	populateNodeArray(tilemap)
+	
+	
 end
 
 function final(self)
