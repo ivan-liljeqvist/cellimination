@@ -4,8 +4,8 @@ layers {
   z: 0.0
   is_visible: 1
   cell {
-    x: 2
-    y: 2
+    x: 3
+    y: 3
     tile: 0
     h_flip: 0
     v_flip: 0
@@ -13,13 +13,6 @@ layers {
   cell {
     x: 0
     y: 0
-    tile: 0
-    h_flip: 0
-    v_flip: 0
-  }
-  cell {
-    x: 3
-    y: 3
     tile: 0
     h_flip: 0
     v_flip: 0
@@ -750,6 +743,13 @@ layers {
   id: "unreachable"
   z: 0.0
   is_visible: 1
+  cell {
+    x: 2
+    y: 2
+    tile: 3
+    h_flip: 0
+    v_flip: 0
+  }
   cell {
     x: 7
     y: 3

@@ -1,5 +1,6 @@
 
-JEEP_NAME="ARMED JEEP"
+require "modules.globals"
+require "modules.state"
 
 function init(self)
     -- Add initialization code here
