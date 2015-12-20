@@ -52,7 +52,7 @@ end
 validator = function ( node, neighbor ) 
 	
 		
-	local isBesides = (math.abs(node.x-neighbor.x)==1 and math.abs(node.y-neighbor.y)==1) or 
+	local isBesides = --(math.abs(node.x-neighbor.x)==1 and math.abs(node.y-neighbor.y)==1) or 
 					  (math.abs(node.x-neighbor.x)==0 and math.abs(node.y-neighbor.y)==1) or 
 					  (math.abs(node.x-neighbor.x)==1 and math.abs(node.y-neighbor.y)==0)
 					  

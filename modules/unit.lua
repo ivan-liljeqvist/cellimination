@@ -20,7 +20,7 @@ function initMovableUnit(self)
     
     self.currentPath={}
 	self.neverMoved=true
-	self.speed=6
+	self.speed=4
 	self.dir=vmath.vector3(0,0,0)
 	
 	table.insert(selectableUnits, go.get_id())
