@@ -110,7 +110,7 @@ nodes {
   type: TYPE_TEMPLATE
   id: "action"
   inherit_alpha: true
-  template: "/gui/HUD/button/button.gui"
+  template: "/gui/button/button.gui"
 }
 nodes {
   position {

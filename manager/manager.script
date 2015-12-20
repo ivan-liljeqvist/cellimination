@@ -5,6 +5,9 @@ savedMouseDownCoordinates=false
 mouseDownStartCoordinates={0,0}
 massSelectionMode=false
 
+TILE_SIZE=128
+TILE_NOT_REACHABLE_CODE=0
+
 function init(self)
     -- Add initialization code here
     -- Remove this function if not needed
