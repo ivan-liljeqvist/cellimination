@@ -49,7 +49,6 @@ function neighbor_nodes ( theNode, nodes )
 	local neighbors = {}
 	for _, node in ipairs ( nodes ) do
 		if theNode ~= node and is_valid_node ( theNode, node ) then
-			print("adding neighbor with type: "..node.type)
 			table.insert ( neighbors, node )
 		end
 	end

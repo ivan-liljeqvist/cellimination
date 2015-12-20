@@ -18,10 +18,13 @@ function init(self)
     
     self.currentPath={}
 
+	self.neverMoved=true
     
-    self.tileCoordinates=mouseToTileCoords(self.goalX,self.goalY)
+    self.tileCoordinates=mouseToTileCoords(self.goalX+1,self.goalY+1)
     
-    self.speed=200
+    self.speed=6
+    
+    self.dir=vmath.vector3(0,0,0)
     
     msg.post(".", "acquire_input_focus")
     
@@ -44,7 +47,6 @@ function update(self, dt)
     
     local pos = go.get_position()
     
-    local dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
     
     if self.needToUpdateRotation then
     	local old_rot = go.get_rotation()
@@ -54,6 +56,8 @@ function update(self, dt)
 		
 		go.set_rotation(vmath.quat_rotation_z(angle))
 		self.needToUpdateRotation=false
+		
+		self.dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
 	end
 	
     --print("current: "..pos.x.." "..pos.y)
@@ -62,7 +66,7 @@ function update(self, dt)
     local reachedGoal=(math.abs(pos.y-self.goalY)<1) and (math.abs(pos.x-self.goalX)<1)
     if(reachedGoal==false)then
     	
-    	go.set_position(pos-dir*4*dt)
+    	go.set_position(pos-self.dir*self.speed*dt)
     else
     	--check if the current path has more nodes
     	
@@ -116,28 +120,33 @@ function on_input(self, action_id, action)
     	local tileType=getTileTypeAt(tileCoords[1],tileCoords[2])
     	
     	--check if we can go there
-    	if tileType~=4 then
+    	if tileType~=TILE_NOT_REACHABLE_CODE then
     		
-    		--get the start and finish node based on the coordinates
-    		local startNode,finishNode=TILEMAP_NODES[9],TILEMAP_NODES[38]
+    		
+    		--we need to figure out the start and end nodes, we know their coordinates
+
+			--by using the coordinates, get the index of dest-node in the NODE_ARRAY
+    		local destIndex=TILEMAP_INDEX_LOOKUP[tileCoords[1]+1][tileCoords[2]+1]
+    		--by using the coordinates, get the index of start-node in the NODE_ARRAY
+    		local startIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]][self.tileCoordinates[2]]
+    		
+    		--now use indeces to get start and finish nodes
+    		local startNode,finishNode=TILEMAP_NODES[startIndex],TILEMAP_NODES[destIndex]
     						  			
     		
     		--use A* to find out the path
     		self.currentPath=pathfinder.path (startNode, finishNode, TILEMAP_NODES, true, validator )
     		
+    		--for some reason the first goal in first path is wrong, just remove it
+    		if self.neverMoved then
+    			table.remove(self.currentPath, 1)
+    			self.neverMoved=false
+    		end
+    		
 			if not self.currentPath then
 				print ( "No valid path found" )
-			else
-				print ( "PATH "..table.getn( self.currentPath)  )
-				for i, node in ipairs ( self.currentPath ) do
-					print ( "Step " .. i .. " >> " .. node.x.." ".. node.y )
-				end
 			end
 
-			
-    		--make the sprite go to each node
-    					
-    		
     	else
     		print("not reachable!")
     	end

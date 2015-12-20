@@ -8,6 +8,10 @@ JEEP_NAME="ARMED JEEP"
 TILEMAP_NODES={}
 TILEMAP_WIDTH=0;
 
+TILEMAP_INDEX_LOOKUP={}
+
+tilemapIndex=1
+
 require "modules.pathfinder"
 
 --populates the TILEMAP_NODES array with tiles in the tilemap
@@ -20,6 +24,9 @@ function populateNodeArray(globalTilemapObject)
 	
 	--go through each row
 	for xCounter=minX, maxX-1, 1 do
+	
+		TILEMAP_INDEX_LOOKUP[xCounter]={}
+		
 		--go through each column
 		for yCounter=minY, maxY-1, 1 do
 		
@@ -29,9 +36,13 @@ function populateNodeArray(globalTilemapObject)
 			newNode.y=yCounter
 			newNode.type=tilemap.get_tile("world#tilemap", "reachable", xCounter, yCounter)
 			
+			
+			TILEMAP_INDEX_LOOKUP[xCounter][yCounter]=tilemapIndex
+			
 			table.insert(TILEMAP_NODES,newNode)
 			
-			print("inserted index: "..newNode.x.." "..newNode.y.." type: "..newNode.type)
+			tilemapIndex=tilemapIndex+1
+			
 			
 		end
 	end
@@ -41,16 +52,18 @@ end
 validator = function ( node, neighbor ) 
 	
 		
-	local isBesides = math.abs(node.x-neighbor.x)<=1 and math.abs(node.y-neighbor.y)<=1
+	local isBesides = (math.abs(node.x-neighbor.x)==1 and math.abs(node.y-neighbor.y)==1) or 
+					  (math.abs(node.x-neighbor.x)==0 and math.abs(node.y-neighbor.y)==1) or 
+					  (math.abs(node.x-neighbor.x)==1 and math.abs(node.y-neighbor.y)==0)
 					  
-	print(isBesides)
+
 		
-	if 	isBesides and neighbor.type~=4 then 
+	if 	isBesides and neighbor.type~=TILE_NOT_REACHABLE_CODE then 
 		return true
 	end
 	
 	--if we've come here - the tile is not reachable
-	print("invalid")
+
 	
 	return false
 end
