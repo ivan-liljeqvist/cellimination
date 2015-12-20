@@ -1,6 +1,6 @@
 components {
   id: "gui"
-  component: "/gui/HUD.gui"
+  component: "/gui/selection/selection.gui"
   position {
     x: 0.0
     y: 0.0

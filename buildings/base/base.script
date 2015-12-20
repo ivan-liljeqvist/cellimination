@@ -38,6 +38,8 @@ function on_input(self, action_id, action)
 
     
 	if action_id == hash("leftClicked") and action.pressed and isSpriteHit(action) then
+		mouseDown=true
+		
     	if self.selected==false then
     		select(self,BASE_NAME)
     	else

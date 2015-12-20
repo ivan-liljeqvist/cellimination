@@ -1,5 +1,8 @@
 
 selectableUnits={}
+mouseDown=false
+savedMouseDownCoordinates=false
+mouseDownStartCoordinates={0,0}
 
 function init(self)
     -- Add initialization code here

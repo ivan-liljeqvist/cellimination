@@ -1,0 +1,90 @@
+
+
+
+function init(self)
+    
+	msg.post(".", "acquire_input_focus")
+	
+	hideSelection()
+	
+end
+
+function showSelection(startCoordinates, currentCoordinates)
+	
+	--change where we start drawing the selection depending on where the user dragged
+	
+	if startCoordinates[2] > currentCoordinates[2] then
+		--the user dragged down so it should be NE or NW depending if the user drags left or right
+		if startCoordinates[1] > currentCoordinates[1] then
+			gui.set_pivot(gui.get_node("selectionBox"),gui.PIVOT_NE)
+		else
+			gui.set_pivot(gui.get_node("selectionBox"),gui.PIVOT_NW)
+		end
+	else
+		--the user dragged up so it should be SE or SW depending if the user drags left or right
+		if startCoordinates[1] > currentCoordinates[1] then
+			gui.set_pivot(gui.get_node("selectionBox"),gui.PIVOT_SE)
+		else
+			gui.set_pivot(gui.get_node("selectionBox"),gui.PIVOT_SW)
+		end
+	end
+
+	gui.set_position(gui.get_node("selectionBox"), vmath.vector3(startCoordinates[1], startCoordinates[2], 1))
+	gui.set_color(gui.get_node("selectionBox"), vmath.vector4(0, 1, 0, 0.5))
+end
+
+function hideSelection()
+	 gui.set_color(gui.get_node("selectionBox"), vmath.vector4(0, 0, 0, 0))
+end
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+function update(self, dt)
+    -- Add update code here
+    -- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+    -- Add message-handling code here
+    -- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+
+	--this is called only when left click first time
+	if action_id==hash("leftClicked") and action.pressed then
+		--mouse variables are in manager.script
+		mouseDown=true
+		
+		--save where the user first clicked
+		if savedMouseDownCoordinates~=true then
+			mouseDownStartCoordinates={action.x,action.y}
+			savedMouseDownCoordinates=true
+		end
+	
+	--reset variables when mouse is released
+	elseif action.released then
+		print("mouse released!")
+		mouseDown=false
+		savedMouseDownCoordinates=false
+		hideSelection()
+		
+	--this is called when the user moves the mouse while pressing down
+	elseif mouseDown then
+		
+		--show selection only when the user has moved the mouse from the point he first clicked
+		if(action.x~=mouseDownStartCoordinates[1] or action.y~=mouseDownStartCoordinates[2])then
+			showSelection(mouseDownStartCoordinates,{action.x,action.y})
+		end
+	
+	end  
+
+end
+
+function on_reload(self)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end

@@ -1,11 +1,17 @@
 name: "main"
 instances {
   id: "HUD"
-  prototype: "/gui/HUD.go"
+  prototype: "/gui/HUD/HUD.go"
   position {
     x: 384.0
     y: 447.8071
     z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -21,6 +27,12 @@ instances {
     y: 599.2335
     z: 0.5
   }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -34,6 +46,12 @@ instances {
     x: 205.45763
     y: 207.11418
     z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -49,6 +67,12 @@ instances {
     y: 236.33682
     z: 1.0
   }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -63,6 +87,32 @@ instances {
     y: 447.8071
     z: 0.5
   }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "selection"
+  prototype: "/gui/selection/selection.go"
+  position {
+    x: 448.0
+    y: 623.71063
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -72,9 +122,21 @@ instances {
 instances {
   id: "world"
   prototype: "/ground/world.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
   scale3 {
     x: 1.0
     y: 1.0
     z: 1.0
   }
 }
+scale_along_z: 0
