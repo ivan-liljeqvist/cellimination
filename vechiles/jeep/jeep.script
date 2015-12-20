@@ -1,10 +1,12 @@
 
 require "modules.globals"
 require "modules.state"
+require "modules.pathfinder"
 
 function init(self)
     -- Add initialization code here
     -- Remove this function if not needed
+    
     
 	self.bounds=getSpriteBounds("#sprite")    
     self.selected=false

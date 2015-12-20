@@ -1,7 +1,5 @@
--- Put functions in this file to use them in several other scripts.
--- To get access to the functions, you need to put:
--- require "my_directory.my_file"
--- in any script using the functions.
+-- file holding some kind of state
+-- it could be variables that are changing, they are all collected here
 
 selectableUnits={}
 mouseDown=false

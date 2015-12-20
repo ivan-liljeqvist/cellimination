@@ -28,7 +28,7 @@
 -- SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -- ======================================================================
 
-module ( "astar", package.seeall )
+module ( "pathfinder", package.seeall )
 
 ----------------------------------------------------------------
 -- local variables
