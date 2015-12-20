@@ -1,32 +1,3 @@
--- Put functions in this file to use them in several other scripts.
--- To get access to the functions, you need to put:
--- require "my_directory.my_file"
--- in any script using the functions.
-
--- ======================================================================
--- Copyright (c) 2012 RapidFire Studio Limited 
--- All Rights Reserved. 
--- http://www.rapidfirestudio.com
-
--- Permission is hereby granted, free of charge, to any person obtaining
--- a copy of this software and associated documentation files (the
--- "Software"), to deal in the Software without restriction, including
--- without limitation the rights to use, copy, modify, merge, publish,
--- distribute, sublicense, and/or sell copies of the Software, and to
--- permit persons to whom the Software is furnished to do so, subject to
--- the following conditions:
-
--- The above copyright notice and this permission notice shall be
--- included in all copies or substantial portions of the Software.
-
--- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
--- EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
--- MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
--- IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
--- CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
--- TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
--- SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
--- ======================================================================
 
 module ( "pathfinder", package.seeall )
 
@@ -78,6 +49,7 @@ function neighbor_nodes ( theNode, nodes )
 	local neighbors = {}
 	for _, node in ipairs ( nodes ) do
 		if theNode ~= node and is_valid_node ( theNode, node ) then
+			print("adding neighbor with type: "..node.type)
 			table.insert ( neighbors, node )
 		end
 	end
@@ -123,13 +95,17 @@ function a_star ( start, goal, nodes, valid_node_func )
 	local openset = { start }
 	local came_from = {}
 
-	if valid_node_func then is_valid_node = valid_node_func end
+	if valid_node_func then 
+		is_valid_node = valid_node_func 
+	end
 
 	local g_score, f_score = {}, {}
 	g_score [ start ] = 0
 	f_score [ start ] = g_score [ start ] + heuristic_cost_estimate ( start, goal )
 
 	while #openset > 0 do
+	
+		
 	
 		local current = lowest_f_score ( openset, f_score )
 		if current == goal then
@@ -177,12 +153,6 @@ end
 
 function path ( start, goal, nodes, ignore_cache, valid_node_func )
 
-	if not cachedPaths then cachedPaths = {} end
-	if not cachedPaths [ start ] then
-		cachedPaths [ start ] = {}
-	elseif cachedPaths [ start ] [ goal ] and not ignore_cache then
-		return cachedPaths [ start ] [ goal ]
-	end
 	
 	return a_star ( start, goal, nodes, valid_node_func )
 end
