@@ -28,8 +28,14 @@ function showSelection(startCoordinates, currentCoordinates)
 			gui.set_pivot(gui.get_node("selectionBox"),gui.PIVOT_SW)
 		end
 	end
+	
+	--now we've dealt with the pivot-points, now we need to adjust the size
+	
+	local height = math.abs(startCoordinates[2]-currentCoordinates[2])
+	local width = math.abs(startCoordinates[1]-currentCoordinates[1])
 
 	gui.set_position(gui.get_node("selectionBox"), vmath.vector3(startCoordinates[1], startCoordinates[2], 1))
+	gui.set_size(gui.get_node("selectionBox"), vmath.vector3(width, height, 1))
 	gui.set_color(gui.get_node("selectionBox"), vmath.vector4(0, 1, 0, 0.5))
 end
 
