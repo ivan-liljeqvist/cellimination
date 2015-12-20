@@ -28,7 +28,7 @@ end
 function on_message(self, message_id, message, sender)
     if message_id==hash("unitSelected") then
 		if message.selectedId ~= go.get_id() then
-			deselect(self)
+			deselect(self,go)
 		end
 	end
 	
@@ -41,9 +41,9 @@ function on_input(self, action_id, action)
 		mouseDown=true
 		
     	if self.selected==false then
-    		select(self,BASE_NAME)
+    		select(self,BASE_NAME,go)
     	else
-    		deselect(self)
+    		deselect(self,go)
     	end
     end
 end

@@ -1,113 +1,27 @@
 
-require "modules.globals"
-require "modules.state"
-require "modules.pathfinder"
+
 
 function init(self)
-    -- Add initialization code here
-    -- Remove this function if not needed
-    
-    
-	self.bounds=getSpriteBounds("#sprite")    
-    self.selected=false
-    self.initialScale=go.get_scale()
-    
-    self.goalX = go.get_position("#sprite").x
-    self.goalY = go.get_position("#sprite").y
-    self.needToUpdateRotation=false
-    
-    self.currentPath={}
 
-	self.neverMoved=true
+    initBasicUnit(self)
+    initMovableUnit(self)
     
-    self.tileCoordinates=mouseToTileCoords(self.goalX+1,self.goalY+1)
-    
-    self.speed=6
-    
-    self.dir=vmath.vector3(0,0,0)
-    
-    msg.post(".", "acquire_input_focus")
     
     go.set("#sprite", "scale.x", 0.3)
     go.set("#sprite", "scale.y", 0.3)
-    
-    table.insert(selectableUnits, go.get_id())
-    
-end
 
-function final(self)
-    -- Add finalization code here
-    -- Remove this function if not needed
 end
 
 
 function update(self, dt)
     -- Add update code here
     -- Remove this function if not needed
-    
-    local pos = go.get_position()
-    
-    
-    if self.needToUpdateRotation then
-    	local old_rot = go.get_rotation()
-    
-	    local angle = math.atan2(self.goalY - pos.y, self.goalX - pos.x)
-		angle = angle-math.pi*0.5
-		
-		go.set_rotation(vmath.quat_rotation_z(angle))
-		self.needToUpdateRotation=false
-		
-		self.dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
-	end
-	
-    --print("current: "..pos.x.." "..pos.y)
-	--print("goal: "..self.goalX.." "..self.goalY)
-		
-    local reachedGoal=(math.abs(pos.y-self.goalY)<1) and (math.abs(pos.x-self.goalX)<1)
-    if(reachedGoal==false)then
-    	
-    	go.set_position(pos-self.dir*self.speed*dt)
-    else
-    	--check if the current path has more nodes
-    	
-    	
-    	if table.getn(self.currentPath)~=0 then
-    	
- 
-    		followPath(self)
-    		
-    	else
-    		
-    	end
-    end
+	updateRotation(self,go)
+    moveAccordingToPath(self,go,dt)
     
 end
 
-function followPath(self)
-	
-	
-	local nextNode=table.remove(self.currentPath, 1)
-	
-	if nextNode then
-	
-	
-		local pixelDest=tileToPixelCoords(nextNode.x-1,nextNode.y-1)
-		self.goalX=pixelDest[1]
-		self.goalY=pixelDest[2]
-		
-		local pos=go.get_position("#sprite")
-		
-		--print("current: "..pos.x.." "..pos.y)
-		--print("NEW goal: "..self.goalX.." "..self.goalY)
-		
-		self.needToUpdateRotation=true
-		
-		self.tileCoordinates={nextNode.x,nextNode.y}
-	else 	
-		print("nextNode is nil")
-	end
-	
-end
+
 
 function on_input(self, action_id, action)
 
@@ -116,181 +30,26 @@ function on_input(self, action_id, action)
     
     if action_id == hash("rightClicked") and action.pressed and self.selected then 
     	
-    	local tileCoords=mouseToTileCoords(action.x,action.y)
-    	local tileType=getTileTypeAt(tileCoords[1],tileCoords[2])
+    	generateNewPathToMouseClick(self,action,tilemap)
     	
-    	--check if we can go there
-    	if tileType~=TILE_NOT_REACHABLE_CODE then
-    		
-    		
-    		--we need to figure out the start and end nodes, we know their coordinates
-
-			--by using the coordinates, get the index of dest-node in the NODE_ARRAY
-    		local destIndex=TILEMAP_INDEX_LOOKUP[tileCoords[1]+1][tileCoords[2]+1]
-    		--by using the coordinates, get the index of start-node in the NODE_ARRAY
-    		local startIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]][self.tileCoordinates[2]]
-    		
-    		--now use indeces to get start and finish nodes
-    		local startNode,finishNode=TILEMAP_NODES[startIndex],TILEMAP_NODES[destIndex]
-    						  			
-    		
-    		--use A* to find out the path
-    		self.currentPath=pathfinder.path (startNode, finishNode, TILEMAP_NODES, true, validator )
-    		
-    		--for some reason the first goal in first path is wrong, just remove it
-    		if self.neverMoved then
-    			table.remove(self.currentPath, 1)
-    			self.neverMoved=false
-    		end
-    		
-			if not self.currentPath then
-				print ( "No valid path found" )
-			end
-
-    	else
-    		print("not reachable!")
-    	end
     end 
 end
 
 
 function on_message(self, message_id, message, sender)
 
-	--message that some unit is single-selected, check if the unit is self
-	--if not us, deselect self because some other unit is in focus
-	if message_id==hash("unitSelected") then
-		if message.selectedId ~= go.get_id() then
-			deselect(self)
-		end
-		
-	--check if self is inside the selection, if it is, select itself
-	elseif message_id==hash("massSelection") then
-		if isInsideSelection(message.start,message.current,message.pivot) then
-			massSelect(self,"hej")
-		end
-	
-	elseif message_id==hash("deselect") then
-		deselect(self)
- 	end
+	handleSelectMethods(self,go,message_id,message)
 
 end
-
-function getSpriteBounds(id)
-	local pos = go.get_position(id)
-	
-	local Xmin = pos.x-go.get(id, "size.x")/2*go.get(id, "scale.x")
-	local Ymin = pos.y-go.get(id, "size.y")/2*go.get(id, "scale.y")
-	local Xmax = pos.x+go.get(id, "size.x")*0.5*go.get(id, "scale.x")
-	local Ymax = pos.y+go.get(id, "size.y")*0.5*go.get(id, "scale.y")
-	
-	return {Xmin,Xmax,Ymin,Ymax}
-end
-
-function isSpriteHit(action)
-
-	
-	if ((action.x > getSpriteBounds("#sprite")[1] and action.x < getSpriteBounds("#sprite")[2]) and 
-		(action.y > getSpriteBounds("#sprite")[3] and action.y < getSpriteBounds("#sprite")[4])) then
-    	return true
-	end
-	
-	return false
-end
-
-function select(self,title)
-	self.selected=true
-    go.set_scale(self.initialScale*1.2)
-    
-    
-    msg.post("HUD","setLeftTitle",{text=title})
-    
-    msg.post("manager","unitSelected",{selectedId=go.get_id()})
-end
-
-function massSelect(self,title)
-	self.selected=true
-	go.set_scale(self.initialScale*1.2)
-end
-
-function deselect(self)
-	self.selected=false
-    go.set_scale(self.initialScale)
-end
-
-function mouseToTileCoords(mouseX,mouseY)
-
-	local tileX=math.floor(mouseX/TILE_SIZE)
-	local tileY=math.floor(mouseY/TILE_SIZE)
-	
-	return {tileX,tileY}
-end
-
-function tileToPixelCoords(tileX,tileY)
-	local destX=tileX*TILE_SIZE+TILE_SIZE/2
-	local destY=tileY*TILE_SIZE+TILE_SIZE/2
-	
-	return {destX,destY}
-end
-
-function getTileTypeAt(tileX,tileY)
-	return tilemap.get_tile("world#tilemap", "reachable", tileX+1, tileY+1)
-end
-
-
-
-
-
-
 
 function on_reload(self)
     -- Add reload-handling code here
     -- Remove this function if not needed
 end
 
-function isInsideSelection(startMouse, currentMouse, pivot)
-	
-	local bounds = getSpriteBounds("#sprite")
-	
-	--selection
-	local RectA={}
-	RectA.X1 = startMouse[1]
-	RectA.X2 = currentMouse[1]
-	RectA.Y1 = startMouse[2]
-	RectA.Y2 = currentMouse[2]
-	
-	--sprite
-	local RectB={}
-	RectB.X1 = bounds[1]
-	RectB.X2 = bounds[2]
-	RectB.Y1 = bounds[3]
-	RectB.Y2 = bounds[4]
-	
-	--if SW - no change, we now want to adjust so that pivot is SW
-	--if SE - switch X1 and X2
-	if(pivot == gui.PIVOT_SE)then
-		local oldX1=RectA.X1
-		RectA.X1 = RectA.X2
-		RectA.X2 = oldX1
-	--if NW - switch Y1 and Y2
-	elseif(pivot == gui.PIVOT_NW)then
-		local oldY1=RectA.Y1
-		RectA.Y1 = RectA.Y2
-		RectA.Y2 = oldY1
-	--if NE - switch both X1-X2 and Y1-Y2
-	elseif(pivot==gui.PIVOT_NE)then
-		local temp=RectA.X1
-		RectA.X1 = RectA.X2
-		RectA.X2 = temp
-		
-		temp=RectA.Y1
-		RectA.Y1 = RectA.Y2
-		RectA.Y2 = temp
-	end
-    
-    if(RectA.X1 < RectB.X2 and RectA.X2 > RectB.X1 and
-       RectA.Y1 < RectB.Y2 and RectA.Y2 > RectB.Y1) then
-    	return true
-    end
-	
-	return false
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
 end
+
+
