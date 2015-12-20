@@ -21,9 +21,16 @@ end
 
 function on_message(self, message_id, message, sender)
     
+    --a new unit is single-selected, send message to all units and units that are not the selected one will deselect
 	if message_id==hash("unitSelected") then
 		for _,unit in  pairs(selectableUnits) do 
 		    msg.post(unit,"unitSelected",message)
+		end
+		
+	--send massSelection message to all units, each units will decide if it's in the selection
+	elseif message_id==hash("massSelection") then
+		for _,unit in  pairs(selectableUnits) do 
+		    msg.post(unit,"massSelection",message)
 		end
 	end
 end

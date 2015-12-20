@@ -60,13 +60,71 @@ function goToPos(self,newX,newY)
 	self.needToUpdateRotation=true
 end
 
+function isInsideSelection(startMouse, currentMouse, pivot)
+	
+	local bounds = getSpriteBounds("#sprite")
+	
+	--selection
+	local RectA={}
+	RectA.X1 = startMouse[1]
+	RectA.X2 = currentMouse[1]
+	RectA.Y1 = startMouse[2]
+	RectA.Y2 = currentMouse[2]
+	
+	--sprite
+	local RectB={}
+	RectB.X1 = bounds[1]
+	RectB.X2 = bounds[2]
+	RectB.Y1 = bounds[3]
+	RectB.Y2 = bounds[4]
+	
+	local spriteWidth=math.abs(bounds[1]-bounds[2])
+	local spriteHeight=math.abs(bounds[3]-bounds[4])
+	
+	--if SW - no change, we now want to adjust so that pivot is SW
+	--if SE - switch X1 and X2
+	if(pivot == gui.PIVOT_SE)then
+		local oldX1=RectA.X1
+		RectA.X1 = RectA.X2
+		RectA.X2 = oldX1
+	--if NW - switch
+	elseif(pivot == gui.PIVOT_NW)then
+		RectA.Y1 = RectA.Y1+spriteHeight
+		RectA.Y2 = RectA.Y2+spriteHeight
+	--if NE - move up and right
+	elseif(pivot==gui.PIVOT_NE)then
+		RectA.X1 = RectA.X1+spriteWidth
+		RectA.X2 = RectA.X2+spriteWidth
+		RectA.Y1 = RectA.Y1+spriteHeight
+		RectA.Y2 = RectA.Y2+spriteHeight
+	else
+		print("RECTA.X1: "..RectA.X1.." RECTA.X2: "..RectA.X2)
+		--print("SW!")
+	end
+    
+    if(RectA.X1 < RectB.X2 and RectA.X2 > RectB.X1 and
+       RectA.Y1 < RectB.Y2 and RectA.Y2 > RectB.Y1) then
+    	return true
+    end
+	
+	return false
+end
+
 function on_message(self, message_id, message, sender)
 
+	--message that some unit is single-selected, check if the unit is self
+	--if not us, deselect self because some other unit is in focus
 	if message_id==hash("unitSelected") then
 		if message.selectedId ~= go.get_id() then
 			deselect(self)
 		end
-	end
+		
+	--check if self is inside the selection, if it is, select itself
+	elseif message_id==hash("massSelection") then
+		if isInsideSelection(message.start,message.current,message.pivot) then
+			print("inside pivot")
+		end
+ 	end
 
 end
 
@@ -100,7 +158,10 @@ function select(self,title)
     msg.post("HUD","setLeftTitle",{text=title})
     
     msg.post("manager","unitSelected",{selectedId=go.get_id()})
-    
+end
+
+function massSelect(self,title)
+	self.selected=true
 end
 
 function deselect(self)
