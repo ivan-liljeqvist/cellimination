@@ -78,28 +78,26 @@ function isInsideSelection(startMouse, currentMouse, pivot)
 	RectB.Y1 = bounds[3]
 	RectB.Y2 = bounds[4]
 	
-	local spriteWidth=math.abs(bounds[1]-bounds[2])
-	local spriteHeight=math.abs(bounds[3]-bounds[4])
-	
 	--if SW - no change, we now want to adjust so that pivot is SW
 	--if SE - switch X1 and X2
 	if(pivot == gui.PIVOT_SE)then
 		local oldX1=RectA.X1
 		RectA.X1 = RectA.X2
 		RectA.X2 = oldX1
-	--if NW - switch
+	--if NW - switch Y1 and Y2
 	elseif(pivot == gui.PIVOT_NW)then
-		RectA.Y1 = RectA.Y1+spriteHeight
-		RectA.Y2 = RectA.Y2+spriteHeight
-	--if NE - move up and right
+		local oldY1=RectA.Y1
+		RectA.Y1 = RectA.Y2
+		RectA.Y2 = oldY1
+	--if NE - switch both X1-X2 and Y1-Y2
 	elseif(pivot==gui.PIVOT_NE)then
-		RectA.X1 = RectA.X1+spriteWidth
-		RectA.X2 = RectA.X2+spriteWidth
-		RectA.Y1 = RectA.Y1+spriteHeight
-		RectA.Y2 = RectA.Y2+spriteHeight
-	else
-		print("RECTA.X1: "..RectA.X1.." RECTA.X2: "..RectA.X2)
-		--print("SW!")
+		local temp=RectA.X1
+		RectA.X1 = RectA.X2
+		RectA.X2 = temp
+		
+		temp=RectA.Y1
+		RectA.Y1 = RectA.Y2
+		RectA.Y2 = temp
 	end
     
     if(RectA.X1 < RectB.X2 and RectA.X2 > RectB.X1 and
@@ -122,8 +120,11 @@ function on_message(self, message_id, message, sender)
 	--check if self is inside the selection, if it is, select itself
 	elseif message_id==hash("massSelection") then
 		if isInsideSelection(message.start,message.current,message.pivot) then
-			print("inside pivot")
+			massSelect(self,"hej")
 		end
+	
+	elseif message_id==hash("deselect") then
+		deselect(self)
  	end
 
 end
@@ -162,6 +163,7 @@ end
 
 function massSelect(self,title)
 	self.selected=true
+	go.set_scale(self.initialScale*1.2)
 end
 
 function deselect(self)
@@ -175,11 +177,11 @@ function on_input(self, action_id, action)
     
     
     if action_id == hash("leftClicked") and action.pressed and isSpriteHit(action) then
-    	if self.selected==false then
+    	--[[if self.selected==false then
     		select(self,JEEP_NAME)
     	else
     		deselect(self)
-    	end
+    	end--]]
     	
     --if right click, no need to make sure that the sprite is hit, however the unit must be selected
     

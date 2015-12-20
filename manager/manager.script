@@ -3,6 +3,7 @@ selectableUnits={}
 mouseDown=false
 savedMouseDownCoordinates=false
 mouseDownStartCoordinates={0,0}
+massSelectionMode=false
 
 function init(self)
     -- Add initialization code here
@@ -31,6 +32,12 @@ function on_message(self, message_id, message, sender)
 	elseif message_id==hash("massSelection") then
 		for _,unit in  pairs(selectableUnits) do 
 		    msg.post(unit,"massSelection",message)
+		end
+	
+	--send message to all units to deselect all
+	elseif message_id==hash("deselectAll")then
+		for _,unit in  pairs(selectableUnits) do 
+		    msg.post(unit,"deselect",message)
 		end
 	end
 end
