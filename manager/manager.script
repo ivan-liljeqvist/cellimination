@@ -6,6 +6,7 @@ require "modules.coordinates"
 require "modules.unit"
 require "modules.bounds"
 require "modules.selectMethods"
+require "modules.buildingBase"
 
 function init(self)
     

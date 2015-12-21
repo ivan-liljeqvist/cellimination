@@ -4,12 +4,14 @@
 function init(self)
 
     initBasicUnit(self,BASE_NAME)
+	initBuilding(self)
 
 end
 
 
 function update(self, dt)
 
+    buildingUpdate(self,dt)
     
 end
 
@@ -17,7 +19,7 @@ end
 
 function on_input(self, action_id, action)
 
-    --when left click, make sure that the player actually hit our sprite 
+    buildingInput(self,action)
 end
 
 
