@@ -1,6 +1,6 @@
 image: "/images/tiles4.png"
-tile_width: 128
-tile_height: 128
+tile_width: 64
+tile_height: 64
 tile_margin: 0
 tile_spacing: 0
 collision: ""

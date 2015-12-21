@@ -1,12 +1,18 @@
 
 
-TILE_SIZE=128
+TILE_SIZE=64
 TILE_NOT_REACHABLE_CODE=0
 
 JEEP_NAME="ARMED JEEP"
 
 TILEMAP_NODES={}
-TILEMAP_WIDTH=0;
+
+TILEMAP_WIDTH=0
+
+TILEMAP_MAXY=0
+TILEMAP_MAXX=0
+TILEMAP_MINY=0
+TILEMAP_MINX=0
 
 TILEMAP_INDEX_LOOKUP={}
 
@@ -17,24 +23,30 @@ require "modules.pathfinder"
 --populates the TILEMAP_NODES array with tiles in the tilemap
 function populateNodeArray(globalTilemapObject)
 	local minX, minY, w, h = globalTilemapObject.get_bounds("world#tilemap")
-	local maxX=minX+w
-	local maxY=minY+h
+	local maxX=minX+w-1
+	local maxY=minY+h-1
 	
 	TILEMAP_WIDTH=w
+	TILEMAP_MAXY=maxY
+	TILEMAP_MAXX=maxX
+	TILEMAP_MINY=minY
+	TILEMAP_MINX=minX
 	
 	--go through each row
-	for xCounter=minX, maxX-1, 1 do
+	for xCounter=minX, maxX, 1 do
 	
 		TILEMAP_INDEX_LOOKUP[xCounter]={}
 		
 		--go through each column
-		for yCounter=minY, maxY-1, 1 do
+		for yCounter=minY, maxY, 1 do
 		
 			--insert a node for each tile
 			local newNode={}
+			
 			newNode.x=xCounter
 			newNode.y=yCounter
 			newNode.type=tilemap.get_tile("world#tilemap", "reachable", xCounter, yCounter)
+			newNode.occupied=false
 			
 			
 			TILEMAP_INDEX_LOOKUP[xCounter][yCounter]=tilemapIndex
@@ -52,7 +64,7 @@ end
 validator = function ( node, neighbor ) 
 	
 		
-	local isBesides = --(math.abs(node.x-neighbor.x)==1 and math.abs(node.y-neighbor.y)==1) or 
+	local isBesides = (math.abs(node.x-neighbor.x)==1 and math.abs(node.y-neighbor.y)==1) or 
 					  (math.abs(node.x-neighbor.x)==0 and math.abs(node.y-neighbor.y)==1) or 
 					  (math.abs(node.x-neighbor.x)==1 and math.abs(node.y-neighbor.y)==0)
 					  

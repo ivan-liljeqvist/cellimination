@@ -20,7 +20,7 @@ function initMovableUnit(self)
     
     self.currentPath={}
 	self.neverMoved=true
-	self.speed=4
+	self.speed=6
 	self.dir=vmath.vector3(0,0,0)
 	
 	table.insert(selectableUnits, go.get_id())
@@ -44,6 +44,21 @@ function generateNewPathToMouseClick(self,action,tilemap)
     		
     		--now use indeces to get start and finish nodes
     		local startNode,finishNode=TILEMAP_NODES[startIndex],TILEMAP_NODES[destIndex]
+    		
+    		--see if some other unit has already occupied the finish-node
+    		if finishNode.occupied==false then
+    			--do nothing
+    		--if occupied find a neighbour tile that is not occupied and set it as new destination
+    		else
+    			print("already occupied!")
+    			destIndex =findNotOccupiedNeighbour(tileX+1,tileY+1)
+    			finishNode=TILEMAP_NODES[destIndex]
+    		end
+    		
+    		startNode.occupied=false
+    		TILEMAP_NODES[startIndex]=startNode
+    		finishNode.occupied=true
+    		TILEMAP_NODES[destIndex]=finishNode
     						  			
     		
     		--use A* to find out the path
