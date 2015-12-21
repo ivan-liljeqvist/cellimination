@@ -2,16 +2,24 @@
 require "modules.coordinates"
 
 
-function initBasicUnit(self,name)
+function initBasicUnit(self,name,goID)
 	self.bounds=getSpriteBounds("#sprite")    
     self.selected=false
     self.initialScale=go.get_scale()
     
     self.name=name
     
-    msg.post(".", "acquire_input_focus")
+    registerForInput(goID)
 end
 
+
+function registerForInput(id)
+	GAME_OBJECTS_THAT_REQUIRE_INPUT[id]=true
+end
+
+function unregisterForInput(id)
+	GAME_OBJECTS_THAT_REQUIRE_INPUT[id]=nil
+end
 
 function initMovableUnit(self)
 	self.goalX = go.get_position("#sprite").x

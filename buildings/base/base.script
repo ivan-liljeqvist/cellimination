@@ -3,7 +3,7 @@
 
 function init(self)
 
-    initBasicUnit(self,BASE_NAME)
+    initBasicUnit(self,BASE_NAME,go.get_id())
 	initBuilding(self)
 
 end
@@ -20,6 +20,7 @@ end
 function on_input(self, action_id, action)
 
     buildingInput(self,action)
+    
 end
 
 

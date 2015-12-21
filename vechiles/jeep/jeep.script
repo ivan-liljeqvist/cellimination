@@ -3,7 +3,7 @@
 
 function init(self)
 
-    initBasicUnit(self,JEEP_NAME)
+    initBasicUnit(self,JEEP_NAME,go.get_id())
     initMovableUnit(self)
     
     
@@ -23,7 +23,7 @@ end
 
 
 
-function on_input(self, action_id, action)
+function parseInput(self, action_id, action)
 
     --when left click, make sure that the player actually hit our sprite
     
@@ -39,6 +39,11 @@ end
 function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
+	
+	
+	if message_id==hash("newInput") then
+		parseInput(self, message.action_id, message.action)
+	end
 
 end
 

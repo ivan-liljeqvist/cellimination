@@ -49,6 +49,11 @@ end
 
 function handleButtonClicked(id) 
 	print("handle click: "..id)
+	
+	if id==RIGHT_BUILD_BUTTON then
+		msg.post("buildingManager", "newBase")
+	end
+	
 end
 
 
@@ -102,6 +107,8 @@ end
 
 function on_input(self, action_id, action)
     checkIfAnyButtonClicked(action)
+    
+    return false
 end
 
 function on_reload(self)
