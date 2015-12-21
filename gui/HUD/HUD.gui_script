@@ -4,6 +4,8 @@
 HUDButtons={}
 
 LEFT_ACTION_BUTTON="action"
+RIGHT_BUILD_BUTTON="buildAction"
+
 NO_BUTTON=""
 
 currentlyHitButton=NO_BUTTON;
@@ -12,6 +14,7 @@ function init(self)
     
    --register all buttons
    addButton(LEFT_ACTION_BUTTON)
+   addButton(RIGHT_BUILD_BUTTON)
    
    msg.post(".", "acquire_input_focus")
        
@@ -20,12 +23,16 @@ end
 function checkIfAnyButtonClicked(action)
 
 	if action.pressed then
+		
+		
+		
 		--go through all buttons on the HUD 
 		for _,buttonObject in  pairs(HUDButtons) do 
 		
 			local id=buttonObject.id
 			--check if click is inside the button
 			if isButtonHit(action,id) and buttonObject.visible then
+				GUI_CLICKED=true
 				highlightButton(id)
 				currentlyHitButton=id
 				--send the id to the handler of the click
@@ -34,6 +41,7 @@ function checkIfAnyButtonClicked(action)
 		end
 	--if released, just dehighlight the current button
 	elseif action.released then
+		GUI_CLICKED=false 
 		dehighlightButton(currentlyHitButton)
 		currentlyHitButton=NO_BUTTON
 	end
@@ -54,8 +62,15 @@ function update(self, dt)
     
     local selectionTextNew=""
     
+    hideButton(RIGHT_BUILD_BUTTON)
+    
     for key,value in pairs(selected) do 
 	  	selectionTextNew=selectionTextNew..value.." "..key.."\n"
+	  	
+	  	if key==WORKER_NAME then
+	  		showButton(RIGHT_BUILD_BUTTON)
+	  		gui.set_text(gui.get_node(RIGHT_BUILD_BUTTON.."/text"),"Build base")
+	  	end
 	end
 	
 	if(self.selectionText==nil)then
@@ -135,7 +150,10 @@ function hideButton(id)
    HUDButtons[id]={id=id,visible=false}
 end
 
+--not highlighting cuz it overrides in update each loop
+
 function highlightButton(id)
+	
 	if(id~=NO_BUTTON)then
 		gui.set_color(gui.get_node(id.."/box"), vmath.vector4(0, 1, 0, 1))
 	end

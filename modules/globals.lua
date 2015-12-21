@@ -5,6 +5,9 @@ TILE_NOT_REACHABLE_CODE=0
 
 JEEP_NAME="ARMED JEEP"
 WORKER_NAME="WORKER"
+BASE_NAME="COMMAND CENTER"
+
+GUI_CLICKED=false --when GUI is clicked, we shouldn't deselect any selection
 
 TILEMAP_NODES={}
 
