@@ -21,7 +21,7 @@ function getTileTypeAt(tileX,tileY,tilemapObject)
 end
 
 --returns index in TILEMAP array
-function findNotOccupiedNeighbour(tileX,tileY)
+function findNotOccupiedNeighbour(tileX,tileY,recursionEnabled)
 	
 	
 	
@@ -39,14 +39,23 @@ function findNotOccupiedNeighbour(tileX,tileY)
 	if (tileX+1)<=TILEMAP_MAXX then
 		table.insert(neighbours,TILEMAP_INDEX_LOOKUP[tileX+1][tileY]) --insert right neighbour
 	end
+	if (tileX+1)<=TILEMAP_MAXX and (tileY+1)<=TILEMAP_MAXY then
+		table.insert(neighbours,TILEMAP_INDEX_LOOKUP[tileX+1][tileY+1]) --insert top-right neighbour
+	end
+	if (tileX-1)>=TILEMAP_MINX and (tileY-1)>=TILEMAP_MINY then
+		table.insert(neighbours,TILEMAP_INDEX_LOOKUP[tileX-1][tileY-1]) --insert top-right neighbour
+	end
 	
 	for _, neighbourIndex in pairs(neighbours) do
-	    if TILEMAP_NODES[neighbourIndex].occupied == false then
+	    if TILEMAP_NODES[neighbourIndex].occupied == false and
+	       TILEMAP_NODES[neighbourIndex].type~=TILE_NOT_REACHABLE_CODE then
 			return neighbourIndex
 		end
 	end
 	
-	print("didn't find free neighbour")
+	return findNotOccupiedNeighbour(tileX+1,tileY,true)
+	
+	
 	
 end
 

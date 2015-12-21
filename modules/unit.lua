@@ -51,8 +51,13 @@ function generateNewPathToMouseClick(self,action,tilemap)
     		--if occupied find a neighbour tile that is not occupied and set it as new destination
     		else
     			print("already occupied!")
-    			destIndex =findNotOccupiedNeighbour(tileX+1,tileY+1)
-    			finishNode=TILEMAP_NODES[destIndex]
+    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,true) --the last is if should use recursion
+    			if newDestIndex then
+    				
+    				destIndex=newDestIndex
+    				finishNode=TILEMAP_NODES[destIndex]
+    				
+    			end
     		end
     		
     		startNode.occupied=false
@@ -65,13 +70,14 @@ function generateNewPathToMouseClick(self,action,tilemap)
     		self.currentPath=pathfinder.path (startNode, finishNode, TILEMAP_NODES, true, validator )
     		
     		--for some reason the first goal in first path is wrong, just remove it
-    		if self.neverMoved then
+    		if self.currentPath and self.neverMoved and table.getn(self.currentPath)>0 then
     			table.remove(self.currentPath, 1)
     			self.neverMoved=false
     		end
     		
 			if not self.currentPath then
 				print ( "No valid path found" )
+				self.currentPath={}
 			end
 
     	else
@@ -97,10 +103,10 @@ end
 function moveAccordingToPath(self,go,dt)
 	local pos = go.get_position()
 	local reachedGoal=(math.abs(pos.y-self.goalY)<1) and (math.abs(pos.x-self.goalX)<1)
-    if(reachedGoal==false)then
+    if reachedGoal==false then
     	
     	go.set_position(pos-self.dir*self.speed*dt)
-    else
+    elseif self.currentPath then
     	--check if the current path has more nodes
     	if table.getn(self.currentPath)~=0 then
     		followPath(self)

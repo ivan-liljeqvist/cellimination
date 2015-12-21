@@ -120,6 +120,106 @@ instances {
   }
 }
 instances {
+  id: "jeep5"
+  prototype: "/vechiles/jeep/jeep.go"
+  position {
+    x: 327.94894
+    y: 280.979
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep6"
+  prototype: "/vechiles/jeep/jeep.go"
+  position {
+    x: 142.30693
+    y: 437.8907
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep7"
+  prototype: "/vechiles/jeep/jeep.go"
+  position {
+    x: 334.579
+    y: 459.99094
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep8"
+  prototype: "/vechiles/jeep/jeep.go"
+  position {
+    x: 500.3308
+    y: 327.3895
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep9"
+  prototype: "/vechiles/jeep/jeep.go"
+  position {
+    x: 124.62673
+    y: 747.29407
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "manager"
   prototype: "/manager/manager.go"
   position {
