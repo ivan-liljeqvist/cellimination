@@ -51,7 +51,7 @@ function generateNewPathToMouseClick(self,action,tilemap)
     		--if occupied find a neighbour tile that is not occupied and set it as new destination
     		else
     			print("already occupied!")
-    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,true) --the last is if should use recursion
+    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,20) --the last is the total number of recursions allowed
     			if newDestIndex then
     				
     				destIndex=newDestIndex

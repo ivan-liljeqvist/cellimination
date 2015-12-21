@@ -21,7 +21,7 @@ function getTileTypeAt(tileX,tileY,tilemapObject)
 end
 
 --returns index in TILEMAP array
-function findNotOccupiedNeighbour(tileX,tileY,recursionEnabled)
+function findNotOccupiedNeighbour(tileX,tileY,recursionsLeft)
 	
 	
 	
@@ -53,7 +53,10 @@ function findNotOccupiedNeighbour(tileX,tileY,recursionEnabled)
 		end
 	end
 	
-	return findNotOccupiedNeighbour(tileX+1,tileY,true)
+	
+	if recursionsLeft>0 then
+		return findNotOccupiedNeighbour(tileX+1,tileY,recursionsLeft-1)
+	end
 	
 	
 	
