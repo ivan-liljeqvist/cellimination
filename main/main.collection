@@ -20,26 +20,6 @@ instances {
   }
 }
 instances {
-  id: "base"
-  prototype: "/buildings/base/base.go"
-  position {
-    x: 1005.64526
-    y: 599.2335
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "jeep"
   prototype: "/vechiles/jeep/jeep.go"
   position {
@@ -60,11 +40,91 @@ instances {
   }
 }
 instances {
+  id: "jeep10"
+  prototype: "/vechiles/jeep/jeep.go"
+  position {
+    x: 960.86774
+    y: 556.9461
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep11"
+  prototype: "/vechiles/jeep/jeep.go"
+  position {
+    x: 845.9465
+    y: 534.8458
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep12"
+  prototype: "/vechiles/jeep/jeep.go"
+  position {
+    x: 543.17316
+    y: 596.7265
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep13"
+  prototype: "/vechiles/jeep/jeep.go"
+  position {
+    x: 1179.66
+    y: 269.64294
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "jeep2"
   prototype: "/vechiles/jeep/jeep.go"
   position {
-    x: 323.5289
-    y: 749.5041
+    x: 471.60052
+    y: 93.126945
     z: 1.0
   }
   rotation {
@@ -83,8 +143,8 @@ instances {
   id: "jeep3"
   prototype: "/vechiles/jeep/jeep.go"
   position {
-    x: 567.0509
-    y: 749.5041
+    x: 730.5927
+    y: 196.99808
     z: 1.0
   }
   rotation {
@@ -103,8 +163,8 @@ instances {
   id: "jeep4"
   prototype: "/vechiles/jeep/jeep.go"
   position {
-    x: 1245.9608
-    y: 583.4664
+    x: 704.50494
+    y: 514.9556
     z: 1.0
   }
   rotation {
@@ -203,8 +263,8 @@ instances {
   id: "jeep9"
   prototype: "/vechiles/jeep/jeep.go"
   position {
-    x: 124.62673
-    y: 747.29407
+    x: 67.16611
+    y: 190.368
     z: 1.0
   }
   rotation {
@@ -245,6 +305,26 @@ instances {
   position {
     x: 448.0
     y: 623.71063
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker"
+  prototype: "/units/worker/worker.go"
+  position {
+    x: 1146.0979
+    y: 594.2115
     z: 0.5
   }
   rotation {

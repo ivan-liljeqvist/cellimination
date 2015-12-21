@@ -3,12 +3,8 @@
 
 function init(self)
 
-    initBasicUnit(self,JEEP_NAME)
+    initBasicUnit(self,WORKER_NAME)
     initMovableUnit(self)
-    
-    
-    go.set("#sprite", "scale.x", 0.1)
-    go.set("#sprite", "scale.y", 0.1)
 
 end
 

@@ -1,0 +1,4 @@
+tile_set: "/images/units/worker.atlas"
+default_animation: "workerImage"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

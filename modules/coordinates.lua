@@ -20,38 +20,43 @@ function getTileTypeAt(tileX,tileY,tilemapObject)
 	return tilemapObject.get_tile("world#tilemap", "reachable", tileX+1, tileY+1)
 end
 
+function verifyIndex(index)
+	
+	if TILEMAP_NODES[index]==nil then return false end
+
+	if TILEMAP_NODES[index].occupied == false and
+	       TILEMAP_NODES[index].type~=TILE_NOT_REACHABLE_CODE then
+		   return true
+	end
+	
+	return false
+end
+
 --returns index in TILEMAP array
 function findNotOccupiedNeighbour(tileX,tileY,recursionsLeft)
 	
 	
+
 	
-	local neighbours={}
+	if (tileY+1)<=TILEMAP_MAXY and verifyIndex(TILEMAP_INDEX_LOOKUP[tileX][tileY+1]) then
+		return TILEMAP_INDEX_LOOKUP[tileX][tileY+1]
 	
-	if (tileY+1)<=TILEMAP_MAXY then
-		table.insert(neighbours,TILEMAP_INDEX_LOOKUP[tileX][tileY+1]) --insert top neighbour
-	end
-	if (tileY-1)>=TILEMAP_MINY then
-		table.insert(neighbours,TILEMAP_INDEX_LOOKUP[tileX][tileY-1]) --insert bottom neighbour
-	end
-	if (tileX-1)>=TILEMAP_MINX then
-		table.insert(neighbours,TILEMAP_INDEX_LOOKUP[tileX-1][tileY]) --insert left neighbour
-	end
-	if (tileX+1)<=TILEMAP_MAXX then
-		table.insert(neighbours,TILEMAP_INDEX_LOOKUP[tileX+1][tileY]) --insert right neighbour
-	end
-	if (tileX+1)<=TILEMAP_MAXX and (tileY+1)<=TILEMAP_MAXY then
-		table.insert(neighbours,TILEMAP_INDEX_LOOKUP[tileX+1][tileY+1]) --insert top-right neighbour
-	end
-	if (tileX-1)>=TILEMAP_MINX and (tileY-1)>=TILEMAP_MINY then
-		table.insert(neighbours,TILEMAP_INDEX_LOOKUP[tileX-1][tileY-1]) --insert top-right neighbour
+	elseif (tileY-1)>=TILEMAP_MINY and verifyIndex(TILEMAP_INDEX_LOOKUP[tileX][tileY-1]) then
+		return TILEMAP_INDEX_LOOKUP[tileX][tileY-1]
+	
+	elseif (tileX-1)>=TILEMAP_MINX and verifyIndex(TILEMAP_INDEX_LOOKUP[tileX-1][tileY]) then
+		return TILEMAP_INDEX_LOOKUP[tileX-1][tileY]
+	
+	elseif (tileX+1)<=TILEMAP_MAXX and verifyIndex(TILEMAP_INDEX_LOOKUP[tileX+1][tileY]) then
+		return TILEMAP_INDEX_LOOKUP[tileX+1][tileY]
+	
+	elseif (tileX+1)<=TILEMAP_MAXX and (tileY+1)<=TILEMAP_MAXY and verifyIndex(TILEMAP_INDEX_LOOKUP[tileX+1][tileY+1])then
+		return TILEMAP_INDEX_LOOKUP[tileX+1][tileY+1]
+	
+	elseif (tileX-1)<=TILEMAP_MAXX and (tileY-1)<=TILEMAP_MAXY and verifyIndex(TILEMAP_INDEX_LOOKUP[tileX-1][tileY-1])then
+		return TILEMAP_INDEX_LOOKUP[tileX-1][tileY-1]
 	end
 	
-	for _, neighbourIndex in pairs(neighbours) do
-	    if TILEMAP_NODES[neighbourIndex].occupied == false and
-	       TILEMAP_NODES[neighbourIndex].type~=TILE_NOT_REACHABLE_CODE then
-			return neighbourIndex
-		end
-	end
 	
 	
 	if recursionsLeft>0 then

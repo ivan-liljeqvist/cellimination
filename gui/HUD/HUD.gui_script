@@ -50,8 +50,18 @@ function final(self)
 end
 
 function update(self, dt)
-    -- Add update code here
-    -- Remove this function if not needed
+    local selected=getSelectedUnits()
+    
+    local selectionTextNew=""
+    
+    for key,value in pairs(selected) do 
+	  	selectionTextNew=selectionTextNew..value.." "..key.."\n"
+	end
+	
+	if(self.selectionText==nil)then
+		self.selectionText = gui.get_node("selectionText")
+	end
+	gui.set_text(self.selectionText,selectionTextNew)
 
 end
 

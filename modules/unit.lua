@@ -2,10 +2,12 @@
 require "modules.coordinates"
 
 
-function initBasicUnit(self)
+function initBasicUnit(self,name)
 	self.bounds=getSpriteBounds("#sprite")    
     self.selected=false
     self.initialScale=go.get_scale()
+    
+    self.name=name
     
     msg.post(".", "acquire_input_focus")
 end
@@ -50,8 +52,8 @@ function generateNewPathToMouseClick(self,action,tilemap)
     			--do nothing
     		--if occupied find a neighbour tile that is not occupied and set it as new destination
     		else
-    			print("already occupied!")
-    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,20) --the last is the total number of recursions allowed
+  
+    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,5) --the last is the total number of recursions allowed
     			if newDestIndex then
     				
     				destIndex=newDestIndex
