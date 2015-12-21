@@ -7,6 +7,13 @@ function init(self)
     initMovableUnit(self)
     
     
+    self.parseInput=function(self, action_id, action)
+
+	    if action_id == hash("rightClicked") and action.pressed and self.selected then 
+	    	generateNewPathToMouseClick(self,action,tilemap)
+	    end 
+	end
+    
     go.set("#sprite", "scale.x", 0.1)
     go.set("#sprite", "scale.y", 0.1)
 
@@ -23,27 +30,12 @@ end
 
 
 
-function parseInput(self, action_id, action)
 
-    --when left click, make sure that the player actually hit our sprite
-    
-    
-    if action_id == hash("rightClicked") and action.pressed and self.selected then 
-    	
-    	generateNewPathToMouseClick(self,action,tilemap)
-    	
-    end 
-end
 
 
 function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
-	
-	
-	if message_id==hash("newInput") then
-		parseInput(self, message.action_id, message.action)
-	end
 
 end
 

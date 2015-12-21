@@ -54,5 +54,9 @@ function handleSelectMethods(self,go,message_id,message)
 		removeFromSelectedUnits(self)
 		deselect(self,go)
  	end
+ 	
+ 	if message_id==hash("newInput") then
+		self.parseInput(self, message.action_id, message.action)
+	end
 end
 
