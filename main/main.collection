@@ -100,6 +100,26 @@ instances {
   }
 }
 instances {
+  id: "ownCamera"
+  prototype: "/render/ownCamera.go"
+  position {
+    x: 1984.0
+    y: 1663.8071
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "selection"
   prototype: "/gui/selection/selection.go"
   position {

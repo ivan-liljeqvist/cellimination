@@ -24,6 +24,8 @@ end
 
 function isInsideSelection(startMouse, currentMouse, pivot)
 	
+	
+	
 	local bounds = getSpriteBounds("#sprite")
 	
 	--selection
@@ -35,10 +37,10 @@ function isInsideSelection(startMouse, currentMouse, pivot)
 	
 	--sprite
 	local RectB={}
-	RectB.X1 = bounds[1]
-	RectB.X2 = bounds[2]
-	RectB.Y1 = bounds[3]
-	RectB.Y2 = bounds[4]
+	RectB.X1 = bounds[1]-CAMERA_OFFSETX
+	RectB.X2 = bounds[2]-CAMERA_OFFSETX
+	RectB.Y1 = bounds[3]-CAMERA_OFFSETY
+	RectB.Y2 = bounds[4]-CAMERA_OFFSETY
 	
 	--if SW - no change, we now want to adjust so that pivot is SW
 	--if SE - switch X1 and X2

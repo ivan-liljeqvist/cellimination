@@ -3,7 +3,78 @@
 
 function init(self)
     
-	msg.post(".", "acquire_input_focus")
+	--msg.post(".", "acquire_input_focus")
+	
+	self.massSelectionMode=false
+	
+	self.pressedSinceLast=false
+	self.releasedSinceLast=true
+	
+	self.parseInput=function(self, action_id, action)
+	
+			
+			--this is called only when left click first time
+			if action_id==hash("leftClicked") and action.pressed and self.releasedSinceLast then
+				--mouse variables are in manager.script
+				mouseDown=true
+				
+				self.pressedSinceLast=true
+				self.releasedSinceLast=false
+				
+				--save where the user first clicked
+				if savedMouseDownCoordinates~=true then
+					mouseDownStartCoordinates={action.x,action.y}
+					savedMouseDownCoordinates=true
+				end
+				
+			
+			
+			--reset variables when mouse is released
+			elseif action_id==hash("leftClicked") and action.released and self.pressedSinceLast then
+				mouseDown=false
+				savedMouseDownCoordinates=false
+				hideSelection()
+				
+				self.pressedSinceLast=false
+				self.releasedSinceLast=true
+				
+				--if no mass selection, pretend we have a selection of 1x1 and only one unit will be selected
+				if self.massSelectionMode~=true and GUI_CLICKED==false then
+					
+					msg.post("manager","deselectAll",{})
+					msg.post("manager","massSelection",{start=mouseDownStartCoordinates,
+														current={mouseDownStartCoordinates[1]+1,mouseDownStartCoordinates[2]+1},
+														pivot=gui.get_pivot(gui.get_node("selectionBox"))})
+				end
+				
+				
+				self.massSelectionMode=false
+			
+			
+			--this is called when the user moves the mouse while pressing down
+			elseif mouseDown and GUI_CLICKED==false then
+					
+				--show selection only when the user has moved the mouse from the point he first clicked
+				if(action.x~=mouseDownStartCoordinates[1] or action.y~=mouseDownStartCoordinates[2])then
+					
+					showSelection(mouseDownStartCoordinates,{action.x,action.y})
+					
+					if self.massSelectionMode~=true then
+						self.massSelectionMode=true
+						msg.post("manager","deselectAll",{})
+					end
+					
+					--send the selection to the manager.script and manager will send it to all selectable units
+					--the units will decide if they should be selected
+					
+					msg.post("manager","massSelection",{start=mouseDownStartCoordinates,
+														current={action.x,action.y},
+														pivot=gui.get_pivot(gui.get_node("selectionBox"))})
+					
+				end
+			
+			end  
+	end
 	
 	hideSelection()
 	
@@ -59,66 +130,13 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-    -- Add message-handling code here
-    -- Remove this function if not needed
+    
+    if message_id==hash("newInput") then
+    	self.parseInput(self, message.action_id, message.action)
+    end
+    
 end
 
-function on_input(self, action_id, action)
-	
-	--this is called only when left click first time
-	if action_id==hash("leftClicked") and action.pressed then
-		--mouse variables are in manager.script
-		mouseDown=true
-		
-		--save where the user first clicked
-		if savedMouseDownCoordinates~=true then
-			mouseDownStartCoordinates={action.x,action.y}
-			savedMouseDownCoordinates=true
-		end
-		
-	
-	
-	--reset variables when mouse is released
-	elseif action_id==hash("leftClicked") and action.released then
-		mouseDown=false
-		savedMouseDownCoordinates=false
-		hideSelection()
-		
-		--if no mass selection, pretend we have a selection of 1x1 and only one unit will be selected
-		if massSelectionMode~=true and GUI_CLICKED==false then
-			msg.post("manager","deselectAll",{})
-			msg.post("manager","massSelection",{start=mouseDownStartCoordinates,
-												current={mouseDownStartCoordinates[1]+1,mouseDownStartCoordinates[2]+1},
-												pivot=gui.get_pivot(gui.get_node("selectionBox"))})
-		end
-		
-		massSelectionMode=false
-	
-	
-	--this is called when the user moves the mouse while pressing down
-	elseif mouseDown and GUI_CLICKED==false then
-		
-		--show selection only when the user has moved the mouse from the point he first clicked
-		if(action.x~=mouseDownStartCoordinates[1] or action.y~=mouseDownStartCoordinates[2])then
-			showSelection(mouseDownStartCoordinates,{action.x,action.y})
-			
-			if massSelectionMode~=true then
-				massSelectionMode=true
-				msg.post("manager","deselectAll",{})
-			end
-			
-			--send the selection to the manager.script and manager will send it to all selectable units
-			--the units will decide if they should be selected
-			
-			msg.post("manager","massSelection",{start=mouseDownStartCoordinates,
-												current={action.x,action.y},
-												pivot=gui.get_pivot(gui.get_node("selectionBox"))})
-			
-		end
-	
-	end  
-
-end
 
 function on_reload(self)
     -- Add input-handling code here

@@ -1,6 +1,6 @@
 components {
-  id: "gui"
-  component: "/gui/selection/selection.gui"
+  id: "camera"
+  component: "/render/ownCamera.camera"
   position {
     x: 0.0
     y: 0.0
@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "script"
-  component: "/gui/selection/selection.script"
+  component: "/render/ownCamera.script"
   position {
     x: 0.0
     y: 0.0

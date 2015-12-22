@@ -7,10 +7,14 @@ end
 
 function on_input(self, action_id, action)
 
+	
+	msg.post("ownCamera","newInput",{action_id=action_id,action=action})
+
 
 	for key,value in pairs(GAME_OBJECTS_THAT_REQUIRE_INPUT) do 
 	
 		if value==true then
+			
 			msg.post(key, "newInput", {action_id=action_id,action=action})
 		end
 	

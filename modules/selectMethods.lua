@@ -42,6 +42,7 @@ function handleSelectMethods(self,go,message_id,message)
 		
 	--check if self is inside the selection, if it is, select itself
 	elseif message_id==hash("massSelection") then
+		
 		if isInsideSelection(message.start,message.current,message.pivot) and alreadySelected()==false then
 			
 			addToSelectedUnits(self)
@@ -53,6 +54,7 @@ function handleSelectMethods(self,go,message_id,message)
 		end
 	
 	elseif message_id==hash("deselect") then
+		
 		removeFromSelectedUnits(self)
 		deselect(self,go)
  	end

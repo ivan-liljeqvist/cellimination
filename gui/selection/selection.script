@@ -1,0 +1,15 @@
+
+function init(self)
+	
+     registerForInput(go.get_id())
+end
+
+function on_message(self, message_id, message, sender)
+	
+    if message_id==hash("newInput") then
+		msg.post("#gui","newInput",message)
+	end
+	
+end
+
+

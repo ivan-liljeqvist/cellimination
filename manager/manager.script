@@ -42,6 +42,7 @@ function on_message(self, message_id, message, sender)
 	
 	--send message to all units to deselect all
 	elseif message_id==hash("deselectAll")then
+		
 		for _,unit in  pairs(selectableUnits) do 
 		    msg.post(unit,"deselect",message)
 		end
