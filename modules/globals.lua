@@ -54,6 +54,7 @@ function populateNodeArray(globalTilemapObject)
 			newNode.y=yCounter
 			newNode.type=tilemap.get_tile("world#tilemap", "reachable", xCounter, yCounter)
 			newNode.occupied=false
+			newNode.blocked=false
 			
 			
 			TILEMAP_INDEX_LOOKUP[xCounter][yCounter]=tilemapIndex
@@ -77,7 +78,7 @@ validator = function ( node, neighbor )
 					  
 
 		
-	if 	isBesides and neighbor.type~=TILE_NOT_REACHABLE_CODE then 
+	if 	isBesides and neighbor.type~=TILE_NOT_REACHABLE_CODE and neighbor.blocked~=true then 
 		return true
 	end
 	

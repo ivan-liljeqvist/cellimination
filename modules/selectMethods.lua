@@ -35,6 +35,7 @@ end
 function handleSelectMethods(self,go,message_id,message)
 	--message that some unit is single-selected, check if the unit is self
 	--if not us, deselect self because some other unit is in focus
+	
 	if message_id==hash("unitSelected") then
 		if message.selectedId ~= go.get_id() then
 			deselect(self,go)
@@ -44,6 +45,7 @@ function handleSelectMethods(self,go,message_id,message)
 	elseif message_id==hash("massSelection") then
 		if isInsideSelection(message.start,message.current,message.pivot) then
 			addToSelectedUnits(self)
+			print("selected")
 			massSelect(self,"hej",go)
 		else
 			removeFromSelectedUnits(self)

@@ -10,6 +10,8 @@ function initBasicUnit(self,name,goID)
     self.name=name
     
     registerForInput(goID)
+    
+    table.insert(selectableUnits, go.get_id())
 end
 
 
@@ -33,7 +35,6 @@ function initMovableUnit(self)
 	self.speed=6
 	self.dir=vmath.vector3(0,0,0)
 	
-	table.insert(selectableUnits, go.get_id())
 end
 
 function generateNewPathToMouseClick(self,action,tilemap)

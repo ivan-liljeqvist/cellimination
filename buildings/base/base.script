@@ -4,10 +4,11 @@
 function init(self)
 
     initBasicUnit(self,BASE_NAME,go.get_id())
-	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=0},width=2,height=4})
+	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=0},width=2,height=4},go)
 	
 	self.parseInput=function(self, action_id, action)
-		buildingInput(self,action)
+		
+		buildingInput(self,action,action_id)
 	end
 end
 
