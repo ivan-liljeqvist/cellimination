@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/vechiles/jeep/jeep.script"
+  component: "/units/vechiles/jeep/jeep.script"
   position {
     x: 0.0
     y: 0.0
@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "sprite"
-  component: "/vechiles/jeep/jeep.sprite"
+  component: "/units/vechiles/jeep/jeep.sprite"
   position {
     x: 0.0
     y: 0.0

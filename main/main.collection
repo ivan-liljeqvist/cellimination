@@ -61,7 +61,7 @@ instances {
 }
 instances {
   id: "jeep"
-  prototype: "/vechiles/jeep/jeep.go"
+  prototype: "/units/vechiles/jeep/jeep.go"
   position {
     x: 205.45763
     y: 207.11418
@@ -105,6 +105,26 @@ instances {
   position {
     x: 448.0
     y: 623.71063
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "unitManager"
+  prototype: "/units/unitManager.go"
+  position {
+    x: 864.0
+    y: 671.6624
     z: 0.5
   }
   rotation {

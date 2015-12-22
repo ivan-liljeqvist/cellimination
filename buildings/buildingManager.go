@@ -1,6 +1,6 @@
 components {
   id: "factory"
-  component: "/buildings/factories/base.factory"
+  component: "/buildings/base/base.factory"
   position {
     x: 0.0
     y: 0.0

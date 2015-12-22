@@ -9,10 +9,9 @@ function removeFromSelectedUnits(unit)
     SELECTED_UNITS[unit] = nil
 end
 
-function selectedUnitsContain(unit)
+function alreadySelected(unit)
     return SELECTED_UNITS[unit] ~= nil
 end
-
 
 function getSelectedUnits()
 	local toReturn={}
@@ -43,11 +42,12 @@ function handleSelectMethods(self,go,message_id,message)
 		
 	--check if self is inside the selection, if it is, select itself
 	elseif message_id==hash("massSelection") then
-		if isInsideSelection(message.start,message.current,message.pivot) then
+		if isInsideSelection(message.start,message.current,message.pivot) and alreadySelected()==false then
+			
 			addToSelectedUnits(self)
-			print("selected")
 			massSelect(self,"hej",go)
 		else
+	
 			removeFromSelectedUnits(self)
 			deselect(self,go)
 		end
