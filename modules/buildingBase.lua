@@ -115,6 +115,7 @@ function canBuildAtTile(tileX,tileY)
 	tileY=tileY+1
 
 	if tileX>TILEMAP_MAXX or tileX<TILEMAP_MINX or tileY>TILEMAP_MAXY or tileY<TILEMAP_MINY then
+		print("outside map!")
 		return false
 	end
 
@@ -124,6 +125,8 @@ function canBuildAtTile(tileX,tileY)
 	if tileNode.type~=TILE_NOT_REACHABLE_CODE and tileNode.occupied==false then
 		return true
 	end
+	
+	
 	
 	return false
 end

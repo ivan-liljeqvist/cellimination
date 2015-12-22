@@ -35,9 +35,13 @@ function initMovableUnit(self)
 	self.speed=6
 	self.dir=vmath.vector3(0,0,0)
 	
+	self.lastDestIndex=1
+	
 end
 
 function generateNewPathToMouseClick(self,action,tilemap)
+
+		TILEMAP_NODES[self.lastDestIndex].occupied=false
 
 		local tileX,tileY=pixelToTileCoords(action.x,action.y)
     	local tileType=getTileTypeAt(tileX,tileY,tilemap)
@@ -75,6 +79,8 @@ function generateNewPathToMouseClick(self,action,tilemap)
     		TILEMAP_NODES[startIndex]=startNode
     		finishNode.occupied=true
     		TILEMAP_NODES[destIndex]=finishNode
+    		
+    		self.lastDestIndex=destIndex
     						  			
     		
     		--use A* to find out the path
