@@ -15,7 +15,7 @@ CAMERA_DIRECTION_RIGHT=2
 CAMERA_OFFSETX=0
 CAMERA_OFFSETY=0
 
-CAMERA_SPEED=3
+CAMERA_SPEED=6
 
 JEEP_NAME="ARMED JEEP"
 WORKER_NAME="WORKER"
@@ -38,6 +38,14 @@ TILEMAP_INDEX_LOOKUP={}
 tilemapIndex=1
 
 require "modules.pathfinder"
+
+function getScreenWidth()
+	return tonumber(sys.get_config("display.width"))
+end
+
+function getScreenHeight()
+	return tonumber(sys.get_config("display.height"))
+end
 
 --populates the TILEMAP_NODES array with tiles in the tilemap
 function populateNodeArray(globalTilemapObject)

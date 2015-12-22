@@ -2,11 +2,17 @@
 function on_message(self, message_id, message, sender)
 	
 	if message_id == hash("newJeep") then
-		local newJeep=factory.create("#jeepFactory",vmath.vector3(CURRENT_PRODUCER_POSITION.x,
-												    CURRENT_PRODUCER_POSITION.y-TILE_SIZE,1))
+	
+		local initialPosition=vmath.vector3(CURRENT_PRODUCER_POSITION.x,
+												    CURRENT_PRODUCER_POSITION.y-TILE_SIZE,1)
+		local newJeep=factory.create("#jeepFactory",initialPosition)
+		
+		local rollOutPosition=vmath.vector3(CURRENT_PRODUCER_POSITION.x,
+												    CURRENT_PRODUCER_POSITION.y-TILE_SIZE,1)
+		
 				
-		msg.post(msg.url(newJeep), "goHere", {x=CURRENT_PRODUCER_POSITION.x,
-												    y=CURRENT_PRODUCER_POSITION.y-TILE_SIZE})
+		msg.post(msg.url(newJeep), "rollOutOfProducer", {x=rollOutPosition.x,
+												 y=rollOutPosition.y})
 								    
 		
 	end

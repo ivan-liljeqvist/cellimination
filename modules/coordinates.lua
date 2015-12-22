@@ -1,8 +1,14 @@
 
 function pixelToTileCoords(pixelX,pixelY)
 
-	local tileX=math.floor((pixelX+CAMERA_OFFSETX)/TILE_SIZE)
-	local tileY=math.floor((pixelY+CAMERA_OFFSETY)/TILE_SIZE)
+	
+	local tileX=0
+	local tileY=0
+	
+
+	tileX=math.floor((pixelX+CAMERA_OFFSETX)/TILE_SIZE)
+	tileY=math.floor((pixelY+CAMERA_OFFSETY)/TILE_SIZE)
+
 	
 	return tileX,tileY
 end

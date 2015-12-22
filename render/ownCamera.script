@@ -23,6 +23,12 @@ function update(self, dt)
 	if currentCursorPosition.y<100 then
 		moveCamera(CAMERA_DIRECTION_DOWN)
 	end
+	if currentCursorPosition.x>getScreenWidth()-100 then
+		moveCamera(CAMERA_DIRECTION_RIGHT)
+	end
+	if currentCursorPosition.y>getScreenHeight()-100 then
+		moveCamera(CAMERA_DIRECTION_UP)
+	end
 end
 
 function on_message(self, message_id, message, sender)
@@ -30,7 +36,7 @@ function on_message(self, message_id, message, sender)
 	if message_id==hash("moveCameraUp") then
 		moveCamera(CAMERA_DIRECTION_UP)
 	elseif message_id==hash("moveCameraDown") then
-		--moveCamera(CAMERA_DIRECTION_DOWN)
+		moveCamera(CAMERA_DIRECTION_DOWN)
 	elseif message_id==hash("moveCameraRight")then
 		moveCamera(CAMERA_DIRECTION_RIGHT)
 	elseif message_id==hash("moveCameraLeft")then
@@ -53,14 +59,18 @@ function moveCamera(dir)
 	local pos=go.get_position()
 	
 	if dir==CAMERA_DIRECTION_LEFT then
-		pos.x=pos.x-CAMERA_SPEED
-		CAMERA_OFFSETX=CAMERA_OFFSETX-CAMERA_SPEED
+		if pos.x-CAMERA_SPEED > 0 then
+			pos.x=pos.x-CAMERA_SPEED
+			CAMERA_OFFSETX=CAMERA_OFFSETX-CAMERA_SPEED
+		end
 	elseif dir==CAMERA_DIRECTION_RIGHT then
 		pos.x=pos.x+CAMERA_SPEED
 		CAMERA_OFFSETX=CAMERA_OFFSETX+CAMERA_SPEED
 	elseif dir==CAMERA_DIRECTION_DOWN then
-		--pos.y=pos.y-CAMERA_SPEED
-		--CAMERA_OFFSETY=CAMERA_OFFSETY-CAMERA_SPEED
+		if pos.y-CAMERA_SPEED > 0 then
+			pos.y=pos.y-CAMERA_SPEED
+			CAMERA_OFFSETY=CAMERA_OFFSETY-CAMERA_SPEED
+		end
 	elseif dir==CAMERA_DIRECTION_UP then
 		pos.y=pos.y+CAMERA_SPEED
 		CAMERA_OFFSETY=CAMERA_OFFSETY+CAMERA_SPEED

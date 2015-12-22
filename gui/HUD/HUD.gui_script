@@ -12,6 +12,8 @@ currentlyHitButton=NO_BUTTON;
 
 local uglyFlag=false
 
+local releasedSinceLast=true
+
 function init(self)
     
    --register all buttons
@@ -25,9 +27,12 @@ end
 
 function checkIfAnyButtonClicked(action,action_id)
 	
-	if action.pressed and action_id==hash("leftClicked") then
-		--go through all buttons on the HUD 
+	if action.pressed and action_id==hash("leftClicked") and releasedSinceLast then
+	
+		GUI_CLICKED=false
 		
+		--go through all buttons on the HUD 
+		releasedSinceLast=false
 		for _,buttonObject in  pairs(HUDButtons) do 
 		
 			local id=buttonObject.id
@@ -42,7 +47,7 @@ function checkIfAnyButtonClicked(action,action_id)
 		end
 	--if released, just dehighlight the current button
 	elseif action.released then
-		GUI_CLICKED=false 
+		releasedSinceLast=true
 		dehighlightButton(currentlyHitButton)
 		currentlyHitButton=NO_BUTTON
 	end

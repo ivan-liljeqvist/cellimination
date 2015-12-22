@@ -7,6 +7,11 @@ function initBasicUnit(self,name,goID)
     self.selected=false
     self.initialScale=go.get_scale()
     
+    local pos=go.get_position()
+    pos.x=pos.x
+	pos.y=pos.y
+	go.set_position(pos)
+    
     self.name=name
     
     registerForInput(goID)
@@ -24,11 +29,14 @@ function unregisterForInput(id)
 end
 
 function initMovableUnit(self)
-	self.goalX = go.get_position("#sprite").x
-    self.goalY = go.get_position("#sprite").y
+
+	
+	self.goalX = getPosition().x
+    self.goalY = getPosition().y
+    
     self.needToUpdateRotation=false
     
-    self.tileCoordinates={pixelToTileCoords(self.goalX+1,self.goalY+1)}
+    self.tileCoordinates={pixelToTileCoords(self.goalX,self.goalY)}
     
     self.currentPath={}
 	self.neverMoved=true
@@ -43,7 +51,7 @@ function generateNewPathToMouseClick(self,action,tilemap)
 
 		TILEMAP_NODES[self.lastDestIndex].occupied=false
 
-		local tileX,tileY=pixelToTileCoords(action.x,action.y)
+		local tileX,tileY=pixelToTileCoords(action.x,action.y,ignoreCameraOffset)
     	local tileType=getTileTypeAt(tileX,tileY,tilemap)
     	
     	--check if we can go there
@@ -66,7 +74,7 @@ function generateNewPathToMouseClick(self,action,tilemap)
     		--if occupied find a neighbour tile that is not occupied and set it as new destination
     		else
   
-    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,5) --the last is the total number of recursions allowed
+    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,7) --the last is the total number of recursions allowed
     			if newDestIndex then
     				
     				destIndex=newDestIndex
@@ -95,15 +103,18 @@ function generateNewPathToMouseClick(self,action,tilemap)
 			if not self.currentPath then
 				print ( "No valid path found" )
 				self.currentPath={}
+			else
+				print("path with "..table.getn(self.currentPath).." nodes")
 			end
 
     	else
     		print("not reachable!")
     	end
  end
+ 
 
 function updateRotation(self,go)
-	local pos = go.get_position()
+	local pos = getPosition()
 	if self.needToUpdateRotation then
     	local old_rot = go.get_rotation()
     
@@ -118,8 +129,9 @@ function updateRotation(self,go)
 end
 
 function moveAccordingToPath(self,go,dt)
-	local pos = go.get_position()
+	local pos = getPosition()
 	local reachedGoal=(math.abs(pos.y-self.goalY)<1) and (math.abs(pos.x-self.goalX)<1)
+	
     if reachedGoal==false then
     	
     	go.set_position(pos-self.dir*self.speed*dt)
@@ -131,9 +143,24 @@ function moveAccordingToPath(self,go,dt)
     end
 end
 
+function getPosition()
+	local pos = go.get_position()
+	
+	return pos
+end
+
+function goStraightToNode(self,nodeIndex)
+	TILEMAP_NODES[self.lastDestIndex].occupied=false
+	
+	print("nodeIndex: "..nodeIndex)
+	self.currentPath={TILEMAP_NODES[nodeIndex]}
+	
+	TILEMAP_NODES[nodeIndex].occupied=true
+	self.lastDestIndex=nodeIndex
+end
+
 
 function followPath(self)
-	
 	
 	local nextNode=table.remove(self.currentPath, 1)
 	
@@ -141,7 +168,8 @@ function followPath(self)
 
 		self.goalX,self.goalY=tileToPixelCoords(nextNode.x-1,nextNode.y-1)
 		
-		local pos=go.get_position("#sprite")
+		
+		local pos=getPosition()
 		
 		self.needToUpdateRotation=true
 		

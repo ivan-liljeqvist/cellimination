@@ -25,7 +25,7 @@ function buildingInput(self,action,action_id)
 	elseif self.prototypeMode then
 		GUI_CLICKED=true
 		--follow cursor
-		go.set_position(vmath.vector3(action.x,action.y,1))
+		go.set_position(vmath.vector3(action.x+CAMERA_OFFSETX,action.y+CAMERA_OFFSETY,1))
 		--check if we can build here
 		self.canBuildHere = canBuildAt(self,action.x-CAMERA_OFFSETX,action.y-CAMERA_OFFSETY)
 		updatePrototypeColor(self)
