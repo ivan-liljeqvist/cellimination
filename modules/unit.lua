@@ -26,7 +26,7 @@ function initMovableUnit(self)
     self.goalY = go.get_position("#sprite").y
     self.needToUpdateRotation=false
     
-    self.tileCoordinates={mouseToTileCoords(self.goalX+1,self.goalY+1)}
+    self.tileCoordinates={pixelToTileCoords(self.goalX+1,self.goalY+1)}
     
     self.currentPath={}
 	self.neverMoved=true
@@ -38,7 +38,7 @@ end
 
 function generateNewPathToMouseClick(self,action,tilemap)
 
-		local tileX,tileY=mouseToTileCoords(action.x,action.y)
+		local tileX,tileY=pixelToTileCoords(action.x,action.y)
     	local tileType=getTileTypeAt(tileX,tileY,tilemap)
     	
     	--check if we can go there
