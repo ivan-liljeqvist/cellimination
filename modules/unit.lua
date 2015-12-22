@@ -74,7 +74,7 @@ function generateNewPathToMouseClick(self,action,tilemap)
     		--if occupied find a neighbour tile that is not occupied and set it as new destination
     		else
   
-    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,7) --the last is the total number of recursions allowed
+    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,3) --the last is the total number of recursions allowed
     			if newDestIndex then
     				
     				destIndex=newDestIndex
@@ -99,12 +99,12 @@ function generateNewPathToMouseClick(self,action,tilemap)
     			table.remove(self.currentPath, 1)
     			self.neverMoved=false
     		end
-    		
+    		print("path done!")
 			if not self.currentPath then
 				print ( "No valid path found" )
 				self.currentPath={}
 			else
-				print("path with "..table.getn(self.currentPath).." nodes")
+				--print("path with "..table.getn(self.currentPath).." nodes")
 			end
 
     	else

@@ -27,7 +27,7 @@ function buildingInput(self,action,action_id)
 		--follow cursor
 		go.set_position(vmath.vector3(action.x+CAMERA_OFFSETX,action.y+CAMERA_OFFSETY,1))
 		--check if we can build here
-		self.canBuildHere = canBuildAt(self,action.x-CAMERA_OFFSETX,action.y-CAMERA_OFFSETY)
+		self.canBuildHere = canBuildAt(self,action.x,action.y)
 		updatePrototypeColor(self)
 	end
 end
