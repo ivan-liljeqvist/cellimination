@@ -54,7 +54,7 @@ function handleButtonClicked(id)
 	if id==RIGHT_BUILD_BUTTON and uglyFlag==false then
 		msg.post("buildingManager", "newBase")
 	else
-		print("build jeep")
+		msg.post("unitManager", "newJeep")
 	end
 	
 end

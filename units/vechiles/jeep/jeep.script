@@ -36,6 +36,10 @@ end
 function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
+	
+	if message_id==hash("goHere") then
+		generateNewPathToMouseClick(self,message,tilemap)
+	end
 
 end
 
