@@ -16,6 +16,7 @@ GUI_CLICKED=false --when GUI is clicked, we shouldn't deselect any selection
 TILEMAP_NODES={}
 
 TILEMAP_WIDTH=0
+TILEMAP_HEIGHT=0
 
 TILEMAP_MAXY=0
 TILEMAP_MAXX=0
@@ -35,6 +36,7 @@ function populateNodeArray(globalTilemapObject)
 	local maxY=minY+h-1
 	
 	TILEMAP_WIDTH=w
+	TILEMAP_HEIGHT=h
 	TILEMAP_MAXY=maxY
 	TILEMAP_MAXX=maxX
 	TILEMAP_MINY=minY

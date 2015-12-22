@@ -68,71 +68,8 @@ nodes {
 }
 nodes {
   position {
-    x: 193.43294
-    y: 155.29057
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "COMMAND CENTER"
-  font: "gameFont"
-  id: "leftTitle"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  layer: ""
-  inherit_alpha: true
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
-}
-nodes {
-  position {
-    x: 670.90063
-    y: 401.5017
+    x: 570.78326
+    y: 86.847084
     z: 0.0
     w: 1.0
   }
@@ -178,8 +115,8 @@ nodes {
 }
 nodes {
   position {
-    x: -551.4881
-    y: -360.73184
+    x: -1.6370823
+    y: 1.5977291
     z: 0.0
     w: 1.0
   }
@@ -229,8 +166,8 @@ nodes {
 }
 nodes {
   position {
-    x: -487.78156
-    y: -337.3379
+    x: 62.06946
+    y: 24.99168
     z: 0.0
     w: 1.0
   }
