@@ -7,6 +7,8 @@ function init(self)
 	self.x=go.get_position().x
 	self.y=go.get_position().y
 	
+	self.initialScale=1.0
+	
     initBasicUnit(self,WORKER_NAME,go.get_id())
     initMovableUnit(self)
     

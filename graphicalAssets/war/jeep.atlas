@@ -1,0 +1,6 @@
+images {
+  image: "/graphicalAssets/war/obj_jeep1.png"
+}
+images {
+  image: "/graphicalAssets/red.png"
+}

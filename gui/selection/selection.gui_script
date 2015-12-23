@@ -37,9 +37,10 @@ function init(self)
 							print("computing path")
 							leadingUnit=unit
 						else
-							if math.abs(unit.x-leadingUnit.x)<100 then
+							--only follow leader if near leader
+							if math.abs(unit.x-leadingUnit.x)<200 and math.abs(unit.y-leadingUnit.y)<200 then
 								loadPath(unit,pathFound)
-							else
+							else --otherwise find own path
 								generateNewPathToMouseClick(unit,action,tilemap)
 							end
 						end

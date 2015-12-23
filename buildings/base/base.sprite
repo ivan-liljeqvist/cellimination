@@ -1,4 +1,2 @@
-tile_set: "/images/war/loookout.atlas"
+tile_set: "/graphicalAssets/war/loookout.atlas"
 default_animation: "obj_lookout"
-material: "/builtins/materials/sprite.material"
-blend_mode: BLEND_MODE_ALPHA

@@ -3,9 +3,9 @@ require "modules.coordinates"
 
 
 function initBasicUnit(self,name,goID)
-	self.bounds=getSpriteBounds("#sprite")    
+	self.bounds=getSpriteBounds("#sprite",self)    
     self.selected=false
-    self.initialScale=self.go.get_scale()
+    
     
     local pos=self.go.get_position()
     pos.x=pos.x
@@ -19,6 +19,8 @@ function initBasicUnit(self,name,goID)
     table.insert(selectableUnits, self.go.get_id())
     
     self.movableUnit=false
+    
+    go.set_scale(self.initialScale)
 end
 
 

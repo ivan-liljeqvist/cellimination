@@ -1,0 +1,15 @@
+images {
+  image: "/graphicalAssets/red/redBody.png"
+}
+images {
+  image: "/graphicalAssets/red/redEyes.png"
+}
+images {
+  image: "/graphicalAssets/eyes/dotEye.png"
+}
+images {
+  image: "/graphicalAssets/red.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

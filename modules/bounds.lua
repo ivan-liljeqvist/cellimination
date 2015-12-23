@@ -1,6 +1,6 @@
 
 function getSpriteBounds(id)
-	local pos = go.get_position(id)
+	local pos = go.get_position()
 	
 	local Xmin = pos.x-go.get(id, "size.x")/2*go.get(id, "scale.x")
 	local Ymin = pos.y-go.get(id, "size.y")/2*go.get(id, "scale.y")

@@ -8,19 +8,19 @@ function init(self)
 	self.x=go.get_position().x
 	self.y=go.get_position().y
 	
+	self.initialScale=0.1
+	
     initBasicUnit(self,JEEP_NAME,go.get_id())
     initMovableUnit(self)
     
     
     self.parseInput=function(self, action_id, action)
 
-	    if action_id == hash("rightClicked") and action.pressed and self.selected then 
-	    	--generateNewPathToMouseClick(self,action,tilemap)
-	    end 
+ 
 	end
     
-    go.set("#sprite", "scale.x", 0.1)
-    go.set("#sprite", "scale.y", 0.1)
+    go.set("#sprite", "scale.x", self.initialScale)
+    go.set("#sprite", "scale.y", self.initialScale)
 	
 	
 end
