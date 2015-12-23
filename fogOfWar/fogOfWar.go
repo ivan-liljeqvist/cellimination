@@ -14,8 +14,8 @@ components {
   }
 }
 components {
-  id: "tilemap"
-  component: "/fogOfWar/fogOfWar.tilemap"
+  id: "sprite"
+  component: "/fogOfWar/fog.sprite"
   position {
     x: 0.0
     y: 0.0

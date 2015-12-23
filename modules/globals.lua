@@ -45,6 +45,8 @@ BASE_FOG_RADIUS = 3
 JEEP_FOG_RADIUS = 2
 WORKER_FOG_RADIUS = 1
 
+
+
 require "modules.pathfinder"
 
 function getScreenWidth()

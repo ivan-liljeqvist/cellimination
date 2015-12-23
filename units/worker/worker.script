@@ -14,9 +14,7 @@ function init(self)
     initMovableUnit(self)
     
     self.parseInput=function(self, action_id, action)
-	    if action_id == hash("rightClicked") and action.pressed and self.selected then 
-	    	--generateNewPathToMouseClick(self,action,tilemap)
-	    end 
+
 	end
 
 end

@@ -17,7 +17,6 @@ function init(self)
     
     self.parseInput=function(self, action_id, action)
 
- 
 	end
     
     go.set("#sprite", "scale.x", self.initialScale)

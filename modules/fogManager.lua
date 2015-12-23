@@ -1,8 +1,19 @@
 
 
 
+--dont update on every iteration
+fogCounter=0
+
 function updateFoW(tilemapObject)
 
+
+	fogCounter=fogCounter+1
+	
+	if fogCounter%13 ~= 0 then
+		return
+	else 
+		fogCounter=0
+	end
 
 	--go through all of player's units
 	for unit,isAlive in pairs(MY_UNITS) do
