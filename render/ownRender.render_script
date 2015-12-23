@@ -6,6 +6,7 @@ function init(self)
     self.gui_pred = render.predicate({"gui"})
     self.text_pred = render.predicate({"text"})
     self.particle_pred = render.predicate({"particle"})
+    self.fog_pred = render.predicate({"fog"})
 
     self.clear_color = vmath.vector4(0, 0, 0, 0)
     self.clear_color.x = sys.get_config("render.clear_color_red", 0)
@@ -30,6 +31,7 @@ function renderMinimap(self)
     render.set_projection(vmath.matrix4_orthographic(0, TILEMAP_WIDTH*TILE_SIZE, 0, TILEMAP_HEIGHT*TILE_SIZE, -1, 1))
 
     render.draw(self.tile_pred)
+   -- drawFog(self)
     --render.draw(self.particle_pred)
 end
 
@@ -51,7 +53,12 @@ function renderGame(self)
 
     render.draw(self.tile_pred)
     render.draw(self.particle_pred)
-    render.draw_debug3d()
+    
+    render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())
+    
+	
+    
+    
 
     render.set_view(vmath.matrix4())
     render.set_projection(vmath.matrix4_orthographic(0, render.get_window_width(), 0, render.get_window_height(), -1, 1))
@@ -63,6 +70,15 @@ function renderGame(self)
 
     render.set_depth_mask(false)
     render.draw_debug2d()
+    
+    drawFog(self)
+end
+
+function drawFog(self)
+	render.set_view(vmath.matrix4())
+	render.set_viewport(-render.get_window_width(), -render.get_window_height(), render.get_window_width()*2, render.get_window_height()*2)
+	render.set_projection(vmath.matrix4_orthographic(0, render.get_window_width(), 0, render.get_window_height(), -1, 1))
+	render.draw(self.fog_pred)
 end
 
 function on_message(self, message_id, message)

@@ -40,6 +40,26 @@ instances {
   }
 }
 instances {
+  id: "fogOfWar"
+  prototype: "/fogOfWar/fogOfWar.go"
+  position {
+    x: 826.8083
+    y: 801.13135
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "inputLayer"
   prototype: "/inputLayer/inputLayer.go"
   position {
