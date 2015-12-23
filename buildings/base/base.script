@@ -9,6 +9,7 @@ function init(self)
 	self.y=go.get_position().y
 	
 	self.initialScale=1.0
+	self.fogRadius=BASE_FOG_RADIUS
 	
     initBasicUnit(self,BASE_NAME,go.get_id())
 	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=0},width=2,height=4},go)

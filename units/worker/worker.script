@@ -8,6 +8,7 @@ function init(self)
 	self.y=go.get_position().y
 	
 	self.initialScale=1.0
+	self.fogRadius=WORKER_FOG_RADIUS
 	
     initBasicUnit(self,WORKER_NAME,go.get_id())
     initMovableUnit(self)

@@ -23,8 +23,7 @@ function initBasicUnit(self,name,goID)
     go.set_scale(self.initialScale)
     
     MY_UNITS[self]=true
-    
-    self.fogRadius=1
+   
 end
 
 

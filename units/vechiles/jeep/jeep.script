@@ -9,6 +9,7 @@ function init(self)
 	self.y=go.get_position().y
 	
 	self.initialScale=0.1
+	self.fogRadius=JEEP_FOG_RADIUS
 	
     initBasicUnit(self,JEEP_NAME,go.get_id())
     initMovableUnit(self)
