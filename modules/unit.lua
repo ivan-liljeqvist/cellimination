@@ -5,18 +5,20 @@ require "modules.coordinates"
 function initBasicUnit(self,name,goID)
 	self.bounds=getSpriteBounds("#sprite")    
     self.selected=false
-    self.initialScale=go.get_scale()
+    self.initialScale=self.go.get_scale()
     
-    local pos=go.get_position()
+    local pos=self.go.get_position()
     pos.x=pos.x
 	pos.y=pos.y
-	go.set_position(pos)
+	self.go.set_position(pos)
     
     self.name=name
     
     registerForInput(goID)
     
-    table.insert(selectableUnits, go.get_id())
+    table.insert(selectableUnits, self.go.get_id())
+    
+    self.movableUnit=false
 end
 
 
@@ -31,8 +33,8 @@ end
 function initMovableUnit(self)
 
 	
-	self.goalX = getPosition().x
-    self.goalY = getPosition().y
+	self.goalX = getPosition(self).x
+    self.goalY = getPosition(self).y
     
     self.needToUpdateRotation=false
     
@@ -45,11 +47,23 @@ function initMovableUnit(self)
 	
 	self.lastDestIndex=1
 	
+	self.movableUnit=true
+	
+end
+
+
+function loadPath(self,path)
+	TILEMAP_NODES[self.lastDestIndex].occupied=false
+	TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
+	self.currentPath=concatTables(self.currentPath,copyTable(path))
+	
+	print(" new path with: "..table.getn(self.currentPath).." nodes")
 end
 
 function generateNewPathToMouseClick(self,action,tilemap)
 
 		TILEMAP_NODES[self.lastDestIndex].occupied=false
+		TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
 
 		local tileX,tileY=pixelToTileCoords(action.x,action.y,ignoreCameraOffset)
     	local tileType=getTileTypeAt(tileX,tileY,tilemap)
@@ -84,8 +98,10 @@ function generateNewPathToMouseClick(self,action,tilemap)
     		end
     		
     		startNode.occupied=false
+    		startNode.occupiedBy=nil
     		TILEMAP_NODES[startIndex]=startNode
     		finishNode.occupied=true
+    		finishNode.occupiedBy=self
     		TILEMAP_NODES[destIndex]=finishNode
     		
     		self.lastDestIndex=destIndex
@@ -99,7 +115,7 @@ function generateNewPathToMouseClick(self,action,tilemap)
     			table.remove(self.currentPath, 1)
     			self.neverMoved=false
     		end
-    		print("path done!")
+   
 			if not self.currentPath then
 				print ( "No valid path found" )
 				self.currentPath={}
@@ -114,27 +130,30 @@ function generateNewPathToMouseClick(self,action,tilemap)
  
 
 function updateRotation(self,go)
-	local pos = getPosition()
+	local pos = getPosition(self)
 	if self.needToUpdateRotation then
-    	local old_rot = go.get_rotation()
+    	local old_rot = self.go.get_rotation()
     
 	    local angle = math.atan2(self.goalY - pos.y, self.goalX - pos.x)
 		angle = angle-math.pi*0.5
 		
-		go.set_rotation(vmath.quat_rotation_z(angle))
+		self.go.set_rotation(vmath.quat_rotation_z(angle))
 		self.needToUpdateRotation=false
 		
 		self.dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
 	end
 end
 
+
+
 function moveAccordingToPath(self,go,dt)
-	local pos = getPosition()
+	local pos = getPosition(self)
 	local reachedGoal=(math.abs(pos.y-self.goalY)<1) and (math.abs(pos.x-self.goalX)<1)
 	
+	--print(math.abs(pos.y-self.goalY),math.abs(pos.x-self.goalX))
+	
     if reachedGoal==false then
-    	
-    	go.set_position(pos-self.dir*self.speed*dt)
+    	self.go.set_position(pos-self.dir*self.speed*dt)
     elseif self.currentPath then
     	--check if the current path has more nodes
     	if table.getn(self.currentPath)~=0 then
@@ -143,33 +162,54 @@ function moveAccordingToPath(self,go,dt)
     end
 end
 
-function getPosition()
-	local pos = go.get_position()
-	
-	return pos
+function getPosition(self)
+	local posTemp = self.go.get_position()
+	return vmath.vector3(self.x,self.y,posTemp.z)
 end
 
 function goStraightToNode(self,nodeIndex)
 	TILEMAP_NODES[self.lastDestIndex].occupied=false
+	TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
 	
 	print("nodeIndex: "..nodeIndex)
 	self.currentPath={TILEMAP_NODES[nodeIndex]}
 	
 	TILEMAP_NODES[nodeIndex].occupied=true
+	TILEMAP_NODES[nodeIndex].occupiedBy=self
 	self.lastDestIndex=nodeIndex
 end
 
 
 function followPath(self)
+
+	if self.lastNodeInPath then
+		self.lastNodeInPath.occupied=false
+		self.lastNodeInPath.occupiedBy=nil
+	end
 	
 	local nextNode=table.remove(self.currentPath, 1)
 	
 	if nextNode then
 
+		if nextNode.occupied==true and nextNode.occupiedBy~=self and table.getn(self.currentPath)<1 then
+			print("next node occupied "..nextNode.x.." "..nextNode.y)
+			local newNodeIndex=findNotOccupiedNeighbour(nextNode.x-1,nextNode.y-1,3) --the last is the total number of recursions allowed
+    		if newNodeIndex then
+    				
+    			nextNode=TILEMAP_NODES[newNodeIndex]
+    			print("resolved node occupied "..nextNode.x.." "..nextNode.y)
+    		end
+		end
+		
+		nextNode.occupied=true
+		nextNode.occupiedBy=self
+		
+		self.lastNodeInPath=nextNode
+		
 		self.goalX,self.goalY=tileToPixelCoords(nextNode.x-1,nextNode.y-1)
 		
 		
-		local pos=getPosition()
+	
 		
 		self.needToUpdateRotation=true
 		
@@ -177,5 +217,6 @@ function followPath(self)
 	else 	
 		print("nextNode is nil")
 	end
+	
 	
 end

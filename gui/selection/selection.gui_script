@@ -9,9 +9,48 @@ function init(self)
 	
 	self.pressedSinceLast=false
 	self.releasedSinceLast=true
+	self.rightPressedSinceLast=false
 	
 	self.parseInput=function(self, action_id, action)
 	
+			if action_id==hash("rightClicked") and action.released and self.rightPressedSinceLast then
+				self.rightPressedSinceLast=false
+				
+				--[[
+					1) find one movable unit
+					2) compute the path for that unit
+					3) give that path to the rest of the selection
+				--]]
+				
+				local foundAPathForWholeSelection=false
+				local pathFound={}
+				local leadingUnit={}
+				
+				for unit,isSelected in pairs(SELECTED_UNITS) do 
+					--key is the GO, value is true/nil
+					if isSelected==true and unit.movableUnit then
+						
+						if foundAPathForWholeSelection==false then
+							generateNewPathToMouseClick(unit,action,tilemap)
+							pathFound=unit.currentPath
+							foundAPathForWholeSelection=true
+							print("computing path")
+							leadingUnit=unit
+						else
+							if math.abs(unit.x-leadingUnit.x)<100 then
+								loadPath(unit,pathFound)
+							else
+								generateNewPathToMouseClick(unit,action,tilemap)
+							end
+						end
+					else
+						print("not movable selected unit!")
+					end
+				end
+				
+			elseif action_id==hash("rightClicked") and action.pressed then
+				self.rightPressedSinceLast=true
+			end
 			
 			--this is called only when left click first time
 			if action_id==hash("leftClicked") and action.pressed and self.releasedSinceLast then

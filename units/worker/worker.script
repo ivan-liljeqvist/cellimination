@@ -2,13 +2,17 @@
 
 
 function init(self)
-
+	self.go=go
+	
+	self.x=go.get_position().x
+	self.y=go.get_position().y
+	
     initBasicUnit(self,WORKER_NAME,go.get_id())
     initMovableUnit(self)
     
     self.parseInput=function(self, action_id, action)
 	    if action_id == hash("rightClicked") and action.pressed and self.selected then 
-	    	generateNewPathToMouseClick(self,action,tilemap)
+	    	--generateNewPathToMouseClick(self,action,tilemap)
 	    end 
 	end
 
@@ -20,6 +24,9 @@ function update(self, dt)
     -- Remove this function if not needed
 	updateRotation(self,go)
     moveAccordingToPath(self,go,dt)
+    
+    self.x=go.get_position().x
+	self.y=go.get_position().y
     
 end
 

@@ -75,6 +75,7 @@ function populateNodeArray(globalTilemapObject)
 			newNode.y=yCounter
 			newNode.type=tilemap.get_tile("world#tilemap", "reachable", xCounter, yCounter)
 			newNode.occupied=false
+			newNode.occupiedBy=nil
 			newNode.blocked=false
 			
 			
@@ -143,5 +144,28 @@ getStartAndFinish = function(startTileX,startTileY,finishTileX,finishTileY)
 	
 end
 
+
+function concatTables(t1,t2)
+    for i=1,#t2 do
+        t1[#t1+1] = t2[i]
+    end
+    return t1
+end
+
+
+function copyTable(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[copyTable(orig_key)] = copyTable(orig_value)
+        end
+        setmetatable(copy, copyTable(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
 
 

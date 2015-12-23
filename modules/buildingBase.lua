@@ -99,6 +99,7 @@ function setTilesUnderMeToOccupied(self,x,y)
 		
 			local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX+1][currentY+1] 
 			TILEMAP_NODES[nodeIndex].occupied=true
+			TILEMAP_NODES[nodeIndex].occupiedBy=self
 			TILEMAP_NODES[nodeIndex].blocked=true
 
 			
