@@ -44,21 +44,34 @@ function renderGame(self)
 
     render.set_depth_mask(false)
     render.disable_state(render.STATE_DEPTH_TEST)
-    render.disable_state(render.STATE_STENCIL_TEST)
+    render.set_projection(vmath.matrix4_orthographic(0, render.get_width(), 0, render.get_height(), -1, 1))
+    
+    -- 1. We need to disable color drawing while rendering the mask
+    render.set_color_mask(false, false, false, false)
+    
+    -- 2. Enable stencil test and setup stencil mask parameters
+    render.enable_state(render.STATE_STENCIL_TEST)
+    render.set_stencil_func(render.COMPARE_FUNC_ALWAYS, 1, 255)
+    render.set_stencil_op(render.STENCIL_OP_KEEP, render.STENCIL_OP_KEEP, render.STENCIL_OP_REPLACE)
+    render.set_stencil_mask(255)
+    
+    -- 3. Draw the mask
+    render.draw(self.fog_pred)
+	
+    -- 4. Update the stencil function to only let pixel pass that are equal to the mask result
+    render.set_stencil_func(render.COMPARE_FUNC_EQUAL, 1, 255)
+	
+    -- 5. Re-enable color drawing
+    render.set_color_mask(true, true, true, true)
+	
+    -- 6. Continue as rendering usual! :)
     render.enable_state(render.STATE_BLEND)
     render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
     render.disable_state(render.STATE_CULL_FACE)
 
-    render.set_projection(vmath.matrix4_orthographic(0, render.get_width(), 0, render.get_height(), -1, 1))
-
     render.draw(self.tile_pred)
     render.draw(self.particle_pred)
-    
-    
-    
-	
-    drawFog(self)
-    
+    render.draw_debug3d()
 
     render.set_view(vmath.matrix4())
     render.set_projection(vmath.matrix4_orthographic(0, render.get_window_width(), 0, render.get_window_height(), -1, 1))
@@ -77,11 +90,29 @@ end
 function drawFog(self)
 
 	render.set_view(vmath.matrix4())
-	render.set_viewport(0, 0, render.get_width(), render.get_height())
+	render.set_viewport(0, 0, render.get_width()/4, render.get_height())
     render.set_projection(vmath.matrix4_orthographic(0, 10, 0, 10, -1, 1))
 
+	-- 1. We need to disable color drawing while rendering the mask
+    render.set_color_mask(false, false, false, false)
+    
+    -- 2. Enable stencil test and setup stencil mask parameters
+    render.enable_state(render.STATE_STENCIL_TEST)
+    render.set_stencil_func(render.COMPARE_FUNC_ALWAYS, 1, 255)
+    render.set_stencil_op(render.STENCIL_OP_KEEP, render.STENCIL_OP_KEEP, render.STENCIL_OP_REPLACE)
+    render.set_stencil_mask(255)
+    
+    -- 3. Draw the mask
+    render.draw(self.fog_pred)
 	
-	render.draw(self.fog_pred)
+    -- 4. Update the stencil function to only let pixel pass that are equal to the mask result
+    render.set_stencil_func(render.COMPARE_FUNC_EQUAL, 1, 255)
+	
+    -- 5. Re-enable color drawing
+    render.set_color_mask(true, true, true, true)
+   
+    
+
 	
 	render.set_projection(vmath.matrix4_orthographic(0, render.get_width(), 0, render.get_height(), -1, 1))
 	render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())

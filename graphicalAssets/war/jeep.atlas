@@ -4,3 +4,9 @@ images {
 images {
   image: "/graphicalAssets/red.png"
 }
+images {
+  image: "/graphicalAssets/blackCircle.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

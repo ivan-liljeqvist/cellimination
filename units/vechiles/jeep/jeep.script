@@ -19,8 +19,8 @@ function init(self)
 
 	end
     
-    go.set("#sprite", "scale.x", self.initialScale)
-    go.set("#sprite", "scale.y", self.initialScale)
+    go.set("#sprite", "scale.x", 1.5)
+    go.set("#sprite", "scale.y", 1.5)
 	
 	
 end
