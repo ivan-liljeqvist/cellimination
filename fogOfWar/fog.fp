@@ -8,5 +8,5 @@ void main()
 {
     // Pre-multiply alpha since all runtime textures already are
     lowp vec4 tint_pm = vec4(tint.xyz * tint.w, tint.w);
-    gl_FragColor = vec4(0.0,0.0,0.0,1.0);
+    gl_FragColor = vec4(0.0,0.0,0.0,0.5);
 }

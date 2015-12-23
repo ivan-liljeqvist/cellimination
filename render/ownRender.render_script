@@ -54,10 +54,10 @@ function renderGame(self)
     render.draw(self.tile_pred)
     render.draw(self.particle_pred)
     
-    render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())
+    
     
 	
-    
+    drawFog(self)
     
 
     render.set_view(vmath.matrix4())
@@ -71,7 +71,7 @@ function renderGame(self)
     render.set_depth_mask(false)
     render.draw_debug2d()
     
-    drawFog(self)
+    
 end
 
 function drawFog(self)
@@ -79,6 +79,9 @@ function drawFog(self)
 	render.set_viewport(-render.get_window_width(), -render.get_window_height(), render.get_window_width()*2, render.get_window_height()*2)
 	render.set_projection(vmath.matrix4_orthographic(0, render.get_window_width(), 0, render.get_window_height(), -1, 1))
 	render.draw(self.fog_pred)
+	
+	render.set_projection(vmath.matrix4_orthographic(0, render.get_width(), 0, render.get_height(), -1, 1))
+	render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())
 end
 
 function on_message(self, message_id, message)
