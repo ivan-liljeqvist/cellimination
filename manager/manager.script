@@ -8,6 +8,7 @@ require "modules.bounds"
 require "modules.selectMethods"
 require "modules.buildingBase"
 require "modules.colors"
+require "modules.fogManager"
 
 function init(self)
     
@@ -23,7 +24,7 @@ function final(self)
 end
 
 function update(self, dt)
-
+	updateFoW(tilemap)
 end
 
 function on_message(self, message_id, message, sender)

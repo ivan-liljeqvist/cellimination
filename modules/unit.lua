@@ -21,6 +21,10 @@ function initBasicUnit(self,name,goID)
     self.movableUnit=false
     
     go.set_scale(self.initialScale)
+    
+    MY_UNITS[self]=true
+    
+    self.fogRadius=1
 end
 
 
@@ -58,8 +62,6 @@ function loadPath(self,path)
 	TILEMAP_NODES[self.lastDestIndex].occupied=false
 	TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
 	self.currentPath=concatTables(self.currentPath,copyTable(path))
-	
-	print(" new path with: "..table.getn(self.currentPath).." nodes")
 end
 
 function generateNewPathToMouseClick(self,action,tilemap)
@@ -67,7 +69,7 @@ function generateNewPathToMouseClick(self,action,tilemap)
 		TILEMAP_NODES[self.lastDestIndex].occupied=false
 		TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
 
-		local tileX,tileY=pixelToTileCoords(action.x,action.y,ignoreCameraOffset)
+		local tileX,tileY=pixelToTileCoords(action.x,action.y)
     	local tileType=getTileTypeAt(tileX,tileY,tilemap)
     	
     	--check if we can go there
@@ -194,12 +196,12 @@ function followPath(self)
 	if nextNode then
 
 		if nextNode.occupied==true and nextNode.occupiedBy~=self and table.getn(self.currentPath)<1 then
-			print("next node occupied "..nextNode.x.." "..nextNode.y)
+			
 			local newNodeIndex=findNotOccupiedNeighbour(nextNode.x-1,nextNode.y-1,3) --the last is the total number of recursions allowed
     		if newNodeIndex then
     				
     			nextNode=TILEMAP_NODES[newNodeIndex]
-    			print("resolved node occupied "..nextNode.x.." "..nextNode.y)
+    			
     		end
 		end
 		

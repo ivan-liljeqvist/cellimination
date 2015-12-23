@@ -43,8 +43,8 @@ instances {
   id: "fogOfWar"
   prototype: "/fogOfWar/fogOfWar.go"
   position {
-    x: 826.8083
-    y: 801.13135
+    x: 0.0
+    y: 0.0
     z: 0.5
   }
   rotation {
