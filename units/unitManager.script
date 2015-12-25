@@ -1,4 +1,15 @@
 
+function init(self)
+	
+	local enemy = factory.create("#jeepFactory",vmath.vector3(100, 800, 1))
+	setTeam(enemy,ENEMY_TEAM)
+	
+end
+
+function setTeam(unit,teamNumber)
+end
+
+
 function on_message(self, message_id, message, sender)
 	
 	if message_id == hash("newJeep") then

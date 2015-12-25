@@ -23,6 +23,8 @@ function initBasicUnit(self,name,goID)
     go.set_scale(self.initialScale)
     
     MY_UNITS[self]=true
+    
+    self.teamNumber=PLAYER_TEAM
    
 end
 
@@ -56,6 +58,47 @@ function initMovableUnit(self)
 	
 end
 
+function initFightingUnit(self,ranger)
+	
+	self.canFight=true
+	self.isRanger=ranger
+	
+	
+end
+
+function unitUpdate(self,go,dt)
+	
+	
+	if self.canFight then
+		lookForEnemies(self)
+	end
+	
+	updateRotation(self,go)
+	moveAccordingToPath(self,go,dt)
+
+end
+
+function lookForEnemies(self)
+	
+	--[[
+		1) Look 4 tiles in radius after an enemy
+		2) If ranger - shoot 
+		3) If not ranger - go there
+	--]]
+	
+	local nearbyEnimies = getNearbyEnemies(self)
+	
+end
+
+function getNearbyEnemies(self)
+	
+	return {}
+end
+
+function setTeam(self,teamNumber) 
+	self.teamNumber=teamNumber
+end
+
 
 function loadPath(self,path)
 	TILEMAP_NODES[self.lastDestIndex].occupied=false
@@ -67,8 +110,9 @@ function generateNewPathToMouseClick(self,action,tilemap)
 
 		TILEMAP_NODES[self.lastDestIndex].occupied=false
 		TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
+	
 
-		local tileX,tileY=pixelToTileCoords(action.x,action.y)
+		local tileX,tileY=pixelToTileCoords(action.x*ZOOM_LEVEL,action.y*ZOOM_LEVEL)
     	local tileType=getTileTypeAt(tileX,tileY,tilemap)
     	
     	--check if we can go there

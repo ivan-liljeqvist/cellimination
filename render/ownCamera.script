@@ -9,6 +9,8 @@ function init(self)
 	local pos=go.get_position()
 	pos.y=0
 	pos.x=0
+	self.look_at = self.pos
+	
 	go.set_position(pos)
 end
 

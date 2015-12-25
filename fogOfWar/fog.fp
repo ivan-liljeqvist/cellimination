@@ -6,6 +6,7 @@ uniform lowp vec4 tint;
 
 void main()
 {
-
-    gl_FragColor = vec4(0.0,0.0,0.0,0.5);
+    // Pre-multiply alpha since all runtime textures already are
+    lowp vec4 tint_pm = vec4(tint.xyz * tint.w, tint.w);
+    gl_FragColor = texture2D(DIFFUSE_TEXTURE, var_texcoord0.xy) * tint_pm;
 }

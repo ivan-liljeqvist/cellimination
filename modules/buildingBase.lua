@@ -25,7 +25,7 @@ function buildingInput(self,action,action_id)
 	elseif self.prototypeMode then
 		GUI_CLICKED=true
 		--follow cursor
-		go.set_position(vmath.vector3(action.x+CAMERA_OFFSETX,action.y+CAMERA_OFFSETY,1))
+		go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1))
 		--check if we can build here
 		self.canBuildHere = canBuildAt(self,action.x,action.y)
 		updatePrototypeColor(self)
@@ -63,7 +63,7 @@ end
 function canBuildAt(self,x,y)
 
 	
-	local centerTileX, centerTileY = pixelToTileCoords(x,y)
+	local centerTileX, centerTileY = pixelToTileCoords(x*ZOOM_LEVEL,y*ZOOM_LEVEL)
 	
 	--go through each row and column
 	local minTileX = centerTileX + self.buildingSize.startPointFromCenter.x

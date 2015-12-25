@@ -30,10 +30,10 @@ function isInsideSelection(startMouse, currentMouse, pivot)
 	
 	--selection
 	local RectA={}
-	RectA.X1 = startMouse[1]
-	RectA.X2 = currentMouse[1]
-	RectA.Y1 = startMouse[2]
-	RectA.Y2 = currentMouse[2]
+	RectA.X1 = startMouse[1]*ZOOM_LEVEL
+	RectA.X2 = currentMouse[1]*ZOOM_LEVEL
+	RectA.Y1 = startMouse[2]*ZOOM_LEVEL
+	RectA.Y2 = currentMouse[2]*ZOOM_LEVEL
 	
 	--sprite
 	local RectB={}

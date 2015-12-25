@@ -13,14 +13,15 @@ function init(self)
 	
     initBasicUnit(self,JEEP_NAME,go.get_id())
     initMovableUnit(self)
+    initFightingUnit(self,false)
     
     
     self.parseInput=function(self, action_id, action)
 
 	end
     
-    go.set("#sprite", "scale.x", 1.5)
-    go.set("#sprite", "scale.y", 1.5)
+    go.set("#sprite", "scale.x", 8)
+    go.set("#sprite", "scale.y", 8)
 	
 	
 end
@@ -29,10 +30,9 @@ end
 function update(self, dt)
     -- Add update code here
     -- Remove this function if not needed
-	updateRotation(self,go)
 	
-
-	moveAccordingToPath(self,go,dt)
+	unitUpdate(self,go,dt)
+	
 
 	self.x=go.get_position().x
 	self.y=go.get_position().y	
