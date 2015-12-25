@@ -32,10 +32,6 @@ function update(self, dt)
     -- Remove this function if not needed
 	
 	unitUpdate(self,go,dt)
-	
-
-	self.x=go.get_position().x
-	self.y=go.get_position().y	
     
     
 end

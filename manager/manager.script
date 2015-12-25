@@ -9,13 +9,14 @@ require "modules.selectMethods"
 require "modules.buildingBase"
 require "modules.colors"
 require "modules.fogManager"
+require "modules.fightingUnit"
 
 function init(self)
     
     --give the global tilemap object to this function (globals.lua) and create
     --a table of nodes that will be used for pathfinding
 	populateNodeArray(tilemap)
-	
+	tilemapObject=tilemap
 	
 end
 
@@ -38,7 +39,9 @@ function on_message(self, message_id, message, sender)
 	--send massSelection message to all units, each units will decide if it's in the selection
 	elseif message_id==hash("massSelection") then
 		for _,unit in  pairs(selectableUnits) do 
-		    msg.post(unit,"massSelection",message)
+			if unit then
+		    	msg.post(unit,"massSelection",message)
+		    end
 		end
 	
 	--send message to all units to deselect all

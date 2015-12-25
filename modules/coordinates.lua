@@ -38,6 +38,66 @@ function verifyIndex(index)
 	return false
 end
 
+function isWithinTilemap(tileX,tileY)
+
+	if tileX<TILEMAP_MAXX and
+	   tileX>TILEMAP_MINX and
+	   tileY>TILEMAP_MINY and 
+	   tileY<TILEMAP_MAXY then
+	 	
+	 	return true
+	 	
+	 else
+	 	
+	 	return false
+	 	  
+	 end
+	 
+end
+
+
+function loopAreaAroundTile(tileX,tileY,radius,func)
+
+			local minY = tileY+1-radius
+			local maxY = tileY+1+radius
+			local minX = tileX+1-radius
+			local maxX = tileX+1+radius
+			
+			for x = minX, maxX, 1 do
+				
+				for y = minY, maxY, 1 do 
+				
+					func(x,y)
+				
+				end
+				
+			end
+			
+end
+
+function loopAreaAroundUnit(unit,radius,func)
+
+	local tileX = unit.tileCoordinates[1]
+	local tileY = unit.tileCoordinates[2]
+
+	local minY = tileY+1-radius
+	local maxY = tileY+1+radius
+	local minX = tileX+1-radius
+	local maxX = tileX+1+radius
+
+	for x = minX, maxX, 1 do
+			
+		for y = minY, maxY, 1 do 
+				
+			func(x,y,unit)
+				
+		end
+				
+	end
+end
+
+
+
 --returns index in TILEMAP array
 function findNotOccupiedNeighbour(tileX,tileY,recursionsLeft)
 	

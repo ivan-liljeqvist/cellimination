@@ -17,7 +17,7 @@ function buildingInput(self,action,action_id)
 		if self.canBuildHere then
 			buildHere(action.x,action.y,self)
 		else 
-			removeBuilding(self)
+			destroyUnit(self)
 			alertCantBuildHere()
 		end
 
@@ -32,10 +32,6 @@ function buildingInput(self,action,action_id)
 	end
 end
 
-function removeBuilding(self)
-	self.go.delete(self.go.get_id())
-	GAME_OBJECTS_THAT_REQUIRE_INPUT[self.go.get_id()]=nil
-end
 
 function alertCantBuildHere()
 	--play sound or something

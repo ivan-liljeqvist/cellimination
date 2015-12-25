@@ -17,6 +17,7 @@ function initBasicUnit(self,name,goID)
     registerForInput(goID)
     
     table.insert(selectableUnits, self.go.get_id())
+    self.indexInSelectableUnits=table.getn(selectableUnits)
     
     self.movableUnit=false
     
@@ -26,6 +27,13 @@ function initBasicUnit(self,name,goID)
     
     self.teamNumber=PLAYER_TEAM
    
+end
+
+function destroyUnit(self)
+	self.go.delete(self.go.get_id())
+	GAME_OBJECTS_THAT_REQUIRE_INPUT[self.go.get_id()]=nil
+	MY_UNITS[self]=false
+	table.remove(selectableUnits,self.indexInSelectableUnits)
 end
 
 
@@ -60,6 +68,7 @@ end
 
 function initFightingUnit(self,ranger)
 	
+	self.isFighting=false
 	self.canFight=true
 	self.isRanger=ranger
 	
@@ -75,20 +84,16 @@ function unitUpdate(self,go,dt)
 	
 	updateRotation(self,go)
 	moveAccordingToPath(self,go,dt)
+	
+		
+	self.x=go.get_position().x
+	self.y=go.get_position().y	
+	
+	--self.tileCoordinates={pixelToTileCoords(self.x,self.y)}
 
 end
 
-function lookForEnemies(self)
-	
-	--[[
-		1) Look 4 tiles in radius after an enemy
-		2) If ranger - shoot 
-		3) If not ranger - go there
-	--]]
-	
-	local nearbyEnimies = getNearbyEnemies(self)
-	
-end
+
 
 function getNearbyEnemies(self)
 	
@@ -134,7 +139,7 @@ function generateNewPathToMouseClick(self,action,tilemap)
     			--do nothing
     		--if occupied find a neighbour tile that is not occupied and set it as new destination
     		else
-  
+  				print("oc")
     			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,3) --the last is the total number of recursions allowed
     			if newDestIndex then
     				
