@@ -16,7 +16,7 @@ ENEMY_TEAM=2
 
 SPOT_ENEMY_RADIUS=3
 
-ENABLE_SOUND=true
+ENABLE_SOUND=false
 
 CAMERA_DIRECTION_UP=4
 CAMERA_DIRECTION_DOWN=3
@@ -64,46 +64,55 @@ function getScreenHeight()
 	return tonumber(sys.get_config("display.height"))
 end
 
+local alreadyPopulatedNodeArray=false
+
 --populates the TILEMAP_NODES array with tiles in the tilemap
-function populateNodeArray(globalTilemapObject)
-	local minX, minY, w, h = globalTilemapObject.get_bounds("world#tilemap")
-	local maxX=minX+w-1
-	local maxY=minY+h-1
+function populateNodeArray()
+
+	if alreadyPopulatedNodeArray == false then
 	
-	TILEMAP_WIDTH=w
-	TILEMAP_HEIGHT=h
-	TILEMAP_MAXY=maxY
-	TILEMAP_MAXX=maxX
-	TILEMAP_MINY=minY
-	TILEMAP_MINX=minX
-	
-	--go through each row
-	for xCounter=minX, maxX, 1 do
-	
-		TILEMAP_INDEX_LOOKUP[xCounter]={}
-		
-		--go through each column
-		for yCounter=minY, maxY, 1 do
-		
-			--insert a node for each tile
-			local newNode={}
+			alreadyPopulatedNodeArray = true 
 			
-			newNode.x=xCounter
-			newNode.y=yCounter
-			newNode.type=tilemap.get_tile("world#tilemap", "reachable", xCounter, yCounter)
-			newNode.occupied=false
-			newNode.occupiedBy=nil
-			newNode.blocked=false
+			local minX, minY, w, h = tilemapObject.get_bounds("world#tilemap")
+			local maxX=minX+w-1
+			local maxY=minY+h-1
 			
+			TILEMAP_WIDTH=w
+			TILEMAP_HEIGHT=h
+			TILEMAP_MAXY=maxY
+			TILEMAP_MAXX=maxX
+			TILEMAP_MINY=minY
+			TILEMAP_MINX=minX
 			
-			TILEMAP_INDEX_LOOKUP[xCounter][yCounter]=tilemapIndex
+			--go through each row
+			for xCounter=minX, maxX, 1 do
 			
-			table.insert(TILEMAP_NODES,newNode)
+				TILEMAP_INDEX_LOOKUP[xCounter]={}
+				
+				--go through each column
+				for yCounter=minY, maxY, 1 do
+				
+					--insert a node for each tile
+					local newNode={}
+					
+					newNode.x=xCounter
+					newNode.y=yCounter
+					newNode.type=tilemapObject.get_tile("world#tilemap", "reachable", xCounter, yCounter)
+					newNode.occupied=false
+					newNode.occupiedBy=nil
+					newNode.blocked=false
+					
+					
+					TILEMAP_INDEX_LOOKUP[xCounter][yCounter]=tilemapIndex
+					
+					table.insert(TILEMAP_NODES,newNode)
+					
+					tilemapIndex=tilemapIndex+1
+					
+					
+				end
+			end
 			
-			tilemapIndex=tilemapIndex+1
-			
-			
-		end
 	end
 end
 

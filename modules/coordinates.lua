@@ -75,7 +75,9 @@ function loopAreaAroundTile(tileX,tileY,radius,func)
 			
 end
 
-function loopAreaAroundUnit(unit,radius,func)
+function findEnemiesAroundUnit(unit,radius,func)
+
+	local enemiesFound={}
 
 	local tileX = unit.tileCoordinates[1]
 	local tileY = unit.tileCoordinates[2]
@@ -89,11 +91,17 @@ function loopAreaAroundUnit(unit,radius,func)
 			
 		for y = minY, maxY, 1 do 
 				
-			func(x,y,unit)
+			local enemyTile=func(x,y,unit)
+			
+			if enemyTile then
+				table.insert(enemiesFound,enemyTile.occupiedBy)
+			end
 				
 		end
 				
 	end
+	
+	return enemiesFound
 end
 
 

@@ -13,24 +13,36 @@ function lookForEnemies(self)
 end
 
 local findEnemyFunc=function(x,y,self)
-		
+
+
 		if isWithinTilemap(x,y) then
+			
 			
 			local tileNodeIndex=TILEMAP_INDEX_LOOKUP[x][y]
 			local tileNode=TILEMAP_NODES[tileNodeIndex]
-			
+		
 			--something on the tile
 			if tileNode.occupied and tileNode.occupiedBy.teamNumber~=self.teamNumber then
-				print("enemy found "..tileNode.occupiedBy.teamNumber)	
+				return tileNode
 			end
 			
+		else
+			print("not within tilemap")
 		end
+		
+		return nil
 	
 end
 
 function getNearbyEnemies(self)
 
-	loopAreaAroundUnit(self,SPOT_ENEMY_RADIUS,findEnemyFunc)
+	local nearbyEnemies = findEnemiesAroundUnit(self,SPOT_ENEMY_RADIUS,findEnemyFunc)
+	
+	local numEnemies = table.getn(nearbyEnemies)
+	
+	if numEnemies>0 then
+		print(" found "..numEnemies.." enemies. My team: "..self.teamNumber)
+	end
 
 end
 

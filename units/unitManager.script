@@ -6,7 +6,8 @@ function init(self)
 	
 end
 
-function setTeam(unit,teamNumber)
+function setTeam(unitID,teamNumber)
+	msg.post(msg.url(unitID),"setTeam",{newTeamNumber=teamNumber})
 end
 
 

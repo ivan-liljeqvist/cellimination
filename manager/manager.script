@@ -16,7 +16,7 @@ function init(self)
     --give the global tilemap object to this function (globals.lua) and create
     --a table of nodes that will be used for pathfinding
 	populateNodeArray(tilemap)
-	tilemapObject=tilemap
+	
 	
 end
 

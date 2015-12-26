@@ -3,6 +3,9 @@ require "modules.coordinates"
 
 
 function initBasicUnit(self,name,goID)
+
+	populateNodeArray()
+	
 	self.bounds=getSpriteBounds("#sprite",self)    
     self.selected=false
     
@@ -26,6 +29,15 @@ function initBasicUnit(self,name,goID)
     MY_UNITS[self]=true
     
     self.teamNumber=PLAYER_TEAM
+    
+    self.goalX = getPosition(self).x
+    self.goalY = getPosition(self).y
+    
+    self.tileCoordinates={pixelToTileCoords(self.goalX,self.goalY)}
+    local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
+   
+    TILEMAP_NODES[currentNodeIndex].occupied = true
+    TILEMAP_NODES[currentNodeIndex].occupiedBy = self
    
 end
 
@@ -48,12 +60,11 @@ end
 function initMovableUnit(self)
 
 	
-	self.goalX = getPosition(self).x
-    self.goalY = getPosition(self).y
+
+    
     
     self.needToUpdateRotation=false
     
-    self.tileCoordinates={pixelToTileCoords(self.goalX,self.goalY)}
     
     self.currentPath={}
 	self.neverMoved=true
@@ -116,8 +127,10 @@ end
 
 function generateNewPathToMouseClick(self,action,tilemap)
 
-		TILEMAP_NODES[self.lastDestIndex].occupied=false
-		TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
+		if TILEMAP_NODES[self.lastDestIndex] then
+			TILEMAP_NODES[self.lastDestIndex].occupied=false
+			TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
+		end
 	
 
 		local tileX,tileY=pixelToTileCoords(action.x*ZOOM_LEVEL,action.y*ZOOM_LEVEL)
@@ -215,6 +228,34 @@ function moveAccordingToPath(self,go,dt)
     		followPath(self)
     	end
     end
+end
+
+function basicUnitMessageHandler(self,go,message_id,message)
+
+
+	if message_id==hash("setTeam") then
+		self.teamNumber=message.newTeamNumber
+		print("new team "..message.newTeamNumber)
+	elseif message_id==hash("rollOutOfProducer") then
+		--generateNewPathToMouseClick(self,message,tilemap)--last argument is to ignore camera offset
+		
+		local pixelX,pixelY=message.x,message.y
+		local tileX,tileY=pixelToTileCoords(pixelX-CAMERA_OFFSETX,pixelY-CAMERA_OFFSETY)
+		print(tileX,tileY)
+		
+		local nodeIndex=TILEMAP_INDEX_LOOKUP[tileX+1][tileY+1]
+		local node=TILEMAP_NODES[nodeIndex]
+		
+		if node.occupied then
+			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,7)
+			if newDestIndex then
+				nodeIndex=newDestIndex
+			end
+		end
+		
+		goStraightToNode(self,nodeIndex)
+		
+	end
 end
 
 function getPosition(self)

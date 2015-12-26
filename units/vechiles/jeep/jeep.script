@@ -3,6 +3,7 @@
 
 function init(self)
 
+	tilemapObject=tilemap
 	self.go=go
 	
 	self.x=go.get_position().x
@@ -44,28 +45,8 @@ end
 function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
+	basicUnitMessageHandler(self,go,message_id,message)
 	
-	if message_id==hash("rollOutOfProducer") then
-		--generateNewPathToMouseClick(self,message,tilemap)--last argument is to ignore camera offset
-		
-		local pixelX,pixelY=message.x,message.y
-		local tileX,tileY=pixelToTileCoords(pixelX-CAMERA_OFFSETX,pixelY-CAMERA_OFFSETY)
-		print(tileX,tileY)
-		
-		local nodeIndex=TILEMAP_INDEX_LOOKUP[tileX+1][tileY+1]
-		local node=TILEMAP_NODES[nodeIndex]
-		
-		if node.occupied then
-			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,7)
-			if newDestIndex then
-				nodeIndex=newDestIndex
-			end
-		end
-		
-		goStraightToNode(self,nodeIndex)
-		
-	end
-
 end
 
 function on_reload(self)

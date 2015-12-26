@@ -73,6 +73,7 @@ function isInsideSelection(startMouse, currentMouse, pivot)
 end
 
 function massSelect(self,title,go)
+	print("team: "..self.teamNumber)
 	self.selected=true
 	go.set_scale(self.initialScale*1.2)
 end
