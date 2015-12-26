@@ -106,9 +106,12 @@ end
 
 
 function loadPath(self,path)
+	self.goalX=self.x
+	self.goalY=self.y
+	--table.remove(self.currentPath, 1)
 	TILEMAP_NODES[self.lastDestIndex].occupied=false
 	TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
-	self.currentPath=concatTables(self.currentPath,copyTable(path))
+	self.currentPath=copyTable(path)--concatTables(self.currentPath,copyTable(path))
 end
 
 function generateNewPathToMouseClick(self,action,tilemap)

@@ -44,16 +44,36 @@ function lowest_f_score ( set, f_score )
 	return bestNode
 end
 
-function neighbor_nodes ( theNode, nodes )
 
-	local neighbors = {}
-	for _, node in ipairs ( nodes ) do
-		if theNode ~= node and is_valid_node ( theNode, node ) then
-			table.insert ( neighbors, node )
+function neighbor_nodes(node,ignore)
+	
+	local radius = 1
+
+	local minY = node.y-radius
+	local maxY = node.y+radius
+	local minX = node.x-radius
+	local maxX = node.x+radius
+	
+	local toReturn={}
+	
+	for x = minX, maxX, 1 do
+		
+		for y = minY, maxY, 1 do 
+		
+			local neighborIndex = TILEMAP_INDEX_LOOKUP[x][y]
+			local neighborNode = TILEMAP_NODES[neighborIndex]
+			
+			
+			if theNode ~= node and is_valid_node ( node, neighborNode ) then
+				table.insert(toReturn,neighborNode)
+			end
 		end
+		
 	end
-	return neighbors
+	
+	return toReturn
 end
+
 
 function not_in ( set, theNode )
 

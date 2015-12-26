@@ -41,6 +41,7 @@ function init(self)
 							if math.abs(unit.x-leadingUnit.x)<200 and math.abs(unit.y-leadingUnit.y)<200 then
 								loadPath(unit,pathFound)
 							else --otherwise find own path
+								print("generate neew")
 								generateNewPathToMouseClick(unit,action,tilemap)
 							end
 						end
