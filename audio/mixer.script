@@ -1,5 +1,9 @@
 function init(self)
 	if ENABLE_SOUND then
-    	msg.post("#sound", "play_sound", {delay = 0, gain = 0.5})
+    	msg.post("#calm", "play_sound", {delay = 0, gain = 0.5})
     end
 end
+
+
+-- -5 angle
+-- 55.7 saturation

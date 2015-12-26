@@ -24,7 +24,8 @@ function update(self)
 end
 
 function renderMinimap(self)
-	render.set_viewport(0, render.get_window_height()-200, 200*render.get_width()/1000, 200*render.get_width()/1000)
+	local minimapScale=1.3
+	render.set_viewport(0, 0, 200*render.get_width()/1000/minimapScale, 200*render.get_width()/1000/minimapScale)
     --render.set_view(self.view)
     
 	--print("width: "..TILEMAP_WIDTH.."height: "..TILEMAP_HEIGHT)
@@ -33,7 +34,7 @@ function renderMinimap(self)
 
     render.draw(self.tile_pred)
     
-    render.set_viewport(0, render.get_window_height()-200, 200*render.get_width()/1000*ZOOM_LEVEL, 200*render.get_width()/1000*ZOOM_LEVEL)
+    render.set_viewport(0,0, 200*render.get_width()/1000*ZOOM_LEVEL/minimapScale, 200*render.get_width()/1000*ZOOM_LEVEL/minimapScale)
     render.set_projection(vmath.matrix4_orthographic(-(CAMERA_OFFSETX/ZOOM_LEVEL), TILEMAP_WIDTH*TILE_SIZE-(CAMERA_OFFSETX/ZOOM_LEVEL), -(CAMERA_OFFSETY/ZOOM_LEVEL), TILEMAP_HEIGHT*TILE_SIZE-(CAMERA_OFFSETY/ZOOM_LEVEL), -1, 1))
     render.draw(self.mini_rectangle)
 

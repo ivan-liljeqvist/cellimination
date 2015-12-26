@@ -10,3 +10,11 @@ mouse_trigger {
   input: MOUSE_BUTTON_3
   action: "rightClicked"
 }
+mouse_trigger {
+  input: MOUSE_WHEEL_UP
+  action: "scrolledUp"
+}
+mouse_trigger {
+  input: MOUSE_WHEEL_DOWN
+  action: "scrolledDown"
+}
