@@ -1,12 +1,25 @@
 
 
-function lookForEnemies(self)
+function initFightingUnit(self,ranger)
 	
-	--[[
-		1) Look 4 tiles in radius after an enemy
-		2) If ranger - shoot 
-		3) If not ranger - go there
-	--]]
+	self.isFighting=false
+	self.canFight=true
+	self.isRanger=ranger
+	
+	
+end
+
+function enterFightMode(self)
+	if self.canFight then
+		self.isFighting = true
+	end
+end
+
+function isInFightMode(self)
+	return self.isFighting
+end
+
+function lookForEnemies(self)
 	
 	local nearbyEnemies = getNearbyEnemies(self)
 	
@@ -36,12 +49,16 @@ end
 
 function getNearbyEnemies(self)
 
-	local nearbyEnemies = findEnemiesAroundUnit(self,SPOT_ENEMY_RADIUS,findEnemyFunc)
+	--find nearby enemies
+	local nearbyEnemyTiles = findEnemiesAroundUnit(self,SPOT_ENEMY_RADIUS,findEnemyFunc)
 	
-	local numEnemies = table.getn(nearbyEnemies)
-	
-	if numEnemies>0 then
-		print(" found "..numEnemies.." enemies. My team: "..self.teamNumber)
+	--go to the enemies
+	for _,enemyTile in pairs(nearbyEnemyTiles) do
+		if isInFightMode(self) == false then
+			--generateNewPathToTile(self,enemyTile)
+			--enterFightMode(self)
+			followUnit(self,enemyTile.occupiedBy)
+		end
 	end
 
 end

@@ -9,6 +9,8 @@ function init(self)
 	self.x=go.get_position().x
 	self.y=go.get_position().y
 	
+	self.id=go.get_id()
+	
 	self.initialScale=0.1
 	self.fogRadius=JEEP_FOG_RADIUS
 	

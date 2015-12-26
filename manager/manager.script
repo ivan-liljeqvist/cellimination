@@ -1,9 +1,13 @@
 
+
 require "modules.globals"
 require "modules.state"
 require "modules.pathfinder"
 require "modules.coordinates"
 require "modules.unit"
+require "modules.movableUnit"
+require "modules.pathGenerator"
+require "modules.pathFollower"
 require "modules.bounds"
 require "modules.selectMethods"
 require "modules.buildingBase"

@@ -22,7 +22,7 @@ function tileToPixelCoords(tileX,tileY)
 end
 
 
-function getTileTypeAt(tileX,tileY,tilemapObject)
+function getTileTypeAt(tileX,tileY)
 	return tilemapObject.get_tile("world#tilemap", "reachable", tileX+1, tileY+1)
 end
 
@@ -94,7 +94,7 @@ function findEnemiesAroundUnit(unit,radius,func)
 			local enemyTile=func(x,y,unit)
 			
 			if enemyTile then
-				table.insert(enemiesFound,enemyTile.occupiedBy)
+				table.insert(enemiesFound,enemyTile)
 			end
 				
 		end
