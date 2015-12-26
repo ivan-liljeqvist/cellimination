@@ -8,7 +8,7 @@ function lookForEnemies(self)
 		3) If not ranger - go there
 	--]]
 	
-	local nearbyEnimies = getNearbyEnemies(self)
+	local nearbyEnemies = getNearbyEnemies(self)
 	
 end
 

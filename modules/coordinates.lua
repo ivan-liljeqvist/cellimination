@@ -97,6 +97,14 @@ function loopAreaAroundUnit(unit,radius,func)
 end
 
 
+function isTileLegit(x,y)
+	if x>TILEMAP_MINX and x<TILEMAP_MAXX and y>TILEMAP_MINY and y<TILEMAP_MAXY then
+		return true
+	end
+	
+	return false
+end
+
 
 --returns index in TILEMAP array
 function findNotOccupiedNeighbour(tileX,tileY,recursionsLeft)

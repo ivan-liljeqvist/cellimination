@@ -60,12 +60,14 @@ function neighbor_nodes(node,ignore)
 		
 		for y = minY, maxY, 1 do 
 		
-			local neighborIndex = TILEMAP_INDEX_LOOKUP[x][y]
-			local neighborNode = TILEMAP_NODES[neighborIndex]
-			
-			
-			if theNode ~= node and is_valid_node ( node, neighborNode ) then
-				table.insert(toReturn,neighborNode)
+			if isTileLegit(x,y) then
+				local neighborIndex = TILEMAP_INDEX_LOOKUP[x][y]
+				local neighborNode = TILEMAP_NODES[neighborIndex]
+				
+				
+				if theNode ~= node and is_valid_node ( node, neighborNode ) then
+					table.insert(toReturn,neighborNode)
+				end
 			end
 		end
 		
