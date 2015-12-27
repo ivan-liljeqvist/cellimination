@@ -12,6 +12,7 @@ function generateNewPathForGroupToTile(group,tileX,tileY)
 		local leadingUnit={}
 		
 		for unit,isSelected in pairs(group) do 
+		
 			--key is the GO, value is true/nil
 			if isSelected==true and unit.movableUnit then
 			
