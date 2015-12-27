@@ -16,7 +16,7 @@ ENEMY_TEAM=2
 
 SPOT_ENEMY_RADIUS=3
 
-ENABLE_SOUND=true
+ENABLE_SOUND=false
 ENABLE_MUSIC=true
 ENABLE_SOUND_EFFECTS=true
 
@@ -127,7 +127,7 @@ validator = function ( node, neighbor )
 					  (math.abs(node.x-neighbor.x)==1 and math.abs(node.y-neighbor.y)==0)
 					  
 
-		print(neighbor.blocked)
+	
 	if 	isBesides and neighbor.type~=TILE_NOT_REACHABLE_CODE and neighbor.blocked~=true then 
 		return true
 	end

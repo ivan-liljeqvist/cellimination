@@ -49,7 +49,7 @@ function targetIsWithinAttackDistance(self)
 		self.range=1
 	end
 	
-	self.range=2
+	self.range=1
 
 	local minY = self.tileCoordinates[2]-self.range
 	local maxY = self.tileCoordinates[2]+self.range
@@ -64,7 +64,7 @@ function targetIsWithinAttackDistance(self)
 			local tileNode = TILEMAP_NODES[tileNodeIndex]
 			
 			if tileNode.occupied and tileNode.occupiedBy==self.targetEnemy then
-				--print("returning can attack")
+				print("returning can attack")
 				return true
 			end
 		
@@ -87,13 +87,13 @@ end
 
 function fightingUnitUpdate(self,go,dt)
 	--search for an enemy
-	--searchForTarget(self)
+	searchForTarget(self)
 	
 	--we've found an enemy and set it as the target
 	--go kill that target
 	
 	if self.targetEnemy then 
-		--attackTarget(self)
+		attackTarget(self)
 	else
 		msg.post(msg.url(self.id),"changeAnimation",{animation="normal"})
 	end
@@ -121,7 +121,7 @@ function searchForTarget(self)
 	
 	if target then
 		self.targetEnemy = target
-		print("found target!")
+		--print("found target!")
 	end
 
 end
