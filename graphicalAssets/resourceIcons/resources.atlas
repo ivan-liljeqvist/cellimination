@@ -1,0 +1,12 @@
+images {
+  image: "/graphicalAssets/resourceIcons/carbs.png"
+}
+images {
+  image: "/graphicalAssets/resourceIcons/fat.png"
+}
+images {
+  image: "/graphicalAssets/resourceIcons/protein.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0
