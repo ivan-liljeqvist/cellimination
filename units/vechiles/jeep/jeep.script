@@ -14,6 +14,8 @@ function init(self)
 	self.initialScale=0.1
 	self.fogRadius=JEEP_FOG_RADIUS
 	
+	self.spotEnemiesRadius=2
+	
 	self.factory=factory
 	
     initBasicUnit(self,JEEP_NAME,go.get_id())

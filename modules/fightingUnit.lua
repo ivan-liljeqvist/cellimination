@@ -7,8 +7,10 @@ function initFightingUnit(self,ranger)
 	self.isRanger=ranger
 	
 	self.targetEnemy=nil
-	
 	self.currentShot=nil
+	
+	self.attackers={}
+	self.lastTargetPos={}
 	
 	self.range=1 --if melee we need to be next to the enemy
 	
@@ -17,6 +19,9 @@ function initFightingUnit(self,ranger)
 	else
 		self.range=1
 	end
+	
+	self.lastTargetPos.x=self.x
+	self.lastTargetPos.y=self.y
 	
 end
 
@@ -115,13 +120,27 @@ function fightingUnitUpdate(self,go,dt)
 	
 end
 
+
+
 function attackTarget(self)
 	local canAttack=targetIsWithinAttackDistance(self)
+			
 			
 	if canAttack then
 		--print("enemy is close enough, can attack!")
 		
 		shootTarget(self)
+	elseif ((self.lastTargetPos.x~=self.x) and (self.y~=self.lastTargetPos.y)) then
+
+		print("my team: "..self.teamNumber.." generate new path for my attackers",self.lastTargetPos.x,self.x,self.lastTargetPos.y,self.y)
+		
+		for unit,value in pairs(self.attackers) do
+			print("attacker t: "..unit.teamNumber)
+		end
+		
+		self.lastTargetPos.x=self.x
+		self.lastTargetPos.y=self.y
+		generateNewPathForGroupToTile(self.attackers,self.tileCoordinates[1],self.tileCoordinates[2])
 	end
 	
 	
@@ -161,7 +180,7 @@ function searchForTarget(self)
 		
 		if target then
 			self.targetEnemy = target
-
+			self.targetEnemy.attackers[self]=true
 		end
 		
 	end

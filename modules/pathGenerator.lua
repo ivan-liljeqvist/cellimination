@@ -1,4 +1,78 @@
 
+--[[
+	1) find one movable unit
+	2) compute the path for that unit
+	3) give that path to the rest of the selection
+--]]
+
+function generateNewPathForGroupToTile(group,tileX,tileY)
+	
+		local foundAPathForWholeSelection=false
+		local pathFound={}
+		local leadingUnit={}
+		
+		for unit,isSelected in pairs(group) do 
+			--key is the GO, value is true/nil
+			if isSelected==true and unit.movableUnit then
+			
+				print("unit team gorup moe: "..unit.teamNumber)
+				
+				if foundAPathForWholeSelection==false then
+					generateNewPathToTileCoords(unit,tileX,tileY)
+					pathFound=unit.currentPath
+					foundAPathForWholeSelection=true
+					leadingUnit=unit
+				else
+					--only follow leader if near leader
+					if math.abs(unit.x-leadingUnit.x)<200 and math.abs(unit.y-leadingUnit.y)<200 then
+						loadPath(unit,pathFound)
+					else --otherwise find own path
+						generateNewPathToTileCoords(unit,tileX,tileY)
+					end
+				end
+				
+				unit.isFighting=false
+				unit.followee=nil
+			else
+				print("not movable selected unit!")
+			end
+		end
+				
+end
+				
+function generateNewPathForGroupToPixel(group,action)
+	
+		local foundAPathForWholeSelection=false
+		local pathFound={}
+		local leadingUnit={}
+		
+		for unit,isSelected in pairs(SELECTED_UNITS) do 
+			--key is the GO, value is true/nil
+			if isSelected==true and unit.movableUnit then
+				
+				if foundAPathForWholeSelection==false then
+					generateNewPathToMouseClick(unit,action,tilemapObject)
+					pathFound=unit.currentPath
+					foundAPathForWholeSelection=true
+					leadingUnit=unit
+				else
+					--only follow leader if near leader
+					if math.abs(unit.x-leadingUnit.x)<200 and math.abs(unit.y-leadingUnit.y)<200 then
+						loadPath(unit,pathFound)
+					else --otherwise find own path
+						generateNewPathToMouseClick(unit,action,tilemapObject)
+					end
+				end
+				
+				unit.isFighting=false
+				unit.followee=nil
+			else
+				print("not movable selected unit!")
+			end
+		end
+				
+end
+
 function generateNewPathToUnit(self,unit)
 	generateNewPathToTileCoords(self,unit.tileCoordinates[1],unit.tileCoordinates[2])
 end

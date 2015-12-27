@@ -16,40 +16,9 @@ function init(self)
 			if action_id==hash("rightClicked") and action.released and self.rightPressedSinceLast then
 				self.rightPressedSinceLast=false
 				
-				--[[
-					1) find one movable unit
-					2) compute the path for that unit
-					3) give that path to the rest of the selection
-				--]]
 				
-				local foundAPathForWholeSelection=false
-				local pathFound={}
-				local leadingUnit={}
 				
-				for unit,isSelected in pairs(SELECTED_UNITS) do 
-					--key is the GO, value is true/nil
-					if isSelected==true and unit.movableUnit then
-						
-						if foundAPathForWholeSelection==false then
-							generateNewPathToMouseClick(unit,action,tilemap)
-							pathFound=unit.currentPath
-							foundAPathForWholeSelection=true
-							leadingUnit=unit
-						else
-							--only follow leader if near leader
-							if math.abs(unit.x-leadingUnit.x)<200 and math.abs(unit.y-leadingUnit.y)<200 then
-								loadPath(unit,pathFound)
-							else --otherwise find own path
-								generateNewPathToMouseClick(unit,action,tilemap)
-							end
-						end
-						
-						unit.isFighting=false
-						unit.followee=nil
-					else
-						print("not movable selected unit!")
-					end
-				end
+				generateNewPathForGroupToPixel(SELECTED_UNITS,action)
 				
 			elseif action_id==hash("rightClicked") and action.pressed then
 				self.rightPressedSinceLast=true

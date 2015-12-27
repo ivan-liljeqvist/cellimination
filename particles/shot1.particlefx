@@ -4,8 +4,8 @@ emitters {
   duration: 1.0
   space: EMISSION_SPACE_EMITTER
   position {
-    x: -0.14211228
-    y: -1.2872576
+    x: 0.0
+    y: 0.0
     z: 0.0
   }
   rotation {
