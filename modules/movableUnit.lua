@@ -1,13 +1,26 @@
 
 
+function giveFollowersMyPosition(self)
+
+	for follower,stillHere in pairs(self.followers) do
+		
+		if stillHere and follower ~= self.followee then
+			msg.post(msg.url(follower.id),"followeeChangedPosition",{tileCoords=self.tileCoordinates})
+		end
+		
+	end
+
+end
 
 
 function followUnit(self,unitToFollow)
-	if self.followee==nil then
+	if self.followee==nil and unitToFollow.followee ~= self then
+	
 		self.followee=unitToFollow
 		unitToFollow.followers[self]=true
 		
 		generateNewPathToUnit(self,unitToFollow)
+		
 	end
 end
 
@@ -21,7 +34,7 @@ function updateRotation(self,go)
 	    local angle = math.atan2(self.goalY - pos.y, self.goalX - pos.x)
 		angle = angle-math.pi*0.5
 		
-		self.go.set_rotation(vmath.quat_rotation_z(angle))
+		self.go.set_rotation(vmath.quat_rotation_z(-angle))
 		self.needToUpdateRotation=false
 		
 		self.dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
@@ -51,7 +64,7 @@ function unitUpdate(self,go,dt)
 	
 	
 	if self.canFight then
-		lookForEnemies(self)
+		fightingUnitUpdate(self,go,dt)
 	end
 	
 	updateRotation(self,go)

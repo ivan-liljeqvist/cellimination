@@ -10,6 +10,12 @@ images {
 images {
   image: "/graphicalAssets/red.png"
 }
+images {
+  image: "/graphicalAssets/teeth/lower.png"
+}
+images {
+  image: "/graphicalAssets/teeth/upper.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

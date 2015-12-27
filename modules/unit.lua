@@ -69,11 +69,6 @@ function setTeam(self,teamNumber)
 	self.teamNumber=teamNumber
 end
 
-
-
-
-
-
 function basicUnitMessageHandler(self,go,message_id,message)
 
 
@@ -83,7 +78,11 @@ function basicUnitMessageHandler(self,go,message_id,message)
 		
 	elseif message_id==hash("followeeChangedPosition")then
 	
-		print("followeeChangedPosition")
+		if self.followee then
+			print("followeeChangedPosition ",message.tileCoords[1],message.tileCoords[2])
+			generateNewPathToTileCoords(self,message.tileCoords[1],message.tileCoords[2])
+		end
+		
 		
 	elseif message_id==hash("rollOutOfProducer") then
 		--generateNewPathToMouseClick(self,message,tilemap)--last argument is to ignore camera offset

@@ -6,7 +6,7 @@ GAME_OBJECTS_THAT_REQUIRE_INPUT={}
 
 CURRENT_PRODUCER_POSITION={x=100,y=100}
 
-ZOOM_LEVEL=2
+ZOOM_LEVEL=1
 
 TILE_SIZE=64
 TILE_NOT_REACHABLE_CODE=0
@@ -69,8 +69,8 @@ local alreadyPopulatedNodeArray=false
 --populates the TILEMAP_NODES array with tiles in the tilemap
 function populateNodeArray()
 
+
 	if alreadyPopulatedNodeArray == false then
-	
 			alreadyPopulatedNodeArray = true 
 			
 			local minX, minY, w, h = tilemapObject.get_bounds("world#tilemap")
@@ -125,7 +125,7 @@ validator = function ( node, neighbor )
 					  (math.abs(node.x-neighbor.x)==1 and math.abs(node.y-neighbor.y)==0)
 					  
 
-		
+		print(neighbor.blocked)
 	if 	isBesides and neighbor.type~=TILE_NOT_REACHABLE_CODE and neighbor.blocked~=true then 
 		return true
 	end

@@ -43,6 +43,9 @@ function init(self)
 								generateNewPathToMouseClick(unit,action,tilemap)
 							end
 						end
+						
+						unit.isFighting=false
+						unit.followee=nil
 					else
 						print("not movable selected unit!")
 					end

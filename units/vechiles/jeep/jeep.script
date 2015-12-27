@@ -18,6 +18,8 @@ function init(self)
     initMovableUnit(self)
     initFightingUnit(self,false)
     
+    self.currentAnimation="normal"
+
     
     self.parseInput=function(self, action_id, action)
 
@@ -39,15 +41,20 @@ function update(self, dt)
     
 end
 
-
-
-
-
-
 function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
 	basicUnitMessageHandler(self,go,message_id,message)
+	
+	if message_id==hash("changeAnimation") then
+		
+		if self.currentAnimation ~=  message.animation then
+			self.currentAnimation=message.animation
+			spine.play("#spine", message.animation, go.PLAYBACK_LOOP_FORWARD, 0.2)
+		else
+			--print("already animation "..self.currentAnimation)
+		end
+	end
 	
 end
 

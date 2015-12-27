@@ -10,6 +10,9 @@ function loadPath(self,path)
 end
 
 
+
+
+
 function goStraightToNode(self,nodeIndex)
 	TILEMAP_NODES[self.lastDestIndex].occupied=false
 	TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
@@ -68,7 +71,7 @@ function followPath(self)
 		
 		self.goalX,self.goalY=tileToPixelCoords(nextNode.x-1,nextNode.y-1)
 		
-		
+		giveFollowersMyPosition(self)
 	
 		
 		self.needToUpdateRotation=true

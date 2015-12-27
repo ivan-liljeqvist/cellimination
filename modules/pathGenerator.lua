@@ -14,10 +14,10 @@ end
 
 function generateNewPathToTileCoords(self,tileX,tileY)
 		
-		if TILEMAP_NODES[self.lastDestIndex] then
+		
 			TILEMAP_NODES[self.lastDestIndex].occupied=false
 			TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
-		end
+		
 		
 		local tileType=getTileTypeAt(tileX,tileY)
     	

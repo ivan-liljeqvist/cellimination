@@ -81,11 +81,11 @@ function canBuildAt(self,x,y)
 end
 
 function setTilesUnderMeToOccupied(self,x,y)
-		local centerTileX, centerTileY = pixelToTileCoords(x,y)
+	local centerTileX, centerTileY = pixelToTileCoords(x,y)
 	
 	--go through each row and column
 	local minTileX = centerTileX + self.buildingSize.startPointFromCenter.x
-	local maxTileX = minTileX + self.buildingSize.width
+	local maxTileX = minTileX + self.buildingSize.width+1
 	local minTileY = centerTileY + self.buildingSize.startPointFromCenter.y
 	local maxTileY = minTileY + self.buildingSize.height
 	
@@ -93,12 +93,12 @@ function setTilesUnderMeToOccupied(self,x,y)
 	for currentX=minTileX, maxTileX, 1 do
 		for currentY=minTileY, maxTileY, 1 do
 		
-			local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX+1][currentY+1] 
+			local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX][currentY] 
 			TILEMAP_NODES[nodeIndex].occupied=true
 			TILEMAP_NODES[nodeIndex].occupiedBy=self
 			TILEMAP_NODES[nodeIndex].blocked=true
 
-			
+			 		
 		end
 	end
 	
@@ -124,7 +124,7 @@ function canBuildAtTile(tileX,tileY)
 	end
 	
 	
-	
+	print("occupied cant build!")
 	return false
 end
 

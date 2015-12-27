@@ -65,7 +65,7 @@ function neighbor_nodes(node,ignore)
 				local neighborNode = TILEMAP_NODES[neighborIndex]
 				
 				
-				if theNode ~= node and is_valid_node ( node, neighborNode ) then
+				if neighborNode ~= node and is_valid_node ( node, neighborNode ) then
 					table.insert(toReturn,neighborNode)
 				end
 			end
