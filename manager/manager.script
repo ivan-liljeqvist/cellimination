@@ -2,6 +2,7 @@
 
 require "modules.globals"
 require "modules.state"
+require "modules.soundHelper"
 require "modules.pathfinder"
 require "modules.coordinates"
 require "modules.unit"
