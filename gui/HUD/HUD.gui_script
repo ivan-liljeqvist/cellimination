@@ -3,8 +3,16 @@
 
 HUDButtons={}
 
-LEFT_ACTION_BUTTON="action"
-RIGHT_BUILD_BUTTON="buildAction"
+
+BUTTON1="hudButton1"
+BUTTON2="hudButton2"
+BUTTON3="hudButton3"
+BUTTON4="hudButton4"
+BUTTON5="hudButton5"
+BUTTON6="hudButton6"
+BUTTON7="hudButton7"
+BUTTON8="hudButton8"
+BUTTON9="hudButton9"
 
 NO_BUTTON=""
 
@@ -14,14 +22,22 @@ local uglyFlag=false
 
 local releasedSinceLast=true
 
+local currentLayout={}
+
 function init(self)
     
    --register all buttons
-   addButton(LEFT_ACTION_BUTTON)
-   addButton(RIGHT_BUILD_BUTTON)
+   addButton(BUTTON1)
+   addButton(BUTTON2)
+   addButton(BUTTON3)
+   addButton(BUTTON4)
+   addButton(BUTTON5)
+   addButton(BUTTON6)
+   addButton(BUTTON7)
+   addButton(BUTTON8)
+   addButton(BUTTON9)
    
-   --msg.post(".", "acquire_input_focus")
-  
+
        
 end
 
@@ -54,12 +70,26 @@ function checkIfAnyButtonClicked(action,action_id)
 end
 
 function handleButtonClicked(id) 
-	print("handle click: "..id)
-	
-	if id==RIGHT_BUILD_BUTTON and uglyFlag==false then
-		msg.post("buildingManager", "newBase")
-	else
-		msg.post("unitManager", "newJeep")
+
+
+	if id==BUTTON1 then
+		currentLayout.button1.action()
+	elseif id==BUTTON2 then
+		currentLayout.button2.action()
+	elseif id==BUTTON3 then
+		currentLayout.button3.action()
+	elseif id==BUTTON4 then
+		currentLayout.button4.action()
+	elseif id==BUTTON5 then
+		currentLayout.button5.action()
+	elseif id==BUTTON6 then
+		currentLayout.button6.action()
+	elseif id==BUTTON7 then
+		currentLayout.button7.action()
+	elseif id==BUTTON8 then
+		currentLayout.button8.action()
+	elseif id==BUTTON9 then
+		currentLayout.button9.action()
 	end
 	
 end
@@ -71,50 +101,51 @@ function final(self)
 end
 
 function update(self, dt)
-    local selected=getSelectedUnits()
     
     local selectionTextNew=""
+    local foundSelectedWithGUI=false
+    local unitWithGUI={}
     
-    hideButton(RIGHT_BUILD_BUTTON)
+    local selectedUnitsNumberLookup={}
     
-    for key,value in pairs(selected) do 
+    for unit,stillHere in pairs(SELECTED_UNITS) do 
     
-	  	selectionTextNew=selectionTextNew..value.." "..key.."\n"
-	  	
-	  	if key==WORKER_NAME then
-	  		showButton(RIGHT_BUILD_BUTTON)
-	  		gui.set_text(gui.get_node(RIGHT_BUILD_BUTTON.."/text"),"Build base")
-	  		uglyFlag=false
-	  	elseif key==BASE_NAME then
-	  		showButton(RIGHT_BUILD_BUTTON)
-	  		gui.set_text(gui.get_node(RIGHT_BUILD_BUTTON.."/text"),"Build jeep")
-	  		uglyFlag=true
-	  	end
-	end
+    	if stillHere then
+    	
+    		if selectedUnitsNumberLookup[unit.name]==nil then
+    			selectedUnitsNumberLookup[unit.name]=0
+    		end
+    		
+    		selectedUnitsNumberLookup[unit.name]=selectedUnitsNumberLookup[unit.name]+1
+    		
+    		if unit.requiresGUI then
+    			unitWithGUI=unit
+    		end
+    		
+    	end
+    end
+    
+   if self.selectionText == nil then
+   	   self.selectionText = gui.get_node("selectionText")
+   end
+   
+   local selectionNewText=""
+   for unitName, numberSelected in pairs(selectedUnitsNumberLookup) do
+		selectionNewText=selectionNewText.."\n"..numberSelected.." "..unitName
+   end
 	
-	if(self.selectionText==nil)then
-		self.selectionText = gui.get_node("selectionText")
-	end
-	gui.set_text(self.selectionText,selectionTextNew)
+   gui.set_text(self.selectionText,selectionNewText)	
+   
+   applyGUILayout(unitWithGUI.GUILayout)
+   
+   currentLayout=unitWithGUI.GUILayout
 
 end
+
 
 function on_message(self, message_id, message, sender)
     -- Add message-handling code here
     -- Remove this function if not needed
-    
-    if message_id == hash("setLeftTitle") then
-    	self.leftTitle = gui.get_node("leftTitle")
-    	gui.set_text(self.leftTitle,message.text)
-    	
-    	if(message.text==BASE_NAME)then
-    		showButton(LEFT_ACTION_BUTTON)
-			gui.set_text(gui.get_node("action/text"),"Build fisher")
-		else
-			hideButton(LEFT_ACTION_BUTTON)
-    	end
-    	
-    end
     
     if message_id==hash("newInput") then
 		checkIfAnyButtonClicked(message.action,message.action_id)
@@ -189,4 +220,79 @@ function showButton(id)
     gui.set_color(gui.get_node(id.."/box"), vmath.vector4(1, 0, 0, 1))
     
     HUDButtons[id]={id=id,visible=true}
+    
+end
+
+function showButtonWithText(id,text)
+	showButton(id)
+	gui.set_text(gui.get_node(id.."/text"), text)
+end
+
+
+
+function applyGUILayout(layout)
+	if layout then
+		if layout.button1 then
+			showButtonWithText(BUTTON1,layout.button1.text)
+			
+		else
+			hideButton(BUTTON1)
+		end
+		
+		if layout.button2 then	
+			showButtonWithText(BUTTON2,layout.button2.text)
+			showButton(BUTTON2)
+		else
+			hideButton(BUTTON2)
+		end
+		
+		if layout.button3 then
+			showButtonWithText(BUTTON3,layout.button3.text)
+			showButton(BUTTON3)
+		else
+			hideButton(BUTTON3)
+		end
+		
+		if layout.button4 then
+			showButtonWithText(BUTTON4,layout.button4.text)
+			showButton(BUTTON4)
+		else
+			hideButton(BUTTON4)
+		end
+		
+		if layout.button5 then
+			showButtonWithText(BUTTON5,layout.button5.text)
+			showButton(BUTTON5)
+		else
+			hideButton(BUTTON5)
+		end
+		
+		if layout.button6 then
+			showButtonWithText(BUTTON6,layout.button6.text)
+			showButton(BUTTON6)
+		else
+			hideButton(BUTTON6)
+		end
+		
+		if layout.button7 then
+			showButtonWithText(BUTTON7,layout.button7.text)
+			showButton(BUTTON7)
+		else
+			hideButton(BUTTON7)
+		end
+		
+		if layout.button8 then
+			showButtonWithText(BUTTON8,layout.button8.text)
+			showButton(BUTTON8)
+		else
+			hideButton(BUTTON8)
+		end
+		
+		if layout.button9 then
+			showButtonWithText(BUTTON9,layout.button9.text)
+			showButton(BUTTON9)
+		else
+			hideButton(BUTTON9)
+		end
+	end
 end

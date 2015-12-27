@@ -17,6 +17,17 @@ function init(self)
 
 	end
 
+	self.requiresGUI=true
+	local button1Action=function() msg.post("buildingManager", "newBase") end
+	self.GUILayout={button1={text="Build baze",action=button1Action},
+					button2=nil,
+					button3=nil,
+					button4=nil,
+					button5=nil,
+					button6=nil,
+					button7=nil,
+					button8=nil,
+					button9=nil}
 end
 
 

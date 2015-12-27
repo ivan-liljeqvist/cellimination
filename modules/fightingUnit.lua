@@ -37,11 +37,15 @@ function getFirstEnemyInRange(self)
 		
 		for y = minY, maxY, 1 do 
 		
-			local tileNodeIndex = TILEMAP_INDEX_LOOKUP[x][y]
-			local tileNode = TILEMAP_NODES[tileNodeIndex]
-			
-			if tileNode.occupied and tileNode.occupiedBy.teamNumber~=self.teamNumber then
-				return tileNode.occupiedBy
+			if  TILEMAP_INDEX_LOOKUP[x] then
+				local tileNodeIndex = TILEMAP_INDEX_LOOKUP[x][y]
+				local tileNode = TILEMAP_NODES[tileNodeIndex]
+				
+				if tileNode then
+					if tileNode.occupied and tileNode.occupiedBy.teamNumber~=self.teamNumber then
+						return tileNode.occupiedBy
+					end
+				end
 			end
 		
 		end

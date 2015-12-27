@@ -1,3 +1,4 @@
 font: "/fonts/TradeGothic LT Bold.ttf"
 material: "/builtins/fonts/font.material"
-size: 15
+size: 19
+antialias: 3

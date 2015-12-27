@@ -34,6 +34,18 @@ function init(self)
     go.set("#sprite", "scale.y", 8)
 	
 	
+	self.requiresGUI=true
+	self.GUILayout={button1={text="Cancel",action="hej"},
+					button2=nil,
+					button3=nil,
+					button4=nil,
+					button5=nil,
+					button6=nil,
+					button7=nil,
+					button8=nil,
+					button9=nil}
+					
+	
 end
 
 

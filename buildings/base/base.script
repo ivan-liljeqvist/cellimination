@@ -18,6 +18,19 @@ function init(self)
 		
 		buildingInput(self,action,action_id)
 	end
+	
+	local button1Action=function() msg.post("unitManager", "newJeep") end
+		self.requiresGUI=true
+	self.GUILayout={button1={text="Build Red Blood Cell",action=button1Action},
+					button2=nil,
+					button3=nil,
+					button4=nil,
+					button5=nil,
+					button6=nil,
+					button7=nil,
+					button8=nil,
+					button9=nil}
+					
 end
 
 
