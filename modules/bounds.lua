@@ -73,9 +73,14 @@ function isInsideSelection(startMouse, currentMouse, pivot)
 end
 
 function massSelect(self,title,go)
-	print("team: "..self.teamNumber)
-	self.selected=true
-	go.set_scale(self.initialScale*1.2)
+	
+	if self.selected==false then
+		print("team: "..self.teamNumber)
+		self.selected=true
+		go.set_scale(self.initialScale*1.2)
+		
+		msg.post("mixer","slime",{})
+	end
 end
 
 function deselect(self,go)
@@ -87,6 +92,7 @@ function select(self,title,go)
 	self.selected=true
     go.set_scale(self.initialScale*1.2)
     
+    msg.post("mixer","slime",{})
     
     msg.post("HUD","setLeftTitle",{text=title})
     msg.post("manager","unitSelected",{selectedId=go.get_id()})

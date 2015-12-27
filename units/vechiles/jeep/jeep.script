@@ -20,6 +20,7 @@ function init(self)
     
     self.currentAnimation="normal"
 
+	self.selectEffect="slime"
     
     self.parseInput=function(self, action_id, action)
 
