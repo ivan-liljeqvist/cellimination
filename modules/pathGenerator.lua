@@ -5,18 +5,27 @@
 	3) give that path to the rest of the selection
 --]]
 
-function generateNewPathForGroupToTile(group,tileX,tileY)
+function generateNewPathForAttackersToTile(group,tileX,tileY)
 	
 		local foundAPathForWholeSelection=false
 		local pathFound={}
 		local leadingUnit={}
 		
+		local atLeastOneIsComing=false
 		for unit,isSelected in pairs(group) do 
 		
+			unit.iChaseTarget=true
 			--key is the GO, value is true/nil
-			if isSelected==true and unit.movableUnit then
+			print("unit.attackersComingForMe:")
+			print(unit.attackersComingForMe)
+			print("unit.hasGoal: ")
+			print(unit.hasGoal)
+			if unit.movableUnit and unit.hasGoal==false and unit.selected==false then
 			
 				print("unit team gorup moe: "..unit.teamNumber)
+				
+				atLeastOneIsComing=true
+				unit.iChaseTarget=true
 				
 				if foundAPathForWholeSelection==false then
 					generateNewPathToTileCoords(unit,tileX,tileY)
@@ -32,12 +41,13 @@ function generateNewPathForGroupToTile(group,tileX,tileY)
 					end
 				end
 				
-				unit.isFighting=false
-				unit.followee=nil
 			else
 				print("not movable selected unit!")
 			end
 		end
+		
+		
+		return atLeastOneIsComing
 				
 end
 				

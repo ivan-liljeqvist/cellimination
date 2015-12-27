@@ -20,6 +20,8 @@ function initFightingUnit(self,ranger)
 		self.range=1
 	end
 	
+	self.iChaseTarget=false
+	self.attackersComingForMe=false
 	self.lastTargetPos.x=self.x
 	self.lastTargetPos.y=self.y
 	
@@ -69,7 +71,7 @@ function targetIsWithinAttackDistance(self)
 		self.range=1
 	end
 	
-	self.range=2
+	self.range=3
 
 	local minY = self.tileCoordinates[2]-self.range
 	local maxY = self.tileCoordinates[2]+self.range
@@ -130,17 +132,18 @@ function attackTarget(self)
 		--print("enemy is close enough, can attack!")
 		
 		shootTarget(self)
-	elseif ((self.lastTargetPos.x~=self.x) and (self.y~=self.lastTargetPos.y)) then
+	elseif self.attackersComingForMe==false then
 
-		print("my team: "..self.teamNumber.." generate new path for my attackers",self.lastTargetPos.x,self.x,self.lastTargetPos.y,self.y)
+
+		print("will generateNewPathForAttackersToTile")
 		
-		for unit,value in pairs(self.attackers) do
-			print("attacker t: "..unit.teamNumber)
-		end
+		
 		
 		self.lastTargetPos.x=self.x
 		self.lastTargetPos.y=self.y
-		generateNewPathForGroupToTile(self.attackers,self.tileCoordinates[1],self.tileCoordinates[2])
+		
+		self.attackersComingForMe=generateNewPathForAttackersToTile(self.attackers,self.tileCoordinates[1],self.tileCoordinates[2])
+		
 	end
 	
 	

@@ -20,6 +20,10 @@ function init(self)
 				
 				generateNewPathForGroupToPixel(SELECTED_UNITS,action)
 				
+				for unit,alive in pairs(SELECTED_UNITS)do
+					unit.hasGoal=true
+				end
+				
 			elseif action_id==hash("rightClicked") and action.pressed then
 				self.rightPressedSinceLast=true
 			end

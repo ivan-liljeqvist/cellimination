@@ -27,11 +27,11 @@ emitters {
     key: EMITTER_KEY_SPAWN_RATE
     points {
       x: 0.0
-      y: 20.0
+      y: 10.0
       t_x: 1.0
       t_y: 0.0
     }
-    spread: 40.0
+    spread: 10.0
   }
   properties {
     key: EMITTER_KEY_SIZE_X

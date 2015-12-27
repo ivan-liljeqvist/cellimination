@@ -80,11 +80,151 @@ instances {
   }
 }
 instances {
+  id: "jeep10"
+  prototype: "/units/vechiles/jeep/jeep.go"
+  position {
+    x: 337.88174
+    y: 1129.9772
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep11"
+  prototype: "/units/vechiles/jeep/jeep.go"
+  position {
+    x: 681.04767
+    y: 1144.8975
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep12"
+  prototype: "/units/vechiles/jeep/jeep.go"
+  position {
+    x: 875.011
+    y: 958.3942
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep13"
+  prototype: "/units/vechiles/jeep/jeep.go"
+  position {
+    x: 889.9312
+    y: 719.67017
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep14"
+  prototype: "/units/vechiles/jeep/jeep.go"
+  position {
+    x: 613.9065
+    y: 1383.6216
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "jeep7"
   prototype: "/units/vechiles/jeep/jeep.go"
   position {
     x: 330.42163
     y: 853.95245
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep8"
+  prototype: "/units/vechiles/jeep/jeep.go"
+  position {
+    x: 606.44635
+    y: 958.3942
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep9"
+  prototype: "/units/vechiles/jeep/jeep.go"
+  position {
+    x: 427.4033
+    y: 659.98914
     z: 1.0
   }
   rotation {

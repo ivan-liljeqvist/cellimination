@@ -61,6 +61,7 @@ function initMovableUnit(self)
 	self.lastDestIndex=1
 	
 	self.movableUnit=true
+	self.hasGoal=false
 	
 end
 

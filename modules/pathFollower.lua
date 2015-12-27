@@ -34,9 +34,18 @@ function moveAccordingToPath(self,go,dt)
     if reachedGoal==false then
     	self.go.set_position(pos-self.dir*self.speed*dt)
     elseif self.currentPath then
+    
+
+		
     	--check if the current path has more nodes
     	if table.getn(self.currentPath)~=0 then
     		followPath(self)
+    	else
+    		self.iChaseTarget=false
+			self.hasGoal=false
+			if self.targetEnemy then
+				self.targetEnemy.attackersComingForMe=false
+			end
     	end
     end
 end
@@ -79,6 +88,7 @@ function followPath(self)
 		self.tileCoordinates={nextNode.x,nextNode.y}
 	else 	
 		print("nextNode is nil")
+		
 	end
 	
 	
