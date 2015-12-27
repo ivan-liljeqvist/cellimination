@@ -1,0 +1,77 @@
+
+
+function init(self)
+    
+	self.timerToDie=0.0
+	self.DIE_THRESHOLD = 1.0
+	
+	self.lastDirX=0
+    
+    particlefx.play("#particlefx")
+   	
+    go.set_scale(1)
+    
+    self.dir=vmath.vector3(8000,0,0)
+    self.speed=1000
+    self.alive=true
+end
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+function update(self, dt)
+
+	local pos = go.get_position()
+	pos=pos+self.dir*dt
+	
+	go.set_position(pos)  
+	
+	self.timerToDie=self.timerToDie+(2*dt)  
+	
+	if self.timerToDie > self.DIE_THRESHOLD then
+		die(self)
+	end
+
+end
+
+function die(self)
+	go.delete(go.get_id())
+	self.alive=false
+		
+	msg.post(self.ownerUrl,"resetCurrentShot",{})
+end
+
+function on_message(self, message_id, message, sender)
+
+	if message_id==hash("setOwnerUrl") then
+		self.ownerUrl=msg.url(message.id)
+		self.ownerId=message.id
+	elseif message_id==hash("setDirection")then
+		self.dir=message.dir*self.speed
+		go.set_scale(2)
+	elseif message_id==hash("updateRotation")then
+		go.set_rotation(message.rot)
+	elseif message_id == hash("contact_point_response") then
+	
+		
+		if self.ownerId~=message.other_id then
+			die(self)
+		end
+	    --local newpos = go.get_position() + message.normal * message.distance
+	    --go.set_position(newpos)
+	 
+	end    
+
+end
+
+function on_input(self, action_id, action)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end
+
+function on_reload(self)
+    -- Add reload-handling code here
+    -- Remove this function if not needed
+end

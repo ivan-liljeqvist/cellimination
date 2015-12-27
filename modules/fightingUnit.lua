@@ -8,6 +8,8 @@ function initFightingUnit(self,ranger)
 	
 	self.targetEnemy=nil
 	
+	self.currentShot=nil
+	
 	self.range=1 --if melee we need to be next to the enemy
 	
 	if ranger then
@@ -41,6 +43,19 @@ function getFirstEnemyInRange(self)
 	return nil
 end
 
+function rotateTowardsTarget(self)
+	
+		--[[local p = {x=self.x,y=self.y}
+
+    	local old_rot = self.rotation
+  		 
+	    local angle = math.atan2(self.targetEnemy.y - p.y, self.targetEnemy.x - p.x)
+		angle = angle-math.pi
+		
+		--self.go.set_rotation(vmath.quat_rotation_z(angle))--]]
+		
+end
+
 function targetIsWithinAttackDistance(self)
 	
 	local enemy = self.targetEnemy
@@ -49,7 +64,7 @@ function targetIsWithinAttackDistance(self)
 		self.range=1
 	end
 	
-	self.range=1
+	self.range=2
 
 	local minY = self.tileCoordinates[2]-self.range
 	local maxY = self.tileCoordinates[2]+self.range
@@ -64,7 +79,6 @@ function targetIsWithinAttackDistance(self)
 			local tileNode = TILEMAP_NODES[tileNodeIndex]
 			
 			if tileNode.occupied and tileNode.occupiedBy==self.targetEnemy then
-				print("returning can attack")
 				return true
 			end
 		
@@ -94,6 +108,7 @@ function fightingUnitUpdate(self,go,dt)
 	
 	if self.targetEnemy then 
 		attackTarget(self)
+		
 	else
 		msg.post(msg.url(self.id),"changeAnimation",{animation="normal"})
 	end
@@ -106,22 +121,49 @@ function attackTarget(self)
 	if canAttack then
 		--print("enemy is close enough, can attack!")
 		
-		msg.post(msg.url(self.id),"changeAnimation",{animation="attack"})
-	else
-		--print("back to normal")
-		msg.post(msg.url(self.id),"changeAnimation",{animation="normal"})
+		shootTarget(self)
 	end
 	
 	
 end
 
+function shootTarget(self)
+	if self.currentShot == nil then
+		
+		
+		
+		
+		self.currentShot=self.factory.create("#shotFactory", nil, nil, {})
+		msg.post(msg.url(self.currentShot),"setOwnerUrl",{id=self.id})
+		
+		local shotDirection = vmath.vector3(self.x,self.y,1)-vmath.vector3(self.targetEnemy.x,self.targetEnemy.y,1)
+		msg.post(msg.url(self.currentShot),"setDirection",{dir=-vmath.normalize(shotDirection)})
+		
+		
+		
+	else
+		
+	end
+end
+
+
+function fightingUnitMessageHandler(self,go,message_id,message)
+	if message_id == hash("resetCurrentShot") then
+		self.currentShot=nil
+	end
+end
+
 function searchForTarget(self)
 
-	local target = getFirstEnemyInRange(self)
+	if self.targetEnemy==nil then
 	
-	if target then
-		self.targetEnemy = target
-		--print("found target!")
+		local target = getFirstEnemyInRange(self)
+		
+		if target then
+			self.targetEnemy = target
+
+		end
+		
 	end
 
 end

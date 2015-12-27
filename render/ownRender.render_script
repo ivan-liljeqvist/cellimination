@@ -33,6 +33,7 @@ function renderMinimap(self)
     render.set_projection(vmath.matrix4_orthographic(0, TILEMAP_WIDTH*TILE_SIZE, 0, TILEMAP_HEIGHT*TILE_SIZE, -1, 1))
 
     render.draw(self.tile_pred)
+    render.draw(self.particle_pred)
     
     render.set_viewport(0,0, 200*render.get_width()/1000*ZOOM_LEVEL/minimapScale, 200*render.get_width()/1000*ZOOM_LEVEL/minimapScale)
     render.set_projection(vmath.matrix4_orthographic(-(CAMERA_OFFSETX/ZOOM_LEVEL), TILEMAP_WIDTH*TILE_SIZE-(CAMERA_OFFSETX/ZOOM_LEVEL), -(CAMERA_OFFSETY/ZOOM_LEVEL), TILEMAP_HEIGHT*TILE_SIZE-(CAMERA_OFFSETY/ZOOM_LEVEL), -1, 1))

@@ -1,36 +1,21 @@
 components {
+  id: "particlefx"
+  component: "/particles/shot1.particlefx"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
   id: "script"
-  component: "/units/vechiles/jeep/jeep.script"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-components {
-  id: "spine"
-  component: "/graphicalAssets/redMonster.spinemodel"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-components {
-  id: "sprite"
-  component: "/units/vechiles/jeep/jeep.sprite"
+  component: "/particles/shot1.script"
   position {
     x: 0.0
     y: 0.0
@@ -51,8 +36,8 @@ embedded_components {
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
-  "group: \"mortal\"\n"
-  "mask: \"shot\"\n"
+  "group: \"shot\"\n"
+  "mask: \"mortal\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
@@ -70,30 +55,13 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 25.0\n"
-  "  data: 25.0\n"
+  "  data: 5.0\n"
+  "  data: 5.0\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"
   "locked_rotation: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "shotFactory"
-  type: "factory"
-  data: "prototype: \"/particles/shot1.go\"\n"
   ""
   position {
     x: 0.0

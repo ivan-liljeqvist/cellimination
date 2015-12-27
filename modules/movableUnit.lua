@@ -38,6 +38,10 @@ function updateRotation(self,go)
 		self.needToUpdateRotation=false
 		
 		self.dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
+		
+		if self.currentShot then
+			msg.post(msg.url(self.currentShot),"updateRotation",{rot=vmath.quat_rotation_z(-angle)})
+		end
 	end
 end
 
@@ -73,6 +77,8 @@ function unitUpdate(self,go,dt)
 		
 	self.x=go.get_position().x
 	self.y=go.get_position().y	
+	
+	self.rotation=go.get_rotation()
 	
 	--self.tileCoordinates={pixelToTileCoords(self.x,self.y)}
 

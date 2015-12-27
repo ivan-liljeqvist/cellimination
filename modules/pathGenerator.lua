@@ -50,12 +50,12 @@ function generateNewPathToTileCoords(self,tileX,tileY)
     			end
     		end
     		
-    		--startNode.occupied=false
-    		--startNode.occupiedBy=nil
-    		--TILEMAP_NODES[startIndex]=startNode
-    		--finishNode.occupied=true
-    		--finishNode.occupiedBy=self
-    		--TILEMAP_NODES[destIndex]=finishNode
+    		startNode.occupied=false
+    		startNode.occupiedBy=nil
+    		TILEMAP_NODES[startIndex]=startNode
+    		finishNode.occupied=true
+    		finishNode.occupiedBy=self
+    		TILEMAP_NODES[destIndex]=finishNode
     		
     		self.lastDestIndex=destIndex
     						  			
