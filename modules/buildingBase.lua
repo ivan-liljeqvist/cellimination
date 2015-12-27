@@ -15,7 +15,9 @@ function buildingInput(self,action,action_id)
 	if self.prototypeMode and action_id == hash("leftClicked") and action.pressed then
 	
 		if self.canBuildHere then
-			buildHere(action.x,action.y,self)
+			
+			buildHere(action.x*ZOOM_LEVEL,action.y*ZOOM_LEVEL,self)
+			
 		else 
 			destroyUnit(self)
 			alertCantBuildHere()
@@ -84,9 +86,9 @@ function setTilesUnderMeToOccupied(self,x,y)
 	local centerTileX, centerTileY = pixelToTileCoords(x,y)
 	
 	--go through each row and column
-	local minTileX = centerTileX + self.buildingSize.startPointFromCenter.x
-	local maxTileX = minTileX + self.buildingSize.width+1
-	local minTileY = centerTileY + self.buildingSize.startPointFromCenter.y
+	local minTileX = centerTileX+1 + self.buildingSize.startPointFromCenter.x
+	local maxTileX = minTileX + self.buildingSize.width
+	local minTileY = centerTileY-1 + self.buildingSize.startPointFromCenter.y
 	local maxTileY = minTileY + self.buildingSize.height
 	
 	
@@ -97,6 +99,8 @@ function setTilesUnderMeToOccupied(self,x,y)
 			TILEMAP_NODES[nodeIndex].occupied=true
 			TILEMAP_NODES[nodeIndex].occupiedBy=self
 			TILEMAP_NODES[nodeIndex].blocked=true
+			
+			--tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 0)
 
 			 		
 		end

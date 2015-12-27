@@ -139,7 +139,7 @@ function attackTarget(self)
 	elseif self.attackersComingForMe==false then
 
 
-		print("will generateNewPathForAttackersToTile")
+		--print("will generateNewPathForAttackersToTile")
 		
 		
 		

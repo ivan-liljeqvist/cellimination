@@ -1,3 +1,12 @@
 images {
   image: "/graphicalAssets/war/obj_lookout.png"
 }
+images {
+  image: "/graphicalAssets/orange.png"
+}
+images {
+  image: "/graphicalAssets/purple.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0
