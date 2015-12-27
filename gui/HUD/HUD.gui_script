@@ -294,5 +294,16 @@ function applyGUILayout(layout)
 		else
 			hideButton(BUTTON9)
 		end
+	else
+		hideButton(BUTTON1)
+		hideButton(BUTTON2)
+		hideButton(BUTTON3)
+		hideButton(BUTTON4)
+		hideButton(BUTTON5)
+		hideButton(BUTTON6)
+		hideButton(BUTTON7)
+		hideButton(BUTTON8)
+		hideButton(BUTTON9)
+		
 	end
 end

@@ -18,9 +18,10 @@ function init(self)
 	end
 
 	self.requiresGUI=true
-	local button1Action=function() msg.post("buildingManager", "newBase") end
-	self.GUILayout={button1={text="Build baze",action=button1Action},
-					button2=nil,
+	local buildBaseAction=function() msg.post("buildingManager", "newBase") end
+	local deselectAction=function() msg.post("manager","deselectAll",{}) end
+	self.GUILayout={button1={text="Deselect",action=deselectAction},
+					button2={text="Build base",action=buildBaseAction},
 					button3=nil,
 					button4=nil,
 					button5=nil,

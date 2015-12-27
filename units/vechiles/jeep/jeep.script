@@ -35,7 +35,8 @@ function init(self)
 	
 	
 	self.requiresGUI=true
-	self.GUILayout={button1={text="Cancel",action="hej"},
+	local deselectAction=function() msg.post("manager","deselectAll",{}) end
+	self.GUILayout={button1={text="Deselect",action=deselectAction},
 					button2=nil,
 					button3=nil,
 					button4=nil,
