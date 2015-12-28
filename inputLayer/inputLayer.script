@@ -16,6 +16,8 @@ function on_input(self, action_id, action)
 	if ZOOM_LEVEL<1.2 then ZOOM_LEVEL=1.0 end
 	if ZOOM_LEVEL>2.4 then ZOOM_LEVEL=2.5 end
 	
+	moveMinimap(action,action_id)
+	
 	msg.post("ownCamera","newInput",{action_id=action_id,action=action})
 
 
@@ -29,4 +31,31 @@ function on_input(self, action_id, action)
 	end
 
 end
+
+
+
+
+function moveMinimap(action,action_id)
+	if action.x<HUD_RIGHT_HEIGHT and action.y<HUD_RIGHT_HEIGHT and action_id==hash("leftClicked") and action.pressed then
+
+		local percentOfMinimapX = action.x/HUD_RIGHT_HEIGHT
+		local percentOfMinimapY = action.y/HUD_RIGHT_HEIGHT
+		
+		local lookAtX = math.floor(percentOfMinimapX*TILEMAP_MAXX*TILE_SIZE)
+		local lookAtY = math.floor(percentOfMinimapY*TILEMAP_MAXY*TILE_SIZE)
+		
+		msg.post("ownCamera","look",{x=lookAtX,y=lookAtY})
+
+	end
+end
+
+
+
+
+
+
+
+
+
+
 

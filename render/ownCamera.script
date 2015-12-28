@@ -45,6 +45,8 @@ function on_message(self, message_id, message, sender)
 		moveCamera(CAMERA_DIRECTION_LEFT)
 	elseif message_id==hash("newInput")then
 		decideIfShouldMove(message.action.x,message.action.y)
+	elseif message_id==hash("look")then
+		look(message.x,message.y)
 	end
 	
 end
@@ -54,6 +56,37 @@ function decideIfShouldMove(cursorX,cursorY)
 	currentCursorPosition.x=cursorX
 	currentCursorPosition.y=cursorY
 
+end
+
+function look(x,y)
+
+	if x>(TILEMAP_MAXX*TILE_SIZE-getScreenWidth()*1.5) then
+		x=(TILEMAP_MAXX*TILE_SIZE-getScreenWidth()*1.5)
+	end
+	
+	if y>(TILEMAP_MAXY*TILE_SIZE-getScreenHeight()*1.5) then
+		y=(TILEMAP_MAXY*TILE_SIZE-getScreenHeight()*1.5)
+	end
+
+	local pos=go.get_position()
+	
+	local diffX=pos.x-(x-getScreenWidth()/2)
+	local diffY=pos.y-(y-getScreenHeight()/2)
+	
+	CAMERA_OFFSETX=CAMERA_OFFSETX-diffX
+	CAMERA_OFFSETY=CAMERA_OFFSETY-diffY
+	
+	pos.x=(x-getScreenWidth()/2)
+	pos.y=(y-getScreenHeight()/2)
+	
+	if pos.x<0 then pos.x=0 end
+	if pos.y<0 then pos.y=0 end
+	if CAMERA_OFFSETX<0 then CAMERA_OFFSETX=0 end
+	if CAMERA_OFFSETY<0 then CAMERA_OFFSETY=0 end
+	
+	go.set_position(pos)
+	
+	
 end
 
 function moveCamera(dir)
@@ -66,7 +99,7 @@ function moveCamera(dir)
 			CAMERA_OFFSETX=CAMERA_OFFSETX-CAMERA_SPEED
 		end
 	elseif dir==CAMERA_DIRECTION_RIGHT then
-		if pos.x+CAMERA_SPEED < (TILEMAP_MAXX*TILE_SIZE-SCREEN_WIDTH*2) then
+		if pos.x+CAMERA_SPEED < (TILEMAP_MAXX*TILE_SIZE-getScreenWidth()*2) then
 			pos.x=pos.x+CAMERA_SPEED
 			CAMERA_OFFSETX=CAMERA_OFFSETX+CAMERA_SPEED
 		end
@@ -76,7 +109,7 @@ function moveCamera(dir)
 			CAMERA_OFFSETY=CAMERA_OFFSETY-CAMERA_SPEED
 		end
 	elseif dir==CAMERA_DIRECTION_UP then
-		if pos.y+CAMERA_SPEED < (TILEMAP_MAXY*TILE_SIZE-SCREEN_HEIGHT*2) then
+		if pos.y+CAMERA_SPEED < (TILEMAP_MAXY*TILE_SIZE-getScreenHeight()*2) then
 			pos.y=pos.y+CAMERA_SPEED
 			CAMERA_OFFSETY=CAMERA_OFFSETY+CAMERA_SPEED
 		end

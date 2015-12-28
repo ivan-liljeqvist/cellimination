@@ -25,7 +25,7 @@ function init(self)
 		self.requiresGUI=true
 	local deselectAction=function() msg.post("manager","deselectAll",{}) end
 	self.GUILayout={button1={text="Deselect",action=deselectAction},
-					button2={text="Build Red Blood Cell",action=buildRedBloodCellAction},
+					button2=nil,
 					button3=nil,
 					button4=nil,
 					button5=nil,

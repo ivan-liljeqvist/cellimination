@@ -48,7 +48,7 @@ end
 
 function startMainBackgroundMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
-    	msg.post("#main", "play_sound", {delay = 3, gain = 0.5})
+    	msg.post("#main", "play_sound", {delay = 0, gain = 0.5})
     end
 end
 

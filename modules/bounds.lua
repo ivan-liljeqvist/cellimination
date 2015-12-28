@@ -25,7 +25,6 @@ end
 function isInsideSelection(startMouse, currentMouse, pivot)
 	
 	
-	
 	local bounds = getSpriteBounds("#sprite")
 	
 	--selection
