@@ -56,7 +56,7 @@ embedded_components {
 embedded_components {
   id: "main"
   type: "sound"
-  data: "sound: \"/audio/main.ogg\"\n"
+  data: "sound: \"/audio/mainnew.ogg\"\n"
   "looping: 1\n"
   "group: \"master\"\n"
   "gain: 1.0\n"
@@ -116,7 +116,7 @@ embedded_components {
 embedded_components {
   id: "soundscape"
   type: "sound"
-  data: "sound: \"/audio/soundscape.ogg\"\n"
+  data: "sound: \"/audio/soundscapenew.ogg\"\n"
   "looping: 1\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

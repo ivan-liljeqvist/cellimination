@@ -20,14 +20,14 @@ emitters {
   blend_mode: BLEND_MODE_ADD
   particle_orientation: PARTICLE_ORIENTATION_DEFAULT
   inherit_velocity: 0.0
-  max_particle_count: 400
+  max_particle_count: 100
   type: EMITTER_TYPE_CIRCLE
   start_delay: 0.0
   properties {
     key: EMITTER_KEY_SPAWN_RATE
     points {
       x: 0.0
-      y: 500.0
+      y: 100.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -127,11 +127,11 @@ emitters {
     key: EMITTER_KEY_PARTICLE_ALPHA
     points {
       x: 0.0
-      y: 0.3
+      y: 1.0
       t_x: 1.0
       t_y: 0.0
     }
-    spread: 0.0
+    spread: 1.0
   }
   properties {
     key: EMITTER_KEY_PARTICLE_ROTATION
