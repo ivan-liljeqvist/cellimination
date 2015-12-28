@@ -8,7 +8,7 @@ images {
   image: "/graphicalAssets/eyes/dotEye.png"
 }
 images {
-  image: "/graphicalAssets/red.png"
+  image: "/graphicalAssets/notUsed/red.png"
 }
 images {
   image: "/graphicalAssets/teeth/lower.png"
@@ -16,6 +16,3 @@ images {
 images {
   image: "/graphicalAssets/teeth/upper.png"
 }
-margin: 0
-extrude_borders: 0
-inner_padding: 0

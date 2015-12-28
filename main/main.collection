@@ -320,6 +320,26 @@ instances {
   }
 }
 instances {
+  id: "protein"
+  prototype: "/ground/protein/protein.go"
+  position {
+    x: 2033.2711
+    y: 971.98236
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "selection"
   prototype: "/gui/selection/selection.go"
   position {

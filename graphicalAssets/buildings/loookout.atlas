@@ -1,0 +1,12 @@
+images {
+  image: "/graphicalAssets/war/obj_lookout.png"
+}
+images {
+  image: "/graphicalAssets/buildings/orange.png"
+}
+images {
+  image: "/graphicalAssets/buildings/purple.png"
+}
+images {
+  image: "/graphicalAssets/buildings/0009.png"
+}

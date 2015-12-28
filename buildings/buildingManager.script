@@ -2,7 +2,7 @@
 function on_message(self, message_id, message, sender)
 	
 	if message_id == hash("newBase") then
-		local baseBuilding=factory.create("#factory")
+		local baseBuilding=factory.create("#baseFactory")
 	end
 	
 end

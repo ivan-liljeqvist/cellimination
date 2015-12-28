@@ -2,11 +2,8 @@ images {
   image: "/graphicalAssets/war/obj_jeep1.png"
 }
 images {
-  image: "/graphicalAssets/red.png"
+  image: "/graphicalAssets/notUsed/red.png"
 }
 images {
-  image: "/graphicalAssets/blackCircle.png"
+  image: "/graphicalAssets/notUsed/blackCircle.png"
 }
-margin: 0
-extrude_borders: 0
-inner_padding: 0

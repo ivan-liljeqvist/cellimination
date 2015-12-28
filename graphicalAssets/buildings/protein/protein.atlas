@@ -1,0 +1,219 @@
+animations {
+  id: "anim"
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-001.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-002.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-003.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-004.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-005.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-006.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-007.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-008.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-009.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-010.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-011.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-012.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-013.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-014.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-015.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-016.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-017.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-018.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-019.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-020.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-021.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-022.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-023.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-024.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-025.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-026.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-027.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-028.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-029.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-030.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-031.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-032.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-033.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-034.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-035.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-036.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-037.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-038.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-039.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-040.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-041.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-042.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-043.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-044.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-045.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-046.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-047.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-048.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-049.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-050.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-051.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-052.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-053.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-054.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-055.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-056.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-057.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-058.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-059.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-060.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-061.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-062.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-063.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-064.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-065.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-066.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-067.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-068.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-069.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-070.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-071.png"
+  }
+  images {
+    image: "/graphicalAssets/buildings/protein/frame-072.png"
+  }
+}
