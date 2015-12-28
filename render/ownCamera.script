@@ -19,16 +19,20 @@ function final(self)
 end
 
 function update(self, dt)
-	if currentCursorPosition.x<100 then
+	local threshold=100
+	
+	if JUST_CLICKED_MINIMAP then threshold=30 end
+	
+	if currentCursorPosition.x<threshold then
 		moveCamera(CAMERA_DIRECTION_LEFT)
 	end
-	if currentCursorPosition.y<100 then
+	if currentCursorPosition.y<threshold then
 		moveCamera(CAMERA_DIRECTION_DOWN)
 	end
-	if currentCursorPosition.x>getScreenWidth()-100 then
+	if currentCursorPosition.x>getScreenWidth()-threshold then
 		moveCamera(CAMERA_DIRECTION_RIGHT)
 	end
-	if currentCursorPosition.y>getScreenHeight()-100 then
+	if currentCursorPosition.y>getScreenHeight()-threshold then
 		moveCamera(CAMERA_DIRECTION_UP)
 	end
 end

@@ -38,6 +38,8 @@ JEEP_NAME="RED BLOOD CELL"
 WORKER_NAME="WORKER"
 BASE_NAME="COMMAND CENTER"
 
+JUST_CLICKED_MINIMAP=false
+
 GUI_CLICKED=false --when GUI is clicked, we shouldn't deselect any selection
 
 TILEMAP_NODES={}

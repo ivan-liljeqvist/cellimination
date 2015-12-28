@@ -34,19 +34,40 @@ end
 
 
 
+local holdingDownOnMinimap=false
 
 function moveMinimap(action,action_id)
-	if action.x<HUD_RIGHT_HEIGHT and action.y<HUD_RIGHT_HEIGHT and action_id==hash("leftClicked") and action.pressed then
+	if action.x<HUD_RIGHT_HEIGHT and action.y<HUD_RIGHT_HEIGHT  then
 
-		local percentOfMinimapX = action.x/HUD_RIGHT_HEIGHT
-		local percentOfMinimapY = action.y/HUD_RIGHT_HEIGHT
+		if action_id==hash("leftClicked") and action.pressed and holdingDownOnMinimap==false then
+			
+			sendMessageToMinimap(action)
+			holdingDownOnMinimap=true
 		
-		local lookAtX = math.floor(percentOfMinimapX*TILEMAP_MAXX*TILE_SIZE)
-		local lookAtY = math.floor(percentOfMinimapY*TILEMAP_MAXY*TILE_SIZE)
-		
-		msg.post("ownCamera","look",{x=lookAtX,y=lookAtY})
-
+		elseif action_id==hash("leftClicked") and action.released then
+			
+			holdingDownOnMinimap=false
+			
+		else
+			if holdingDownOnMinimap then
+				sendMessageToMinimap(action)
+			end
+			JUST_CLICKED_MINIMAP=true
+		end
+	else	
+		JUST_CLICKED_MINIMAP=false
+		holdingDownOnMinimap=false
 	end
+end
+
+function sendMessageToMinimap(action)
+	local percentOfMinimapX = action.x/HUD_RIGHT_HEIGHT
+	local percentOfMinimapY = action.y/HUD_RIGHT_HEIGHT
+	
+	local lookAtX = math.floor(percentOfMinimapX*TILEMAP_MAXX*TILE_SIZE)
+	local lookAtY = math.floor(percentOfMinimapY*TILEMAP_MAXY*TILE_SIZE)
+	
+	msg.post("ownCamera","look",{x=lookAtX,y=lookAtY})
 end
 
 
