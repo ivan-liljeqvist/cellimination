@@ -31,6 +31,10 @@ end
 
 function update(self, dt)
 	updateFoW(tilemap)
+	
+	PROTEIN=PROTEIN+PROTEIN_EXTRACTORS_MADE*dt*8
+	CARBS=CARBS+CARB_EXTRACTORS_MADE*dt*8
+	FAT=FAT+FAT_EXTRACTORS_MADE*dt*8
 end
 
 function on_message(self, message_id, message, sender)

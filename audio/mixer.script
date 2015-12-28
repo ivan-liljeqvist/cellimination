@@ -4,7 +4,9 @@ LAST_CAN_PLAY_SOUND_EFFECTS=CAN_PLAY_SOUND_EFFECTS
 sinceLastTimeSoundEffects=0
 
 function init(self)
-	startBackgroundMusic()
+	--
+	startSoundscapeMusic()
+	startMainBackgroundMusic()
 end
 
 function on_message(self, message_id, message, sender)

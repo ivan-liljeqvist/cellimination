@@ -106,6 +106,8 @@ function update(self, dt)
     local foundSelectedWithGUI=false
     local unitWithGUI={}
     
+    updateResourcesLabels()
+    
     local selectedUnitsNumberLookup={}
     
     for unit,stillHere in pairs(SELECTED_UNITS) do 
@@ -226,6 +228,12 @@ end
 function showButtonWithText(id,text)
 	showButton(id)
 	gui.set_text(gui.get_node(id.."/text"), text)
+end
+
+function updateResourcesLabels()
+	gui.set_text(gui.get_node("proteinText"), math.floor(PROTEIN).." protein")
+	gui.set_text(gui.get_node("fatText"), math.floor(FAT).." fat")
+	gui.set_text(gui.get_node("carbsText"), math.floor(CARBS).." carbs.")
 end
 
 

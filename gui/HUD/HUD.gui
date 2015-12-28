@@ -23,7 +23,7 @@ background_color {
 }
 nodes {
   position {
-    x: 1920.0
+    x: 1278.3497
     y: 0.0
     z: 0.0
     w: 1.0
@@ -71,7 +71,7 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 0.5
+  alpha: 0.9
   template_node_child: false
 }
 nodes {
@@ -192,7 +192,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1742.0685
+    x: 1100.4182
     y: 11.252366
     z: 0.0
     w: 1.0
@@ -368,7 +368,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1742.0685
+    x: 1100.4182
     y: 76.252365
     z: 0.0
     w: 1.0
@@ -543,7 +543,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1742.0685
+    x: 1100.4182
     y: 141.25237
     z: 0.0
     w: 1.0
@@ -718,7 +718,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1599.6583
+    x: 958.0081
     y: 10.003155
     z: 0.0
     w: 1.0
@@ -893,7 +893,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1599.6583
+    x: 958.0081
     y: 75.00315
     z: 0.0
     w: 1.0
@@ -1068,7 +1068,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1599.6583
+    x: 958.0081
     y: 140.00316
     z: 0.0
     w: 1.0
@@ -1243,7 +1243,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1455.999
+    x: 814.3488
     y: 8.753943
     z: 0.0
     w: 1.0
@@ -1418,7 +1418,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1455.999
+    x: 814.3488
     y: 73.753944
     z: 0.0
     w: 1.0
@@ -1593,7 +1593,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1455.999
+    x: 814.3488
     y: 138.75394
     z: 0.0
     w: 1.0

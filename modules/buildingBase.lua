@@ -47,6 +47,10 @@ function buildHere(x,y,self)
 	self.prototypeMode=false
 	setTilesUnderMeToOccupied(self,x,y)
 	
+	if self.isFatExtractor==true then FAT_EXTRACTORS_MADE=FAT_EXTRACTORS_MADE+1
+	elseif self.isCarbExtractor==true then CARB_EXTRACTORS_MADE=CARB_EXTRACTORS_MADE+1
+	elseif self.isProteinExtractor==true then PROTEIN_EXTRACTORS_MADE=PROTEIN_EXTRACTORS_MADE+1 end
+	
 	self.x=x+CAMERA_OFFSETX
 	self.y=y+CAMERA_OFFSETY
 end
@@ -65,7 +69,7 @@ end
 --check we can fit a building at x,y
 function canBuildAt(self,x,y)
 
-	if y<HUD_RIGHT_HEIGHT and x>SCREEN_WIDTH-HUD_RIGHT_WIDTH then return false end
+	if y<HUD_RIGHT_HEIGHT and x>getScreenWidth()-HUD_RIGHT_WIDTH then print("over hud") return false end
 	
 	local centerTileX, centerTileY = pixelToTileCoords(x*ZOOM_LEVEL,y*ZOOM_LEVEL)
 	
@@ -92,9 +96,9 @@ function setTilesUnderMeToOccupied(self,x,y)
 	local centerTileX, centerTileY = pixelToTileCoords(x,y)
 	
 	--go through each row and column
-	local minTileX = centerTileX+1 + self.buildingSize.startPointFromCenter.x
+	local minTileX = centerTileX + self.buildingSize.startPointFromCenter.x
 	local maxTileX = minTileX + self.buildingSize.width
-	local minTileY = centerTileY-1 + self.buildingSize.startPointFromCenter.y
+	local minTileY = centerTileY + self.buildingSize.startPointFromCenter.y
 	local maxTileY = minTileY + self.buildingSize.height
 	
 	
@@ -106,7 +110,7 @@ function setTilesUnderMeToOccupied(self,x,y)
 			TILEMAP_NODES[nodeIndex].occupiedBy=self
 			TILEMAP_NODES[nodeIndex].blocked=true
 			
-			--tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 0)
+			--tilemapObject.set_tile("world#tilemap", "blocked", currentX+1, currentY+1, 0)
 
 			 		
 		end
@@ -129,7 +133,7 @@ function canBuildAtTile(self,tileX,tileY)
 	local nodeIndex = TILEMAP_INDEX_LOOKUP[tileX][tileY] 
 	local tileNode = TILEMAP_NODES[nodeIndex] 
 	
-	print(tileNode.blockedType)
+	print("nodeIndex: "..nodeIndex.." ".."tileNode.blockedType: "..tileNode.blockedType.." tileNode.type "..tileNode.type)
 	
 	--if normal building, not an extractor
 	if self.isProteinExtractor~=true and self.isCarbExtractor~=true 
@@ -140,13 +144,20 @@ function canBuildAtTile(self,tileX,tileY)
 		end
 	
 	elseif self.isProteinExtractor then
+		
 		if tileNode.occupied==false and isFatTile(tileNode.blockedType) then
 			return true
 		end
-	elseif self.isCarbExtractor then
-	
+	elseif self.isCarbExtractor then	
+		
+		if tileNode.occupied==false and isFatTile(tileNode.blockedType) then
+			return true
+		end
 	elseif self.isFatExtractor then
-	
+		
+		if tileNode.occupied==false and isFatTile(tileNode.blockedType) then
+			return true
+		end
 	end
 	
 	

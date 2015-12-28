@@ -8,13 +8,13 @@ function init(self)
 	self.x=go.get_position().x
 	self.y=go.get_position().y
 	
-	self.initialScale=0.4
+	self.initialScale=1.0
 	self.fogRadius=BASE_FOG_RADIUS
 	
 	self.isProteinExtractor=true
 	
     initBasicUnit(self,BASE_NAME,go.get_id())
-	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=0},width=2,height=4},go)
+	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=1},width=1,height=0},go)
 	
 	self.parseInput=function(self, action_id, action)
 		

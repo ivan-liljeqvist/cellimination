@@ -26,7 +26,7 @@ end
 
 function renderMinimap(self)
 	local minimapScale=1.3
-	render.set_viewport(0, 0, 200*render.get_width()/1000/minimapScale, 200*render.get_width()/1000/minimapScale)
+	render.set_viewport(0, 0, 200, 200)
     --render.set_view(self.view)
     
 	--print("width: "..TILEMAP_WIDTH.."height: "..TILEMAP_HEIGHT)

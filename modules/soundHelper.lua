@@ -46,6 +46,18 @@ function checkIfCanPlaySFX(dt)
 	end
 end
 
+function startMainBackgroundMusic()
+	if ENABLE_SOUND and ENABLE_MUSIC then
+    	msg.post("#main", "play_sound", {delay = 3, gain = 0.5})
+    end
+end
+
+function startSoundscapeMusic()
+	if ENABLE_SOUND and ENABLE_MUSIC then
+    	msg.post("#soundscape", "play_sound", {delay = 0, gain = 0.5})
+    end
+end
+
 function startBackgroundMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
     	msg.post("#calm", "play_sound", {delay = 0, gain = 0.5})
