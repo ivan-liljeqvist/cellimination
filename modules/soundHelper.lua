@@ -18,9 +18,9 @@ function playSoundEffect(soundEffectId)
 		
 		if OLD_PLAYED_IDS[soundEffectId]~=newSoundId then
 			msg.post(OLD_PLAYED_IDS[soundEffectId], "stop_sound")
-			msg.post(newSoundId, "play_sound", {delay = 0, gain = 0.5})
+			msg.post(newSoundId, "play_sound", {delay = 0, gain = 0.2})
 		else
-			msg.post(newSoundId, "play_sound", {delay = 0, gain = 0.5})
+			msg.post(newSoundId, "play_sound", {delay = 0, gain = 0.2})
 		end
 		
 		
@@ -48,18 +48,18 @@ end
 
 function startMainBackgroundMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
-    	msg.post("#main", "play_sound", {delay = 0, gain = 0.5})
+    	msg.post("#main", "play_sound", {delay = 0, gain = 0.2})
     end
 end
 
 function startSoundscapeMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
-    	msg.post("#soundscape", "play_sound", {delay = 0, gain = 0.5})
+    	msg.post("#soundscape", "play_sound", {delay = 0, gain = 0.2})
     end
 end
 
 function startBackgroundMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
-    	msg.post("#calm", "play_sound", {delay = 0, gain = 0.5})
+    	msg.post("#calm", "play_sound", {delay = 0, gain = 0.2})
     end
 end

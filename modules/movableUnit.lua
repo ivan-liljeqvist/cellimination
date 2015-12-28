@@ -34,13 +34,18 @@ function updateRotation(self,go)
 	    local angle = math.atan2(self.goalY - pos.y, self.goalX - pos.x)
 		angle = angle-math.pi*0.5
 		
-		self.go.set_rotation(vmath.quat_rotation_z(-angle))
+		angle=math.abs(angle)
+		if angle>=3.14 and self.isFighting then angle=2.0 end
+		
+		print("set rotation: "..angle)
+		
+		self.go.set_rotation(vmath.quat_rotation_z(angle))
 		self.needToUpdateRotation=false
 		
 		self.dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
 		
 		if self.currentShot then
-			msg.post(msg.url(self.currentShot),"updateRotation",{rot=vmath.quat_rotation_z(-angle)})
+			msg.post(msg.url(self.currentShot),"updateRotation",{rot=vmath.quat_rotation_z(angle/2)})
 		end
 	end
 end

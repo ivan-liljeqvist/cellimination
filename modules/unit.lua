@@ -14,6 +14,8 @@ function initBasicUnit(self,name,goID)
     pos.x=pos.x
 	pos.y=pos.y
 	self.go.set_position(pos)
+	
+	self.id=go.get_id()
     
     self.name=name
     
@@ -75,15 +77,7 @@ function basicUnitMessageHandler(self,go,message_id,message)
 	if message_id==hash("setTeam") then
 		self.teamNumber=message.newTeamNumber
 		print("new team "..message.newTeamNumber)
-		
-	elseif message_id==hash("followeeChangedPosition")then
-	
-		if self.followee then
-			print("followeeChangedPosition ",message.tileCoords[1],message.tileCoords[2])
-			generateNewPathToTileCoords(self,message.tileCoords[1],message.tileCoords[2])
-		end
-		
-		
+
 	elseif message_id==hash("rollOutOfProducer") then
 		--generateNewPathToMouseClick(self,message,tilemap)--last argument is to ignore camera offset
 		
