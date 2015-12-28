@@ -40,16 +40,19 @@ function moveAccordingToPath(self,go,dt)
     	--check if the current path has more nodes
     	if table.getn(self.currentPath)~=0 then
     		followPath(self)
-    	else
-    		self.iChaseTarget=false
-			self.hasGoal=false
-			if self.targetEnemy then
-				self.targetEnemy.attackersComingForMe=false
-			end
     	end
     end
 end
 
+function abortPath(self)
+
+	if self.lastDestIndex then
+		TILEMAP_NODES[self.lastDestIndex].occupied=false
+		TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
+	end
+	
+	self.currentPath={}
+end
 
 
 function followPath(self)

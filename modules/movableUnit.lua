@@ -37,7 +37,6 @@ function updateRotation(self,go)
 		angle=math.abs(angle)
 		if angle>=3.14 and self.isFighting then angle=2.0 end
 		
-		print("set rotation: "..angle)
 		
 		self.go.set_rotation(vmath.quat_rotation_z(angle))
 		self.needToUpdateRotation=false
@@ -66,7 +65,11 @@ function initMovableUnit(self)
 	self.lastDestIndex=1
 	
 	self.movableUnit=true
-	self.hasGoal=false
+	
+	self.orderedToMove=false
+	self.orderedToMoveResetting=false
+	self.orderedToMoveTimer=0
+	self.orderedToMoveResetTime=3
 	
 end
 
@@ -86,6 +89,25 @@ function unitUpdate(self,go,dt)
 	
 	self.rotation=go.get_rotation()
 	
-	--self.tileCoordinates={pixelToTileCoords(self.x,self.y)}
+	orderToMoveResetManager(self,dt)
 
+
+end
+
+function orderToMoveResetManager(self,dt)
+	--if orderedToMove is set, we want to reset it after an interval
+	if self.orderedToMove and self.orderedToMoveResetting==false then
+		self.orderedToMoveResetting=true
+	end
+	--if we're resetting, increment timer
+	if self.orderedToMoveResetting then
+		self.orderedToMoveTimer=self.orderedToMoveTimer+dt
+	end
+	--if timer is over, reset
+	if self.orderedToMoveResetting and self.orderedToMoveTimer>self.orderedToMoveResetTime then
+			self.orderedToMove=false
+			self.orderedToMoveResetting=false
+			self.orderedToMoveTimer=0
+			self.orderedToMoveResetTime=3
+	end
 end

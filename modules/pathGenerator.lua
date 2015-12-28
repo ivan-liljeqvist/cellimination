@@ -5,51 +5,7 @@
 	3) give that path to the rest of the selection
 --]]
 
-function generateNewPathForAttackersToTile(group,tileX,tileY)
-	
-		local foundAPathForWholeSelection=false
-		local pathFound={}
-		local leadingUnit={}
-		
-		local atLeastOneIsComing=false
-		for unit,isSelected in pairs(group) do 
-		
-			unit.iChaseTarget=true
-			--key is the GO, value is true/nil
-			print("unit.attackersComingForMe:")
-			print(unit.attackersComingForMe)
-			print("unit.hasGoal: ")
-			print(unit.hasGoal)
-			if unit.movableUnit and unit.hasGoal==false and unit.selected==false then
-			
-				print("unit team gorup moe: "..unit.teamNumber)
-				
-				atLeastOneIsComing=true
-				unit.iChaseTarget=true
-				
-				if foundAPathForWholeSelection==false then
-					generateNewPathToTileCoords(unit,tileX,tileY)
-					pathFound=unit.currentPath
-					foundAPathForWholeSelection=true
-					leadingUnit=unit
-				else
-					--only follow leader if near leader
-					if math.abs(unit.x-leadingUnit.x)<200 and math.abs(unit.y-leadingUnit.y)<200 then
-						loadPath(unit,pathFound)
-					else --otherwise find own path
-						generateNewPathToTileCoords(unit,tileX,tileY)
-					end
-				end
-				
-			else
-				print("not movable selected unit!")
-			end
-		end
-		
-		
-		return atLeastOneIsComing
-				
-end
+
 				
 function generateNewPathForGroupToPixel(group,action)
 	
@@ -156,14 +112,19 @@ function generateNewPathToTileCoords(self,tileX,tileY)
    
 			if not self.currentPath then
 				print ( "No valid path found" )
+				
 				self.currentPath={}
+				return false
 			else
 				--print("path with "..table.getn(self.currentPath).." nodes")
 			end
 
     	else
     		print("not reachable!")
+    		return false
     	end
+    	
+    	return true
 
 end
 

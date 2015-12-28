@@ -52,9 +52,6 @@ function on_message(self, message_id, message, sender)
 		self.dir=message.dir*self.speed
 	elseif message_id==hash("setTeam")then
 		self.team=message.team
-	elseif message_id==hash("updateRotation")then
-		print("updateRotation")
-		go.set_rotation(message.rot)
 	elseif message_id==hash("requestOwner")then
 		msg.post(sender,"shotOwnerCallback",{ownerId=self.ownerId})
 	
