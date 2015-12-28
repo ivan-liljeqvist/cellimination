@@ -27,6 +27,9 @@ function updateFoW()
 	for unit,isAlive in pairs(MY_UNITS) do
 		
 		if isAlive then
+		
+			if unit.isBuilding and unit.prototypeMode then return end --dont reveal if building in prototype mode
+			
 			--get the coordinates in pixels
 			local pixelX=unit.x-CAMERA_OFFSETX
 			local pixelY=unit.y-CAMERA_OFFSETY

@@ -1,2 +1,4 @@
 tile_set: "/graphicalAssets/buildings/loookout.atlas"
-default_animation: "0009"
+default_animation: "obj_lookout"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

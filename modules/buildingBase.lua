@@ -8,6 +8,8 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.spriteObject=spriteObject
 	self.go=go
 	
+	self.isBuilding=true
+	
 end
 
 function buildingInput(self,action,action_id)
@@ -44,6 +46,9 @@ function buildHere(x,y,self)
 	removePrototypeColor(self.spriteObject)
 	self.prototypeMode=false
 	setTilesUnderMeToOccupied(self,x,y)
+	
+	self.x=x+CAMERA_OFFSETX
+	self.y=y+CAMERA_OFFSETY
 end
 
 --change between red and green
@@ -60,6 +65,7 @@ end
 --check we can fit a building at x,y
 function canBuildAt(self,x,y)
 
+	if y<HUD_RIGHT_HEIGHT and x>SCREEN_WIDTH-HUD_RIGHT_WIDTH then return false end
 	
 	local centerTileX, centerTileY = pixelToTileCoords(x*ZOOM_LEVEL,y*ZOOM_LEVEL)
 	
@@ -72,7 +78,7 @@ function canBuildAt(self,x,y)
 	
 	for currentX=minTileX, maxTileX, 1 do
 		for currentY=minTileY, maxTileY, 1 do
-			if canBuildAtTile(currentX,currentY) == false then
+			if canBuildAtTile(self,currentX,currentY) == false then
 				return false
 			end
 		end
@@ -110,21 +116,37 @@ function setTilesUnderMeToOccupied(self,x,y)
 	return true
 end
 
-function canBuildAtTile(tileX,tileY)
+function isFatTile(type)
+	if type==7 or type==8 or type==21 or type==22 then return true end
+	return false
+end
 
+function canBuildAtTile(self,tileX,tileY)
+	
 	tileX=tileX+1
 	tileY=tileY+1
-
-	if tileX>TILEMAP_MAXX or tileX<TILEMAP_MINX or tileY>TILEMAP_MAXY or tileY<TILEMAP_MINY then
-		print("outside map!")
-		return false
-	end
 
 	local nodeIndex = TILEMAP_INDEX_LOOKUP[tileX][tileY] 
 	local tileNode = TILEMAP_NODES[nodeIndex] 
 	
-	if tileNode.type~=TILE_NOT_REACHABLE_CODE and tileNode.occupied==false then
-		return true
+	print(tileNode.blockedType)
+	
+	--if normal building, not an extractor
+	if self.isProteinExtractor~=true and self.isCarbExtractor~=true 
+		and self.isFatExtractor~=true then
+		
+		if tileNode.type~=TILE_NOT_REACHABLE_CODE and tileNode.occupied==false then
+			return true
+		end
+	
+	elseif self.isProteinExtractor then
+		if tileNode.occupied==false and isFatTile(tileNode.blockedType) then
+			return true
+		end
+	elseif self.isCarbExtractor then
+	
+	elseif self.isFatExtractor then
+	
 	end
 	
 	
@@ -144,7 +166,7 @@ function removePrototypeColor(spriteObject)
 	spriteObject.set_constant("#sprite", "tint", WHITE_COLOR)
 end
 
-function buildingUpdate(self,dt)
+function buildingUpdate(self,dt,go)
 
 end
 

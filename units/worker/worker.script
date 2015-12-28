@@ -18,15 +18,20 @@ function init(self)
 	end
 
 	self.requiresGUI=true
+	
 	local buildBaseAction=function() msg.post("buildingManager", "newBase") end
 	local deselectAction=function() msg.post("manager","deselectAll",{}) end
+	local buildCarbExtractor=function() msg.post("buildingManager", "newCarbExtractor") end
+	local buildFatExtractor=function() msg.post("buildingManager", "newFatExtractor") end
+	local buildProteinExtractor=function() msg.post("buildingManager", "newProteinExtractor") end
+	
 	self.GUILayout={button1={text="Deselect",action=deselectAction},
-					button2={text="Build base",action=buildBaseAction},
+					button2=nil,
 					button3=nil,
-					button4=nil,
-					button5=nil,
-					button6=nil,
-					button7=nil,
+					button4={text="Build Protein Extractor",action=buildProteinExtractor},
+					button5={text="Build Fat Extractor",action=buildFatExtractor},
+					button6={text="Build Carb. Extractor",action=buildCarbExtractor},
+					button7={text="Build base",action=buildBaseAction},
 					button8=nil,
 					button9=nil}
 end

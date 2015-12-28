@@ -1,6 +1,8 @@
 
-SCREEN_HEIGHT=720
-SCREEN_WIDTH=1280
+SCREEN_HEIGHT=1080
+SCREEN_WIDTH=1920
+HUD_RIGHT_HEIGHT=200
+HUD_RIGHT_WIDTH=500
 
 MY_UNITS={}
 
@@ -18,7 +20,7 @@ ENEMY_TEAM=2
 
 SPOT_ENEMY_RADIUS=3
 
-ENABLE_SOUND=true
+ENABLE_SOUND=false
 ENABLE_MUSIC=true
 ENABLE_SOUND_EFFECTS=true
 
@@ -102,6 +104,7 @@ function populateNodeArray()
 					newNode.x=xCounter
 					newNode.y=yCounter
 					newNode.type=tilemapObject.get_tile("world#tilemap", "reachable", xCounter, yCounter)
+					newNode.blockedType=tilemapObject.get_tile("world#tilemap", "blocked", xCounter, yCounter)
 					newNode.occupied=false
 					newNode.occupiedBy=nil
 					newNode.blocked=false

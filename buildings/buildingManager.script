@@ -3,6 +3,12 @@ function on_message(self, message_id, message, sender)
 	
 	if message_id == hash("newBase") then
 		local baseBuilding=factory.create("#baseFactory")
+	elseif message_id == hash("newCarbExtractor")then
+		local carbExtractor=factory.create("#carbExtractorFactory")
+	elseif message_id == hash("newProteinExtractor")then
+		local proteinExtractor=factory.create("#proteinExtractorFactory")
+	elseif message_id == hash("newFatExtractor")then
+		local fatExtractor=factory.create("#fatExtractorFactory")
 	end
 	
 end

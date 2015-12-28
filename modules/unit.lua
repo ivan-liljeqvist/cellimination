@@ -9,7 +9,7 @@ function initBasicUnit(self,name,goID)
 	self.bounds=getSpriteBounds("#sprite",self)    
     self.selected=false
     
-    
+    self.isBuilding=false
     local pos=self.go.get_position()
     pos.x=pos.x
 	pos.y=pos.y

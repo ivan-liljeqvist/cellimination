@@ -1,0 +1,12 @@
+images {
+  image: "/graphicalAssets/buildings/carbExtractor/carbExtractor.png"
+}
+images {
+  image: "/graphicalAssets/buildings/fatExtractor/fatExtractor.png"
+}
+images {
+  image: "/graphicalAssets/buildings/proteinExtractor/proteinExtractor.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

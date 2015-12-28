@@ -28,27 +28,37 @@ function initFightingUnit(self,ranger)
 end
 
 function getFirstEnemyInRange(self)
+	
+	if self == nil then return end	
+
+
 	local minY = self.tileCoordinates[2]-self.range
 	local maxY = self.tileCoordinates[2]+self.range
 	local minX = self.tileCoordinates[1]-self.range
 	local maxX = self.tileCoordinates[1]+self.range
 	
+
 	for x = minX, maxX, 1 do
-		
+
 		for y = minY, maxY, 1 do 
-		
-			if  TILEMAP_INDEX_LOOKUP[x] then
+			
+			
+			if  TILEMAP_INDEX_LOOKUP then
+				
 				local tileNodeIndex = TILEMAP_INDEX_LOOKUP[x][y]
 				local tileNode = TILEMAP_NODES[tileNodeIndex]
 				
-				if tileNode then
-					if tileNode.occupied and tileNode.occupiedBy.teamNumber~=self.teamNumber then
-						return tileNode.occupiedBy
+				
+				if tileNode and tileNode.occupiedBy then
+					if self then
+						if tileNode.occupied and  tileNode.occupiedBy.teamNumber~=self.teamNumber then
+								return tileNode.occupiedBy
+						end
 					end
 				end
 			end
 		
-		end
+		end--
 	end
 	
 	return nil
@@ -111,8 +121,11 @@ end
 
 
 function fightingUnitUpdate(self,go,dt)
+
+	if self.canFight==false then return end
+
 	--search for an enemy
-	searchForTarget(self)
+	--[[searchForTarget(self)
 	
 	--we've found an enemy and set it as the target
 	--go kill that target
@@ -122,7 +135,7 @@ function fightingUnitUpdate(self,go,dt)
 		
 	else
 		msg.post(msg.url(self.id),"changeAnimation",{animation="normal"})
-	end
+	end--]]
 	
 end
 

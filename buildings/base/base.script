@@ -8,7 +8,7 @@ function init(self)
 	self.x=go.get_position().x
 	self.y=go.get_position().y
 	
-	self.initialScale=1.0
+	self.initialScale=0.7
 	self.fogRadius=BASE_FOG_RADIUS
 	
     initBasicUnit(self,BASE_NAME,go.get_id())
@@ -37,7 +37,7 @@ end
 
 function update(self, dt)
 
-    buildingUpdate(self,dt)
+    buildingUpdate(self,dt,go)
     
 end
 

@@ -46,7 +46,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "fatExtractor"
+  id: "fatExtractorFactory"
   type: "factory"
   data: "prototype: \"/buildings/fatExtractor/fatExtractor.go\"\n"
   ""

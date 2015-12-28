@@ -23,6 +23,59 @@ background_color {
 }
 nodes {
   position {
+    x: 1920.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 500.0
+    y: 200.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.07058824
+    y: 0.023529414
+    z: 0.019607844
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "box3"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SE
+  adjust_mode: ADJUST_MODE_FIT
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 0.5
+  template_node_child: false
+}
+nodes {
+  position {
     x: 0.0
     y: 0.0
     z: 0.0
@@ -41,15 +94,15 @@ nodes {
     w: 1.0
   }
   size {
-    x: 1280.0
+    x: 1920.0
     y: 200.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.07058824
+    y: 0.03137255
+    z: 0.019607844
     w: 1.0
   }
   type: TYPE_BOX
@@ -139,7 +192,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1130.0
+    x: 1742.0685
     y: 11.252366
     z: 0.0
     w: 1.0
@@ -315,7 +368,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1130.0
+    x: 1742.0685
     y: 76.252365
     z: 0.0
     w: 1.0
@@ -490,7 +543,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1130.0
+    x: 1742.0685
     y: 141.25237
     z: 0.0
     w: 1.0
@@ -665,7 +718,7 @@ nodes {
 }
 nodes {
   position {
-    x: 987.5899
+    x: 1599.6583
     y: 10.003155
     z: 0.0
     w: 1.0
@@ -840,7 +893,7 @@ nodes {
 }
 nodes {
   position {
-    x: 987.5899
+    x: 1599.6583
     y: 75.00315
     z: 0.0
     w: 1.0
@@ -1015,7 +1068,7 @@ nodes {
 }
 nodes {
   position {
-    x: 987.5899
+    x: 1599.6583
     y: 140.00316
     z: 0.0
     w: 1.0
@@ -1190,7 +1243,7 @@ nodes {
 }
 nodes {
   position {
-    x: 843.9306
+    x: 1455.999
     y: 8.753943
     z: 0.0
     w: 1.0
@@ -1365,7 +1418,7 @@ nodes {
 }
 nodes {
   position {
-    x: 843.9306
+    x: 1455.999
     y: 73.753944
     z: 0.0
     w: 1.0
@@ -1540,7 +1593,7 @@ nodes {
 }
 nodes {
   position {
-    x: 843.9306
+    x: 1455.999
     y: 138.75394
     z: 0.0
     w: 1.0
@@ -1715,8 +1768,8 @@ nodes {
 }
 nodes {
   position {
-    x: 45.0
-    y: 707.0
+    x: 52.624397
+    y: 1067.8881
     z: 0.0
     w: 1.0
   }
@@ -1779,7 +1832,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 720.0
+    y: 1080.0
     z: 0.0
     w: 1.0
   }
@@ -1796,7 +1849,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 1280.0
+    x: 1920.0
     y: 40.0
     z: 0.0
     w: 1.0
@@ -1831,8 +1884,8 @@ nodes {
 }
 nodes {
   position {
-    x: 30.0
-    y: 700.0
+    x: 37.624397
+    y: 1060.8881
     z: 0.0
     w: 1.0
   }
@@ -1884,8 +1937,8 @@ nodes {
 }
 nodes {
   position {
-    x: 150.0
-    y: 700.0
+    x: 157.62439
+    y: 1060.8881
     z: 0.0
     w: 1.0
   }
@@ -1937,8 +1990,8 @@ nodes {
 }
 nodes {
   position {
-    x: 270.0
-    y: 700.0
+    x: 277.6244
+    y: 1060.8881
     z: 0.0
     w: 1.0
   }
@@ -1990,8 +2043,8 @@ nodes {
 }
 nodes {
   position {
-    x: 165.0
-    y: 707.0
+    x: 172.62439
+    y: 1067.8881
     z: 0.0
     w: 1.0
   }
@@ -2053,8 +2106,8 @@ nodes {
 }
 nodes {
   position {
-    x: 285.0
-    y: 707.0
+    x: 292.6244
+    y: 1067.8881
     z: 0.0
     w: 1.0
   }
