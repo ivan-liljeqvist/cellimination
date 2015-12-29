@@ -3,14 +3,14 @@ UNIT_DESCRIPTIONS={}
 HOVER_LAYOUT={}
 PRICES={}
 ICONS={}
-
+MAX_HEALTH={}
 
 
 
 
 --worker
 WORKER_NAME="WORKER"
-UNIT_DESCRIPTIONS[RBC_NAME]="Worker can build things but cannot fight"
+UNIT_DESCRIPTIONS[WORKER_NAME]="Worker can build things but cannot fight"
 
 
 

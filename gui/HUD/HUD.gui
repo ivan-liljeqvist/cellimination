@@ -27,8 +27,8 @@ background_color {
 }
 nodes {
   position {
-    x: 1265.4965
-    y: -5.0410185
+    x: 1920.9447
+    y: -2.631282
     z: 0.0
     w: 1.0
   }
@@ -75,13 +75,13 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 0.9
+  alpha: 0.0
   template_node_child: false
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: -2.4097364
+    y: -19.277891
     z: 0.0
     w: 1.0
   }
@@ -99,14 +99,14 @@ nodes {
   }
   size {
     x: 1920.0
-    y: 200.0
+    y: 230.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 0.07058824
-    y: 0.03137255
-    z: 0.019607844
+    x: 1.0
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
   type: TYPE_BOX
@@ -196,8 +196,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1084.9536
-    y: 13.98881
+    x: 1128.3289
+    y: 1.9401281
     z: 0.0
     w: 1.0
   }
@@ -243,8 +243,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 655.4483
+    y: 2.4097364
     z: 0.0
     w: 1.0
   }
@@ -304,8 +304,8 @@ nodes {
 }
 nodes {
   position {
-    x: 63.819977
-    y: 21.405405
+    x: 719.26825
+    y: 23.815142
     z: 0.0
     w: 1.0
   }
@@ -373,8 +373,8 @@ nodes {
 }
 nodes {
   position {
-    x: 10.0
-    y: 10.0
+    x: 665.4483
+    y: 12.409737
     z: 0.0
     w: 1.0
   }
@@ -429,8 +429,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1084.9536
-    y: 78.98881
+    x: 1128.3289
+    y: 66.940125
     z: 0.0
     w: 1.0
   }
@@ -476,8 +476,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 655.4483
+    y: 2.4097364
     z: 0.0
     w: 1.0
   }
@@ -537,8 +537,8 @@ nodes {
 }
 nodes {
   position {
-    x: 63.819977
-    y: 20.156193
+    x: 719.26825
+    y: 22.56593
     z: 0.0
     w: 1.0
   }
@@ -605,8 +605,8 @@ nodes {
 }
 nodes {
   position {
-    x: 10.0
-    y: 10.0
+    x: 665.4483
+    y: 12.409737
     z: 0.0
     w: 1.0
   }
@@ -661,8 +661,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1084.9536
-    y: 143.98882
+    x: 1128.3289
+    y: 131.94014
     z: 0.0
     w: 1.0
   }
@@ -708,8 +708,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 655.4483
+    y: 2.4097364
     z: 0.0
     w: 1.0
   }
@@ -769,8 +769,8 @@ nodes {
 }
 nodes {
   position {
-    x: 63.819977
-    y: 21.405405
+    x: 719.26825
+    y: 23.815142
     z: 0.0
     w: 1.0
   }
@@ -837,8 +837,8 @@ nodes {
 }
 nodes {
   position {
-    x: 10.0
-    y: 10.0
+    x: 665.4483
+    y: 12.409737
     z: 0.0
     w: 1.0
   }
@@ -893,8 +893,8 @@ nodes {
 }
 nodes {
   position {
-    x: 942.54364
-    y: 12.739597
+    x: 985.9189
+    y: 0.69091576
     z: 0.0
     w: 1.0
   }
@@ -940,8 +940,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 655.4483
+    y: 2.4097364
     z: 0.0
     w: 1.0
   }
@@ -1001,8 +1001,8 @@ nodes {
 }
 nodes {
   position {
-    x: 63.819977
-    y: 21.405405
+    x: 719.26825
+    y: 23.815142
     z: 0.0
     w: 1.0
   }
@@ -1069,8 +1069,8 @@ nodes {
 }
 nodes {
   position {
-    x: 10.0
-    y: 10.0
+    x: 665.4483
+    y: 12.409737
     z: 0.0
     w: 1.0
   }
@@ -1125,8 +1125,8 @@ nodes {
 }
 nodes {
   position {
-    x: 942.54364
-    y: 77.73959
+    x: 985.9189
+    y: 65.69091
     z: 0.0
     w: 1.0
   }
@@ -1172,8 +1172,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 655.4483
+    y: 2.4097364
     z: 0.0
     w: 1.0
   }
@@ -1233,8 +1233,8 @@ nodes {
 }
 nodes {
   position {
-    x: 63.819977
-    y: 20.156193
+    x: 719.26825
+    y: 22.56593
     z: 0.0
     w: 1.0
   }
@@ -1301,8 +1301,8 @@ nodes {
 }
 nodes {
   position {
-    x: 10.0
-    y: 10.0
+    x: 665.4483
+    y: 12.409737
     z: 0.0
     w: 1.0
   }
@@ -1357,8 +1357,8 @@ nodes {
 }
 nodes {
   position {
-    x: 942.54364
-    y: 142.73961
+    x: 985.9189
+    y: 130.69093
     z: 0.0
     w: 1.0
   }
@@ -1404,8 +1404,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 655.4483
+    y: 2.4097364
     z: 0.0
     w: 1.0
   }
@@ -1465,8 +1465,8 @@ nodes {
 }
 nodes {
   position {
-    x: 63.819977
-    y: 21.405405
+    x: 719.26825
+    y: 23.815142
     z: 0.0
     w: 1.0
   }
@@ -1533,8 +1533,8 @@ nodes {
 }
 nodes {
   position {
-    x: 10.0
-    y: 10.0
+    x: 665.4483
+    y: 12.409737
     z: 0.0
     w: 1.0
   }
@@ -1589,8 +1589,8 @@ nodes {
 }
 nodes {
   position {
-    x: 798.88434
-    y: 11.490386
+    x: 842.2596
+    y: -0.55829555
     z: 0.0
     w: 1.0
   }
@@ -1636,8 +1636,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 655.4483
+    y: 2.4097364
     z: 0.0
     w: 1.0
   }
@@ -1697,8 +1697,8 @@ nodes {
 }
 nodes {
   position {
-    x: 63.819977
-    y: 21.405405
+    x: 719.26825
+    y: 23.815142
     z: 0.0
     w: 1.0
   }
@@ -1765,8 +1765,8 @@ nodes {
 }
 nodes {
   position {
-    x: 10.0
-    y: 10.0
+    x: 665.4483
+    y: 12.409737
     z: 0.0
     w: 1.0
   }
@@ -1821,8 +1821,8 @@ nodes {
 }
 nodes {
   position {
-    x: 798.88434
-    y: 76.49039
+    x: 842.2596
+    y: 64.4417
     z: 0.0
     w: 1.0
   }
@@ -1868,8 +1868,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 655.4483
+    y: 2.4097364
     z: 0.0
     w: 1.0
   }
@@ -1929,8 +1929,8 @@ nodes {
 }
 nodes {
   position {
-    x: 63.819977
-    y: 20.156193
+    x: 719.26825
+    y: 22.56593
     z: 0.0
     w: 1.0
   }
@@ -1997,8 +1997,8 @@ nodes {
 }
 nodes {
   position {
-    x: 10.0
-    y: 10.0
+    x: 665.4483
+    y: 12.409737
     z: 0.0
     w: 1.0
   }
@@ -2053,8 +2053,8 @@ nodes {
 }
 nodes {
   position {
-    x: 798.88434
-    y: 141.49039
+    x: 842.2596
+    y: 129.44171
     z: 0.0
     w: 1.0
   }
@@ -2100,8 +2100,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 655.4483
+    y: 2.4097364
     z: 0.0
     w: 1.0
   }
@@ -2161,8 +2161,8 @@ nodes {
 }
 nodes {
   position {
-    x: 63.819977
-    y: 21.405405
+    x: 719.26825
+    y: 23.815142
     z: 0.0
     w: 1.0
   }
@@ -2229,8 +2229,8 @@ nodes {
 }
 nodes {
   position {
-    x: 10.0
-    y: 10.0
+    x: 665.4483
+    y: 12.409737
     z: 0.0
     w: 1.0
   }
@@ -2887,7 +2887,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/RBCIcon"
+  texture: ""
   id: "productionButton1/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3112,7 +3112,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/RBCIcon"
+  texture: ""
   id: "productionButton2/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3336,7 +3336,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/RBCIcon"
+  texture: ""
   id: "productionButton3/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3560,7 +3560,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/RBCIcon"
+  texture: ""
   id: "productionButton4/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3711,8 +3711,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1257.5206
-    y: 247.39967
+    x: 1912.9689
+    y: 249.8094
     z: 0.0
     w: 1.0
   }
@@ -3743,7 +3743,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Red Blood Cell is a quick and cheap unit (test)"
-  font: "smallerFont"
+  font: "gameFont"
   id: "unitDescription"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3774,8 +3774,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1078.9594
-    y: 228.92178
+    x: 1734.4076
+    y: 231.33151
     z: 0.0
     w: 1.0
   }
@@ -3827,8 +3827,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1152.1053
-    y: 227.1197
+    x: 1807.5536
+    y: 229.52943
     z: 0.0
     w: 1.0
   }
@@ -3880,8 +3880,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1218.0432
-    y: 227.1197
+    x: 1873.4915
+    y: 229.52943
     z: 0.0
     w: 1.0
   }
@@ -3933,8 +3933,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1118.7611
-    y: 220.81244
+    x: 1774.2094
+    y: 223.22217
     z: 0.0
     w: 1.0
   }
@@ -3996,8 +3996,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1189.0419
-    y: 220.81244
+    x: 1844.4901
+    y: 223.22217
     z: 0.0
     w: 1.0
   }
@@ -4059,8 +4059,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1253.9165
-    y: 220.81244
+    x: 1909.3647
+    y: 223.22217
     z: 0.0
     w: 1.0
   }
@@ -4122,8 +4122,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1257.5206
-    y: 267.22247
+    x: 1908.1494
+    y: 286.50037
     z: 0.0
     w: 1.0
   }
@@ -4154,7 +4154,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: ""
-  font: "smallerFont"
+  font: "gameFont"
   id: "errorText"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

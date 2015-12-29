@@ -144,7 +144,7 @@ function update(self, dt)
     
     for unit,stillHere in pairs(SELECTED_UNITS) do 
     
-    	if stillHere then
+    	if stillHere and unit and ALIVE[unit.id] then
     	
     		if selectedUnitsNumberLookup[unit.name]==nil then
     			selectedUnitsNumberLookup[unit.name]=0
@@ -470,6 +470,14 @@ function on_message(self, message_id, message, sender)
     
     if message_id==hash("newInput") then
 		checkIfAnyButtonClicked(message.action,message.action_id)
+	elseif message_id==hash("unitDestroyed")then
+		if unitWithGUI then
+			if unitWithGUI.id==message.id then
+				unitWithGUI={}
+			end
+		else
+			unitWithGUI={}
+		end
 	elseif message_id==hash("displayErrorMessage")then
 		--errorText
 		displayingError=true

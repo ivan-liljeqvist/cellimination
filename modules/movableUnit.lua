@@ -43,9 +43,7 @@ function updateRotation(self,go)
 		
 		self.dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
 		
-		if self.currentShot then
-			msg.post(msg.url(self.currentShot),"updateRotation",{rot=vmath.quat_rotation_z(angle/2)})
-		end
+
 	end
 end
 
@@ -79,6 +77,7 @@ function unitUpdate(self,go,dt)
 	if self.canFight then
 		fightingUnitUpdate(self,go,dt)
 	end
+	
 	
 	updateRotation(self,go)
 	moveAccordingToPath(self,go,dt)

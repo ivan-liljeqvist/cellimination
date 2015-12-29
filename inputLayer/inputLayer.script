@@ -14,7 +14,7 @@ function on_input(self, action_id, action)
 	end
 	
 	if ZOOM_LEVEL<1.2 then ZOOM_LEVEL=1.0 end
-	if ZOOM_LEVEL>2.4 then ZOOM_LEVEL=2.5 end
+	if ZOOM_LEVEL>2.4 then ZOOM_LEVEL=2.4 end
 	
 	moveMinimap(action,action_id)
 	
@@ -38,7 +38,9 @@ local holdingDownOnMinimap=false
 
 function moveMinimap(action,action_id)
 	if action.x<HUD_RIGHT_HEIGHT and action.y<HUD_RIGHT_HEIGHT  then
-
+	
+		GUI_CLICKED=true
+		
 		if action_id==hash("leftClicked") and action.pressed and holdingDownOnMinimap==false then
 			
 			sendMessageToMinimap(action)

@@ -43,7 +43,7 @@ function handleSelectMethods(self,go,message_id,message)
 	--check if self is inside the selection, if it is, select itself
 	elseif message_id==hash("massSelection") then
 		
-		if isInsideSelection(message.start,message.current,message.pivot) and alreadySelected()==false then
+		if isInsideSelection(message.start,message.current,message.pivot) and alreadySelected()==false and self.teamNumber==PLAYER_TEAM then
 			
 			addToSelectedUnits(self)
 			massSelect(self,"hej",go)

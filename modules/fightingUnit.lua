@@ -14,6 +14,8 @@ function initFightingUnit(self)
 	
 	self.firingRange=2 --if melee we need to be next to the enemy
 	self.visionRange = 4
+	
+	self.fightUpdateCounter=0 --we don't want to run fight logic every frame
 
 end
 
@@ -57,13 +59,18 @@ function fightingUnitUpdate(self,go,dt)
 
 	if self.canFight==false then return end
 
-	pcall(searchForTarget,self)
+	if self.fightUpdateCounter%20==0 then
+		pcall(searchForTarget,self)
+		self.fightUpdateCounter=0
+	end
 	
-	self.isFighting=true
-	msg.post(self.targetEnemyId,"requestPosition",{})
+	if self.targetEnemyId and  ALIVE[self.targetEnemyId] then
+		self.isFighting=true
+		msg.post(self.targetEnemyId,"requestPosition",{})
+	end
 
 	
-	
+	self.fightUpdateCounter=self.fightUpdateCounter+1
 	
 end
 
@@ -212,6 +219,12 @@ function fightingUnitMessageHandler(self,go,message_id,message,sender)
 		
 		if self.targetEnemyTeam == self.teamNumber then
 			resetTargetEnemy(self)
+		else --we've been hit by an enemy
+		
+			--self.health=self.health-10
+			print("will destroy")
+			destroyUnit(self)
+		
 		end
 
 	end

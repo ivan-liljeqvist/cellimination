@@ -54,10 +54,14 @@ function generateNewPathToTile(self,tileNode)
 end
 
 function generateNewPathToTileCoords(self,tileX,tileY)
+
+	if tileX<TILEMAP_MINX or tileX>TILEMAP_MAXX or tileY<TILEMAP_MINY or tileY>TILEMAP_MAXY then
+		return false
+	end
 		
 		
-			TILEMAP_NODES[self.lastDestIndex].occupied=false
-			TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
+	 TILEMAP_NODES[self.lastDestIndex].occupied=false
+	 TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
 		
 		
 		local tileType=getTileTypeAt(tileX,tileY)

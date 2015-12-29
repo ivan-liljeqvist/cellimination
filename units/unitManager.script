@@ -1,7 +1,7 @@
 
 function init(self)
 	
-	local enemy = factory.create("#jeepFactory",vmath.vector3(1400, 800, 1))
+	local enemy = factory.create("#jeepFactory",vmath.vector3(2400, 1800, 0.1))
 	setTeam(enemy,ENEMY_TEAM)
 	
 end

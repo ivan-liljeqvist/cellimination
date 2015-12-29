@@ -1,7 +1,7 @@
-name: "fog"
-tags: "fog"
-vertex_program: "/fogOfWar/fog.vp"
-fragment_program: "/fogOfWar/fog.fp"
+name: "tile_map"
+tags: "owntile"
+vertex_program: "/ground/owntile_map.vp"
+fragment_program: "/ground/owntile_map.fp"
 vertex_constants {
   name: "view_proj"
   type: CONSTANT_TYPE_VIEWPROJ

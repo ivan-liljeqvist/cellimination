@@ -18,7 +18,8 @@ function initBasicUnit(self,name,goID)
 	self.id=go.get_id()
     
     self.name=name
-    
+    self.id=goID
+    ALIVE[self.id]=true
     registerForInput(goID)
     
     table.insert(selectableUnits, self.go.get_id())
@@ -43,11 +44,24 @@ function initBasicUnit(self,name,goID)
    
 end
 
+
+
 function destroyUnit(self)
 	self.go.delete(self.go.get_id())
 	GAME_OBJECTS_THAT_REQUIRE_INPUT[self.go.get_id()]=nil
-	MY_UNITS[self]=false
 	table.remove(selectableUnits,self.indexInSelectableUnits)
+	
+	MY_UNITS[self]=nil
+	local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
+    TILEMAP_NODES[currentNodeIndex].occupied = false
+    TILEMAP_NODES[currentNodeIndex].occupiedBy = nil
+    unregisterForInput(self.id)
+    
+    removeFromSelectedUnits(self)
+    
+    msg.post("HUD","unitDestroyed",{id=self.id})
+    
+    ALIVE[self.id]=false
 end
 
 

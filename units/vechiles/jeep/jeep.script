@@ -11,7 +11,7 @@ function init(self)
 	
 	self.id=go.get_id()
 	
-	self.initialScale=0.1
+	self.initialScale=0.05
 	self.fogRadius=JEEP_FOG_RADIUS
 	
 	self.spotEnemiesRadius=2
@@ -36,7 +36,7 @@ function init(self)
 	
 	self.requiresGUI=true
 	local deselectAction=function() msg.post("manager","deselectAll",{}) end
-	self.GUILayout={button1={text="Deselect",action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
+	self.GUILayout={button1={icon="deselectIcon",action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
 					button2=nil,
 					button3=nil,
 					button4=nil,
@@ -46,7 +46,9 @@ function init(self)
 					button8=nil,
 					button9=nil}
 					
-	TIME_TO_PRODUCE[RBC_NAME]=5
+	TIME_TO_PRODUCE[self.name]=10
+	
+	self.health=100
 end
 
 

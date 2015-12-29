@@ -18,6 +18,7 @@ function buildingInput(self,action,action_id)
 	
 		if self.canBuildHere then
 			
+			deductResources(self.name)
 			buildHere(action.x*ZOOM_LEVEL,action.y*ZOOM_LEVEL,self)
 			
 		else 

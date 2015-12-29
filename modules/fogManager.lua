@@ -7,7 +7,7 @@ fogCounter=0
 local clearFogFunc=function(x,y)
 		
 		if isWithinTilemap(x,y) then
-			tilemapObject.set_tile("world#tilemap", "fogOfWar", x, y,0)
+			tilemapObject.set_tile("fog#tilemap", "fog", x, y,0)
 		end
 	
 end
@@ -17,7 +17,7 @@ function updateFoW()
 
 	fogCounter=fogCounter+1
 	
-	if fogCounter%13 ~= 0 then
+	if fogCounter%5 ~= 0 then
 		return
 	else 
 		fogCounter=0
@@ -26,7 +26,7 @@ function updateFoW()
 	--go through all of player's units
 	for unit,isAlive in pairs(MY_UNITS) do
 		
-		if isAlive then
+		if isAlive and unit.teamNumber==PLAYER_TEAM then
 		
 			if unit.isBuilding and unit.prototypeMode then return end --dont reveal if building in prototype mode
 			
@@ -39,7 +39,7 @@ function updateFoW()
 			
 			--make the tile the unit stands on visible
 			if tileX+1<TILEMAP_MAXX and tileY+1<TILEMAP_MAXY then
-				tilemapObject.set_tile("world#tilemap", "fogOfWar", tileX+1, tileY+1,0)
+				tilemapObject.set_tile("fog#tilemap", "fog", tileX+1, tileY+1,0)
 			end
 			
 			for counter=1, unit.fogRadius, 1 do

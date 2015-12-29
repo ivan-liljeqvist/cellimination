@@ -139,6 +139,7 @@ function a_star ( start, goal, nodes, valid_node_func )
 		table.insert ( closedset, current )
 		
 		local neighbors = neighbor_nodes ( current, nodes )
+		local counter=0
 		for _, neighbor in ipairs ( neighbors ) do 
 			if not_in ( closedset, neighbor ) then
 			
@@ -149,10 +150,14 @@ function a_star ( start, goal, nodes, valid_node_func )
 					g_score 	[ neighbor ] = tentative_g_score
 					f_score 	[ neighbor ] = g_score [ neighbor ] + heuristic_cost_estimate ( neighbor, goal )
 					if not_in ( openset, neighbor ) then
-						table.insert ( openset, neighbor )
+						
+							table.insert ( openset, neighbor )
+					
 					end
 				end
 			end
+			
+			counter=counter+1
 		end
 	end
 	return nil -- no valid path
@@ -174,6 +179,13 @@ end
 
 function path ( start, goal, nodes, ignore_cache, valid_node_func )
 
+	
+	if not cachedPaths then cachedPaths = {} end
+	if not cachedPaths [ start ] then
+		cachedPaths [ start ] = {}
+	elseif cachedPaths [ start ] [ goal ] and not ignore_cache then
+		return cachedPaths [ start ] [ goal ]
+	end
 	
 	return a_star ( start, goal, nodes, valid_node_func )
 end
