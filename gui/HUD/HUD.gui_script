@@ -14,14 +14,21 @@ BUTTON7="hudButton7"
 BUTTON8="hudButton8"
 BUTTON9="hudButton9"
 
+PRODUCTION_BUTTON1="productionButton1"
+PRODUCTION_BUTTON2="productionButton2"
+PRODUCTION_BUTTON3="productionButton3"
+PRODUCTION_BUTTON4="productionButton4"
+PRODUCTION_TITLE="productionTitle"
+PRODUCTION_PERCENT="productionPercent"
+
 NO_BUTTON=""
 
 currentlyHitButton=NO_BUTTON;
 
-local uglyFlag=false
+local unitWithGUI={}
+
 
 local releasedSinceLast=true
-
 local currentLayout={}
 
 function init(self)
@@ -37,74 +44,19 @@ function init(self)
    addButton(BUTTON8)
    addButton(BUTTON9)
    
-
+   addButton(PRODUCTION_BUTTON1)
+   addButton(PRODUCTION_BUTTON2)
+   addButton(PRODUCTION_BUTTON3)
+   addButton(PRODUCTION_BUTTON4)
        
 end
 
-function checkIfAnyButtonClicked(action,action_id)
-	
-	if action.pressed and action_id==hash("leftClicked") and releasedSinceLast then
-	
-		GUI_CLICKED=false
-		
-		--go through all buttons on the HUD 
-		releasedSinceLast=false
-		for _,buttonObject in  pairs(HUDButtons) do 
-		
-			local id=buttonObject.id
-			--check if click is inside the button
-			if isButtonHit(action,id) and buttonObject.visible then
-				GUI_CLICKED=true
-				highlightButton(id)
-				currentlyHitButton=id
-				--send the id to the handler of the click
-				handleButtonClicked(id)
-			end
-		end
-	--if released, just dehighlight the current button
-	elseif action.released then
-		releasedSinceLast=true
-		dehighlightButton(currentlyHitButton)
-		currentlyHitButton=NO_BUTTON
-	end
-end
 
-function handleButtonClicked(id) 
-
-
-	if id==BUTTON1 then
-		currentLayout.button1.action()
-	elseif id==BUTTON2 then
-		currentLayout.button2.action()
-	elseif id==BUTTON3 then
-		currentLayout.button3.action()
-	elseif id==BUTTON4 then
-		currentLayout.button4.action()
-	elseif id==BUTTON5 then
-		currentLayout.button5.action()
-	elseif id==BUTTON6 then
-		currentLayout.button6.action()
-	elseif id==BUTTON7 then
-		currentLayout.button7.action()
-	elseif id==BUTTON8 then
-		currentLayout.button8.action()
-	elseif id==BUTTON9 then
-		currentLayout.button9.action()
-	end
-	
-end
-
-
-function final(self)
-    -- Add finalization code here
-    -- Remove this function if not needed
-end
 
 function update(self, dt)
     
     local selectionTextNew=""
     local foundSelectedWithGUI=false
-    local unitWithGUI={}
     
     updateResourcesLabels()
     
@@ -138,96 +90,18 @@ function update(self, dt)
 	
    gui.set_text(self.selectionText,selectionNewText)	
    
+   if unitWithGUI.producer then
+   		showProductionSection()
+   		updateProductionPercentage()
+   else
+   		hideProductionSection()
+   end
+   
    applyGUILayout(unitWithGUI.GUILayout)
+   
    
    currentLayout=unitWithGUI.GUILayout
 
-end
-
-
-function on_message(self, message_id, message, sender)
-    -- Add message-handling code here
-    -- Remove this function if not needed
-    
-    if message_id==hash("newInput") then
-		checkIfAnyButtonClicked(message.action,message.action_id)
-	end
-end
-
-
-
-function on_reload(self)
-    -- Add input-handling code here
-    -- Remove this function if not needed
-end
-
-
---helper methods for button management
-
-function addButton(id)
-	HUDButtons[id]={id=id,visible=false}
-	hideButton(id)
-end
-
-function getButtonBounds(id)
-
-	
-	local boxNode=gui.get_node(id.."/box")
-	local pos=gui.get_position(boxNode)
-	local size=gui.get_size(boxNode)
-	
-	local Xmin = pos.x
-	local Ymin = pos.y
-	local Xmax = pos.x+size.x
-	local Ymax = pos.y+size.y
-	
-	return {Xmin,Xmax,Ymin,Ymax}
-end
-
-function isButtonHit(action,id)
-
-	
-	if ((action.x > getButtonBounds(id)[1] and action.x < getButtonBounds(id)[2]) and 
-		(action.y > getButtonBounds(id)[3] and action.y < getButtonBounds(id)[4])) then
-    	return true
-	end
-	
-	return false
-end
-
-function hideButton(id)
-   gui.set_color(gui.get_node(id.."/text"), vmath.vector4(0, 0, 0, 0))
-   gui.set_color(gui.get_node(id.."/box"), vmath.vector4(0, 0, 0, 0))
-   
-   HUDButtons[id]={id=id,visible=false}
-end
-
---not highlighting cuz it overrides in update each loop
-
-function highlightButton(id)
-	
-	if(id~=NO_BUTTON)then
-		gui.set_color(gui.get_node(id.."/box"), vmath.vector4(0, 1, 0, 1))
-	end
-end
-
-function dehighlightButton(id)
-	if(id~=NO_BUTTON)then
-		gui.set_color(gui.get_node(id.."/box"), vmath.vector4(1, 0, 0, 1))
-	end
-end
-
-function showButton(id)
-	gui.set_color(gui.get_node(id.."/text"), vmath.vector4(1, 1, 1, 1))
-    gui.set_color(gui.get_node(id.."/box"), vmath.vector4(1, 0, 0, 1))
-    
-    HUDButtons[id]={id=id,visible=true}
-    
-end
-
-function showButtonWithText(id,text)
-	showButton(id)
-	gui.set_text(gui.get_node(id.."/text"), text)
 end
 
 function updateResourcesLabels()
@@ -236,6 +110,64 @@ function updateResourcesLabels()
 	gui.set_text(gui.get_node("carbsText"), math.floor(CARBS).." carbs.")
 end
 
+
+function hideProductionSection()
+   
+   
+   hideButton(PRODUCTION_BUTTON1)
+   hideButton(PRODUCTION_BUTTON2)
+   hideButton(PRODUCTION_BUTTON3)
+   hideButton(PRODUCTION_BUTTON4)
+   hideNode(PRODUCTION_TITLE)
+   hideNode(PRODUCTION_PERCENT)
+end
+
+function showProductionSection()
+
+	local producer=unitWithGUI
+
+   
+	local numToProduce = table.getn(producer.toProduce)
+
+	if numToProduce>= 1 then
+   		showButton(PRODUCTION_BUTTON1)
+   	else
+   		hideButton(PRODUCTION_BUTTON1)
+   	end
+   	if numToProduce>=2 then
+   		showButton(PRODUCTION_BUTTON2)
+   	else
+   		hideButton(PRODUCTION_BUTTON2)
+   	end
+   	if numToProduce>=3 then
+   		showButton(PRODUCTION_BUTTON3)
+   	else
+   		hideButton(PRODUCTION_BUTTON3)
+   	end
+   	if numToProduce>=4 then
+   		showButton(PRODUCTION_BUTTON4)
+   	else
+   		hideButton(PRODUCTION_BUTTON4)
+   	end
+   	
+   	showNode(PRODUCTION_TITLE)
+   	showNode(PRODUCTION_PERCENT)
+   	
+   	if unitWithGUI.producer and string.len(unitWithGUI.currentlyProducingItem)>0 then
+   		gui.set_text(gui.get_node(PRODUCTION_TITLE),"Making "..unitWithGUI.currentlyProducingItem)
+   	else	
+   		gui.set_text(gui.get_node(PRODUCTION_TITLE),"")
+   	end
+   	
+end
+
+function updateProductionPercentage()
+	if unitWithGUI.currentProductionProgress>0 then
+		gui.set_text(gui.get_node(PRODUCTION_PERCENT),math.floor(unitWithGUI.currentProductionProgress*100).." %")
+	else
+		hideNode(PRODUCTION_PERCENT)
+	end
+end
 
 
 function applyGUILayout(layout)
@@ -314,4 +246,165 @@ function applyGUILayout(layout)
 		hideButton(BUTTON9)
 		
 	end
+end
+
+function checkIfAnyButtonClicked(action,action_id)
+	
+	if action.pressed and action_id==hash("leftClicked") and releasedSinceLast then
+	
+		GUI_CLICKED=false
+		
+		--go through all buttons on the HUD 
+		releasedSinceLast=false
+		for _,buttonObject in  pairs(HUDButtons) do 
+		
+			local id=buttonObject.id
+			--check if click is inside the button
+			if isButtonHit(action,id) and buttonObject.visible then
+				GUI_CLICKED=true
+				highlightButton(id)
+				currentlyHitButton=id
+				--send the id to the handler of the click
+				handleButtonClicked(id)
+			end
+		end
+	--if released, just dehighlight the current button
+	elseif action.released then
+		releasedSinceLast=true
+		dehighlightButton(currentlyHitButton)
+		currentlyHitButton=NO_BUTTON
+	end
+end
+
+function handleButtonClicked(id) 
+	
+	print(id)
+
+	if id==BUTTON1 then
+		currentLayout.button1.action()
+	elseif id==BUTTON2 then
+		currentLayout.button2.action()
+	elseif id==BUTTON3 then
+		currentLayout.button3.action()
+	elseif id==BUTTON4 then
+		currentLayout.button4.action()
+	elseif id==BUTTON5 then
+		currentLayout.button5.action()
+	elseif id==BUTTON6 then
+		currentLayout.button6.action()
+	elseif id==BUTTON7 then
+		currentLayout.button7.action()
+	elseif id==BUTTON8 then
+		currentLayout.button8.action()
+	elseif id==BUTTON9 then
+		currentLayout.button9.action()
+	elseif id==PRODUCTION_BUTTON1 then
+		
+		currentLayout.productionButton1.action(unitWithGUI)
+	elseif id==PRODUCTION_BUTTON2 then
+		currentLayout.productionButton2.action(unitWithGUI)
+	elseif id==PRODUCTION_BUTTON3 then
+		currentLayout.productionButton3.action(unitWithGUI)
+	elseif id==PRODUCTION_BUTTON4 then
+		currentLayout.productionButton4.action(unitWithGUI)
+	end
+	
+end
+
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+    -- Add message-handling code here
+    -- Remove this function if not needed
+    
+    if message_id==hash("newInput") then
+		checkIfAnyButtonClicked(message.action,message.action_id)
+	end
+end
+
+
+
+function on_reload(self)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end
+
+
+--helper methods for button management
+
+function addButton(id)
+	HUDButtons[id]={id=id,visible=false}
+	hideButton(id)
+end
+
+function getButtonBounds(id)
+
+	
+	local boxNode=gui.get_node(id.."/box")
+	local pos=gui.get_position(boxNode)
+	local size=gui.get_size(boxNode)
+	
+	local Xmin = pos.x
+	local Ymin = pos.y
+	local Xmax = pos.x+size.x
+	local Ymax = pos.y+size.y
+	
+	return {Xmin,Xmax,Ymin,Ymax}
+end
+
+function isButtonHit(action,id)
+
+	
+	if ((action.x > getButtonBounds(id)[1] and action.x < getButtonBounds(id)[2]) and 
+		(action.y > getButtonBounds(id)[3] and action.y < getButtonBounds(id)[4])) then
+    	return true
+	end
+	
+	return false
+end
+
+function hideButton(id)
+   gui.set_color(gui.get_node(id.."/text"), vmath.vector4(0, 0, 0, 0))
+   gui.set_color(gui.get_node(id.."/box"), vmath.vector4(0, 0, 0, 0))
+   
+   HUDButtons[id]={id=id,visible=false}
+end
+
+--not highlighting cuz it overrides in update each loop
+
+function highlightButton(id)
+	
+	if(id~=NO_BUTTON)then
+		gui.set_color(gui.get_node(id.."/box"), vmath.vector4(0, 1, 0, 1))
+	end
+end
+
+function dehighlightButton(id)
+	if(id~=NO_BUTTON)then
+		gui.set_color(gui.get_node(id.."/box"), vmath.vector4(1, 0, 0, 1))
+	end
+end
+
+function showButton(id)
+	gui.set_color(gui.get_node(id.."/text"), vmath.vector4(1, 1, 1, 1))
+    gui.set_color(gui.get_node(id.."/box"), vmath.vector4(1, 0, 0, 1))
+    
+    HUDButtons[id]={id=id,visible=true}
+end
+
+function hideNode(id)
+	gui.set_color(gui.get_node(id), vmath.vector4(0, 0, 0, 0))
+end
+
+function showNode(id)
+	gui.set_color(gui.get_node(id), vmath.vector4(1, 1, 1, 1))
+end
+
+function showButtonWithText(id,text)
+	showButton(id)
+	gui.set_text(gui.get_node(id.."/text"), text)
 end

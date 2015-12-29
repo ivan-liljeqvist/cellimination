@@ -13,14 +13,24 @@ function init(self)
 	
     initBasicUnit(self,BASE_NAME,go.get_id())
 	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=0},width=2,height=4},go)
+	initProductionUnit(self)
 	
 	self.parseInput=function(self, action_id, action)
 		
 		buildingInput(self,action,action_id)
 	end
 	
-	local buildRedBloodCellAction=function() msg.post("unitManager", "newJeep") end
-		self.requiresGUI=true
+	local buildRedBloodCellAction=function() 
+		queueRedBloodCell(self)
+	end
+	
+	self.productionComplete=function(itemName,self)
+		if itemName==RBC_NAME then
+			redBloodCellDone(self)
+		end
+	end
+	
+	self.requiresGUI=true
 	local deselectAction=function() msg.post("manager","deselectAll",{}) end
 	self.GUILayout={button1={text="Deselect",action=deselectAction},
 					button2={text="Build Red Blood Cell",action=buildRedBloodCellAction},
@@ -30,37 +40,39 @@ function init(self)
 					button6=nil,
 					button7=nil,
 					button8=nil,
-					button9=nil}
+					button9=nil,
+					productionButton1={text="",action=productionButton1Pressed},
+					productionButton2={text="",action=productionButton2Pressed},
+					productionButton3={text="",action=productionButton3Pressed},
+					productionButton4={text="",action=productionButton4Pressed}}
+
 					
+end
+
+function queueRedBloodCell(self)
+	
+	if table.getn(self.toProduce)<MAX_PRODUCTION_QUEUE then
+		table.insert(self.toProduce,RBC_NAME)
+	end
+end
+
+function redBloodCellDone(self)
+	msg.post("unitManager", "newJeep", {position=vmath.vector3(self.x,self.y,1)}) 
 end
 
 
 function update(self, dt)
 
     buildingUpdate(self,dt,go)
+    updateProductionUnit(self,dt)
     
 end
-
-
 
 function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
-	
-	if self.selected then
-		CURRENT_PRODUCER_POSITION={x=go.get_position().x,y=go.get_position().y}
-	end
 
 end
 
-function on_reload(self)
-    -- Add reload-handling code here
-    -- Remove this function if not needed
-end
-
-function final(self)
-    -- Add finalization code here
-    -- Remove this function if not needed
-end
 
 

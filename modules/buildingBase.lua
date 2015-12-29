@@ -133,8 +133,7 @@ function canBuildAtTile(self,tileX,tileY)
 	local nodeIndex = TILEMAP_INDEX_LOOKUP[tileX][tileY] 
 	local tileNode = TILEMAP_NODES[nodeIndex] 
 	
-	print("nodeIndex: "..nodeIndex.." ".."tileNode.blockedType: "..tileNode.blockedType.." tileNode.type "..tileNode.type)
-	
+
 	--if normal building, not an extractor
 	if self.isProteinExtractor~=true and self.isCarbExtractor~=true 
 		and self.isFatExtractor~=true then

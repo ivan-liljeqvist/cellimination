@@ -35,7 +35,7 @@ function updateRotation(self,go)
 		angle = angle-math.pi*0.5
 		
 		angle=math.abs(angle)
-		if angle>=3.14 and self.isFighting then angle=2.0 end
+		if angle>=3.14 and self.isFighting then angle=0.0 end
 		
 		
 		self.go.set_rotation(vmath.quat_rotation_z(angle))

@@ -87,6 +87,8 @@ function shootOrChase(self)
 			if table.getn(self.currentPath)<=0 and self.orderedToMove==false then
 				if targetWithinVisionRange(self) then
 					moveTowardsTarget(self) --only move if we see target
+				else
+					resetTargetEnemy(self)
 				end
 			end
 		end

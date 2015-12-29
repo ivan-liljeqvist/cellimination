@@ -18,7 +18,7 @@ function init(self)
 	
 	self.factory=factory
 	
-    initBasicUnit(self,JEEP_NAME,go.get_id())
+    initBasicUnit(self,RBC_NAME,go.get_id())
     initMovableUnit(self)
     initFightingUnit(self,false)
     
@@ -46,7 +46,7 @@ function init(self)
 					button8=nil,
 					button9=nil}
 					
-	
+	TIME_TO_PRODUCE[RBC_NAME]=5
 end
 
 
