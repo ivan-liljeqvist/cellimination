@@ -25,13 +25,13 @@ function init(self)
 	local buildFatExtractor=function() msg.post("buildingManager", "newFatExtractor") end
 	local buildProteinExtractor=function() msg.post("buildingManager", "newProteinExtractor") end
 	
-	self.GUILayout={button1={text="Deselect",action=deselectAction,hover=function() print("hej") end},
+	self.GUILayout={button1={icon="deselectIcon",action=deselectAction, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
 					button2=nil,
 					button3=nil,
-					button4={text="Build Protein Extractor",action=buildProteinExtractor, hover=function() print("hej") end},
-					button5={text="Build Fat Extractor",action=buildFatExtractor, hover=function() print("hej") end},
-					button6={text="Build Carb. Extractor",action=buildCarbExtractor, hover=function() print("hej") end},
-					button7={text="Build base",action=buildBaseAction, hover=function() print("hej") end},
+					button4={icon="proteinExtractorIcon",action=buildProteinExtractor,hover= function() return HOVER_LAYOUT[PROTEIN_EXTRACTOR_NAME] end},
+					button5={icon="fatExtractorIcon",action=buildFatExtractor, hover=function() return HOVER_LAYOUT[FAT_EXTRACTOR_NAME] end},
+					button6={icon="carbExtractorIcon",action=buildCarbExtractor, hover=function() return HOVER_LAYOUT[CARB_EXTRACTOR_NAME] end},
+					button7={icon="mainBaseIcon",action=buildBaseAction,hover=function() return HOVER_LAYOUT[BASE_NAME] end},
 					button8=nil,
 					button9=nil}
 end

@@ -1,0 +1,24 @@
+images {
+  image: "/graphicalAssets/gui/button.png"
+}
+images {
+  image: "/graphicalAssets/gui/RBCIcon.png"
+}
+images {
+  image: "/graphicalAssets/gui/deselectIcon.png"
+}
+images {
+  image: "/graphicalAssets/gui/carbExtractorIcon.png"
+}
+images {
+  image: "/graphicalAssets/gui/proteinExtractorIcon.png"
+}
+images {
+  image: "/graphicalAssets/gui/fatExtractorIcon.png"
+}
+images {
+  image: "/graphicalAssets/gui/mainBaseIcon.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

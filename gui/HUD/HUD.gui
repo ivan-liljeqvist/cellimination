@@ -15,6 +15,10 @@ textures {
   name: "resources"
   texture: "/graphicalAssets/resourceIcons/resources.atlas"
 }
+textures {
+  name: "gui"
+  texture: "/graphicalAssets/gui/gui.atlas"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -239,8 +243,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.11343442
-    y: -1.988547
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -257,8 +261,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 130.0
-    y: 50.0
+    x: 60.0
+    y: 60.0
     z: 0.0
     w: 1.0
   }
@@ -270,7 +274,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "hudButton1/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -292,6 +296,7 @@ nodes {
   overridden_fields: 1
   overridden_fields: 2
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 14
   overridden_fields: 22
   overridden_fields: 27
@@ -330,7 +335,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "buttonText"
+  text: ""
   font: "smallerFont"
   id: "hudButton1/text"
   xanchor: XANCHOR_NONE
@@ -364,6 +369,62 @@ nodes {
   overridden_fields: 4
   overridden_fields: 10
   overridden_fields: 17
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 10.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "hudButton1/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "hudButton1"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
   template_node_child: true
 }
 nodes {
@@ -415,8 +476,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.11343442
-    y: -1.988547
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -433,8 +494,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 130.0
-    y: 50.0
+    x: 60.0
+    y: 60.0
     z: 0.0
     w: 1.0
   }
@@ -446,7 +507,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "hudButton2/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -468,6 +529,7 @@ nodes {
   overridden_fields: 1
   overridden_fields: 2
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 14
   overridden_fields: 22
   overridden_fields: 27
@@ -506,7 +568,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "buttonText"
+  text: ""
   font: "smallerFont"
   id: "hudButton2/text"
   xanchor: XANCHOR_NONE
@@ -539,6 +601,62 @@ nodes {
   overridden_fields: 2
   overridden_fields: 4
   overridden_fields: 10
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 10.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "hudButton2/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "hudButton2"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
   template_node_child: true
 }
 nodes {
@@ -590,8 +708,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.11343442
-    y: -1.988547
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -608,8 +726,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 130.0
-    y: 50.0
+    x: 60.0
+    y: 60.0
     z: 0.0
     w: 1.0
   }
@@ -621,7 +739,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "hudButton3/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -643,6 +761,7 @@ nodes {
   overridden_fields: 1
   overridden_fields: 2
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 14
   overridden_fields: 22
   overridden_fields: 27
@@ -681,7 +800,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "buttonText"
+  text: ""
   font: "smallerFont"
   id: "hudButton3/text"
   xanchor: XANCHOR_NONE
@@ -714,6 +833,62 @@ nodes {
   overridden_fields: 2
   overridden_fields: 4
   overridden_fields: 10
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 10.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "hudButton3/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "hudButton3"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
   template_node_child: true
 }
 nodes {
@@ -765,8 +940,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.11343442
-    y: -1.988547
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -783,8 +958,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 130.0
-    y: 50.0
+    x: 60.0
+    y: 60.0
     z: 0.0
     w: 1.0
   }
@@ -796,7 +971,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "hudButton4/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -818,6 +993,7 @@ nodes {
   overridden_fields: 1
   overridden_fields: 2
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 14
   overridden_fields: 22
   overridden_fields: 27
@@ -856,7 +1032,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "buttonText"
+  text: ""
   font: "smallerFont"
   id: "hudButton4/text"
   xanchor: XANCHOR_NONE
@@ -889,6 +1065,62 @@ nodes {
   overridden_fields: 2
   overridden_fields: 4
   overridden_fields: 10
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 10.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "hudButton4/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "hudButton4"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
   template_node_child: true
 }
 nodes {
@@ -940,8 +1172,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.11343442
-    y: -1.988547
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -958,8 +1190,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 130.0
-    y: 50.0
+    x: 60.0
+    y: 60.0
     z: 0.0
     w: 1.0
   }
@@ -971,7 +1203,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "hudButton5/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -993,6 +1225,7 @@ nodes {
   overridden_fields: 1
   overridden_fields: 2
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 14
   overridden_fields: 22
   overridden_fields: 27
@@ -1031,7 +1264,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "buttonText"
+  text: ""
   font: "smallerFont"
   id: "hudButton5/text"
   xanchor: XANCHOR_NONE
@@ -1064,6 +1297,62 @@ nodes {
   overridden_fields: 2
   overridden_fields: 4
   overridden_fields: 10
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 10.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "hudButton5/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "hudButton5"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
   template_node_child: true
 }
 nodes {
@@ -1115,8 +1404,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.11343442
-    y: -1.988547
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -1133,8 +1422,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 130.0
-    y: 50.0
+    x: 60.0
+    y: 60.0
     z: 0.0
     w: 1.0
   }
@@ -1146,7 +1435,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "hudButton6/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1168,6 +1457,7 @@ nodes {
   overridden_fields: 1
   overridden_fields: 2
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 14
   overridden_fields: 22
   overridden_fields: 27
@@ -1206,7 +1496,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "buttonText"
+  text: ""
   font: "smallerFont"
   id: "hudButton6/text"
   xanchor: XANCHOR_NONE
@@ -1239,6 +1529,62 @@ nodes {
   overridden_fields: 2
   overridden_fields: 4
   overridden_fields: 10
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 10.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "hudButton6/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "hudButton6"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
   template_node_child: true
 }
 nodes {
@@ -1290,8 +1636,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.11343442
-    y: -1.988547
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -1308,8 +1654,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 130.0
-    y: 50.0
+    x: 60.0
+    y: 60.0
     z: 0.0
     w: 1.0
   }
@@ -1321,7 +1667,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "hudButton7/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1343,6 +1689,7 @@ nodes {
   overridden_fields: 1
   overridden_fields: 2
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 14
   overridden_fields: 22
   overridden_fields: 27
@@ -1381,7 +1728,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "buttonText"
+  text: ""
   font: "smallerFont"
   id: "hudButton7/text"
   xanchor: XANCHOR_NONE
@@ -1414,6 +1761,62 @@ nodes {
   overridden_fields: 2
   overridden_fields: 4
   overridden_fields: 10
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 10.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "hudButton7/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "hudButton7"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
   template_node_child: true
 }
 nodes {
@@ -1465,8 +1868,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.11343442
-    y: -1.988547
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -1483,8 +1886,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 130.0
-    y: 50.0
+    x: 60.0
+    y: 60.0
     z: 0.0
     w: 1.0
   }
@@ -1496,7 +1899,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "hudButton8/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1518,6 +1921,7 @@ nodes {
   overridden_fields: 1
   overridden_fields: 2
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 14
   overridden_fields: 22
   overridden_fields: 27
@@ -1556,7 +1960,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "buttonText"
+  text: ""
   font: "smallerFont"
   id: "hudButton8/text"
   xanchor: XANCHOR_NONE
@@ -1589,6 +1993,62 @@ nodes {
   overridden_fields: 2
   overridden_fields: 4
   overridden_fields: 10
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 10.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "hudButton8/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "hudButton8"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
   template_node_child: true
 }
 nodes {
@@ -1640,8 +2100,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.11343442
-    y: -1.988547
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -1658,8 +2118,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 130.0
-    y: 50.0
+    x: 60.0
+    y: 60.0
     z: 0.0
     w: 1.0
   }
@@ -1671,7 +2131,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "hudButton9/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1693,6 +2153,7 @@ nodes {
   overridden_fields: 1
   overridden_fields: 2
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 14
   overridden_fields: 22
   overridden_fields: 27
@@ -1731,7 +2192,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "buttonText"
+  text: ""
   font: "smallerFont"
   id: "hudButton9/text"
   xanchor: XANCHOR_NONE
@@ -1764,6 +2225,62 @@ nodes {
   overridden_fields: 2
   overridden_fields: 4
   overridden_fields: 10
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 10.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "hudButton9/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "hudButton9"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
   template_node_child: true
 }
 nodes {
@@ -2247,7 +2764,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "productionButton1/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2268,6 +2785,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 1
   overridden_fields: 4
+  overridden_fields: 9
   overridden_fields: 14
   template_node_child: true
 }
@@ -2334,6 +2852,62 @@ nodes {
   outline_alpha: 1.0
   shadow_alpha: 1.0
   overridden_fields: 1
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "productionButton1/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "productionButton1"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
   template_node_child: true
 }
 nodes {
@@ -2416,7 +2990,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "productionButton2/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2507,6 +3081,62 @@ nodes {
 }
 nodes {
   position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "productionButton2/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "productionButton2"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
+  template_node_child: true
+}
+nodes {
+  position {
     x: 500.0
     y: 45.0
     z: 0.0
@@ -2585,7 +3215,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "productionButton3/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2675,6 +3305,62 @@ nodes {
 }
 nodes {
   position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "productionButton3/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "productionButton3"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
+  template_node_child: true
+}
+nodes {
+  position {
     x: 560.0
     y: 45.0
     z: 0.0
@@ -2753,7 +3439,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "productionButton4/box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2839,6 +3525,62 @@ nodes {
   outline_alpha: 1.0
   shadow_alpha: 1.0
   overridden_fields: 1
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9960785
+    y: 0.9960785
+    z: 0.9843138
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/RBCIcon"
+  id: "productionButton4/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "productionButton4"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 14
   template_node_child: true
 }
 nodes {

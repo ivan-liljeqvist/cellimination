@@ -102,10 +102,10 @@ function displayNodesOnHover(nodesToDisplay)
 			setCarbPrice(nodesToDisplay.price.carb)
 			setProteinPrice(nodesToDisplay.price.protein)
 			setFatPrice(nodesToDisplay.price.fat)
-			setUnitDescription(nodesToDisplay.description)
+			setUnitDescription(nodesToDisplay.description,nodesToDisplay.name)
 		elseif nodesToDisplay.description then
 			showNode(UNIT_DESCRIPTION)
-			setUnitDescription(nodesToDisplay.description)
+			setUnitDescription(nodesToDisplay.description,nodesToDisplay.name)
 		else
 			hideUnitCostAndDesc()
 		end
@@ -256,63 +256,63 @@ end
 function applyGUILayout(layout)
 	if layout then
 		if layout.button1 then
-			showButtonWithText(BUTTON1,layout.button1.text)
+			showButtonWithIcon(BUTTON1,layout.button1.icon)
 			
 		else
 			hideButton(BUTTON1)
 		end
 		
 		if layout.button2 then	
-			showButtonWithText(BUTTON2,layout.button2.text)
+			showButtonWithIcon(BUTTON2,layout.button2.icon)
 			showButton(BUTTON2)
 		else
 			hideButton(BUTTON2)
 		end
 		
 		if layout.button3 then
-			showButtonWithText(BUTTON3,layout.button3.text)
+			showButtonWithIcon(BUTTON3,layout.button3.icon)
 			showButton(BUTTON3)
 		else
 			hideButton(BUTTON3)
 		end
 		
 		if layout.button4 then
-			showButtonWithText(BUTTON4,layout.button4.text)
+			showButtonWithIcon(BUTTON4,layout.button4.icon)
 			showButton(BUTTON4)
 		else
 			hideButton(BUTTON4)
 		end
 		
 		if layout.button5 then
-			showButtonWithText(BUTTON5,layout.button5.text)
+			showButtonWithIcon(BUTTON5,layout.button5.icon)
 			showButton(BUTTON5)
 		else
 			hideButton(BUTTON5)
 		end
 		
 		if layout.button6 then
-			showButtonWithText(BUTTON6,layout.button6.text)
+			showButtonWithIcon(BUTTON6,layout.button6.icon)
 			showButton(BUTTON6)
 		else
 			hideButton(BUTTON6)
 		end
 		
 		if layout.button7 then
-			showButtonWithText(BUTTON7,layout.button7.text)
+			showButtonWithIcon(BUTTON7,layout.button7.icon)
 			showButton(BUTTON7)
 		else
 			hideButton(BUTTON7)
 		end
 		
 		if layout.button8 then
-			showButtonWithText(BUTTON8,layout.button8.text)
+			showButtonWithIcon(BUTTON8,layout.button8.icon)
 			showButton(BUTTON8)
 		else
 			hideButton(BUTTON8)
 		end
 		
 		if layout.button9 then
-			showButtonWithText(BUTTON9,layout.button9.text)
+			showButtonWithIcon(BUTTON9,layout.button9.icon)
 			showButton(BUTTON9)
 		else
 			hideButton(BUTTON9)
@@ -509,6 +509,7 @@ end
 function hideButton(id)
    gui.set_color(gui.get_node(id.."/text"), vmath.vector4(0, 0, 0, 0))
    gui.set_color(gui.get_node(id.."/box"), vmath.vector4(0, 0, 0, 0))
+   gui.set_color(gui.get_node(id.."/icon"), vmath.vector4(1, 1, 1, 0))
    
    HUDButtons[id]={id=id,visible=false}
 end
@@ -530,7 +531,8 @@ end
 
 function showButton(id)
 	gui.set_color(gui.get_node(id.."/text"), vmath.vector4(1, 1, 1, 1))
-    gui.set_color(gui.get_node(id.."/box"), vmath.vector4(1, 0, 0, 1))
+    gui.set_color(gui.get_node(id.."/box"), vmath.vector4(1, 1, 1, 1))
+    gui.set_color(gui.get_node(id.."/icon"), vmath.vector4(1, 1, 1, 1))
     
     HUDButtons[id]={id=id,visible=true}
 end
@@ -543,9 +545,12 @@ function showNode(id)
 	gui.set_color(gui.get_node(id), vmath.vector4(1, 1, 1, 1))
 end
 
-function showButtonWithText(id,text)
+function showButtonWithIcon(id,icon)
 	showButton(id)
-	gui.set_text(gui.get_node(id.."/text"), text)
+	if icon then
+		gui.set_texture(gui.get_node(id.."/icon"), "gui")
+		gui.play_flipbook(gui.get_node(id.."/icon"), icon)
+	end
 end
 
 function setCarbPrice(price)
@@ -578,7 +583,10 @@ function setFatPrice(price)
 	end
 end
 
-function setUnitDescription(description)	
+function setUnitDescription(description,unitName)	
+	if unitName and string.len(unitName)>0 then
+		description="Build "..unitName.."\n"..description
+	end
 	gui.set_text(gui.get_node("unitDescription"),description)
 
 end

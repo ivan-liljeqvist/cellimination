@@ -39,7 +39,7 @@ end
 
 function alertCantBuildHere()
 	--play sound or something
-	print("cant build here")
+	msg.post("HUD","displayErrorMessage",{text=CANT_BUILD_HERE})
 end
 
 function buildHere(x,y,self)
