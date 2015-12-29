@@ -21,15 +21,31 @@ PRODUCTION_BUTTON4="productionButton4"
 PRODUCTION_TITLE="productionTitle"
 PRODUCTION_PERCENT="productionPercent"
 
+COST_CARB_ICON="costCarbIcon"
+COST_FAT_ICON="costFatIcon"
+COST_PROTEIN_ICON="costProteinIcon"
+
+COST_CARB="costCarb"
+COST_PROTEIN="costProtein"
+COST_FAT="costFat"
+
+UNIT_DESCRIPTION="unitDescription"
+
+
 NO_BUTTON=""
 
 currentlyHitButton=NO_BUTTON;
+
+displayingError=false
+displayingErrorTimeSinceStarted=0
+displayingErrorTime=3
 
 local unitWithGUI={}
 
 
 local releasedSinceLast=true
 local currentLayout={}
+
 
 function init(self)
     
@@ -48,7 +64,55 @@ function init(self)
    addButton(PRODUCTION_BUTTON2)
    addButton(PRODUCTION_BUTTON3)
    addButton(PRODUCTION_BUTTON4)
+   
+   hideUnitCostAndDesc()
        
+end
+
+
+function showUnitCostAndDesc()
+   showNode(COST_CARB_ICON)
+   showNode(COST_FAT_ICON)
+   showNode(COST_PROTEIN_ICON)
+   
+   showNode(COST_CARB)
+   showNode(COST_PROTEIN)
+   showNode(COST_FAT)
+   
+   showNode(UNIT_DESCRIPTION)
+end
+
+function hideUnitCostAndDesc()
+   hideNode(COST_CARB_ICON)
+   hideNode(COST_FAT_ICON)
+   hideNode(COST_PROTEIN_ICON)
+   
+   hideNode(COST_CARB)
+   hideNode(COST_PROTEIN)
+   hideNode(COST_FAT)
+   
+   hideNode(UNIT_DESCRIPTION)
+end
+
+function displayNodesOnHover(nodesToDisplay)
+
+	if nodesToDisplay then
+		if nodesToDisplay.price and nodesToDisplay.description then
+			showUnitCostAndDesc()
+			setCarbPrice(nodesToDisplay.price.carb)
+			setProteinPrice(nodesToDisplay.price.protein)
+			setFatPrice(nodesToDisplay.price.fat)
+			setUnitDescription(nodesToDisplay.description)
+		elseif nodesToDisplay.description then
+			showNode(UNIT_DESCRIPTION)
+			setUnitDescription(nodesToDisplay.description)
+		else
+			hideUnitCostAndDesc()
+		end
+	else
+		hideUnitCostAndDesc()
+	end
+
 end
 
 
@@ -60,7 +124,23 @@ function update(self, dt)
     
     updateResourcesLabels()
     
+
+
+	if displayingError then
+		if displayingErrorTimeSinceStarted<displayingErrorTime then
+			displayingErrorTimeSinceStarted=displayingErrorTimeSinceStarted+dt
+		else
+			displayingError=false
+			displayingErrorTimeSinceStarted=0
+			displayingErrorTime=3
+		end
+	else
+		gui.set_text(gui.get_node("errorText"), "")
+	end
+
     local selectedUnitsNumberLookup={}
+    
+    local selectedUnits=0
     
     for unit,stillHere in pairs(SELECTED_UNITS) do 
     
@@ -76,6 +156,7 @@ function update(self, dt)
     			unitWithGUI=unit
     		end
     		
+    		selectedUnits=selectedUnits+1
     	end
     end
     
@@ -101,7 +182,11 @@ function update(self, dt)
    
    
    currentLayout=unitWithGUI.GUILayout
+   
 
+	if selectedUnits<=0 then
+   		hideEverything()
+	end
 end
 
 function updateResourcesLabels()
@@ -112,8 +197,6 @@ end
 
 
 function hideProductionSection()
-   
-   
    hideButton(PRODUCTION_BUTTON1)
    hideButton(PRODUCTION_BUTTON2)
    hideButton(PRODUCTION_BUTTON3)
@@ -249,6 +332,24 @@ function applyGUILayout(layout)
 end
 
 function checkIfAnyButtonClicked(action,action_id)
+
+	--check if hovered
+
+	local hoverAtLeastOne=false
+	for _,buttonObject in  pairs(HUDButtons) do 
+	
+		local id=buttonObject.id
+		--check if click is inside the button
+		if isButtonHit(action,id) and buttonObject.visible then
+			--send the id to the handler of the click
+			handleButtonHovered(id)
+			hoverAtLeastOne=true
+		end
+	end
+	
+	if hoverAtLeastOne==false then hideUnitCostAndDesc() end
+	
+	--check if clicked
 	
 	if action.pressed and action_id==hash("leftClicked") and releasedSinceLast then
 	
@@ -268,7 +369,7 @@ function checkIfAnyButtonClicked(action,action_id)
 				handleButtonClicked(id)
 			end
 		end
-	--if released, just dehighlight the current button
+	--if released, just dehighlight the current button 
 	elseif action.released then
 		releasedSinceLast=true
 		dehighlightButton(currentlyHitButton)
@@ -277,8 +378,6 @@ function checkIfAnyButtonClicked(action,action_id)
 end
 
 function handleButtonClicked(id) 
-	
-	print(id)
 
 	if id==BUTTON1 then
 		currentLayout.button1.action()
@@ -312,6 +411,41 @@ function handleButtonClicked(id)
 end
 
 
+function handleButtonHovered(id) 
+
+	--each hover() returns an object telling which objects to display on hover
+	
+	if id==BUTTON1 then
+		displayNodesOnHover(currentLayout.button1.hover())
+	elseif id==BUTTON2 then
+		displayNodesOnHover(currentLayout.button2.hover())
+	elseif id==BUTTON3 then
+		displayNodesOnHover(currentLayout.button3.hover())
+	elseif id==BUTTON4 then
+		displayNodesOnHover(currentLayout.button4.hover())
+	elseif id==BUTTON5 then
+		displayNodesOnHover(currentLayout.button5.hover())
+	elseif id==BUTTON6 then
+		displayNodesOnHover(currentLayout.button6.hover())
+	elseif id==BUTTON7 then
+		displayNodesOnHover(currentLayout.button7.hover())
+	elseif id==BUTTON8 then
+		displayNodesOnHover(currentLayout.button8.hover())
+	elseif id==BUTTON9 then
+		displayNodesOnHover(currentLayout.button9.hover())
+	elseif id==PRODUCTION_BUTTON1 then
+		displayNodesOnHover(currentLayout.productionButton1.hover())
+	elseif id==PRODUCTION_BUTTON2 then
+		displayNodesOnHover(currentLayout.productionButton2.hover())
+	elseif id==PRODUCTION_BUTTON3 then
+		displayNodesOnHover(currentLayout.productionButton3.hover())
+	elseif id==PRODUCTION_BUTTON4 then
+		displayNodesOnHover(currentLayout.productionButton4.hover())
+	end
+	
+end
+
+
 function final(self)
     -- Add finalization code here
     -- Remove this function if not needed
@@ -323,6 +457,11 @@ function on_message(self, message_id, message, sender)
     
     if message_id==hash("newInput") then
 		checkIfAnyButtonClicked(message.action,message.action_id)
+	elseif message_id==hash("displayErrorMessage")then
+		--errorText
+		displayingError=true
+		displayingErrorTimeSinceStarted=0
+		gui.set_text(gui.get_node("errorText"), message.text)
 	end
 end
 
@@ -407,4 +546,53 @@ end
 function showButtonWithText(id,text)
 	showButton(id)
 	gui.set_text(gui.get_node(id.."/text"), text)
+end
+
+function setCarbPrice(price)
+	gui.set_text(gui.get_node("costCarb"),price)
+	
+	if price>CARBS then
+		gui.set_color(gui.get_node("costCarb"), vmath.vector4(1, 0, 0, 1))
+	else
+		gui.set_color(gui.get_node("costCarb"), vmath.vector4(1, 1, 1, 1))
+	end
+end
+
+function setProteinPrice(price)
+	gui.set_text(gui.get_node("costProtein"),price)
+	
+	if price>PROTEIN then
+		gui.set_color(gui.get_node("costProtein"), vmath.vector4(1, 0, 0, 1))
+	else
+		gui.set_color(gui.get_node("costProtein"), vmath.vector4(1, 1, 1, 1))
+	end
+end
+
+function setFatPrice(price)
+	gui.set_text(gui.get_node("costFat"),price)
+	
+	if price>FAT then
+		gui.set_color(gui.get_node("costFat"), vmath.vector4(1, 0, 0, 1))
+	else
+		gui.set_color(gui.get_node("costFat"), vmath.vector4(1, 1, 1, 1))
+	end
+end
+
+function setUnitDescription(description)	
+	gui.set_text(gui.get_node("unitDescription"),description)
+
+end
+
+function hideEverything()
+	hideButton(BUTTON1)
+		hideButton(BUTTON2)
+		hideButton(BUTTON3)
+		hideButton(BUTTON4)
+		hideButton(BUTTON5)
+		hideButton(BUTTON6)
+		hideButton(BUTTON7)
+		hideButton(BUTTON8)
+		hideButton(BUTTON9)
+		hideProductionSection()
+		hideUnitCostAndDesc()
 end

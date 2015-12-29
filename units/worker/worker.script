@@ -25,13 +25,13 @@ function init(self)
 	local buildFatExtractor=function() msg.post("buildingManager", "newFatExtractor") end
 	local buildProteinExtractor=function() msg.post("buildingManager", "newProteinExtractor") end
 	
-	self.GUILayout={button1={text="Deselect",action=deselectAction},
+	self.GUILayout={button1={text="Deselect",action=deselectAction,hover=function() print("hej") end},
 					button2=nil,
 					button3=nil,
-					button4={text="Build Protein Extractor",action=buildProteinExtractor},
-					button5={text="Build Fat Extractor",action=buildFatExtractor},
-					button6={text="Build Carb. Extractor",action=buildCarbExtractor},
-					button7={text="Build base",action=buildBaseAction},
+					button4={text="Build Protein Extractor",action=buildProteinExtractor, hover=function() print("hej") end},
+					button5={text="Build Fat Extractor",action=buildFatExtractor, hover=function() print("hej") end},
+					button6={text="Build Carb. Extractor",action=buildCarbExtractor, hover=function() print("hej") end},
+					button7={text="Build base",action=buildBaseAction, hover=function() print("hej") end},
 					button8=nil,
 					button9=nil}
 end

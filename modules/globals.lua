@@ -34,10 +34,6 @@ CAMERA_OFFSETY=0
 
 CAMERA_SPEED=16
 
-RBC_NAME="RED BLOOD CELL"
-WORKER_NAME="WORKER"
-BASE_NAME="COMMAND CENTER"
-
 JUST_CLICKED_MINIMAP=false
 
 GUI_CLICKED=false --when GUI is clicked, we shouldn't deselect any selection
@@ -71,6 +67,7 @@ FAT=0
 CARBS=0
 
 MAX_PRODUCTION_QUEUE = 4
+
 TIME_TO_PRODUCE={}
 
 require "modules.pathfinder"
