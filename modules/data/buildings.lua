@@ -1,0 +1,7 @@
+
+--Command Center
+BASE_NAME="COMMAND CENTER"
+UNIT_DESCRIPTIONS[BASE_NAME]="Command center produces units"
+PRICES[BASE_NAME]={carb=100,protein=100,fat=100}
+HOVER_LAYOUT[BASE_NAME] = {name=BASE_NAME, price=PRICES[BASE_NAME], description=UNIT_DESCRIPTIONS[BASE_NAME] }
+

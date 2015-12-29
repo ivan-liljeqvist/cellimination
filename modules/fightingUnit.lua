@@ -57,7 +57,7 @@ function fightingUnitUpdate(self,go,dt)
 
 	if self.canFight==false then return end
 
-	searchForTarget(self)
+	pcall(searchForTarget,self)
 	
 	self.isFighting=true
 	msg.post(self.targetEnemyId,"requestPosition",{})
@@ -253,9 +253,12 @@ function getFirstEnemyInRange(self)
 				local tileNode = TILEMAP_NODES[tileNodeIndex]
 				
 				
+				 
 				if tileNode and tileNode.occupiedBy then
 					if self then
+						
 						if tileNode.occupied and  tileNode.occupiedBy.teamNumber~=self.teamNumber then
+								
 								return tileNode.occupiedBy
 						end
 					end

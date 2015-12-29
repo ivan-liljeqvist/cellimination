@@ -8,6 +8,7 @@ function initProductionUnit(self)
 	self.currentProductionProgress=0.0
 	self.currentlyProducing=false
 	self.currentlyProducingItem=""
+	self.currentlyProducingItemIcon=""
 	self.timeSinceLastProductionStarted=0
 end
 
