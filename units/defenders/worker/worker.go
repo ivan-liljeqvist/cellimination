@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "script"
-  component: "/units/worker/worker.script"
+  component: "/units/defenders/worker/worker.script"
   position {
     x: 0.0
     y: 0.0
@@ -30,7 +30,7 @@ components {
 }
 components {
   id: "sprite"
-  component: "/units/worker/worker.sprite"
+  component: "/units/defenders/worker/worker.sprite"
   position {
     x: 0.0
     y: 0.0

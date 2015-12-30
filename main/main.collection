@@ -81,7 +81,7 @@ instances {
 }
 instances {
   id: "jeep8"
-  prototype: "/units/vechiles/jeep/jeep.go"
+  prototype: "/units/defenders/vechiles/jeep/jeep.go"
   position {
     x: 606.44635
     y: 958.3942
@@ -101,7 +101,7 @@ instances {
 }
 instances {
   id: "jeep9"
-  prototype: "/units/vechiles/jeep/jeep.go"
+  prototype: "/units/defenders/vechiles/jeep/jeep.go"
   position {
     x: 427.4033
     y: 659.98914
@@ -220,6 +220,26 @@ instances {
   }
 }
 instances {
+  id: "purple"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 1772.3364
+    y: 1470.1343
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "selection"
   prototype: "/gui/selection/selection.go"
   position {
@@ -261,7 +281,7 @@ instances {
 }
 instances {
   id: "worker"
-  prototype: "/units/worker/worker.go"
+  prototype: "/units/defenders/worker/worker.go"
   position {
     x: 1146.0979
     y: 594.2115

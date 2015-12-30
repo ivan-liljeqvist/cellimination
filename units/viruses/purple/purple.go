@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "script"
-  component: "/units/vechiles/jeep/jeep.script"
+  component: "/units/viruses/purple/purple.script"
   position {
     x: 0.0
     y: 0.0
@@ -29,23 +29,8 @@ components {
   }
 }
 components {
-  id: "spine"
-  component: "/graphicalAssets/units/red/redMonster.spinemodel"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-components {
-  id: "sprite"
-  component: "/units/vechiles/jeep/jeep.sprite"
+  id: "spinemodel"
+  component: "/graphicalAssets/units/viruses/purple/purpleSpineModel.spinemodel"
   position {
     x: 0.0
     y: 0.0
@@ -106,9 +91,12 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "shotFactory"
-  type: "factory"
-  data: "prototype: \"/particles/shot1.go\"\n"
+  id: "sprite"
+  type: "sprite"
+  data: "tile_set: \"/graphicalAssets/war/jeep.atlas\"\n"
+  "default_animation: \"blackCircle\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
     x: 0.0

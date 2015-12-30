@@ -1,0 +1,12 @@
+images {
+  image: "/graphicalAssets/units/viruses/purple/cloudyBodySmall.png"
+}
+images {
+  image: "/graphicalAssets/units/viruses/purple/redEyes.png"
+}
+images {
+  image: "/graphicalAssets/units/viruses/purple/dotEye.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

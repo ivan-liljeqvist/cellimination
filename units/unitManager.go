@@ -1,6 +1,6 @@
 components {
   id: "jeepFactory"
-  component: "/units/vechiles/jeep/jeep.factory"
+  component: "/units/defenders/vechiles/jeep/jeep.factory"
   position {
     x: 0.0
     y: 0.0
@@ -30,7 +30,7 @@ components {
 }
 components {
   id: "workerFactory"
-  component: "/units/worker/worker.factory"
+  component: "/units/defenders/worker/worker.factory"
   position {
     x: 0.0
     y: 0.0
