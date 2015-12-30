@@ -83,7 +83,8 @@ end
 function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
-
+	basicUnitMessageHandler(self,go,message_id,message,sender)
+	
 	if message_id == hash("deleteGO")then
 		go.delete(go.get_id())
 	end

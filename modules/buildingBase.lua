@@ -8,6 +8,9 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.spriteObject=spriteObject
 	self.go=go
 	
+	self.builtAtX=nil
+	self.builtAtY=nil
+	
 	self.isBuilding=true
 	
 end
@@ -43,10 +46,17 @@ function alertCantBuildHere()
 	msg.post("HUD","displayErrorMessage",{text=CANT_BUILD_HERE})
 end
 
+function destroyBuilding(self)
+	setTilesUnderMeToNotOccupied(self,self.builtAtX,self.builtAtY)
+end
+
 function buildHere(x,y,self)
 	removePrototypeColor(self.spriteObject)
 	self.prototypeMode=false
 	setTilesUnderMeToOccupied(self,x,y)
+	
+	self.builtAtX=x
+	self.builtAtY=y
 	
 	if self.isFatExtractor==true then FAT_EXTRACTORS_MADE=FAT_EXTRACTORS_MADE+1
 	elseif self.isCarbExtractor==true then CARB_EXTRACTORS_MADE=CARB_EXTRACTORS_MADE+1
@@ -93,7 +103,42 @@ function canBuildAt(self,x,y)
 	return true
 end
 
+function setTilesUnderMeToNotOccupied(self,x,y)
+
+	local centerTileX, centerTileY = pixelToTileCoords(x,y)
+	
+	--go through each row and column
+	local minTileX = centerTileX + self.buildingSize.startPointFromCenter.x
+	local maxTileX = minTileX + self.buildingSize.width
+	local minTileY = centerTileY + self.buildingSize.startPointFromCenter.y
+	local maxTileY = minTileY + self.buildingSize.height
+	
+	
+	for currentX=minTileX, maxTileX, 1 do
+		for currentY=minTileY, maxTileY, 1 do
+		
+			local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX][currentY] 
+			
+			if TILEMAP_NODES[nodeIndex].occupiedBy == self then
+				TILEMAP_NODES[nodeIndex].occupied=false
+				TILEMAP_NODES[nodeIndex].occupiedBy=nil
+				TILEMAP_NODES[nodeIndex].blocked=false
+				TILEMAP_NODES[nodeIndex].occupiedByID=nil
+				
+				--´tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 1)
+			end
+
+			 		
+		end
+	end
+	
+	
+	return true
+end
+
 function setTilesUnderMeToOccupied(self,x,y)
+
+	
 	local centerTileX, centerTileY = pixelToTileCoords(x,y)
 	
 	--go through each row and column
@@ -112,7 +157,7 @@ function setTilesUnderMeToOccupied(self,x,y)
 			TILEMAP_NODES[nodeIndex].blocked=true
 			TILEMAP_NODES[nodeIndex].occupiedByID=self.id
 			
-			--tilemapObject.set_tile("world#tilemap", "blocked", currentX+1, currentY+1, 0)
+			--tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 0)
 
 			 		
 		end

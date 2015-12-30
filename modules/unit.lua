@@ -79,11 +79,19 @@ function destroyUnit(self)
 	    
 	    removeFromSelectedUnits(self)
 	    
+	    
+	    if self.isBuilding then
+	    	if self.prototypeMode~=true then
+	    		destroyBuilding(self)
+	    	end
+	    end
+	    
 	    msg.post("HUD","unitDestroyed",{id=self.id})
 	    
 	    msg.post(self.id,"deleteGO")
 	    
 	    
+	    self=nil
 	end
 
 end
@@ -196,7 +204,6 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 	
 		if message.other_id ~= self.hitByLastId and BULLET_OWNER[message.other_id]~=self.id then
 		
-			print("requesting owner")
 			--get owner and damage
 			msg.post(message.other_id,"requestOwner",{}) --request the shot for it's owner
 	
@@ -206,9 +213,9 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 		
 	--2) now we know who shot us
 	elseif message_id == hash("shotOwnerCallback")then
-		print("shotOwnerCallback1")
+		
 		if message.team ~= self.teamNumber and message.ownerId ~= self.id then
-			print("shotOwnerCallback2")
+			
 			--if we don't have a target, set the shooter as target
 			if self.targetEnemyId == nil and self.canFight then
 				
