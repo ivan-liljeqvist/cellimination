@@ -181,18 +181,25 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 		
 		local pixelX,pixelY=message.x,message.y
 		local tileX,tileY=pixelToTileCoords(pixelX-CAMERA_OFFSETX,pixelY-CAMERA_OFFSETY)
+
 		
-		local nodeIndex=TILEMAP_INDEX_LOOKUP[tileX+1][tileY+1]
-		local node=TILEMAP_NODES[nodeIndex]
-		
-		if node.occupied then
-			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,7)
-			if newDestIndex then
-				nodeIndex=newDestIndex
+		if message.waypointSet then
+			generateNewPathToTileCoords(self,tileX,tileY)
+		else
+			local nodeIndex=TILEMAP_INDEX_LOOKUP[tileX+1][tileY+1]
+			local node=TILEMAP_NODES[nodeIndex]
+			
+			if node.occupied then
+				local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,7)
+				if newDestIndex then
+					nodeIndex=newDestIndex
+				end
 			end
+			
+			goStraightToNode(self,nodeIndex)
 		end
 		
-		goStraightToNode(self,nodeIndex)
+		
 		
 	elseif message_id == hash("requestPosition") then
 		
