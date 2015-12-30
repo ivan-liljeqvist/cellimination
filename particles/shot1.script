@@ -50,6 +50,8 @@ function on_message(self, message_id, message, sender)
 	if message_id==hash("setOwnerUrl") then
 		self.ownerUrl=msg.url(message.id)
 		self.ownerId=message.id
+	elseif message_id==hash("die")then
+		die(self)
 	elseif message_id==hash("setDirection")then
 		self.dir=message.dir*self.speed
 	elseif message_id==hash("setTeam")then
@@ -57,23 +59,6 @@ function on_message(self, message_id, message, sender)
 	elseif message_id==hash("requestOwner")then
 		msg.post(sender,"shotOwnerCallback",{ownerId=self.ownerId, team=self.team,damage=10})
 	
-		
-	elseif message_id == hash("contact_point_response") then
-	
-		--we've hit someone, make sure he's not on our team before dying and not ourselves
-		if self.ownerId~=message.other_id then
-			msg.post(message.other_id,"requestTeam",{})
-			
-		end
-
-	
-	elseif message_id == hash("teamCallback") then
-	
-		--when we are sure that we hit an enemy, die
-		if message.team ~= self.team then
-			self.alive=false
-			die(self)
-		end
 	 
 	end    
 

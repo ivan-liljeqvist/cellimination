@@ -9,6 +9,8 @@ function initBasicUnit(self,name,goID)
 	self.bounds=getSpriteBounds("#sprite",self)    
     self.selected=false
     
+    self.canFight=false
+    
     self.isBuilding=false
     local pos=self.go.get_position()
     pos.x=pos.x
@@ -41,12 +43,16 @@ function initBasicUnit(self,name,goID)
     self.goalX = getPosition(self).x
     self.goalY = getPosition(self).y
     
+    self.hitByLastId={}
+    
     self.tileCoordinates={pixelToTileCoords(self.goalX,self.goalY)}
     local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
    
-    TILEMAP_NODES[currentNodeIndex].occupied = true
-    TILEMAP_NODES[currentNodeIndex].occupiedBy = self
-   
+    if self.willBecomeBuilding~=true then
+	    TILEMAP_NODES[currentNodeIndex].occupied = true
+	    TILEMAP_NODES[currentNodeIndex].occupiedBy = self
+	    tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1]+1, self.tileCoordinates[2]+1, 0)
+	end
 end
 
 
@@ -62,10 +68,13 @@ function destroyUnit(self)
 		--table.remove(selectableUnits,self.indexInSelectableUnits)
 		
 		MY_UNITS[self]=nil
-		local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
+		local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]][self.tileCoordinates[2]]
 	    TILEMAP_NODES[currentNodeIndex].occupied = false
 	    TILEMAP_NODES[currentNodeIndex].occupiedBy = nil
 	    TILEMAP_NODES[currentNodeIndex].occupiedByID = nil
+	    
+	    --tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1], self.tileCoordinates[2], 0)
+	    
 	    unregisterForInput(self.id)
 	    
 	    removeFromSelectedUnits(self)
@@ -74,7 +83,7 @@ function destroyUnit(self)
 	    
 	    msg.post(self.id,"deleteGO")
 	    
-	    self=nil
+	    
 	end
 
 end
@@ -152,7 +161,7 @@ function setTeam(self,teamNumber)
 	self.teamNumber=teamNumber
 end
 
-function basicUnitMessageHandler(self,go,message_id,message)
+function basicUnitMessageHandler(self,go,message_id,message,sender)
 
 
 	if message_id==hash("setTeam") then
@@ -177,6 +186,51 @@ function basicUnitMessageHandler(self,go,message_id,message)
 		
 		goStraightToNode(self,nodeIndex)
 		
+	elseif message_id == hash("requestPosition") then
+		
+		if sender~=self.id then
+			msg.post(sender,"positionCallback",{position={x=self.x,y=self.y}})
+		end
+		
+	elseif message_id == hash("contact_point_response") then
+	
+		if message.other_id ~= self.hitByLastId and BULLET_OWNER[message.other_id]~=self.id then
+		
+			print("requesting owner")
+			--get owner and damage
+			msg.post(message.other_id,"requestOwner",{}) --request the shot for it's owner
+	
+			
+			self.hitByLastId=message.other_id
+		end
+		
+	--2) now we know who shot us
+	elseif message_id == hash("shotOwnerCallback")then
+		print("shotOwnerCallback1")
+		if message.team ~= self.teamNumber and message.ownerId ~= self.id then
+			print("shotOwnerCallback2")
+			--if we don't have a target, set the shooter as target
+			if self.targetEnemyId == nil and self.canFight then
+				
+				self.targetEnemyId=message.ownerId
+			
+			end
+			
+			
+		
+			msg.post(self.hitByLastId,"die")	
+		
+			self.health=self.health-message.damage
+			
+			if self.showingHealthBar==false then
+				showHealthBarTemporarily(self)
+			end
+	
+			if self.health <= 0 then
+				destroyUnit(self)
+			end
+	   end
+
 	end
 end
 

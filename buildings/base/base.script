@@ -11,6 +11,8 @@ function init(self)
 	self.initialScale=0.7
 	self.fogRadius=BASE_FOG_RADIUS
 	
+	self.willBecomeBuilding=true
+	
     initBasicUnit(self,BASE_NAME,go.get_id())
 	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=0},width=2,height=4},go)
 	initProductionUnit(self)

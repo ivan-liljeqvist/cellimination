@@ -18,6 +18,10 @@ function init(self)
 	
 	self.factory=factory
 	
+	    self.parseInput=function(self, action_id, action)
+
+	end
+	
     initBasicUnit(self,RBC_NAME,go.get_id())
     initMovableUnit(self)
     initFightingUnit(self,false)
@@ -26,9 +30,7 @@ function init(self)
 
 	self.selectEffect="slime"
     
-    self.parseInput=function(self, action_id, action)
 
-	end
     
     go.set("#sprite", "scale.x", 8)
     go.set("#sprite", "scale.y", 8)

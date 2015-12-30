@@ -1,5 +1,5 @@
 
-BULLET_OWNER={}
+
 
 function initFightingUnit(self)
 	
@@ -12,7 +12,7 @@ function initFightingUnit(self)
 	self.targetEnemyTeam=nil
 	self.currentShot=nil
 	self.attackers={}
-	self.hitByLastId={}
+
 	
 	self.firingRange=2 --if melee we need to be next to the enemy
 	self.visionRange = 4
@@ -60,15 +60,17 @@ function moveTowardsTarget(self)
 end
 
 function fightingUnitUpdate(self,go,dt)
-
+	
+	
 	if self.canFight==false then return end
 
 	if self.fightUpdateCounter%20==0 then
-		pcall(searchForTarget,self)
+		searchForTarget(self)
 		self.fightUpdateCounter=0
 	end
 	
 	if self.targetEnemyId and  ALIVE[self.targetEnemyId] then
+		
 		self.isFighting=true
 		msg.post(self.targetEnemyId,"requestPosition",{})
 	end
@@ -83,6 +85,8 @@ function fightingUnitUpdate(self,go,dt)
 end
 
 function shootOrChase(self)
+	
+		
 	if self.targetEnemyId then
 		
 		--we can reach the target without chasing
@@ -184,76 +188,20 @@ end
 function fightingUnitMessageHandler(self,go,message_id,message,sender)
 	if message_id == hash("resetCurrentShot") then
 		self.currentShot=nil
-		
-	elseif message_id == hash("requestObject") then
-		
-		msg.post(sender,"objectCallback",{object=self})
 	
-	elseif message_id == hash("requestPosition") then
-		if sender~=self.id then
-			msg.post(sender,"positionCallback",{position={x=self.x,y=self.y}})
-		end
 	elseif message_id == hash("requestDamage") then
 		msg.post(sender,"damageCallback",{damage=10})
 		
 		
 	elseif message_id == hash("positionCallback")then
 
-		
 		self.targetEnemyLastPosition=self.targetEnemyPosition
 		self.targetEnemyPosition=message.position
 		shootOrChase(self)
 	
 	--1) we get shot by someone
-	elseif message_id == hash("contact_point_response") then
-	
-		if message.other_id ~= self.hitByLastId and BULLET_OWNER[message.other_id]~=self.id then
-		
-			
-			msg.post(message.other_id,"requestOwner",{}) --request the shot for it's owner
-	
-			
-			self.hitByLastId=message.other_id
-		end
-		
-	--2) now we know who shot us
-	elseif message_id == hash("shotOwnerCallback")then
-		
-		if message.team ~= self.teamNumber and message.ownerId ~= self.id then
-			--if we don't have a target, set the shooter as target
-			if self.targetEnemyId == nil then
-				
-				self.targetEnemyId=message.ownerId
-			
-			end
-			
-			self.health=self.health-message.damage
-			
-			if self.showingHealthBar==false then
-				showHealthBarTemporarily(self)
-			end
-	
-			if self.health <= 0 then
-				destroyUnit(self)
-			end
-	   end
-
 	end
-	--[[	
-	elseif message_id == hash("damageCallback") then
-	
-		self.health=self.health-message.damage
-		
-		print("I'm hit! ",self.teamNumber,self.health,message.damage)
 
-		if self.showingHealthBar==false then
-			showHealthBarTemporarily(self)
-		end
-
-		if self.health <= 0 then
-			destroyUnit(self)
-		end
-	end--]]
 end
 
 function searchForTarget(self)
@@ -265,9 +213,10 @@ function searchForTarget(self)
 		if target then
 			self.targetEnemyId = target.id
 		elseif self.teamNumber==2 then
-			--print("no target ")
+			print("no target ")
 		end
-		
+	else
+		print("already ahve target")
 	end
 
 end
@@ -298,11 +247,19 @@ function getFirstEnemyInRange(self)
 				if tileNode and tileNode.occupiedBy then
 					if self then
 						
-						if tileNode.occupied and  tileNode.occupiedBy.teamNumber~=self.teamNumber then
-								
-								return tileNode.occupiedBy
+						if tileNode.occupied then
+								if pcall(tryAccess,tileNode) then
+									if tileNode.occupiedBy.teamNumber~=self.teamNumber then
+										return tileNode.occupiedBy
+									end
+								else
+									TILEMAP_NODES[tileNodeIndex].occupied=false
+									TILEMAP_NODES[tileNodeIndex].occupiedBy=nil
+									resetTargetEnemy(self)
+								end
 						end
 					end
+					
 				end
 			end
 		
@@ -310,4 +267,8 @@ function getFirstEnemyInRange(self)
 	end
 	
 	return nil
+end
+
+function tryAccess(tileNode)
+	local test=tileNode.occupiedBy.id
 end
