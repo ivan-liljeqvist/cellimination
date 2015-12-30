@@ -24,7 +24,7 @@ function on_message(self, message_id, message, sender)
 		
 				
 		msg.post(msg.url(newJeep), "rollOutOfProducer", {x=rollOutPosition.x,
-												 y=rollOutPosition.y,waypointSet=message.waypointSet})
+												 y=rollOutPosition.y,waypointSet=message.waypointSet,prodX=message.producerPosition.x,prodY=message.producerPosition.y-TILE_SIZE})
 								    
 		
 	end

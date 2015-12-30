@@ -183,9 +183,19 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 		local tileX,tileY=pixelToTileCoords(pixelX-CAMERA_OFFSETX,pixelY-CAMERA_OFFSETY)
 
 		
+		local didFindAWay=false
 		if message.waypointSet then
-			generateNewPathToTileCoords(self,tileX,tileY)
-		else
+		
+			--if we didn't find a way, use regular goStraightToNode() in the if below
+			didFindAWay=generateNewPathToTileCoords(self,tileX,tileY)
+			
+			if not didFindAWay then --set the goal back to the producer, not the waypoint
+				pixelX,pixelY=message.prodX,message.prodY
+				tileX,tileY=pixelToTileCoords(pixelX-CAMERA_OFFSETX,pixelY-CAMERA_OFFSETY)
+			end
+		end
+		
+		if didFindAWay==false then
 			local nodeIndex=TILEMAP_INDEX_LOOKUP[tileX+1][tileY+1]
 			local node=TILEMAP_NODES[nodeIndex]
 			
