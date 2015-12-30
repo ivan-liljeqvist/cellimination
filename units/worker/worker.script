@@ -34,17 +34,17 @@ function init(self)
 					button7={icon="mainBaseIcon",action=buildBaseAction,hover=function() return HOVER_LAYOUT[BASE_NAME] end},
 					button8=nil,
 					button9=nil}
+					
+	self.originalHealth=100
+	self.health=100
 end
 
 
 function update(self, dt)
-    -- Add update code here
-    -- Remove this function if not needed
-	updateRotation(self,go)
-    moveAccordingToPath(self,go,dt)
-    
-    self.x=go.get_position().x
-	self.y=go.get_position().y
+
+	
+	basicUnitUpdate(self,dt,go)
+	unitUpdate(self,go,dt)
     
 end
 
@@ -56,7 +56,11 @@ end
 
 function on_message(self, message_id, message, sender)
 
-	handleSelectMethods(self,go,message_id,message)
+	handleSelectMethods(self,go,message_id,message,sender)
+	basicUnitMessageHandler(self,go,message_id,message,sender)
+	if self.canFight then
+		fightingUnitMessageHandler(self,go,message_id,message,sender)
+	end
 	
 
 end

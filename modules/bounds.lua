@@ -86,7 +86,7 @@ function deselect(self,go)
 	self.selected=false
     go.set_scale(self.initialScale)
     
-    hideHealthBar()
+    hideHealthBar(self)
 end
 
 function select(self,title,go)

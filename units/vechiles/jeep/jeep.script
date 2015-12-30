@@ -71,16 +71,6 @@ function on_message(self, message_id, message, sender)
 		fightingUnitMessageHandler(self,go,message_id,message,sender)
 	end
 	
-	if message_id==hash("changeAnimation") then
-		
-		if self.currentAnimation ~=  message.animation then
-			self.currentAnimation=message.animation
-			spine.play("#spine", message.animation, go.PLAYBACK_LOOP_FORWARD, 0.2)
-		else
-			--print("already animation "..self.currentAnimation)
-		end
-	end
-	
 end
 
 function on_reload(self)
