@@ -187,7 +187,7 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 		if message.waypointSet then
 		
 			--if we didn't find a way, use regular goStraightToNode() in the if below
-			didFindAWay=generateNewPathToTileCoords(self,tileX,tileY)
+			didFindAWay=generateNewPathToTileCoordsB(self,tileX,tileY)
 			
 			if not didFindAWay then --set the goal back to the producer, not the waypoint
 				pixelX,pixelY=message.prodX,message.prodY

@@ -32,8 +32,22 @@ end
 
 function showWaypoint(self,pos)
 	
-	msg.post(self.waypoint,"show",{pos=pos})
-	self.waypointHidden=false
+	local x = pos.x
+	local y = pos.y
+	local tileX,tileY = pixelToTileCoords((x)-CAMERA_OFFSETX,(y)-CAMERA_OFFSETY)
+	
+	local tileType = getTileTypeAt(tileX,tileY)
+	
+	if tileType == TILE_NOT_REACHABLE_CODE then
+		msg.post("HUD","displayErrorMessage",{text=WAYPOINT_UNREACHABLE})
+	else
+
+		msg.post(self.waypoint,"show",{pos=pos})
+		self.waypointHidden=false
+
+		
+	end
+	
 
 end
 
@@ -42,9 +56,14 @@ function buildingInput(self,action,action_id)
 	if action_id==hash("rightClicked") and self.selected and action.pressed and self.rightReleasedSinceLast then
 		self.rightReleasedSinceLast=false
 		
-		self.waypointPosition=vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1)
+		local newWPPos=vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1)
 		
-		showWaypoint(self,self.waypointPosition)
+		if math.abs(newWPPos.x-self.x)>400 or math.abs(newWPPos.y-self.y)>400 then
+			msg.post("HUD","displayErrorMessage",{text=WAYPOINT_TOO_FAR})
+		else
+			self.waypointPosition=newWPPos
+			showWaypoint(self,self.waypointPosition)
+		end
 		
 	elseif action_id==hash("rightClicked") and action.released and not self.rightReleasedSinceLast then
 		self.rightReleasedSinceLast=true
