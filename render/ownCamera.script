@@ -64,31 +64,37 @@ end
 
 function look(x,y)
 
-	if x>(TILEMAP_MAXX*TILE_SIZE-getScreenWidth()*1.5) then
-		x=(TILEMAP_MAXX*TILE_SIZE-getScreenWidth()*1.5)
-	end
-	
-	if y>(TILEMAP_MAXY*TILE_SIZE-getScreenHeight()*1.5) then
-		y=(TILEMAP_MAXY*TILE_SIZE-getScreenHeight()*1.5)
-	end
-
 	local pos=go.get_position()
 	
 	local diffX=pos.x-(x-getScreenWidth()/1)
 	local diffY=pos.y-(y-getScreenHeight()/1)
 	
-	CAMERA_OFFSETX=CAMERA_OFFSETX-diffX
-	CAMERA_OFFSETY=CAMERA_OFFSETY-diffY
+	pos.x=(x-getScreenWidth())
+	pos.y=(y-getScreenHeight())
 	
-	pos.x=(x-getScreenWidth()/1)
-	pos.y=(y-getScreenHeight()/1)
+	local tooFarOut=false
 	
-	if pos.x<0 then pos.x=0 end
-	if pos.y<0 then pos.y=0 end
-	if CAMERA_OFFSETX<0 then CAMERA_OFFSETX=0 end
-	if CAMERA_OFFSETY<0 then CAMERA_OFFSETY=0 end
+	if pos.x>(TILEMAP_MAXX*TILE_SIZE-getScreenWidth()*ZOOM_LEVEL) then
+		tooFarOut=true
+	end
 	
-	go.set_position(pos)
+	if pos.y>(TILEMAP_MAXY*TILE_SIZE-getScreenHeight()*ZOOM_LEVEL) then
+		tooFarOut=true
+	end
+	
+	
+	if tooFarOut==false then
+		CAMERA_OFFSETX=CAMERA_OFFSETX-diffX
+		CAMERA_OFFSETY=CAMERA_OFFSETY-diffY
+	
+		if CAMERA_OFFSETX<0 then CAMERA_OFFSETX=0 end
+		if CAMERA_OFFSETY<0 then CAMERA_OFFSETY=0 end
+		
+		if pos.x<0 then pos.x=0 end
+		if pos.y<0 then pos.y=0 end
+	
+		go.set_position(pos)
+	end
 	
 	
 end
