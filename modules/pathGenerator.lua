@@ -66,17 +66,7 @@ function generateNewPathToTileCoords(self,tileX,tileY)
 		
 		
 		local tileType=getTileTypeAt(tileX,tileY)
-		local foundReachableTile=false
-		for a=1,7,1 do
-			if not foundReachableTile then
-				if tileType==TILE_NOT_REACHABLE_CODE then
-					print("trying "..tileX+a)
-					tileType=getTileTypeAt(tileX+a,tileY+a)
-				else
-					foundReachableTile=true
-				end
-			end
-		end
+
     	
     	--check if we can go there
     	if tileType~=TILE_NOT_REACHABLE_CODE then
@@ -159,17 +149,7 @@ function generateNewPathToTileCoordsB(self,tileX,tileY)
 		
 		
 		local tileType=getTileTypeAt(tileX,tileY)
-		local foundReachableTile=false
-		for a=1,7,1 do
-			if not foundReachableTile then
-				if tileType==TILE_NOT_REACHABLE_CODE then
-					print("trying "..tileX+a)
-					tileType=getTileTypeAt(tileX+a,tileY+a)
-				else
-					foundReachableTile=true
-				end
-			end
-		end
+
     	
     	--check if we can go there
     	if tileType~=TILE_NOT_REACHABLE_CODE then
@@ -184,20 +164,6 @@ function generateNewPathToTileCoordsB(self,tileX,tileY)
     		
     		--now use indeces to get start and finish nodes
     		local startNode,finishNode=TILEMAP_NODES[startIndex],TILEMAP_NODES[destIndex]
-    		
-    		--see if some other unit has already occupied the finish-node
-    		if finishNode.occupied==false then
-    			--do nothing
-    		--if occupied find a neighbour tile that is not occupied and set it as new destination
-    		else
-    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,3) --the last is the total number of recursions allowed
-    			if newDestIndex then
-    				
-    				destIndex=newDestIndex
-    				finishNode=TILEMAP_NODES[destIndex]
-    				
-    			end
-    		end
     		
     		startNode.occupied=false
     		startNode.occupiedBy=nil

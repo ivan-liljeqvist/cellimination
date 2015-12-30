@@ -17,7 +17,7 @@ embedded_components {
   id: "wayPointMark"
   type: "sprite"
   data: "tile_set: \"/graphicalAssets/buildings/buildings.atlas\"\n"
-  "default_animation: \"deselectIcon\"\n"
+  "default_animation: \"waypoint\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

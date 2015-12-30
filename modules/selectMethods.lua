@@ -15,6 +15,17 @@ function alreadySelected(unit)
     return SELECTED_UNITS[unit] ~= nil
 end
 
+function moreThanOneSelected()
+  local count = 0
+  for _ in pairs(SELECTED_UNITS) do 
+  	
+  	count = count + 1 
+  	
+  	if count>=2 then return true end
+  end
+  return false
+end
+
 function getSelectedUnits()
 	local toReturn={}
 	

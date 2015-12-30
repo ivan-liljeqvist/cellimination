@@ -30,6 +30,14 @@ function hideWaypoint(self)
 	end
 end
 
+function tempHideWP(self)
+	msg.post(self.waypoint,"hide")
+end
+
+function tempShowWP(self)
+	msg.post(self.waypoint,"show")
+end
+
 function showWaypoint(self,pos)
 	
 	local x = pos.x
@@ -53,7 +61,7 @@ end
 
 function buildingInput(self,action,action_id)
 
-	if action_id==hash("rightClicked") and self.selected and action.pressed and self.rightReleasedSinceLast then
+	if action_id==hash("rightClicked") and not moreThanOneSelected() and self.selected and action.pressed and self.rightReleasedSinceLast then
 		self.rightReleasedSinceLast=false
 		
 		local newWPPos=vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1)

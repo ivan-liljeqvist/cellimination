@@ -78,6 +78,10 @@ function massSelect(self,title,go)
 		go.set_scale(self.initialScale*1.2)
 		showHealthBar(self)
 		msg.post("mixer","slime",{})
+		
+		if self.waypointHidden~=true then
+			 tempShowWP(self)
+		end
 	end
 end
 
@@ -85,6 +89,10 @@ function deselect(self,go)
 	self.selected=false
     go.set_scale(self.initialScale)
     
+	if self.waypointHidden~=true then
+		 tempHideWP(self)
+	end
+		
     hideHealthBar(self)
 end
 
