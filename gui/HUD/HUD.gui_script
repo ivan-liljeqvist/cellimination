@@ -351,12 +351,14 @@ function checkIfAnyButtonClicked(action,action_id)
 	local hoverAtLeastOne=false
 	for _,buttonObject in  pairs(HUDButtons) do 
 	
-		local id=buttonObject.id
-		--check if click is inside the button
-		if isButtonHit(action,id) and buttonObject.visible then
-			--send the id to the handler of the click
-			handleButtonHovered(id)
-			hoverAtLeastOne=true
+		if buttonObject.visible then
+			local id=buttonObject.id
+			--check if click is inside the button
+			if isButtonHit(action,id) then
+				--send the id to the handler of the click
+				handleButtonHovered(id)
+				hoverAtLeastOne=true
+			end
 		end
 	end
 	

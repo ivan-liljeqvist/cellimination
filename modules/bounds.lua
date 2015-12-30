@@ -77,7 +77,7 @@ function massSelect(self,title,go)
 		print("team: "..self.teamNumber)
 		self.selected=true
 		go.set_scale(self.initialScale*1.2)
-		
+		showHealthBar(self)
 		msg.post("mixer","slime",{})
 	end
 end
@@ -85,6 +85,8 @@ end
 function deselect(self,go)
 	self.selected=false
     go.set_scale(self.initialScale)
+    
+    hideHealthBar()
 end
 
 function select(self,title,go)
@@ -95,4 +97,6 @@ function select(self,title,go)
     
     msg.post("HUD","setLeftTitle",{text=title})
     msg.post("manager","unitSelected",{selectedId=go.get_id()})
+    
+    
 end

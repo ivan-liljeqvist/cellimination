@@ -15,10 +15,13 @@ function initBasicUnit(self,name,goID)
 	pos.y=pos.y
 	self.go.set_position(pos)
 	
-	self.id=go.get_id()
-    
     self.name=name
     self.id=goID
+    
+    self.showingHealthBar=true
+    self.highHealth=true
+    hideHealthBar(self)
+    
     ALIVE[self.id]=true
     registerForInput(goID)
     
@@ -64,6 +67,42 @@ function destroyUnit(self)
     ALIVE[self.id]=false
 end
 
+function basicUnitUpdate(self,dt,go)
+	--update healthbar
+	if self.showingHealthBar then
+	
+		--1) move the bar after the unit
+		local pos = go.get_position()
+		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
+		pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
+		
+		msg.post(msg.url("#healthGUI"),"setPosition",{position=pos})
+		
+		local ratio = self.health/self.originalHealth 
+		--2) if the health is below 30% - set low health
+		if ratio < 0.3 and self.highHealth then
+			msg.post(msg.url("#healthGUI"),"lowHealth",{position=pos})
+			self.highHealth=false
+		elseif ratio >= 0.3 and self.highHealth==false then
+			msg.post(msg.url("#healthGUI"),"highHealth",{position=pos})
+			self.highHealth=true
+		end
+		
+		--3) update the width of the health bar
+		msg.post(msg.url("#healthGUI"),"updateSize",{ratio=ratio})
+		
+	end
+end
+
+function hideHealthBar(self)
+	msg.post(msg.url("#healthGUI"),"hide")
+	self.showingHealthBar=false
+end
+
+function showHealthBar(self)
+	msg.post(msg.url("#healthGUI"),"show")
+	self.showingHealthBar=true
+end
 
 function registerForInput(id)
 	GAME_OBJECTS_THAT_REQUIRE_INPUT[id]=true
@@ -75,11 +114,6 @@ end
 
 
 
-
-function getNearbyEnemies(self)
-	
-	return {}
-end
 
 function setTeam(self,teamNumber) 
 	self.teamNumber=teamNumber

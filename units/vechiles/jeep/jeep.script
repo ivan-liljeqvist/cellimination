@@ -48,6 +48,7 @@ function init(self)
 					
 	TIME_TO_PRODUCE[self.name]=10
 	
+	self.originalHealth=100
 	self.health=100
 end
 
@@ -56,8 +57,9 @@ function update(self, dt)
     -- Add update code here
     -- Remove this function if not needed
 	
+	basicUnitUpdate(self,dt,go)
 	unitUpdate(self,go,dt)
-    
+	
     
 end
 

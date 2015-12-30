@@ -1,0 +1,60 @@
+function init(self)
+    
+	self.currentColor = vmath.vector4(0,1,0,0.5)
+	self.originalWidth = gui.get_size(gui.get_node("healthBox")).x
+end
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+function update(self, dt)
+    -- Add update code here
+    -- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+   
+   --make the healthbar follow the unit
+   if message_id == hash("setPosition") then
+   		gui.set_position(gui.get_node("healthBox"),message.position)
+   	
+   --hide healthbar
+   elseif message_id == hash("hide") then
+   		gui.set_color(gui.get_node("healthBox"),vmath.vector4(0,0,0,0))
+   		
+   	--show healthbar
+   	elseif message_id == hash("show") then
+   		gui.set_color(gui.get_node("healthBox"),self.currentColor)
+   		
+   	--if low health - set to red
+   	elseif message_id == hash("lowHealth") then
+   		self.currentColor=vmath.vector4(1,0,0,0.5)
+   		gui.set_color(gui.get_node("healthBox"),self.currentColor)
+   		
+   	--if the unit gets healed for example, we need to set back to green
+   	elseif message_id == hash("highHealth") then
+   		self.currentColor=vmath.vector4(0,1,0,0.5)
+   		gui.set_color(gui.get_node("healthBox"),self.currentColor)
+   	
+   	--make the size of the healthbar proporionate to the health
+   	elseif  message_id == hash("updateSize")then
+   		--we get a message with the ratio health/originalHealth - set the width to that ratio
+   		local newWidth = self.originalWidth*message.ratio
+   		local size = gui.get_size(gui.get_node("healthBox"))
+   		size.x=newWidth
+   		gui.set_size(gui.get_node("healthBox"),size)
+   end
+   
+end
+
+function on_input(self, action_id, action)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end
+
+function on_reload(self)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end
