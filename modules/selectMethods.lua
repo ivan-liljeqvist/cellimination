@@ -1,8 +1,10 @@
 
 SELECTED_UNITS={}
+LAST_SELECTED_NAME=""
 
 function addToSelectedUnits(unit)
     SELECTED_UNITS[unit] = true
+    LAST_SELECTED_NAME=unit.name
 end
 
 function removeFromSelectedUnits(unit)
@@ -29,6 +31,7 @@ function getSelectedUnits()
 	
 	return toReturn
 end
+
 
 
 function handleSelectMethods(self,go,message_id,message)

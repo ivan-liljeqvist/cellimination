@@ -66,6 +66,26 @@ function init(self)
    addButton(PRODUCTION_BUTTON4)
    
    hideUnitCostAndDesc()
+   
+
+	
+	local my_file_path = sys.get_save_file("my_game", "my_file2")
+	local my_table = sys.load(my_file_path)
+	if not next(my_table) then
+	   gui.set_text(gui.get_node("saveTest"),"0")
+	   
+	   my_table.x=0
+	else
+		gui.set_text(gui.get_node("saveTest"),my_table.x)
+	end
+
+	my_table.x=my_table.x+1
+	
+	local my_file_path = sys.get_save_file("my_game", "my_file2")
+	if not sys.save(my_file_path, my_table) then
+	    -- Alert user that the data could not be saved
+	end
+   
        
 end
 

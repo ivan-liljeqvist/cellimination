@@ -11,6 +11,10 @@ function init(self)
 	self.releasedSinceLast=true
 	self.rightPressedSinceLast=false
 	
+	self.timeSinceReleasedLeft=0
+	self.triedToSelectOnlyOneLast=false
+	self.doubleClicked=false
+	
 	self.parseInput=function(self, action_id, action)
 	
 			if action_id==hash("rightClicked") and action.released and self.rightPressedSinceLast then
@@ -42,7 +46,13 @@ function init(self)
 					savedMouseDownCoordinates=true
 				end
 				
-			
+				--double click, select all units of that type on screen
+				if self.timeSinceReleasedLeft<=0.15 and self.triedToSelectOnlyOneLast then
+					msg.post("manager","deselectAll",{})
+					msg.post("manager","allOnScreenSelectSpecific",{name=LAST_SELECTED_NAME})
+					self.doubleClicked=true
+				end
+				
 			
 			--reset variables when mouse is released
 			elseif action_id==hash("leftClicked") and action.released and self.pressedSinceLast then
@@ -50,12 +60,17 @@ function init(self)
 				savedMouseDownCoordinates=false
 				hideSelection()
 				
+				self.timeSinceReleasedLeft=0
+				
 				self.pressedSinceLast=false
 				self.releasedSinceLast=true
 				
+				self.triedToSelectOnlyOneLast=false
+				
 				--if no mass selection, pretend we have a selection of 1x1 and only one unit will be selected
-				if self.massSelectionMode~=true and GUI_CLICKED==false then
+				if self.massSelectionMode~=true and GUI_CLICKED==false and self.doubleClicked==false then
 					
+					self.triedToSelectOnlyOneLast=true
 					msg.post("manager","deselectAll",{})
 					msg.post("manager","massSelection",{start=mouseDownStartCoordinates,
 														current={mouseDownStartCoordinates[1]+1,mouseDownStartCoordinates[2]+1},
@@ -64,7 +79,7 @@ function init(self)
 				
 				
 				self.massSelectionMode=false
-			
+				self.doubleClicked=false
 			
 			--this is called when the user moves the mouse while pressing down
 			elseif mouseDown and GUI_CLICKED==false then
@@ -140,7 +155,7 @@ function update(self, dt)
     -- Add update code here
     -- Remove this function if not needed
     
- 
+ 	self.timeSinceReleasedLeft=self.timeSinceReleasedLeft+dt
     
 end
 

@@ -25,6 +25,7 @@ function init(self)
     --give the global tilemap object to this function (globals.lua) and create
     --a table of nodes that will be used for pathfinding
 	populateNodeArray(tilemap)
+	
 
 	
 end
@@ -57,6 +58,17 @@ function on_message(self, message_id, message, sender)
 		    end
 		end
 	
+	--double click, select all of a kind on screen	
+	elseif message_id==hash("allOnScreenSelectSpecific") then
+		
+		print("allOnScreenSelectSpecific in manager "..message.name)
+	
+		for _,unit in  pairs(selectableUnits) do 
+			if unit and ALIVE[unit] then
+		    	pcall(msg.post,unit,"allOnScreenSelectSpecific",message)
+		    end
+		end
+		
 	--send message to all units to deselect all
 	elseif message_id==hash("deselectAll")then
 		
