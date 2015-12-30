@@ -16,6 +16,8 @@ function initFightingUnit(self)
 	self.visionRange = 4
 	
 	self.fightUpdateCounter=0 --we don't want to run fight logic every frame
+	
+	self.timeSinceLastShot = 0 -- this is for the fire rate, so we know when we've reloaded
 
 end
 
@@ -68,6 +70,10 @@ function fightingUnitUpdate(self,go,dt)
 		self.isFighting=true
 		msg.post(self.targetEnemyId,"requestPosition",{})
 	end
+	
+	if self.currentShot == nil and self.targetEnemyPosition then
+		self.timeSinceLastShot=self.timeSinceLastShot+dt
+	end
 
 	
 	self.fightUpdateCounter=self.fightUpdateCounter+1
@@ -105,8 +111,8 @@ end
 
 function shootTarget(self)
 
-	if self.currentShot == nil and self.targetEnemyPosition then
-		
+	if self.currentShot == nil and self.targetEnemyPosition and self.timeSinceLastShot>=FIRE_RATE[self.name]then
+				
 		self.currentShot=self.factory.create("#shotFactory", nil, nil, {})
 		msg.post(msg.url(self.currentShot),"setOwnerUrl",{id=self.id})
 		msg.post(msg.url(self.currentShot),"setTeam",{team=self.teamNumber})
@@ -114,9 +120,9 @@ function shootTarget(self)
 		local shotDirection = vmath.vector3(self.x,self.y,1)-vmath.vector3(self.targetEnemyPosition.x,self.targetEnemyPosition.y,1)
 		msg.post(msg.url(self.currentShot),"setDirection",{dir=-vmath.normalize(shotDirection)})
 		
+		self.timeSinceLastShot=0
 		
 	else
-		
 	end
 end
 
@@ -223,7 +229,7 @@ function fightingUnitMessageHandler(self,go,message_id,message,sender)
 		
 			--self.health=self.health-10
 			print("will destroy")
-			destroyUnit(self)
+			--destroyUnit(self)
 		
 		end
 

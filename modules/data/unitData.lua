@@ -4,6 +4,7 @@ HOVER_LAYOUT={}
 PRICES={}
 ICONS={}
 MAX_HEALTH={}
+FIRE_RATE={}
 
 
 

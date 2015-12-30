@@ -91,6 +91,23 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "shotFactory"
+  type: "factory"
+  data: "prototype: \"/particles/shot1.go\"\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/graphicalAssets/war/jeep.atlas\"\n"
