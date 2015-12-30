@@ -202,11 +202,11 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 		
 	elseif message_id == hash("contact_point_response") then
 	
-		if message.other_id ~= self.hitByLastId and BULLET_OWNER[message.other_id]~=self.id then
+		if message.other_id ~= self.hitByLastId and BULLET_OWNER[message.other_id]~=self.id and not BULLET_HIT_ALREADY[message.other_id] then
 		
 			--get owner and damage
 			msg.post(message.other_id,"requestOwner",{}) --request the shot for it's owner
-	
+			BULLET_HIT_ALREADY[message.other_id]=true
 			
 			self.hitByLastId=message.other_id
 		end
