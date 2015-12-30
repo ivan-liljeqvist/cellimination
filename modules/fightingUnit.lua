@@ -1,4 +1,5 @@
 
+BULLET_OWNER={}
 
 function initFightingUnit(self)
 	
@@ -11,6 +12,7 @@ function initFightingUnit(self)
 	self.targetEnemyTeam=nil
 	self.currentShot=nil
 	self.attackers={}
+	self.hitByLastId={}
 	
 	self.firingRange=2 --if melee we need to be next to the enemy
 	self.visionRange = 4
@@ -117,6 +119,8 @@ function shootTarget(self)
 		msg.post(msg.url(self.currentShot),"setOwnerUrl",{id=self.id})
 		msg.post(msg.url(self.currentShot),"setTeam",{team=self.teamNumber})
 		
+		BULLET_OWNER[self.currentShot]=self.id
+		
 		local shotDirection = vmath.vector3(self.x,self.y,1)-vmath.vector3(self.targetEnemyPosition.x,self.targetEnemyPosition.y,1)
 		msg.post(msg.url(self.currentShot),"setDirection",{dir=-vmath.normalize(shotDirection)})
 		
@@ -165,11 +169,11 @@ function targetWithinVisionRange(self)
 		if distance <= self.visionRange then
 			return true
 		else
-			--print("targetWithinFiringRange is not within")
+			print("targetWithinFiringRange is not within")
 		end
 		
 	else
-		--print("targetWithinFiringRange is nil")
+		print("targetWithinFiringRange is nil")
 	end
 	
 	return false
@@ -189,14 +193,9 @@ function fightingUnitMessageHandler(self,go,message_id,message,sender)
 		if sender~=self.id then
 			msg.post(sender,"positionCallback",{position={x=self.x,y=self.y}})
 		end
-	elseif message_id == hash("requestTeam") then
-		msg.post(sender,"teamCallback",{team=self.teamNumber})
 	elseif message_id == hash("requestDamage") then
 		msg.post(sender,"damageCallback",{damage=10})
 		
-	elseif message_id == hash("addToAttackers")then
-	
-		table.insert(self.attackers,message.attacker)
 		
 	elseif message_id == hash("positionCallback")then
 
@@ -207,42 +206,45 @@ function fightingUnitMessageHandler(self,go,message_id,message,sender)
 	
 	--1) we get shot by someone
 	elseif message_id == hash("contact_point_response") then
+	
+		if message.other_id ~= self.hitByLastId and BULLET_OWNER[message.other_id]~=self.id then
 		
-		msg.post(message.other_id,"requestOwner",{}) --request the shot for it's owner
+			
+			msg.post(message.other_id,"requestOwner",{}) --request the shot for it's owner
+	
+			
+			self.hitByLastId=message.other_id
+		end
+		
 	--2) now we know who shot us
 	elseif message_id == hash("shotOwnerCallback")then
 		
-		--if we don't have a target, set the shooter as target
-		if self.targetEnemyId == nil then
-			self.targetEnemyId=message.ownerId
+		if message.team ~= self.teamNumber and message.ownerId ~= self.id then
+			--if we don't have a target, set the shooter as target
+			if self.targetEnemyId == nil then
+				
+				self.targetEnemyId=message.ownerId
 			
-			--we need to make sure that our target is not on our team
-			msg.post(self.targetEnemyId,"requestTeam",{})
-		else
-			msg.post(self.targetEnemyId,"requestDamage",{})
-		end
+			end
+			
+			self.health=self.health-message.damage
+			
+			if self.showingHealthBar==false then
+				showHealthBarTemporarily(self)
+			end
 	
-	--3) now we know which team the unit that shot us is on
-	elseif message_id == hash("teamCallback") then
-	
-		self.targetEnemyTeam = message.team
-		--if on our team, reset target, we don't target teammates
-		
-		if self.targetEnemyTeam == self.teamNumber then
-			resetTargetEnemy(self)
-		else --we've been hit by an enemy
-		
-			--request the damage
-			msg.post(self.targetEnemyId,"requestDamage",{})
-		
-			print("will destroy")
-			--destroyUnit(self)
-		
-		end
-		
+			if self.health <= 0 then
+				destroyUnit(self)
+			end
+	   end
+
+	end
+	--[[	
 	elseif message_id == hash("damageCallback") then
 	
 		self.health=self.health-message.damage
+		
+		print("I'm hit! ",self.teamNumber,self.health,message.damage)
 
 		if self.showingHealthBar==false then
 			showHealthBarTemporarily(self)
@@ -251,7 +253,7 @@ function fightingUnitMessageHandler(self,go,message_id,message,sender)
 		if self.health <= 0 then
 			destroyUnit(self)
 		end
-	end
+	end--]]
 end
 
 function searchForTarget(self)
@@ -262,6 +264,8 @@ function searchForTarget(self)
 		
 		if target then
 			self.targetEnemyId = target.id
+		elseif self.teamNumber==2 then
+			--print("no target ")
 		end
 		
 	end
@@ -307,4 +311,3 @@ function getFirstEnemyInRange(self)
 	
 	return nil
 end
-

@@ -52,8 +52,8 @@ function on_message(self, message_id, message, sender)
 	--send massSelection message to all units, each units will decide if it's in the selection
 	elseif message_id==hash("massSelection") then
 		for _,unit in  pairs(selectableUnits) do 
-			if unit then
-		    	msg.post(unit,"massSelection",message)
+			if unit and ALIVE[unit] then
+		    	pcall(msg.post,unit,"massSelection",message)
 		    end
 		end
 	
@@ -61,7 +61,9 @@ function on_message(self, message_id, message, sender)
 	elseif message_id==hash("deselectAll")then
 		
 		for _,unit in  pairs(selectableUnits) do 
-		    msg.post(unit,"deselect",message)
+			if unit and ALIVE[unit] then
+		   		msg.post(unit,"deselect",message)
+		   	end
 		end
 	end
 end

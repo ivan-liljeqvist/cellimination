@@ -39,8 +39,10 @@ end
 function die(self)
 	go.delete(go.get_id())
 	self.alive=false
-		
-	msg.post(self.ownerUrl,"resetCurrentShot",{})
+	
+	if ALIVE[self.ownerId] then
+		msg.post(self.ownerUrl,"resetCurrentShot",{})
+	end
 end
 
 function on_message(self, message_id, message, sender)
@@ -53,7 +55,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id==hash("setTeam")then
 		self.team=message.team
 	elseif message_id==hash("requestOwner")then
-		msg.post(sender,"shotOwnerCallback",{ownerId=self.ownerId})
+		msg.post(sender,"shotOwnerCallback",{ownerId=self.ownerId, team=self.team,damage=10})
 	
 		
 	elseif message_id == hash("contact_point_response") then
@@ -69,6 +71,7 @@ function on_message(self, message_id, message, sender)
 	
 		--when we are sure that we hit an enemy, die
 		if message.team ~= self.team then
+			self.alive=false
 			die(self)
 		end
 	 

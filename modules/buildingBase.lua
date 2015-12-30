@@ -70,7 +70,7 @@ end
 --check we can fit a building at x,y
 function canBuildAt(self,x,y)
 
-	if y<HUD_RIGHT_HEIGHT and x>getScreenWidth()-HUD_RIGHT_WIDTH then print("over hud") return false end
+	if y<HUD_RIGHT_HEIGHT and x>getScreenWidth()-HUD_RIGHT_WIDTH then return false end
 	
 	local centerTileX, centerTileY = pixelToTileCoords(x*ZOOM_LEVEL,y*ZOOM_LEVEL)
 	
@@ -110,6 +110,7 @@ function setTilesUnderMeToOccupied(self,x,y)
 			TILEMAP_NODES[nodeIndex].occupied=true
 			TILEMAP_NODES[nodeIndex].occupiedBy=self
 			TILEMAP_NODES[nodeIndex].blocked=true
+			TILEMAP_NODES[nodeIndex].occupiedByID=self.id
 			
 			--tilemapObject.set_tile("world#tilemap", "blocked", currentX+1, currentY+1, 0)
 
@@ -161,7 +162,6 @@ function canBuildAtTile(self,tileX,tileY)
 	end
 	
 	
-	print("occupied cant build!")
 	return false
 end
 

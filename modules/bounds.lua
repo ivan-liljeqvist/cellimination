@@ -74,7 +74,6 @@ end
 function massSelect(self,title,go)
 	
 	if self.selected==false then
-		print("team: "..self.teamNumber)
 		self.selected=true
 		go.set_scale(self.initialScale*1.2)
 		showHealthBar(self)

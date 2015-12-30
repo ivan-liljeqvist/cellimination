@@ -6,6 +6,7 @@ function loadPath(self,path)
 	--table.remove(self.currentPath, 1)
 	TILEMAP_NODES[self.lastDestIndex].occupied=false
 	TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
+	TILEMAP_NODES[self.lastDestIndex].occupiedByID=nil
 	self.currentPath=copyTable(path)--concatTables(self.currentPath,copyTable(path))
 end
 
@@ -15,13 +16,14 @@ end
 
 function goStraightToNode(self,nodeIndex)
 	TILEMAP_NODES[self.lastDestIndex].occupied=false
+	TILEMAP_NODES[self.lastDestIndex].occupiedByID=nil
 	TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
 	
-	print("nodeIndex: "..nodeIndex)
 	self.currentPath={TILEMAP_NODES[nodeIndex]}
 	
 	TILEMAP_NODES[nodeIndex].occupied=true
 	TILEMAP_NODES[nodeIndex].occupiedBy=self
+	TILEMAP_NODES[nodeIndex].occupiedByID=self.id
 	self.lastDestIndex=nodeIndex
 end
 
@@ -49,6 +51,7 @@ function abortPath(self)
 	if self.lastDestIndex then
 		TILEMAP_NODES[self.lastDestIndex].occupied=false
 		TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
+		TILEMAP_NODES[self.lastDestIndex].occupiedByID=nil
 	end
 	
 	self.currentPath={}
@@ -60,6 +63,7 @@ function followPath(self)
 	if self.lastNodeInPath then
 		self.lastNodeInPath.occupied=false
 		self.lastNodeInPath.occupiedBy=nil
+		self.lastNodeInPath.occupiedByID=nil
 	end
 	
 	local nextNode=table.remove(self.currentPath, 1)
@@ -78,6 +82,7 @@ function followPath(self)
 		
 		nextNode.occupied=true
 		nextNode.occupiedBy=self
+		nextNode.occupiedByID=self.id
 		
 		self.lastNodeInPath=nextNode
 		

@@ -48,7 +48,9 @@ function init(self)
 					productionButton3={icon="deselectIcon",action=productionButton3Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
 					productionButton4={icon="deselectIcon",action=productionButton4Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end}}
 
-					
+	
+	self.originalHealth=1000
+	self.health=1000		
 end
 
 function queueRedBloodCell(self)
@@ -70,6 +72,7 @@ end
 
 function update(self, dt)
 
+	basicUnitUpdate(self,dt,go)
     buildingUpdate(self,dt,go)
     updateProductionUnit(self,dt)
     
@@ -79,6 +82,10 @@ function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
 
+	if message_id == hash("deleteGO")then
+		go.delete(go.get_id())
+	end
+	
 end
 
 

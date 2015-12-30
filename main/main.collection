@@ -80,11 +80,111 @@ instances {
   }
 }
 instances {
-  id: "jeep8"
+  id: "jeep10"
   prototype: "/units/defenders/vechiles/jeep/jeep.go"
   position {
-    x: 606.44635
-    y: 958.3942
+    x: 598.67676
+    y: 720.4386
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep11"
+  prototype: "/units/defenders/vechiles/jeep/jeep.go"
+  position {
+    x: 1233.3962
+    y: 891.7121
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep12"
+  prototype: "/units/defenders/vechiles/jeep/jeep.go"
+  position {
+    x: 790.1001
+    y: 1032.7609
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep13"
+  prototype: "/units/defenders/vechiles/jeep/jeep.go"
+  position {
+    x: 487.85275
+    y: 1022.686
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep14"
+  prototype: "/units/defenders/vechiles/jeep/jeep.go"
+  position {
+    x: 900.92413
+    y: 1405.5326
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "jeep15"
+  prototype: "/units/defenders/vechiles/jeep/jeep.go"
+  position {
+    x: 1253.546
+    y: 1304.7834
     z: 0.2
   }
   rotation {
@@ -223,8 +323,8 @@ instances {
   id: "purple"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 1772.3364
-    y: 1470.1343
+    x: 1580.9131
+    y: 170.47067
     z: 0.2
   }
   rotation {

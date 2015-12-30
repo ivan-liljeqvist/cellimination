@@ -34,7 +34,7 @@ function generateNewPathForGroupToPixel(group,action)
 				unit.isFighting=false
 				unit.followee=nil
 			else
-				print("not movable selected unit!")
+				--print("not movable selected unit!")
 			end
 		end
 				
@@ -61,6 +61,7 @@ function generateNewPathToTileCoords(self,tileX,tileY)
 		
 		
 	 TILEMAP_NODES[self.lastDestIndex].occupied=false
+	 TILEMAP_NODES[self.lastDestIndex].occupiedByID=false
 	 TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
 		
 		
@@ -85,7 +86,6 @@ function generateNewPathToTileCoords(self,tileX,tileY)
     			--do nothing
     		--if occupied find a neighbour tile that is not occupied and set it as new destination
     		else
-  				print("oc")
     			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,3) --the last is the total number of recursions allowed
     			if newDestIndex then
     				
@@ -97,9 +97,11 @@ function generateNewPathToTileCoords(self,tileX,tileY)
     		
     		startNode.occupied=false
     		startNode.occupiedBy=nil
+    		startNode.occupiedByID=nil
     		TILEMAP_NODES[startIndex]=startNode
     		finishNode.occupied=true
     		finishNode.occupiedBy=self
+    		finishNode.occupiedByID=self.id
     		TILEMAP_NODES[destIndex]=finishNode
     		
     		self.lastDestIndex=destIndex

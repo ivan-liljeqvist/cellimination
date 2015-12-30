@@ -6,5 +6,5 @@ PRICES[RBC_NAME]={carb=10,protein=10,fat=10}
 HOVER_LAYOUT[RBC_NAME] = { price=PRICES[RBC_NAME], description=UNIT_DESCRIPTIONS[RBC_NAME] }
 ICONS[RBC_NAME]="RBCIcon"
 MAX_HEALTH[RBC_NAME]=100
-FIRE_RATE[RBC_NAME]=1 --seconds before we fire again
+FIRE_RATE[RBC_NAME]=0.1 --seconds before we fire again
 MOVE_SPEED[RBC_NAME]=6

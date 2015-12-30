@@ -46,7 +46,7 @@ function init(self)
 					button8=nil,
 					button9=nil}
 					
-	TIME_TO_PRODUCE[self.name]=10
+	TIME_TO_PRODUCE[self.name]=1
 	
 	self.originalHealth=100
 	self.health=100
@@ -69,6 +69,10 @@ function on_message(self, message_id, message, sender)
 	basicUnitMessageHandler(self,go,message_id,message,sender)
 	if self.canFight then
 		fightingUnitMessageHandler(self,go,message_id,message,sender)
+	end
+	
+	if message_id == hash("deleteGO")then
+		go.delete(go.get_id())
 	end
 	
 end

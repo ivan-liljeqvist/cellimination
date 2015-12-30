@@ -21,7 +21,7 @@ function initBasicUnit(self,name,goID)
     self.showingHealthBar=true
     self.highHealth=true
     self.timeSinceTempShowHealth=0
-    self.showingHelthTemp=true
+    self.showingHelthTemp=false
     hideHealthBar(self)
     
     ALIVE[self.id]=true
@@ -52,21 +52,31 @@ end
 
 
 function destroyUnit(self)
-	self.go.delete(self.go.get_id())
-	GAME_OBJECTS_THAT_REQUIRE_INPUT[self.go.get_id()]=nil
-	table.remove(selectableUnits,self.indexInSelectableUnits)
-	
-	MY_UNITS[self]=nil
-	local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
-    TILEMAP_NODES[currentNodeIndex].occupied = false
-    TILEMAP_NODES[currentNodeIndex].occupiedBy = nil
-    unregisterForInput(self.id)
-    
-    removeFromSelectedUnits(self)
-    
-    msg.post("HUD","unitDestroyed",{id=self.id})
-    
-    ALIVE[self.id]=false
+
+	if ALIVE[self.id] then
+		print("destory unt team "..self.teamNumber)
+		ALIVE[self.id]=false
+		
+		
+		GAME_OBJECTS_THAT_REQUIRE_INPUT[self.go.get_id()]=nil
+		--table.remove(selectableUnits,self.indexInSelectableUnits)
+		
+		MY_UNITS[self]=nil
+		local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
+	    TILEMAP_NODES[currentNodeIndex].occupied = false
+	    TILEMAP_NODES[currentNodeIndex].occupiedBy = nil
+	    TILEMAP_NODES[currentNodeIndex].occupiedByID = nil
+	    unregisterForInput(self.id)
+	    
+	    removeFromSelectedUnits(self)
+	    
+	    msg.post("HUD","unitDestroyed",{id=self.id})
+	    
+	    msg.post(self.id,"deleteGO")
+	    
+	    self=nil
+	end
+
 end
 
 function basicUnitUpdate(self,dt,go)
@@ -154,7 +164,6 @@ function basicUnitMessageHandler(self,go,message_id,message)
 		
 		local pixelX,pixelY=message.x,message.y
 		local tileX,tileY=pixelToTileCoords(pixelX-CAMERA_OFFSETX,pixelY-CAMERA_OFFSETY)
-		print(tileX,tileY)
 		
 		local nodeIndex=TILEMAP_INDEX_LOOKUP[tileX+1][tileY+1]
 		local node=TILEMAP_NODES[nodeIndex]
