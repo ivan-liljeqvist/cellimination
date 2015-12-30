@@ -7,7 +7,7 @@ function init(self)
 	
 	self.lastDirX=0
     
-    particlefx.play("#particlefx")
+   -- particlefx.play("#particlefx")
    	
     go.set_scale(1)
     

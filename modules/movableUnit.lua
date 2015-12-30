@@ -57,7 +57,11 @@ function initMovableUnit(self)
     
     self.currentPath={}
 	self.neverMoved=true
-	self.speed=6
+	
+	self.speed=MOVE_SPEED[self.name]
+	
+	if self.speed == nil then self.speed=6 end
+	
 	self.dir=vmath.vector3(0,0,0)
 	
 	self.lastDestIndex=1

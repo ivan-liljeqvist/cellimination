@@ -191,6 +191,9 @@ function fightingUnitMessageHandler(self,go,message_id,message,sender)
 		end
 	elseif message_id == hash("requestTeam") then
 		msg.post(sender,"teamCallback",{team=self.teamNumber})
+	elseif message_id == hash("requestDamage") then
+		msg.post(sender,"damageCallback",{damage=10})
+		
 	elseif message_id == hash("addToAttackers")then
 	
 		table.insert(self.attackers,message.attacker)
@@ -215,6 +218,8 @@ function fightingUnitMessageHandler(self,go,message_id,message,sender)
 			
 			--we need to make sure that our target is not on our team
 			msg.post(self.targetEnemyId,"requestTeam",{})
+		else
+			msg.post(self.targetEnemyId,"requestDamage",{})
 		end
 	
 	--3) now we know which team the unit that shot us is on
@@ -227,12 +232,25 @@ function fightingUnitMessageHandler(self,go,message_id,message,sender)
 			resetTargetEnemy(self)
 		else --we've been hit by an enemy
 		
-			--self.health=self.health-10
+			--request the damage
+			msg.post(self.targetEnemyId,"requestDamage",{})
+		
 			print("will destroy")
 			--destroyUnit(self)
 		
 		end
+		
+	elseif message_id == hash("damageCallback") then
+	
+		self.health=self.health-message.damage
 
+		if self.showingHealthBar==false then
+			showHealthBarTemporarily(self)
+		end
+
+		if self.health <= 0 then
+			destroyUnit(self)
+		end
 	end
 end
 

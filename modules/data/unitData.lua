@@ -5,6 +5,7 @@ PRICES={}
 ICONS={}
 MAX_HEALTH={}
 FIRE_RATE={}
+MOVE_SPEED={}
 
 
 

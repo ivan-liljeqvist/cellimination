@@ -20,6 +20,8 @@ function initBasicUnit(self,name,goID)
     
     self.showingHealthBar=true
     self.highHealth=true
+    self.timeSinceTempShowHealth=0
+    self.showingHelthTemp=true
     hideHealthBar(self)
     
     ALIVE[self.id]=true
@@ -69,7 +71,7 @@ end
 
 function basicUnitUpdate(self,dt,go)
 	--update healthbar
-	if self.showingHealthBar then
+	if self.showingHealthBar or self.showingHelthTemp then
 	
 		--1) move the bar after the unit
 		local pos = go.get_position()
@@ -90,8 +92,23 @@ function basicUnitUpdate(self,dt,go)
 		
 		--3) update the width of the health bar
 		msg.post(msg.url("#healthGUI"),"updateSize",{ratio=ratio})
+	end
+	
+	--see if we should hide the temporary healthbar
+	if self.showingHelthTemp then
+		
+			
+			self.timeSinceTempShowHealth=self.timeSinceTempShowHealth+dt
+			
+			if self.timeSinceTempShowHealth>2 then
+				msg.post(msg.url("#healthGUI"),"hide")
+				self.showingHelthTemp=false
+			end
+			
 		
 	end
+	
+
 end
 
 function hideHealthBar(self)
@@ -102,6 +119,12 @@ end
 function showHealthBar(self)
 	msg.post(msg.url("#healthGUI"),"show")
 	self.showingHealthBar=true
+end
+
+function showHealthBarTemporarily(self)
+	msg.post(msg.url("#healthGUI"),"show")
+	self.timeSinceTempShowHealth=0
+	self.showingHelthTemp=true
 end
 
 function registerForInput(id)
