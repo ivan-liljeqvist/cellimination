@@ -55,7 +55,19 @@ function handleSelectMethods(self,go,message_id,message)
 			removeFromSelectedUnits(self)
 			deselect(self,go)
 		end
+		
+	elseif message_id==hash("allOnScreenSelectSpecific") then
+		
+		if isInsideSelection({0,0},{getScreenWidth(),getScreenHeight()},gui.PIVOT_SW) and self.name==message.name and self.teamNumber==PLAYER_TEAM then
+			
+			addToSelectedUnits(self)
+			massSelect(self,"hej",go)
+		else
 	
+			removeFromSelectedUnits(self)
+			deselect(self,go)
+		end
+		
 	elseif message_id==hash("deselect") then
 		
 		removeFromSelectedUnits(self)
