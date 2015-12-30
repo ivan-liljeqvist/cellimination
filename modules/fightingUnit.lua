@@ -213,7 +213,7 @@ function searchForTarget(self)
 		if target then
 			self.targetEnemyId = target.id
 		elseif self.teamNumber==2 then
-			print("no target ")
+			--print("no target ")
 		end
 	else
 		print("already ahve target")

@@ -51,7 +51,7 @@ function initBasicUnit(self,name,goID)
     if self.willBecomeBuilding~=true then
 	    TILEMAP_NODES[currentNodeIndex].occupied = true
 	    TILEMAP_NODES[currentNodeIndex].occupiedBy = self
-	    tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1]+1, self.tileCoordinates[2]+1, 0)
+	    --tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1]+1, self.tileCoordinates[2]+1, 4)
 	end
 end
 

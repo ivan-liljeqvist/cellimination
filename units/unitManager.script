@@ -14,6 +14,7 @@ function on_message(self, message_id, message, sender)
 	
 	if message_id == hash("newJeep") then
 	
+		print("inital prodsition: ",message.position.x,message.position.y)
 		local initialPosition=vmath.vector3(message.position.x,
 												    message.position.y-TILE_SIZE,1)
 		local newJeep=factory.create("#jeepFactory",initialPosition)

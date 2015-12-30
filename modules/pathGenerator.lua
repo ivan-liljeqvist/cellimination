@@ -58,6 +58,13 @@ function generateNewPathToTileCoords(self,tileX,tileY)
 	if tileX<TILEMAP_MINX or tileX>TILEMAP_MAXX or tileY<TILEMAP_MINY or tileY>TILEMAP_MAXY then
 		return false
 	end
+	
+	self.tileCoordinates={pixelToTileCoords(self.goalX,self.goalY)}
+    local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
+   
+    
+	TILEMAP_NODES[currentNodeIndex].occupied = false
+	TILEMAP_NODES[currentNodeIndex].occupiedBy = nil
 		
 		
 	 TILEMAP_NODES[self.lastDestIndex].occupied=false

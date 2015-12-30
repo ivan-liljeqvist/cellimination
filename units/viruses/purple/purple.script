@@ -47,8 +47,7 @@ function init(self)
 					button7=nil,
 					button8=nil,
 					button9=nil}
-					
-	TIME_TO_PRODUCE[self.name]=10
+				
 	
 	self.originalHealth=1000
 	self.health=1000
