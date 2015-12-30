@@ -12,6 +12,7 @@ function init(self)
 	self.fogRadius=BASE_FOG_RADIUS
 	
 	self.willBecomeBuilding=true
+	self.factory=factory
 	
     initBasicUnit(self,BASE_NAME,go.get_id())
 	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=0},width=2,height=4},go)
@@ -68,7 +69,11 @@ function queueRedBloodCell(self)
 end
 
 function redBloodCellDone(self)
-	msg.post("unitManager", "newJeep", {position=vmath.vector3(self.x,self.y,1)}) 
+	if self.waypointHidden then
+		msg.post("unitManager", "newJeep", {position=vmath.vector3(self.x,self.y,1)}) 
+	else 
+		msg.post("unitManager", "newJeep", {position=vmath.vector3(self.waypointPosition.x,self.waypointPosition.y,1)}) 
+	end
 end
 
 

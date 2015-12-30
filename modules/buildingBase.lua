@@ -8,14 +8,48 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.spriteObject=spriteObject
 	self.go=go
 	
+	self.rightReleasedSinceLast=true
+	
 	self.builtAtX=nil
 	self.builtAtY=nil
 	
 	self.isBuilding=true
 	
+	self.waypointHidden=false
+	self.waypoint=self.factory.create("#waypointFactory",nil,nil,{})
+	self.waypointPosition=vmath.vector3(self.x,self.y,1)
+
+	hideWaypoint(self)
+	
+end
+
+function hideWaypoint(self)
+	if not self.waypointHidden then
+		msg.post(self.waypoint,"hide")
+		self.waypointHidden=true
+	end
+end
+
+function showWaypoint(self,pos)
+	
+	msg.post(self.waypoint,"show",{pos=pos})
+	self.waypointHidden=false
+
 end
 
 function buildingInput(self,action,action_id)
+
+	if action_id==hash("rightClicked") and self.selected and action.pressed and self.rightReleasedSinceLast then
+		self.rightReleasedSinceLast=false
+		
+		self.waypointPosition=vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1)
+		
+		showWaypoint(self,self.waypointPosition)
+		
+	elseif action_id==hash("rightClicked") and action.released and not self.rightReleasedSinceLast then
+		self.rightReleasedSinceLast=true
+		--hideWaypoint(self)
+	end
 
 	if self.prototypeMode and action_id == hash("leftClicked") and action.pressed then
 	

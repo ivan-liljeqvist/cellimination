@@ -40,6 +40,9 @@ function die(self)
 	go.delete(go.get_id())
 	self.alive=false
 	
+	BULLET_OWNER[go.get_id()]=nil
+	BULLET_HIT_ALREADY[go.get_id()]=nil
+	
 	if ALIVE[self.ownerId] then
 		msg.post(self.ownerUrl,"resetCurrentShot",{})
 	end
@@ -57,7 +60,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id==hash("setTeam")then
 		self.team=message.team
 	elseif message_id==hash("requestOwner")then
-		msg.post(sender,"shotOwnerCallback",{ownerId=self.ownerId, team=self.team,damage=100})
+		msg.post(sender,"shotOwnerCallback",{ownerId=self.ownerId, team=self.team,damage=10})
 	
 	 
 	end    

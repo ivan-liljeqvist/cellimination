@@ -27,8 +27,8 @@ background_color {
 }
 nodes {
   position {
-    x: 1312.1396
-    y: -7.058955
+    x: 1221.38
+    y: -2.9430041
     z: 0.0
     w: 1.0
   }
@@ -196,8 +196,8 @@ nodes {
 }
 nodes {
   position {
-    x: 519.5238
-    y: -2.4875448
+    x: 428.76422
+    y: 1.628406
     z: 0.0
     w: 1.0
   }
@@ -429,8 +429,8 @@ nodes {
 }
 nodes {
   position {
-    x: 519.5238
-    y: 62.51245
+    x: 428.76422
+    y: 66.6284
     z: 0.0
     w: 1.0
   }
@@ -661,8 +661,8 @@ nodes {
 }
 nodes {
   position {
-    x: 519.5238
-    y: 127.51247
+    x: 428.76422
+    y: 131.62842
     z: 0.0
     w: 1.0
   }
@@ -893,8 +893,8 @@ nodes {
 }
 nodes {
   position {
-    x: 377.11386
-    y: -3.7367573
+    x: 286.35425
+    y: 0.37919384
     z: 0.0
     w: 1.0
   }
@@ -1125,8 +1125,8 @@ nodes {
 }
 nodes {
   position {
-    x: 377.11386
-    y: 61.263237
+    x: 286.35425
+    y: 65.37919
     z: 0.0
     w: 1.0
   }
@@ -1357,8 +1357,8 @@ nodes {
 }
 nodes {
   position {
-    x: 377.11386
-    y: 126.26326
+    x: 286.35425
+    y: 130.37921
     z: 0.0
     w: 1.0
   }
@@ -1589,8 +1589,8 @@ nodes {
 }
 nodes {
   position {
-    x: 233.45454
-    y: -4.9859686
+    x: 142.69493
+    y: -0.87001747
     z: 0.0
     w: 1.0
   }
@@ -1821,8 +1821,8 @@ nodes {
 }
 nodes {
   position {
-    x: 233.45454
-    y: 60.01403
+    x: 142.69493
+    y: 64.12998
     z: 0.0
     w: 1.0
   }
@@ -2053,8 +2053,8 @@ nodes {
 }
 nodes {
   position {
-    x: 233.45454
-    y: 125.01404
+    x: 142.69493
+    y: 129.12999
     z: 0.0
     w: 1.0
   }
@@ -4216,7 +4216,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "saveTest"
+  text: ""
   font: "smallerFont"
   id: "saveTest"
   xanchor: XANCHOR_NONE

@@ -1,0 +1,35 @@
+function init(self)
+    -- Add initialization code here
+    -- Remove this function if not needed
+end
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+function update(self, dt)
+    -- Add update code here
+    -- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+
+	if message_id == hash("hide") then
+		go.set("#wayPointMark", "scale", vmath.vector3(0.0, 0.0, 0.0))
+	elseif message_id==hash("show") then
+		go.set("#wayPointMark", "scale", vmath.vector3(1.0, 1.0, 1.0))
+		go.set_position(message.pos)
+	end    
+
+end
+
+function on_input(self, action_id, action)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end
+
+function on_reload(self)
+    -- Add reload-handling code here
+    -- Remove this function if not needed
+end

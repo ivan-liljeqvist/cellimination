@@ -1,6 +1,5 @@
 
 function initProductionUnit(self)
-	print("initProductionUnit")
 	
 	self.producer=true
 	self.toProduce={}

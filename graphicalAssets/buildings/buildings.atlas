@@ -7,6 +7,9 @@ images {
 images {
   image: "/graphicalAssets/buildings/proteinExtractor/proteinExtractor.png"
 }
+images {
+  image: "/graphicalAssets/gui/deselectIcon.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

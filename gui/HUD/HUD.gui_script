@@ -67,7 +67,7 @@ function init(self)
    
    hideUnitCostAndDesc()
    
-
+--[[
 	
 	local my_file_path = sys.get_save_file("my_game", "my_file2")
 	local my_table = sys.load(my_file_path)
@@ -86,7 +86,7 @@ function init(self)
 	    -- Alert user that the data could not be saved
 	end
    
-       
+       --]]
 end
 
 
