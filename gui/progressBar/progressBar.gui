@@ -1,4 +1,4 @@
-script: "/gui/healthBar.gui_script"
+script: "/gui/progressBar/progressBar.gui_script"
 background_color {
   x: 0.0
   y: 0.0
@@ -25,21 +25,21 @@ nodes {
     w: 1.0
   }
   size {
-    x: 40.0
+    x: 200.0
     y: 5.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 0.0
+    x: 0.9921569
     y: 1.0
-    z: 0.015686275
+    z: 0.9568628
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "healthBox"
+  id: "progressBox"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER

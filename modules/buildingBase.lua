@@ -88,6 +88,12 @@ function buildHere(x,y,self)
 	
 	self.x=x+self.orOffX
 	self.y=y+self.orOffY
+	
+	self.putDownAndWaitingForWorker=false
+	
+	if self.selected then
+		showHealthBar(self)
+	end
 end
 
 function hideWaypoint(self)
@@ -145,7 +151,7 @@ function buildingInput(self,action,action_id)
 		--hideWaypoint(self)
 	end
 
-	if self.prototypeMode and action_id == hash("leftClicked") and action.pressed then
+	if self.prototypeMode and action_id == hash("leftClicked") and action.pressed and self.putDownAndWaitingForWorker==false then
 	
 		if self.canBuildHere then
 			
@@ -159,7 +165,7 @@ function buildingInput(self,action,action_id)
 			deductResources(self.name)
 			--buildHere(action.x*ZOOM_LEVEL,action.y*ZOOM_LEVEL,self)
 			putPrototypeHere(action.x,action.y,self)
-		else 
+		else
 			destroyUnit(self)
 			alertCantBuildHere()
 		end

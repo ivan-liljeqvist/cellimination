@@ -1,6 +1,21 @@
 components {
   id: "healthGUI"
-  component: "/gui/healthBar.gui"
+  component: "/gui/healthbar/healthBar.gui"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "progressGUI"
+  component: "/gui/progressBar/progressBar.gui"
   position {
     x: 0.0
     y: 0.0

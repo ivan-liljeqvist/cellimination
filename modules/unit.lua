@@ -56,6 +56,10 @@ function initBasicUnit(self,name,goID)
 	
 	self.originalHealth=MAX_HEALTH[self.name]
 	self.health=self.originalHealth	
+	
+	self.showingProgressBar=true
+	self.producingSomething=false
+	hideProgressBar(self)
 end
 
 
@@ -104,6 +108,15 @@ end
 
 function basicUnitUpdate(self,dt,go)
 
+	if self.producing then
+		local pos = go.get_position()
+		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
+		pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
+		msg.post(msg.url("#progressGUI"),"setPosition",{position=pos})
+	end
+	
+	checkIfShouldShowProgress(self)
+	
 	--update healthbar
 	if self.showingHealthBar or self.showingHelthTemp then
 	
@@ -113,6 +126,7 @@ function basicUnitUpdate(self,dt,go)
 		pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
 		
 		msg.post(msg.url("#healthGUI"),"setPosition",{position=pos})
+		
 		
 		local ratio = self.health/self.originalHealth 
 		--2) if the health is below 30% - set low health
@@ -145,14 +159,36 @@ function basicUnitUpdate(self,dt,go)
 
 end
 
+function hideProgressBar(self)
+	if self.showingProgressBar then
+		msg.post(msg.url("#progressGUI"),"hide")
+	end
+end
+
+function showProgressBar(self)
+	if not self.showingProgressBar then
+		msg.post(msg.url("#progressGUI"),"show")
+	end
+end
+
+function checkIfShouldShowProgress(self)
+	if self.producing and not self.showingProgressBar then
+		showProgressBar(self)
+	elseif not self.producing and self.showingProgressBar then
+		hideProgressBar(self)
+	end
+end
+
 function hideHealthBar(self)
 	msg.post(msg.url("#healthGUI"),"hide")
 	self.showingHealthBar=false
 end
 
 function showHealthBar(self)
-	msg.post(msg.url("#healthGUI"),"show")
-	self.showingHealthBar=true
+	if not (self.isBuilding and self.putDownAndWaitingForWorker) then
+		msg.post(msg.url("#healthGUI"),"show")
+		self.showingHealthBar=true
+	end
 end
 
 function showHealthBarTemporarily(self)

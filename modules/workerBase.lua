@@ -39,7 +39,7 @@ function workerMessageHandler(self,go,message_id,message,sender)
 end
 
 function abortConstruction(self)
-
+	
 	if self.currentBuilding then
 		msg.post(self.currentBuilding,"abortConstruction")
 		self.currentBuilding=nil
