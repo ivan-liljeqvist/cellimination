@@ -31,7 +31,6 @@ end
 function buildingMessageHandler(self,go,message_id,message,sender)
 
 	if message_id == hash("setWorkerID") and self.workerID==nil then
-		print("set worker di")
 		self.workerID=message.workerID
 	elseif message_id == hash("abortConstruction") and self.workerID then
 		destroyUnit(self)

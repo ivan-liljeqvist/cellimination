@@ -103,6 +103,7 @@ function destroyUnit(self)
 end
 
 function basicUnitUpdate(self,dt,go)
+
 	--update healthbar
 	if self.showingHealthBar or self.showingHelthTemp then
 	
