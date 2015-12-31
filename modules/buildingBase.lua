@@ -61,7 +61,7 @@ end
 
 function buildingInput(self,action,action_id)
 
-	if action_id==hash("rightClicked") and not moreThanOneSelected() and self.selected and action.pressed and self.rightReleasedSinceLast then
+	if action_id==hash("rightClicked") and self.needsWaypoint and not moreThanOneSelected() and self.selected and action.pressed and self.rightReleasedSinceLast then
 		self.rightReleasedSinceLast=false
 		
 		local newWPPos=vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1)

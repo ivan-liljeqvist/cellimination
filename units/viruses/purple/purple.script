@@ -48,10 +48,6 @@ function init(self)
 					button8=nil,
 					button9=nil}
 				
-	
-	self.originalHealth=1000
-	self.health=1000
-	
 	self.teamNumber=2
 end
 

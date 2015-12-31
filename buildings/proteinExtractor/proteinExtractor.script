@@ -13,6 +13,9 @@ function init(self)
 	
 	self.isProteinExtractor=true
 	
+	self.willBecomeBuilding=true
+	self.factory=factory
+	
     initBasicUnit(self,BASE_NAME,go.get_id())
 	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=1},width=1,height=0},go)
 	
@@ -39,7 +42,9 @@ end
 
 function update(self, dt)
 
+	basicUnitUpdate(self,dt,go)
     buildingUpdate(self,dt)
+    
     
 end
 
@@ -48,9 +53,14 @@ end
 function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
+	basicUnitMessageHandler(self,go,message_id,message,sender)
 	
 	if self.selected then
 		CURRENT_PRODUCER_POSITION={x=go.get_position().x,y=go.get_position().y}
+	end
+	
+	if message_id == hash("deleteGO")then
+		go.delete(go.get_id())
 	end
 
 end

@@ -14,6 +14,8 @@ function init(self)
 	self.willBecomeBuilding=true
 	self.factory=factory
 	
+	self.needsWaypoint=true
+	
     initBasicUnit(self,BASE_NAME,go.get_id())
 	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=0},width=2,height=4},go)
 	initProductionUnit(self)
@@ -52,8 +54,6 @@ function init(self)
 					productionButton4={icon="deselectIcon",action=productionButton4Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end}}
 
 	
-	self.originalHealth=1000
-	self.health=1000		
 end
 
 function queueRedBloodCell(self)

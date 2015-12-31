@@ -11,6 +11,9 @@ function init(self)
 	self.initialScale=1.0
 	self.fogRadius=BASE_FOG_RADIUS
 	
+	self.willBecomeBuilding=true
+	self.factory=factory
+	
 	self.isFatExtractor=true
 	
     initBasicUnit(self,BASE_NAME,go.get_id())
@@ -33,13 +36,16 @@ function init(self)
 					button7=nil,
 					button8=nil,
 					button9=nil}
+						
 					
 end
 
 
 function update(self, dt)
 
-    buildingUpdate(self,dt)
+    basicUnitUpdate(self,dt,go)
+    buildingUpdate(self,dt,go)
+   
     
 end
 
@@ -48,9 +54,14 @@ end
 function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
+	basicUnitMessageHandler(self,go,message_id,message,sender)
 	
 	if self.selected then
 		CURRENT_PRODUCER_POSITION={x=go.get_position().x,y=go.get_position().y}
+	end
+	
+	if message_id == hash("deleteGO")then
+		go.delete(go.get_id())
 	end
 
 end

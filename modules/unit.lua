@@ -53,6 +53,9 @@ function initBasicUnit(self,name,goID)
 	    TILEMAP_NODES[currentNodeIndex].occupiedBy = self
 	    --tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1]+1, self.tileCoordinates[2]+1, 4)
 	end
+	
+	self.originalHealth=MAX_HEALTH[self.name]
+	self.health=self.originalHealth	
 end
 
 
