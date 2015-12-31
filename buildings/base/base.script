@@ -13,11 +13,12 @@ function init(self)
 	
 	self.willBecomeBuilding=true
 	self.factory=factory
+	self.sprite=sprite
 	
 	self.needsWaypoint=true
 	
     initBasicUnit(self,BASE_NAME,go.get_id())
-	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=0},width=2,height=4},go)
+	initBuilding(self,sprite,{startPointFromCenter={x=0,y=1},width=1,height=0},go)
 	initProductionUnit(self)
 	
 	self.parseInput=function(self, action_id, action)
@@ -89,6 +90,7 @@ function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
 	basicUnitMessageHandler(self,go,message_id,message,sender)
+	buildingMessageHandler(self,go,message_id,message,sender)
 	
 	if message_id == hash("deleteGO")then
 		go.delete(go.get_id())

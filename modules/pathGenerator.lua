@@ -13,7 +13,7 @@ function generateNewPathForGroupToPixel(group,action)
 		local pathFound={}
 		local leadingUnit={}
 		
-		for unit,isSelected in pairs(SELECTED_UNITS) do 
+		for unit,isSelected in pairs(group) do 
 			--key is the GO, value is true/nil
 			if isSelected==true and unit.movableUnit then
 				
@@ -54,6 +54,14 @@ function generateNewPathToTile(self,tileNode)
 end
 
 function generateNewPathToTileCoords(self,tileX,tileY)
+
+	if self.worker and self.currentBuilding then
+		if self.generateCounter<1 then
+			abortConstruction(self)
+			self.generateCounter=1
+		end
+		self.generateCounter=self.generateCounter-1
+	end
 
 	if tileX<TILEMAP_MINX or tileX>TILEMAP_MAXX or tileY<TILEMAP_MINY or tileY>TILEMAP_MAXY then
 		return false

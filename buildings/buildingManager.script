@@ -1,14 +1,32 @@
 
 function on_message(self, message_id, message, sender)
 	
+	local newBuilding=nil
+	
 	if message_id == hash("newBase") then
-		local baseBuilding=factory.create("#baseFactory")
+	
+		newBuilding=factory.create("#baseFactory")
+		
 	elseif message_id == hash("newCarbExtractor")then
-		local carbExtractor=factory.create("#carbExtractorFactory")
+	
+		newBuilding=factory.create("#carbExtractorFactory")
+		
 	elseif message_id == hash("newProteinExtractor")then
-		local proteinExtractor=factory.create("#proteinExtractorFactory")
+	
+		newBuilding=factory.create("#proteinExtractorFactory")
+		
 	elseif message_id == hash("newFatExtractor")then
-		local fatExtractor=factory.create("#fatExtractorFactory")
+	
+		newBuilding=factory.create("#fatExtractorFactory")
+		
+	end
+	
+	
+	if newBuilding and message.workerID then
+	
+		msg.post(message.workerID,"setCurrentBuilding",{building=newBuilding})
+		msg.post(newBuilding,"setWorkerID",{workerID=message.workerID})
+	
 	end
 	
 end

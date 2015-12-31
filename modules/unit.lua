@@ -66,6 +66,9 @@ function destroyUnit(self)
 		print("destory unt team "..self.teamNumber)
 		ALIVE[self.id]=false
 		
+		if self.worker then
+			abortConstruction(self)
+		end
 		
 		GAME_OBJECTS_THAT_REQUIRE_INPUT[self.go.get_id()]=nil
 		--table.remove(selectableUnits,self.indexInSelectableUnits)

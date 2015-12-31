@@ -18,12 +18,13 @@ function init(self)
 	
     initBasicUnit(self,WORKER_NAME,go.get_id())
     initMovableUnit(self)
-    
+    initBasicWorker(self)
  
 
 	self.requiresGUI=true
 	
-	local buildBaseAction=function() msg.post("buildingManager", "newBase") end
+	
+	local buildBaseAction=function() msg.post("buildingManager", "newBase", {workerID = self.id}) end
 	local deselectAction=function() msg.post("manager","deselectAll",{}) end
 	local buildCarbExtractor=function() msg.post("buildingManager", "newCarbExtractor") end
 	local buildFatExtractor=function() msg.post("buildingManager", "newFatExtractor") end
@@ -49,6 +50,7 @@ function update(self, dt)
 	
 	basicUnitUpdate(self,dt,go)
 	unitUpdate(self,go,dt)
+	workerUpdate(self,go,dt)
     
 end
 
@@ -62,6 +64,8 @@ function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message,sender)
 	basicUnitMessageHandler(self,go,message_id,message,sender)
+	workerMessageHandler(self,go,message_id,message,sender)
+	
 	if self.canFight then
 		fightingUnitMessageHandler(self,go,message_id,message,sender)
 	end

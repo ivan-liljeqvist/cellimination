@@ -10,6 +10,9 @@ images {
 images {
   image: "/graphicalAssets/buildings/waypoint.png"
 }
+images {
+  image: "/graphicalAssets/buildings/generic/construction.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

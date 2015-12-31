@@ -13,14 +13,82 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.builtAtX=nil
 	self.builtAtY=nil
 	
+	self.constructionStarted=false
+	self.putDownAndWaitingForWorker=false
+	
 	self.isBuilding=true
 	
 	self.waypointHidden=false
 	self.waypoint=self.factory.create("#waypointFactory",nil,nil,{})
 	self.waypointPosition=vmath.vector3(self.x,self.y,1)
+	
+	self.workerID = nil -- worker building the building
 
 	hideWaypoint(self)
 	
+end
+
+function buildingMessageHandler(self,go,message_id,message,sender)
+
+	if message_id == hash("setWorkerID") and self.workerID==nil then
+		print("set worker di")
+		self.workerID=message.workerID
+	elseif message_id == hash("abortConstruction") and self.workerID then
+		destroyUnit(self)
+	elseif message_id == hash("workerArrived") and self.workerID then
+		print("worker arrived!")
+		msg.post(self.workerID,"resetBuilding")
+		self.workerID=nil
+		
+		print("self.buitAtX,self.buitAtY: ", self.builtAtX,self.builtAtX)
+		buildHere( self.builtAtX, self.builtAtY,self)
+	end
+
+end
+
+
+
+function putPrototypeHere(x,y,self)
+
+	print("putting here ",x,y)
+
+	self.builtAtX=x*ZOOM_LEVEL
+	self.builtAtY=y*ZOOM_LEVEL
+	
+	self.putDownAndWaitingForWorker=true
+	
+	--self.prototypeMode=false
+	--setTilesUnderMeToOccupied(self,x,y)
+	setTilesUnderMeToOccupied(self,self.builtAtX,self.builtAtY)
+	
+	self.x=x+CAMERA_OFFSETX
+	self.y=y+CAMERA_OFFSETY
+	
+	self.orOffX=CAMERA_OFFSETX
+	self.orOffY=CAMERA_OFFSETY
+	
+end
+
+function buildHere(x,y,self)
+
+	--msg.post("#sprite", "play_animation", {id = hash("construction")})
+	
+	
+	self.workerID=nil
+
+	removePrototypeColor(self.spriteObject)
+	self.prototypeMode=false
+	
+	
+	self.builtAtX=x
+	self.builtAtY=y
+	
+	if self.isFatExtractor==true then FAT_EXTRACTORS_MADE=FAT_EXTRACTORS_MADE+1
+	elseif self.isCarbExtractor==true then CARB_EXTRACTORS_MADE=CARB_EXTRACTORS_MADE+1
+	elseif self.isProteinExtractor==true then PROTEIN_EXTRACTORS_MADE=PROTEIN_EXTRACTORS_MADE+1 end
+	
+	self.x=x+self.orOffX
+	self.y=y+self.orOffY
 end
 
 function hideWaypoint(self)
@@ -82,16 +150,23 @@ function buildingInput(self,action,action_id)
 	
 		if self.canBuildHere then
 			
-			deductResources(self.name)
-			buildHere(action.x*ZOOM_LEVEL,action.y*ZOOM_LEVEL,self)
+			local workerPos=go.get_position()
+			workerPos.x=workerPos.x-CAMERA_OFFSETX
+			workerPos.y=workerPos.y-CAMERA_OFFSETY
+			workerPos.x=workerPos.x+(self.buildingSize.width*2*TILE_SIZE)
 			
+			msg.post(self.workerID,"goToBuildingSite",{pos=workerPos})
+			
+			deductResources(self.name)
+			--buildHere(action.x*ZOOM_LEVEL,action.y*ZOOM_LEVEL,self)
+			putPrototypeHere(action.x,action.y,self)
 		else 
 			destroyUnit(self)
 			alertCantBuildHere()
 		end
 
 	--if prototype mode - follow the cursor
-	elseif self.prototypeMode then
+	elseif self.prototypeMode and self.putDownAndWaitingForWorker==false then
 		GUI_CLICKED=true
 		--follow cursor
 		go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1))
@@ -111,21 +186,6 @@ function destroyBuilding(self)
 	setTilesUnderMeToNotOccupied(self,self.builtAtX,self.builtAtY)
 end
 
-function buildHere(x,y,self)
-	removePrototypeColor(self.spriteObject)
-	self.prototypeMode=false
-	setTilesUnderMeToOccupied(self,x,y)
-	
-	self.builtAtX=x
-	self.builtAtY=y
-	
-	if self.isFatExtractor==true then FAT_EXTRACTORS_MADE=FAT_EXTRACTORS_MADE+1
-	elseif self.isCarbExtractor==true then CARB_EXTRACTORS_MADE=CARB_EXTRACTORS_MADE+1
-	elseif self.isProteinExtractor==true then PROTEIN_EXTRACTORS_MADE=PROTEIN_EXTRACTORS_MADE+1 end
-	
-	self.x=x+CAMERA_OFFSETX
-	self.y=y+CAMERA_OFFSETY
-end
 
 --change between red and green
 function updatePrototypeColor(self)
@@ -186,7 +246,7 @@ function setTilesUnderMeToNotOccupied(self,x,y)
 				TILEMAP_NODES[nodeIndex].blocked=false
 				TILEMAP_NODES[nodeIndex].occupiedByID=nil
 				
-				--´tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 1)
+				--tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 1)
 			end
 
 			 		
