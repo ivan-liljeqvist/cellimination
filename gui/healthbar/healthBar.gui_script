@@ -18,6 +18,8 @@ function on_message(self, message_id, message, sender)
    
    --make the healthbar follow the unit
    if message_id == hash("setPosition") then
+   
+   		message.position.y=message.position.y+5
    		gui.set_position(gui.get_node("healthBox"),message.position)
    	
    --hide healthbar

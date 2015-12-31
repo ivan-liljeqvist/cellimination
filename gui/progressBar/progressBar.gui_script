@@ -18,6 +18,7 @@ function on_message(self, message_id, message, sender)
    
    --make the healthbar follow the unit
    if message_id == hash("setPosition") then
+   		message.position.y=message.position.y+20
    		gui.set_position(gui.get_node("progressBox"),message.position)
    	
    --hide healthbar
@@ -32,7 +33,7 @@ function on_message(self, message_id, message, sender)
    	--make the size of the healthbar proporionate to the health
    	elseif  message_id == hash("updateSize")then
    		--we get a message with the ratio progress/maxProgress - set the width to that ratio
-   		local newWidth = self.originalWidth*message.ratio
+   		local newWidth = self.originalWidth*(1-message.ratio)
    		local size = gui.get_size(gui.get_node("progressBox"))
    		size.x=newWidth
    		gui.set_size(gui.get_node("progressBox"),size)

@@ -260,12 +260,15 @@ function showProductionSection()
    	showNode(PRODUCTION_TITLE)
    	showNode(PRODUCTION_PERCENT)
    	
+
+   	
    	if unitWithGUI.producer and string.len(unitWithGUI.currentlyProducingItem)>0 then
    		gui.set_text(gui.get_node(PRODUCTION_TITLE),"Making "..unitWithGUI.currentlyProducingItem)
    	else	
    		gui.set_text(gui.get_node(PRODUCTION_TITLE),"")
    	end
    	
+
 end
 
 function setIconForButton(buttonId,iconId)
@@ -278,9 +281,14 @@ function setIconForButton(buttonId,iconId)
 end
 
 function updateProductionPercentage()
+
+
 	if unitWithGUI.currentProductionProgress>0 then
 		gui.set_text(gui.get_node(PRODUCTION_PERCENT),math.floor(unitWithGUI.currentProductionProgress*100).." %")
-	else
+	elseif unitWithGUI.isBuilding and not unitWithGUI.constructionDone then
+		gui.set_text(gui.get_node(PRODUCTION_TITLE),UNDER_CONSTRUCTION)
+   		gui.set_text(gui.get_node(PRODUCTION_PERCENT),math.floor(unitWithGUI.constructionProgress/unitWithGUI.constructionTime*100).." %")
+   	else
 		hideNode(PRODUCTION_PERCENT)
 	end
 end

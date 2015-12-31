@@ -41,7 +41,7 @@ function init(self)
 	local deselectAction=function() msg.post("manager","deselectAll",{}) end
 	
 	self.GUILayout={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
-					button2={icon="RBCIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[RBC_NAME] end},
+					button2=nil,
 					button3=nil,
 					button4=nil,
 					button5=nil,
@@ -54,6 +54,20 @@ function init(self)
 					productionButton3={icon="deselectIcon",action=productionButton3Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
 					productionButton4={icon="deselectIcon",action=productionButton4Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end}}
 
+	
+	self.GUILayoutComplete={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
+					button2={icon="RBCIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[RBC_NAME] end},
+					button3=nil,
+					button4=nil,
+					button5=nil,
+					button6=nil,
+					button7=nil,
+					button8=nil,
+					button9=nil,
+					productionButton1={icon="deselectIcon",action=productionButton1Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
+					productionButton2={icon="deselectIcon",action=productionButton2Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
+					productionButton3={icon="deselectIcon",action=productionButton3Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
+					productionButton4={icon="deselectIcon",action=productionButton4Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end}}
 	
 end
 

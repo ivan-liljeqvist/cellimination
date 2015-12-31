@@ -13,7 +13,7 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.builtAtX=nil
 	self.builtAtY=nil
 	
-	self.constructionStarted=false
+	
 	self.putDownAndWaitingForWorker=false
 	
 	self.isBuilding=true
@@ -25,6 +25,11 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.workerID = nil -- worker building the building
 
 	hideWaypoint(self)
+	
+	self.constructionStarted=false
+	self.constructionDone=false
+	self.constructionProgress=0
+	self.constructionTime=CONSTRUCTION_TIME[self.name]
 	
 end
 
@@ -45,6 +50,14 @@ function buildingMessageHandler(self,go,message_id,message,sender)
 
 end
 
+
+function constructionDone(self)
+	print("constructiond one!")
+	
+	self.GUILayout=self.GUILayoutComplete
+	msg.post("#sprite", "play_animation", {id = hash("obj_lookout")})
+	
+end
 
 
 function putPrototypeHere(x,y,self)
@@ -94,6 +107,8 @@ function buildHere(x,y,self)
 	if self.selected then
 		showHealthBar(self)
 	end
+	
+	self.constructionStarted=true
 end
 
 function hideWaypoint(self)
@@ -349,6 +364,22 @@ function removePrototypeColor(spriteObject)
 end
 
 function buildingUpdate(self,dt,go)
+
+	if self.constructionStarted and not self.constructionDone then
+		showProgressBar(self)
+		self.constructionProgress=self.constructionProgress+dt
+		
+		local ratio=self.constructionProgress/self.constructionTime
+		msg.post(msg.url("#progressGUI"),"show")
+		msg.post(msg.url("#progressGUI"),"updateSize",{ratio=ratio})
+		
+		if ratio>=1 then
+			self.constructionDone=true
+			self.constructionProgress=self.constructionTime
+			constructionDone(self)
+		end
+		
+	end
 
 end
 

@@ -60,6 +60,7 @@ function initBasicUnit(self,name,goID)
 	self.showingProgressBar=true
 	self.producingSomething=false
 	hideProgressBar(self)
+	hideHealthBar(self)
 end
 
 
@@ -108,17 +109,17 @@ end
 
 function basicUnitUpdate(self,dt,go)
 
-	if self.producing then
+	--if self.producing then
 		local pos = go.get_position()
 		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
 		pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
 		msg.post(msg.url("#progressGUI"),"setPosition",{position=pos})
-	end
+	--end
 	
 	checkIfShouldShowProgress(self)
 	
 	--update healthbar
-	if self.showingHealthBar or self.showingHelthTemp then
+	--if self.showingHealthBar or self.showingHelthTemp then
 	
 		--1) move the bar after the unit
 		local pos = go.get_position()
@@ -140,7 +141,7 @@ function basicUnitUpdate(self,dt,go)
 		
 		--3) update the width of the health bar
 		msg.post(msg.url("#healthGUI"),"updateSize",{ratio=ratio})
-	end
+	--end
 	
 	--see if we should hide the temporary healthbar
 	if self.showingHelthTemp then
