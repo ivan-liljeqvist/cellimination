@@ -18,8 +18,10 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("hide") then
 		go.set("#wayPointMark", "scale", vmath.vector3(0.0, 0.0, 0.0))
 	elseif message_id==hash("show") then
-		go.set("#wayPointMark", "scale", vmath.vector3(1.0, 1.0, 1.0))
-		go.set_position(message.pos)
+		if message.pos then
+			go.set("#wayPointMark", "scale", vmath.vector3(1.0, 1.0, 1.0))
+			go.set_position(message.pos)
+		end
 	end    
 
 end

@@ -55,6 +55,7 @@ function on_message(self, message_id, message, sender)
 
 	handleSelectMethods(self,go,message_id,message)
 	basicUnitMessageHandler(self,go,message_id,message,sender)
+	buildingMessageHandler(self,go,message_id,message,sender)
 	
 	if self.selected then
 		CURRENT_PRODUCER_POSITION={x=go.get_position().x,y=go.get_position().y}

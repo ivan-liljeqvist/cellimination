@@ -55,6 +55,7 @@ end
 
 function generateNewPathToTileCoords(self,tileX,tileY)
 
+
 	if self.worker and self.currentBuilding then
 		if self.generateCounter<1 then
 			abortConstruction(self)

@@ -24,6 +24,7 @@ function on_message(self, message_id, message, sender)
 	
 	if newBuilding and message.workerID then
 	
+		print("send setCurrentBuilding and setWorkerID")
 		msg.post(message.workerID,"setCurrentBuilding",{building=newBuilding})
 		msg.post(newBuilding,"setWorkerID",{workerID=message.workerID})
 	

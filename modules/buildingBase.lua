@@ -34,8 +34,9 @@ function initBuilding(self,spriteObject,buildingSize,go)
 end
 
 function buildingMessageHandler(self,go,message_id,message,sender)
-
+	
 	if message_id == hash("setWorkerID") and self.workerID==nil then
+
 		self.workerID=message.workerID
 	elseif message_id == hash("abortConstruction") and self.workerID then
 		destroyUnit(self)
@@ -84,7 +85,6 @@ end
 function buildHere(x,y,self)
 
 	--msg.post("#sprite", "play_animation", {id = hash("construction")})
-	
 	
 	self.workerID=nil
 
@@ -174,6 +174,8 @@ function buildingInput(self,action,action_id)
 			workerPos.x=workerPos.x-CAMERA_OFFSETX
 			workerPos.y=workerPos.y-CAMERA_OFFSETY
 			workerPos.x=workerPos.x+(self.buildingSize.width*2*TILE_SIZE)
+			
+			
 			
 			msg.post(self.workerID,"goToBuildingSite",{pos=workerPos})
 			
@@ -266,7 +268,7 @@ function setTilesUnderMeToNotOccupied(self,x,y)
 				TILEMAP_NODES[nodeIndex].blocked=false
 				TILEMAP_NODES[nodeIndex].occupiedByID=nil
 				
-				--tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 1)
+				--tilemapObject.set_tile("world#tilemap", "blocked", currentX, currentY, 0)
 			end
 
 			 		
@@ -298,7 +300,7 @@ function setTilesUnderMeToOccupied(self,x,y)
 			TILEMAP_NODES[nodeIndex].blocked=true
 			TILEMAP_NODES[nodeIndex].occupiedByID=self.id
 			
-			--tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 0)
+			--tilemapObject.set_tile("world#tilemap", "blocked", currentX, currentY, 0)
 
 			 		
 		end

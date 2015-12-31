@@ -92,9 +92,7 @@ function destroyUnit(self)
 	    
 	    
 	    if self.isBuilding then
-	    	if self.prototypeMode~=true then
 	    		destroyBuilding(self)
-	    	end
 	    end
 	    
 	    msg.post("HUD","unitDestroyed",{id=self.id})
