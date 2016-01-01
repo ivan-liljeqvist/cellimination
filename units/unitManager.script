@@ -10,12 +10,15 @@ function setTeam(unitID,teamNumber)
 end
 
 COMMAND_FACTORY_MAP={}
-COMMAND_FACTORY_MAP[hash("newJeep")]="#jeepFactory"
-COMMAND_FACTORY_MAP[hash("newHeal1")]="#heal1Factory"
+COMMAND_FACTORY_MAP[hash("new"..RBC_NAME)]="#rbcFactory"
+COMMAND_FACTORY_MAP[hash("new"..HEAL1_NAME)]="#heal1Factory"
+COMMAND_FACTORY_MAP[hash("new"..HEAL2_NAME)]="#heal2Factory"
 
 function on_message(self, message_id, message, sender)
 	
 	local factoryID=COMMAND_FACTORY_MAP[message_id]
+	
+	print("factoryID "..factoryID)
 	
 	if factoryID then
 	

@@ -27,19 +27,19 @@ function init(self)
 	end
 	
 	local buildRedBloodCellAction=function() 
-		queueRedBloodCell(self)
+		queue(self,RBC_NAME)
 	end
 	
 	local buildHeal1Action=function()
-		queueHeal1(self)
+		queue(self,HEAL1_NAME)
+	end
+	
+	local buildHeal2Action=function()
+		queue(self,HEAL2_NAME)
 	end
 	
 	self.productionComplete=function(itemName,self)
-		if itemName==RBC_NAME then
-			redBloodCellDone(self)
-		elseif itemName==HEAL1_NAME then
-			heal1Done(self)
-		end
+		productionDone(self,itemName)
 	end
 	
 	self.requiresGUI=true
@@ -63,8 +63,8 @@ function init(self)
 	
 	self.GUILayoutComplete={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
 					button2={icon="RBCIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[RBC_NAME] end},
-					button3={icon="heal1Icon", action=buildHeal1Action, hover=function() return HOVER_LAYOUT[RBC_NAME] end},
-					button4=nil,
+					button3={icon="heal1Icon", action=buildHeal1Action, hover=function() return HOVER_LAYOUT[HEAL1_NAME] end},
+					button4={icon="heal2Icon", action=buildHeal2Action, hover=function() return HOVER_LAYOUT[HEAL2_NAME] end},
 					button5=nil,
 					button6=nil,
 					button7=nil,
@@ -77,24 +77,13 @@ function init(self)
 	
 end
 
-function queueRedBloodCell(self)
-	--do we have the resources?
-	if canAfford(RBC_NAME) then
-		if table.getn(self.toProduce)<MAX_PRODUCTION_QUEUE then
-			deductResources(RBC_NAME)
-			table.insert(self.toProduce,RBC_NAME)
-		end
-	else
-		msg.post("HUD","displayErrorMessage",{text=NOT_ENOUGH_RESOURCES})
-	end
-end
 
-function queueHeal1(self)
+function queue(self,unitName)
 	--do we have the resources?
-	if canAfford(HEAL1_NAME) then
+	if canAfford(unitName) then
 		if table.getn(self.toProduce)<MAX_PRODUCTION_QUEUE then
-			deductResources(HEAL1_NAME)
-			table.insert(self.toProduce,HEAL1_NAME)
+			deductResources(unitName)
+			table.insert(self.toProduce,unitName)
 		end
 	else
 		msg.post("HUD","displayErrorMessage",{text=NOT_ENOUGH_RESOURCES})
