@@ -18,6 +18,7 @@ function resetProduction(self)
 end
 
 function updateProductionUnit(self,dt)
+
 	if table.getn(self.toProduce)>0 and self.currentlyProducing==false then
     	self.currentlyProducing=true
     	self.currentProductionProgress=0

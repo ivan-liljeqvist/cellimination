@@ -240,19 +240,19 @@ function showProductionSection()
    	end
    	if numToProduce>=2 then
    		showButton(PRODUCTION_BUTTON2)
-   		setIconForButton(PRODUCTION_BUTTON2,ICONS[unitWithGUI.currentlyProducingItem])
+   		setIconForButton(PRODUCTION_BUTTON2,ICONS[unitWithGUI.toProduce[2]])
    	else
    		hideButton(PRODUCTION_BUTTON2)
    	end
    	if numToProduce>=3 then
    		showButton(PRODUCTION_BUTTON3)
-   		setIconForButton(PRODUCTION_BUTTON3,ICONS[unitWithGUI.currentlyProducingItem])
+   		setIconForButton(PRODUCTION_BUTTON3,ICONS[unitWithGUI.toProduce[3]])
    	else
    		hideButton(PRODUCTION_BUTTON3)
    	end
    	if numToProduce>=4 then
    		showButton(PRODUCTION_BUTTON4)
-   		setIconForButton(PRODUCTION_BUTTON4,ICONS[unitWithGUI.currentlyProducingItem])
+   		setIconForButton(PRODUCTION_BUTTON4,ICONS[unitWithGUI.toProduce[4]])
    	else
    		hideButton(PRODUCTION_BUTTON4)
    	end
