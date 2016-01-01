@@ -10,8 +10,8 @@ render = /render/ownRender.renderc
 game_binding = /input/game.input_bindingc
 
 [display]
-width = 1920
-height = 1080
+width = 1280
+height = 720
 fullscreen = 0
 dynamic_orientation = 0
 

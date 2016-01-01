@@ -68,6 +68,7 @@ function putPrototypeHere(x,y,self)
 	self.builtAtX=x*ZOOM_LEVEL
 	self.builtAtY=y*ZOOM_LEVEL
 	
+	
 	self.putDownAndWaitingForWorker=true
 	
 	--self.prototypeMode=false
@@ -183,6 +184,9 @@ function buildingInput(self,action,action_id)
 			--buildHere(action.x*ZOOM_LEVEL,action.y*ZOOM_LEVEL,self)
 			putPrototypeHere(action.x,action.y,self)
 		else
+			self.builtAtX=action.x*ZOOM_LEVEL
+			self.builtAtY=action.y*ZOOM_LEVEL
+			
 			destroyUnit(self)
 			alertCantBuildHere()
 		end
@@ -248,6 +252,7 @@ end
 
 function setTilesUnderMeToNotOccupied(self,x,y)
 
+	
 	local centerTileX, centerTileY = pixelToTileCoords(x,y)
 	
 	--go through each row and column
