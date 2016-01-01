@@ -65,7 +65,24 @@ embedded_components {
 embedded_components {
   id: "rbcFactory"
   type: "factory"
-  data: "prototype: \"/units/defenders/fighters/jeep/jeep.go\"\n"
+  data: "prototype: \"/units/defenders/fighters/rbc/rbc.go\"\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "tank1Factory"
+  type: "factory"
+  data: "prototype: \"/units/defenders/tanks/tank1/tank1.go\"\n"
   ""
   position {
     x: 0.0

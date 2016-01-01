@@ -1,6 +1,7 @@
 
 require "modules.data.unitData"
 require "modules.data.fighters"
+require "modules.data.tanks"
 require "modules.data.healers"
 require "modules.data.extractors"
 require "modules.data.buildings"

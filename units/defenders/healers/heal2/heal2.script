@@ -12,9 +12,6 @@ function init(self)
 	self.id=go.get_id()
 	
 	self.initialScale=0.6
-	self.fogRadius=JEEP_FOG_RADIUS
-	
-	self.spotEnemiesRadius=2
 	
 	self.factory=factory
 	self.particlefx=particlefx
@@ -24,6 +21,7 @@ function init(self)
     initBasicUnit(self,HEAL2_NAME,go.get_id())
     initMovableUnit(self)
     initHealingUnit(self)
+    self.fogRadius=FOG_RADIUS[self.name]
     
     self.currentAnimation="normal"
 

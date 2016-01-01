@@ -1,19 +1,4 @@
 components {
-  id: "healCircle"
-  component: "/graphicalAssets/units/defenders/healers/green/healingCircle.spinemodel"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-components {
   id: "healthGUI"
   component: "/gui/healthbar/healthBar.gui"
   position {
@@ -45,7 +30,7 @@ components {
 }
 components {
   id: "script"
-  component: "/units/defenders/healers/heal1/heal1.script"
+  component: "/units/defenders/fighters/rbc/rbc.script"
   position {
     x: 0.0
     y: 0.0
@@ -59,12 +44,12 @@ components {
   }
 }
 components {
-  id: "spinemodel"
-  component: "/graphicalAssets/units/defenders/healers/green/green2.spinemodel"
+  id: "spine"
+  component: "/graphicalAssets/units/defenders/fighters/red/redMonster.spinemodel"
   position {
     x: 0.0
     y: 0.0
-    z: 0.1
+    z: 0.0
   }
   rotation {
     x: 0.0

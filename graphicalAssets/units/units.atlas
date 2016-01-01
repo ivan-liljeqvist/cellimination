@@ -17,13 +17,22 @@ images {
   image: "/graphicalAssets/teeth/upper.png"
 }
 images {
-  image: "/graphicalAssets/units/defenders/green/eyeCute.png"
+  image: "/graphicalAssets/units/defenders/healers/green/eyeCute.png"
 }
 images {
-  image: "/graphicalAssets/units/defenders/green/greenBody.png"
+  image: "/graphicalAssets/units/defenders/healers/green/greenBody.png"
 }
 images {
-  image: "/graphicalAssets/units/defenders/green/healingCircle.png"
+  image: "/graphicalAssets/units/defenders/healers/green/healingCircle.png"
+}
+images {
+  image: "/graphicalAssets/units/defenders/tanks/tank1/tankBody.png"
+}
+images {
+  image: "/graphicalAssets/units/defenders/tanks/tank1/angryEyesL.png"
+}
+images {
+  image: "/graphicalAssets/units/defenders/tanks/tank1/angryEyesR.png"
 }
 margin: 0
 extrude_borders: 0

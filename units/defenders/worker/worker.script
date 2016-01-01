@@ -10,9 +10,8 @@ function init(self)
 	self.y=go.get_position().y
 	
 	self.initialScale=0.5
-	self.fogRadius=WORKER_FOG_RADIUS
 	
-	   self.parseInput=function(self, action_id, action)
+	self.parseInput=function(self, action_id, action)
 
 	end
 	
@@ -20,6 +19,7 @@ function init(self)
     initMovableUnit(self)
     initBasicWorker(self)
  
+ 	self.fogRadius=FOG_RADIUS[self.name]
 
 	self.requiresGUI=true
 	

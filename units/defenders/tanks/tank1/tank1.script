@@ -11,16 +11,15 @@ function init(self)
 	
 	self.id=go.get_id()
 	
-	self.initialScale=0.6
+	self.initialScale=1
+	
 	
 	self.factory=factory
-	self.particlefx=particlefx
-	self.spine=spine
-	self.sprite=sprite
 	
-    initBasicUnit(self,HEAL1_NAME,go.get_id())
+    initBasicUnit(self,RBC_NAME,go.get_id())
     initMovableUnit(self)
-    initHealingUnit(self)
+    initFightingUnit(self,false)
+    
     self.fogRadius=FOG_RADIUS[self.name]
     
     self.currentAnimation="normal"
@@ -55,7 +54,6 @@ function update(self, dt)
 	
 	basicUnitUpdate(self,dt,go)
 	unitUpdate(self,go,dt)
-	healerUpdate(self,go,dt)
 	
     
 end

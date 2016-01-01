@@ -1,5 +1,0 @@
-spine_scene: "/graphicalAssets/units/defenders/green/healingCircle.spinescene"
-default_animation: "animation"
-skin: ""
-blend_mode: BLEND_MODE_ALPHA
-material: "/builtins/materials/spine.material"

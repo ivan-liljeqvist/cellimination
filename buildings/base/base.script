@@ -38,6 +38,10 @@ function init(self)
 		queue(self,HEAL2_NAME)
 	end
 	
+	local buildTank1Action=function()
+		queue(self,TANK1_NAME)
+	end
+	
 	self.productionComplete=function(itemName,self)
 		productionDone(self,itemName)
 	end
@@ -65,7 +69,7 @@ function init(self)
 					button2={icon="RBCIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[RBC_NAME] end},
 					button3={icon="heal1Icon", action=buildHeal1Action, hover=function() return HOVER_LAYOUT[HEAL1_NAME] end},
 					button4={icon="heal2Icon", action=buildHeal2Action, hover=function() return HOVER_LAYOUT[HEAL2_NAME] end},
-					button5=nil,
+					button5={icon="tank1Icon", action=buildTank1Action, hover=function() return HOVER_LAYOUT[TANK1_NAME] end},
 					button6=nil,
 					button7=nil,
 					button8=nil,
