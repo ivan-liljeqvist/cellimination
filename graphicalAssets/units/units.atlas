@@ -16,3 +16,12 @@ images {
 images {
   image: "/graphicalAssets/teeth/upper.png"
 }
+images {
+  image: "/graphicalAssets/units/defenders/green/eyeCute.png"
+}
+images {
+  image: "/graphicalAssets/units/defenders/green/greenBody.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

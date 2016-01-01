@@ -9,25 +9,29 @@ function setTeam(unitID,teamNumber)
 	msg.post(msg.url(unitID),"setTeam",{newTeamNumber=teamNumber})
 end
 
+COMMAND_FACTORY_MAP={}
+COMMAND_FACTORY_MAP[hash("newJeep")]="#jeepFactory"
+COMMAND_FACTORY_MAP[hash("newHeal1")]="#heal1Factory"
 
 function on_message(self, message_id, message, sender)
 	
-	if message_id == hash("newJeep") then
+	local factoryID=COMMAND_FACTORY_MAP[message_id]
 	
-		print("inital prodsition: ",message.position.x,message.position.y)
+	if factoryID then
+	
 		local initialPosition=vmath.vector3(message.producerPosition.x,
 												    message.producerPosition.y-TILE_SIZE,1)
-		local newJeep=factory.create("#jeepFactory",initialPosition)
+		local newUnit=factory.create(factoryID,initialPosition)
 		
 		local rollOutPosition=vmath.vector3(message.position.x,
 												    message.position.y-TILE_SIZE,1)
 		
 				
-		msg.post(msg.url(newJeep), "rollOutOfProducer", {x=rollOutPosition.x,
+		msg.post(msg.url(newUnit), "rollOutOfProducer", {x=rollOutPosition.x,
 												 y=rollOutPosition.y,waypointSet=message.waypointSet,prodX=message.producerPosition.x,prodY=message.producerPosition.y-TILE_SIZE})
 								    
-		
-	end
+	end	
+
 	
 end
 

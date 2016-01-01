@@ -19,6 +19,9 @@ images {
 images {
   image: "/graphicalAssets/gui/mainBaseIcon.png"
 }
+images {
+  image: "/graphicalAssets/gui/heal1Icon.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

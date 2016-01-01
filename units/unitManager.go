@@ -1,6 +1,21 @@
 components {
+  id: "heal1Factory"
+  component: "/units/defenders/fighters/jeep/jeep.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
   id: "jeepFactory"
-  component: "/units/defenders/vechiles/jeep/jeep.factory"
+  component: "/units/defenders/fighters/jeep/jeep.factory"
   position {
     x: 0.0
     y: 0.0

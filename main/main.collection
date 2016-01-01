@@ -60,6 +60,26 @@ instances {
   }
 }
 instances {
+  id: "heal1"
+  prototype: "/units/defenders/healers/heal1/heal1.go"
+  position {
+    x: 1990.6787
+    y: 1331.5911
+    z: 0.35
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "inputLayer"
   prototype: "/inputLayer/inputLayer.go"
   position {
@@ -81,7 +101,7 @@ instances {
 }
 instances {
   id: "jeep"
-  prototype: "/units/defenders/vechiles/jeep/jeep.go"
+  prototype: "/units/defenders/fighters/jeep/jeep.go"
   position {
     x: 1067.0925
     y: 1449.9845

@@ -30,9 +30,15 @@ function init(self)
 		queueRedBloodCell(self)
 	end
 	
+	local buildHeal1Action=function()
+		queueHeal1(self)
+	end
+	
 	self.productionComplete=function(itemName,self)
 		if itemName==RBC_NAME then
 			redBloodCellDone(self)
+		elseif itemName==HEAL1_NAME then
+			heal1Done(self)
 		end
 	end
 	
@@ -57,7 +63,7 @@ function init(self)
 	
 	self.GUILayoutComplete={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
 					button2={icon="RBCIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[RBC_NAME] end},
-					button3=nil,
+					button3={icon="heal1Icon", action=buildHeal1Action, hover=function() return HOVER_LAYOUT[RBC_NAME] end},
 					button4=nil,
 					button5=nil,
 					button6=nil,
@@ -83,11 +89,15 @@ function queueRedBloodCell(self)
 	end
 end
 
-function redBloodCellDone(self)
-	if self.waypointHidden then
-		msg.post("unitManager", "newJeep", {position=vmath.vector3(self.x,self.y,1), producerPosition=vmath.vector3(self.x,self.y,1)}) 
-	else 
-		msg.post("unitManager", "newJeep", {position=vmath.vector3(self.waypointPosition.x,self.waypointPosition.y,1), producerPosition=vmath.vector3(self.x,self.y,1),waypointSet=(not self.waypointHidden)}) 
+function queueHeal1(self)
+	--do we have the resources?
+	if canAfford(HEAL1_NAME) then
+		if table.getn(self.toProduce)<MAX_PRODUCTION_QUEUE then
+			deductResources(HEAL1_NAME)
+			table.insert(self.toProduce,HEAL1_NAME)
+		end
+	else
+		msg.post("HUD","displayErrorMessage",{text=NOT_ENOUGH_RESOURCES})
 	end
 end
 

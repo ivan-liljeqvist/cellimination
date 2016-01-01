@@ -14,8 +14,8 @@ function initFightingUnit(self)
 	self.attackers={}
 
 	
-	self.firingRange=2 --if melee we need to be next to the enemy
-	self.visionRange = 4
+	self.firingRange=FIRING_RANGE[self.name]
+	self.visionRange = VISION_RANGE[self.name]
 	
 	self.fightUpdateCounter=0 --we don't want to run fight logic every frame
 	

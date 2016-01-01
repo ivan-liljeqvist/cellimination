@@ -30,7 +30,7 @@ components {
 }
 components {
   id: "script"
-  component: "/units/defenders/vechiles/jeep/jeep.script"
+  component: "/units/defenders/healers/heal1/heal1.script"
   position {
     x: 0.0
     y: 0.0
@@ -44,8 +44,8 @@ components {
   }
 }
 components {
-  id: "spine"
-  component: "/graphicalAssets/units/defenders/red/redMonster.spinemodel"
+  id: "spinemodel"
+  component: "/graphicalAssets/units/defenders/green/green.spinemodel"
   position {
     x: 0.0
     y: 0.0
@@ -60,7 +60,7 @@ components {
 }
 components {
   id: "sprite"
-  component: "/units/defenders/vechiles/jeep/jeep.sprite"
+  component: "/units/defenders/fighters/jeep/jeep.sprite"
   position {
     x: 0.0
     y: 0.0

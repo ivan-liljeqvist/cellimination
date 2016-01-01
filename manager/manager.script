@@ -1,8 +1,11 @@
 
 require "modules.data.unitData"
 require "modules.data.fighters"
+require "modules.data.healers"
 require "modules.data.extractors"
 require "modules.data.buildings"
+
+require "modules.productionMethods"
 require "modules.workerBase"
 require "modules.globals"
 require "modules.state"
