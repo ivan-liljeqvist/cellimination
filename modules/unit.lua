@@ -55,7 +55,8 @@ function initBasicUnit(self,name,goID)
 	end
 	
 	self.originalHealth=MAX_HEALTH[self.name]
-	self.health=self.originalHealth	
+	self.health=self.originalHealth
+	self.needsHealing=false
 	
 	self.showingProgressBar=true
 	self.producingSomething=false
@@ -107,6 +108,30 @@ end
 
 function basicUnitUpdate(self,dt,go)
 
+
+	handleHealingStatus(self)
+	handleProgressbar(self)
+	handleHealthbar(self,dt)
+	
+	
+
+end
+
+function handleHealingStatus(self)
+
+	if self.originalHealth and self.health then
+		if self.originalHealth>self.health then
+			self.needsHealing=true
+		else 
+			self.needsHealing=false
+		end
+	else
+		print(self.name.." doesnt have health variables")
+	end
+	
+end
+
+function handleProgressbar(self)
 	--if self.producing then
 		local pos = go.get_position()
 		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
@@ -115,7 +140,10 @@ function basicUnitUpdate(self,dt,go)
 	--end
 	
 	checkIfShouldShowProgress(self)
-	
+end
+
+
+function handleHealthbar(self,dt)
 	--update healthbar
 	--if self.showingHealthBar or self.showingHelthTemp then
 	
@@ -154,8 +182,6 @@ function basicUnitUpdate(self,dt,go)
 			
 		
 	end
-	
-
 end
 
 function hideProgressBar(self)
@@ -217,6 +243,10 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 	if message_id==hash("setTeam") then
 		self.teamNumber=message.newTeamNumber
 		print("new team "..message.newTeamNumber)
+		
+	elseif message_id==hash("heal")then
+	
+		increaseHealth(self,message.hp)
 
 	elseif message_id==hash("rollOutOfProducer") then
 		--generateNewPathToMouseClick(self,message,tilemap)--last argument is to ignore camera offset
@@ -286,17 +316,35 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 		
 			msg.post(self.hitByLastId,"die")	
 		
-			self.health=self.health-message.damage
-			
-			if self.showingHealthBar==false then
-				showHealthBarTemporarily(self)
-			end
+			decreaseHealth(self,message.damage)
 	
-			if self.health <= 0 then
-				destroyUnit(self)
-			end
+
 	   end
 
+	end
+end
+
+function increaseHealth(self,amount)
+	self.health=self.health+amount
+	
+	if self.health>self.originalHealth then self.health = self.originalHealth end
+	
+	if self.showingHealthBar==false then
+		showHealthBarTemporarily(self)
+	end
+end
+
+function decreaseHealth(self,amount)
+	self.health=self.health-amount
+	
+	if self.health<0 then self.health=0 end
+	
+	if self.health <= 0 then
+		destroyUnit(self)
+	end
+	
+	if self.showingHealthBar==false then
+		showHealthBarTemporarily(self)
 	end
 end
 

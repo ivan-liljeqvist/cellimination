@@ -17,9 +17,13 @@ function init(self)
 	self.spotEnemiesRadius=2
 	
 	self.factory=factory
+	self.particlefx=particlefx
+	self.spine=spine
+	self.sprite=sprite
 	
     initBasicUnit(self,HEAL1_NAME,go.get_id())
     initMovableUnit(self)
+    initHealingUnit(self)
     
     self.currentAnimation="normal"
 
@@ -53,6 +57,7 @@ function update(self, dt)
 	
 	basicUnitUpdate(self,dt,go)
 	unitUpdate(self,go,dt)
+	healerUpdate(self,go,dt)
 	
     
 end

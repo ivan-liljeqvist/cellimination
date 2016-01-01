@@ -23,6 +23,7 @@ require "modules.productionUnit"
 require "modules.colors"
 require "modules.fogManager"
 require "modules.fightingUnit"
+require "modules.healingUnit"
 
 function init(self)
     
