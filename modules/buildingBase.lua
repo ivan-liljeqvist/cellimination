@@ -47,16 +47,19 @@ function buildingMessageHandler(self,go,message_id,message,sender)
 		
 		print("self.buitAtX,self.buitAtY: ", self.builtAtX,self.builtAtX)
 		buildHere( self.builtAtX, self.builtAtY,self)
+		
+		msg.post("#sprite", "play_animation", {id = hash("construction")})
 	end
 
 end
 
 
 function constructionDone(self)
-	print("constructiond one!")
+	print("constructiond done! "..self.name)
 	
 	self.GUILayout=self.GUILayoutComplete
-	msg.post("#sprite", "play_animation", {id = hash("obj_lookout")})
+	
+	msg.post("#sprite", "play_animation", {id = hash(BUILDING_COMPLETED_SPRITE[self.name])})
 	
 end
 

@@ -16,6 +16,8 @@ HEALING_RATE={}
 
 FOG_RADIUS={}
 
+BUILDING_COMPLETED_SPRITE={}
+
 
 
 --worker

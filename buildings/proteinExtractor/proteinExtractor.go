@@ -94,7 +94,7 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/graphicalAssets/buildings/buildings.atlas\"\n"
-  "default_animation: \"proteinExtractor\"\n"
+  "default_animation: \"construction\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

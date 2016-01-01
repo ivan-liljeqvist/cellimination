@@ -1,4 +1,4 @@
 tile_set: "/graphicalAssets/buildings/buildings.atlas"
-default_animation: "construction"
+default_animation: "obj_lookout"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

@@ -17,7 +17,7 @@ function init(self)
 	self.willBecomeBuilding=true
 	self.isCarbExtractor=true
 	
-    initBasicUnit(self,BASE_NAME,go.get_id())
+    initBasicUnit(self,CARB_EXTRACTOR_NAME,go.get_id())
 	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=0},width=2,height=1},go)
 	initProductionUnit(self)
 	
