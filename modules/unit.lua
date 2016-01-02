@@ -6,7 +6,8 @@ function initBasicUnit(self,name,goID)
 
 	populateNodeArray()
 	
-	self.bounds=getSpriteBounds("#sprite",self)    
+	self.bounds=getSpriteBounds("#sprite",self) 
+	   
     self.selected=false
     
     self.canFight=false
@@ -74,6 +75,15 @@ function destroyUnit(self)
 		
 		if self.worker then
 			abortConstruction(self)
+		end
+		
+		if self.isBuilding then
+			if self.building then
+				go.delete(self.building)
+			end
+			if self.construction then
+				go.delete(self.construction)
+			end
 		end
 		
 		GAME_OBJECTS_THAT_REQUIRE_INPUT[self.go.get_id()]=nil

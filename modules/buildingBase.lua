@@ -31,7 +31,8 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.constructionProgress=0
 	self.constructionTime=CONSTRUCTION_TIME[self.name]
 	
-	self.construction=nil
+	self.construction=self.factory.create("#constructionFactory")
+	self.building = self.factory.create("#buildingFactory")
 	
 end
 
@@ -47,17 +48,16 @@ function buildingMessageHandler(self,go,message_id,message,sender)
 		msg.post(self.workerID,"resetBuilding")
 		self.workerID=nil
 		
-		print("self.buitAtX,self.buitAtY: ", self.builtAtX,self.builtAtX)
 		buildHere( self.builtAtX, self.builtAtY,self)
+		self.x=self.builtAtX
+		self.y=self.builtAtY
 		
-		msg.post("#sprite", "play_animation", {id = hash("blankPixel")})
-		
-		self.construction = self.factory.create("#constructionFactory")
-		
+
 		if self.constructionScale then
 			local s = vmath.vector3(self.constructionScale, self.constructionScale, self.constructionScale)
 			go.set_scale(s,self.construction)
 		end
+		
 	end
 
 end
@@ -68,7 +68,7 @@ function constructionDone(self)
 	
 	self.GUILayout=self.GUILayoutComplete
 	
-	msg.post("#sprite", "play_animation", {id = hash(BUILDING_COMPLETED_SPRITE[self.name])})
+	--msg.post("#sprite", "play_animation", {id = hash(BUILDING_COMPLETED_SPRITE[self.name])})
 	
 	go.delete(self.construction)
 	
@@ -83,14 +83,12 @@ function putPrototypeHere(x,y,self)
 	self.builtAtY=y*ZOOM_LEVEL
 	
 	
+	
 	self.putDownAndWaitingForWorker=true
 	
 	--self.prototypeMode=false
 	--setTilesUnderMeToOccupied(self,x,y)
 	setTilesUnderMeToOccupied(self,self.builtAtX,self.builtAtY)
-	
-	self.x=x+CAMERA_OFFSETX
-	self.y=y+CAMERA_OFFSETY
 	
 	self.orOffX=CAMERA_OFFSETX
 	self.orOffY=CAMERA_OFFSETY
@@ -116,6 +114,8 @@ function buildHere(x,y,self)
 	
 	self.x=x+self.orOffX
 	self.y=y+self.orOffY
+	
+	--self.go.set_position(vmath.vector3(self.x+self.orOffX,self.y+self.orOffY+100,0))
 	
 	self.putDownAndWaitingForWorker=false
 	
@@ -209,7 +209,14 @@ function buildingInput(self,action,action_id)
 	elseif self.prototypeMode and self.putDownAndWaitingForWorker==false then
 		GUI_CLICKED=true
 		--follow cursor
+		
+		go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1),self.construction)
+		go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1),self.building)
 		go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1))
+		
+		self.x=action.x*ZOOM_LEVEL-CAMERA_OFFSETX
+		self.y=action.y*ZOOM_LEVEL-CAMERA_OFFSETY
+		
 		--check if we can build here
 		self.canBuildHere = canBuildAt(self,action.x,action.y)
 		updatePrototypeColor(self)
@@ -386,6 +393,7 @@ end
 
 function buildingUpdate(self,dt,go)
 
+	
 	if self.constructionStarted and not self.constructionDone then
 		showProgressBar(self)
 		self.constructionProgress=self.constructionProgress+dt
@@ -401,6 +409,7 @@ function buildingUpdate(self,dt,go)
 		end
 		
 	end
-
+	
+	
 end
 

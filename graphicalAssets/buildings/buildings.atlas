@@ -25,6 +25,12 @@ images {
 images {
   image: "/graphicalAssets/buildings/generic/blankPixel.png"
 }
+images {
+  image: "/graphicalAssets/icons/flagIcon.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/block2.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

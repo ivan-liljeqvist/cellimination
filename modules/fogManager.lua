@@ -36,6 +36,11 @@ function updateFoW()
 					local pixelX=unit.x-CAMERA_OFFSETX
 					local pixelY=unit.y-CAMERA_OFFSETY
 					
+					if unit.isBuilding then
+						pixelX=pixelX+unit.orOffX
+						pixelY=pixelY+unit.orOffY
+					end
+					
 					--translate to tile coordinates
 					local tileX,tileY=pixelToTileCoords(pixelX,pixelY)
 					
@@ -49,7 +54,9 @@ function updateFoW()
 						loopAreaAroundTile(tileX,tileY,unit.fogRadius,clearFogFunc)
 					
 					end
-					
+			
+			else
+				print("prototype mode!")
 			end
 		end
 		
