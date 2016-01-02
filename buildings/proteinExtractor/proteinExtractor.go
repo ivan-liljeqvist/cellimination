@@ -44,6 +44,23 @@ components {
   }
 }
 embedded_components {
+  id: "buildingFactory"
+  type: "factory"
+  data: "prototype: \"/buildings/proteinExtractor/proteinExtractorSpine.go\"\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "collisionobject"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
@@ -111,7 +128,7 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/graphicalAssets/buildings/buildings.atlas\"\n"
-  "default_animation: \"construction\"\n"
+  "default_animation: \"baseInvalid\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

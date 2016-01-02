@@ -15,9 +15,9 @@ components {
 }
 components {
   id: "spinemodel"
-  component: "/graphicalAssets/buildings/base/base.spinemodel"
+  component: "/graphicalAssets/buildings/proteinExtractor/proteinExtractor.spinemodel"
   position {
-    x: 0.3741914
+    x: 1.6958579
     y: 1.3450818
     z: 0.0
   }
