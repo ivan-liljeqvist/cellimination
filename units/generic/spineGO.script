@@ -1,0 +1,41 @@
+function init(self)
+    self.scaleBeforeHide=0
+    self.hidden=false
+end
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+function update(self, dt)
+
+	--gui.set_position(gui.get_node("#gui"),go.get_world_position())   
+
+	msg.post(self.cantBuildGUI,"setPosition",{pos=vmath.vector3(LAST_ACTIONX,LAST_ACTIONY,0)})
+
+end
+
+function on_message(self, message_id, message, sender)
+
+	if message_id == hash("hide") and not self.hidden then
+		self.scaleBeforeHide=go.get_scale()
+		go.set_scale(vmath.vector3(0.01, 0.01, 0.01))
+		self.hidden=true
+	elseif message_id == hash("show") and self.hidden then
+		print(self.scaleBeforeHide)
+		go.set_scale(self.scaleBeforeHide)
+		self.hidden=false
+	end    
+
+end
+
+function on_input(self, action_id, action)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end
+
+function on_reload(self)
+    -- Add reload-handling code here
+    -- Remove this function if not needed
+end

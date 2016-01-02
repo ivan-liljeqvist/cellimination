@@ -1,11 +1,12 @@
 
 function initBuilding(self,spriteObject,buildingSize,go)
 
+	self.spriteObject=spriteObject
 	self.prototypeMode=true
 	self.buildingSize=buildingSize
-	prototypeColorPositionInvalid(spriteObject)
+	prototypeColorPositionInvalid(self)
 	self.canBuildHere=false
-	self.spriteObject=spriteObject
+	
 	self.go=go
 	
 	self.rightReleasedSinceLast=true
@@ -34,9 +35,11 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.construction=self.factory.create("#constructionFactory")
 	self.building = self.factory.create("#buildingFactory")
 	
-
+	hideConstruction(self)
+	
 	go.set_scale(vmath.vector3(0.8, 0.8, 0.8),self.construction)
 
+	spriteObject.set_constant("#sprite", "tint", vmath.vector4(0,0,0,0))
 end
 
 function buildingMessageHandler(self,go,message_id,message,sender)
@@ -55,7 +58,8 @@ function buildingMessageHandler(self,go,message_id,message,sender)
 		self.x=self.builtAtX
 		self.y=self.builtAtY
 		
-
+		hideBuilding(self)
+		showConstruction(self)
 
 		
 	end
@@ -66,6 +70,9 @@ end
 function constructionDone(self)
 	print("constructiond done! "..self.name)
 	
+	showBuilding(self)
+	hideConstruction(self)
+		
 	self.GUILayout=self.GUILayoutComplete
 	
 	--msg.post("#sprite", "play_animation", {id = hash(BUILDING_COMPLETED_SPRITE[self.name])})
@@ -100,8 +107,6 @@ function buildHere(x,y,self)
 	--msg.post("#sprite", "play_animation", {id = hash("construction")})
 	
 	self.workerID=nil
-
-	removePrototypeColor(self.spriteObject)
 	self.prototypeMode=false
 	
 	
@@ -238,9 +243,9 @@ end
 function updatePrototypeColor(self)
 	if self.prototypeMode then
 		if self.canBuildHere then
-			prototypeColor(self.spriteObject)
+			prototypeColorPositionValid(self)
 		else
-			prototypeColorPositionInvalid(self.spriteObject)
+			prototypeColorPositionInvalid(self)
 		end
 	end
 end
@@ -379,16 +384,38 @@ function canBuildAtTile(self,tileX,tileY)
 	return false
 end
 
-function prototypeColor(spriteObject)
-	spriteObject.set_constant("#sprite", "tint", BUILDING_PROTOTYPE_COLOR)
+function prototypeColorPositionValid(self)
+	showBuilding(self)
+	self.spriteObject.set_constant("#sprite", "tint", vmath.vector4(0,0,0,0))
 end
 
-function prototypeColorPositionInvalid(spriteObject)
-	spriteObject.set_constant("#sprite", "tint", BUILDING_PROTOTYPE_COLOR_INVALID)
+function prototypeColorPositionInvalid(self)
+	hideBuilding(self)
+	self.spriteObject.set_constant("#sprite", "tint", vmath.vector4(1,1,1,1))
 end
 
-function removePrototypeColor(spriteObject)
-	spriteObject.set_constant("#sprite", "tint", WHITE_COLOR)
+function hideConstruction(self)
+	if self.construction then
+		msg.post(self.construction,"hide")
+	end
+end
+
+function showConstruction(self)
+	if self.construction then
+		msg.post(self.construction,"show")
+	end
+end
+
+function hideBuilding(self)
+	if self.building then
+		msg.post(self.building,"hide")
+	end
+end
+
+function showBuilding(self)
+	if self.building then
+		msg.post(self.building,"show")
+	end
 end
 
 function buildingUpdate(self,dt,go)
