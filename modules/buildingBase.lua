@@ -37,7 +37,8 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	
 	hideConstruction(self)
 	
-	go.set_scale(vmath.vector3(0.8, 0.8, 0.8),self.construction)
+	go.set_scale(vmath.vector3(self.constructionScale, self.constructionScale, self.constructionScale),self.construction)
+	go.set_scale(vmath.vector3(self.initialScale, self.initialScale, self.initialScale),self.building)
 
 	spriteObject.set_constant("#sprite", "tint", vmath.vector4(0,0,0,0))
 end

@@ -1,13 +1,4 @@
 images {
-  image: "/graphicalAssets/buildings/carbExtractor/carbExtractor.png"
-}
-images {
-  image: "/graphicalAssets/buildings/fatExtractor/fatExtractor.png"
-}
-images {
-  image: "/graphicalAssets/buildings/proteinExtractor/proteinExtractor.png"
-}
-images {
   image: "/graphicalAssets/buildings/waypoint.png"
 }
 images {
@@ -15,9 +6,6 @@ images {
 }
 images {
   image: "/graphicalAssets/war/obj_lookout.png"
-}
-images {
-  image: "/graphicalAssets/buildings/dna.png"
 }
 images {
   image: "/graphicalAssets/buildings/generic/block.png"
@@ -33,6 +21,24 @@ images {
 }
 images {
   image: "/graphicalAssets/buildings/base/flag.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/block3.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/block4.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/block5.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/carbEIcon.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/proteinEIcon.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/fatEIcon.png"
 }
 margin: 0
 extrude_borders: 0
