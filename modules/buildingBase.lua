@@ -4,7 +4,7 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.spriteObject=spriteObject
 	self.prototypeMode=true
 	self.buildingSize=buildingSize
-	prototypeColorPositionInvalid(self)
+	prototypeColorPositionInvalid(self,self.x,self.y)
 	self.canBuildHere=false
 	
 	self.go=go
@@ -71,6 +71,10 @@ end
 function constructionDone(self)
 	print("constructiond done! "..self.name)
 	
+	if self.isFatExtractor==true then FAT_EXTRACTORS_MADE=FAT_EXTRACTORS_MADE+1
+	elseif self.isCarbExtractor==true then CARB_EXTRACTORS_MADE=CARB_EXTRACTORS_MADE+1
+	elseif self.isProteinExtractor==true then PROTEIN_EXTRACTORS_MADE=PROTEIN_EXTRACTORS_MADE+1 end
+	
 	showBuilding(self)
 	hideConstruction(self)
 		
@@ -113,10 +117,6 @@ function buildHere(x,y,self)
 	
 	self.builtAtX=x
 	self.builtAtY=y
-	
-	if self.isFatExtractor==true then FAT_EXTRACTORS_MADE=FAT_EXTRACTORS_MADE+1
-	elseif self.isCarbExtractor==true then CARB_EXTRACTORS_MADE=CARB_EXTRACTORS_MADE+1
-	elseif self.isProteinExtractor==true then PROTEIN_EXTRACTORS_MADE=PROTEIN_EXTRACTORS_MADE+1 end
 	
 	self.x=x+self.orOffX
 	self.y=y+self.orOffY
@@ -191,6 +191,9 @@ function buildingInput(self,action,action_id)
 	
 		if self.canBuildHere then
 			
+			go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1),self.construction)
+			go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1))
+			
 			local workerPos=go.get_position()
 			workerPos.x=workerPos.x-CAMERA_OFFSETX
 			workerPos.y=workerPos.y-CAMERA_OFFSETY
@@ -216,16 +219,20 @@ function buildingInput(self,action,action_id)
 		GUI_CLICKED=true
 		--follow cursor
 		
-		go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1),self.construction)
-		go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1),self.building)
-		go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1))
-		
 		self.x=action.x*ZOOM_LEVEL-CAMERA_OFFSETX
 		self.y=action.y*ZOOM_LEVEL-CAMERA_OFFSETY
 		
 		--check if we can build here
 		self.canBuildHere = canBuildAt(self,action.x,action.y)
-		updatePrototypeColor(self)
+		
+		
+		if self.canBuildHere then
+			go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1),self.building)
+		else
+			go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1))
+		end
+		
+		updatePrototypeColor(self,action.x,action.y)
 	end
 end
 
@@ -241,12 +248,12 @@ end
 
 
 --change between red and green
-function updatePrototypeColor(self)
+function updatePrototypeColor(self,x,y)
 	if self.prototypeMode then
 		if self.canBuildHere then
-			prototypeColorPositionValid(self)
+			prototypeColorPositionValid(self,x,y)
 		else
-			prototypeColorPositionInvalid(self)
+			prototypeColorPositionInvalid(self,x,y)
 		end
 	end
 end
@@ -385,12 +392,13 @@ function canBuildAtTile(self,tileX,tileY)
 	return false
 end
 
-function prototypeColorPositionValid(self)
+function prototypeColorPositionValid(self,x,y)
 	showBuilding(self)
 	self.spriteObject.set_constant("#sprite", "tint", vmath.vector4(0,0,0,0))
 end
 
-function prototypeColorPositionInvalid(self)
+function prototypeColorPositionInvalid(self,x,y)
+	
 	hideBuilding(self)
 	self.spriteObject.set_constant("#sprite", "tint", vmath.vector4(1,1,1,1))
 end
