@@ -21,6 +21,7 @@ function init(self)
 end
 
 function update(self)
+	
     renderGame(self)
     renderMinimap(self)
 end
@@ -42,6 +43,7 @@ function renderMinimap(self)
     render.set_projection(vmath.matrix4_orthographic(-(CAMERA_OFFSETX/ZOOM_LEVEL), TILEMAP_WIDTH*(TILE_SIZE/ZOOM_LEVEL)-(CAMERA_OFFSETX/ZOOM_LEVEL), -(CAMERA_OFFSETY/ZOOM_LEVEL), TILEMAP_HEIGHT*(TILE_SIZE/ZOOM_LEVEL)-(CAMERA_OFFSETY/ZOOM_LEVEL), -1, 5))
     render.draw(self.mini_rectangle)
 
+	render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())
 end
 
 function renderGame(self)
@@ -62,10 +64,7 @@ function renderGame(self)
     render.draw(self.tile_pred)
     render.draw(self.owntile)
     render.draw(self.particle_pred)
-    render.draw_debug3d()
-    
-     render.draw_debug2d()
-    
+   
     render.set_view(vmath.matrix4())
     render.set_projection(vmath.matrix4_orthographic(0, render.get_window_width(), 0, render.get_window_height(), -1, 1))
 
@@ -74,11 +73,10 @@ function renderGame(self)
     render.draw(self.non_transparent_gui)
     render.draw(self.text_pred)
     render.disable_state(render.STATE_STENCIL_TEST)
+    
+
 
     render.set_depth_mask(false)
-    
-    
-    
 end
 
 function drawFog(self)

@@ -11,6 +11,9 @@ function init(self)
 	pos.x=0
 	self.look_at = self.pos
 	
+	self.goalX=0
+	self.goalY=0
+	
 	go.set_position(pos)
 end
 
@@ -19,35 +22,27 @@ function final(self)
 end
 
 function update(self, dt)
-	local threshold=100
+	local threshold=50
 	
 	if JUST_CLICKED_MINIMAP then threshold=30 end
 	
 	if currentCursorPosition.x<threshold then
-		moveCamera(CAMERA_DIRECTION_LEFT)
+		moveCamera(CAMERA_DIRECTION_LEFT,dt)
 	end
 	if currentCursorPosition.y<threshold then
-		moveCamera(CAMERA_DIRECTION_DOWN)
+		moveCamera(CAMERA_DIRECTION_DOWN,dt)
 	end
 	if currentCursorPosition.x>getScreenWidth()-threshold then
-		moveCamera(CAMERA_DIRECTION_RIGHT)
+		moveCamera(CAMERA_DIRECTION_RIGHT,dt)
 	end
 	if currentCursorPosition.y>getScreenHeight()-threshold then
-		moveCamera(CAMERA_DIRECTION_UP)
+		moveCamera(CAMERA_DIRECTION_UP,dt)
 	end
 end
 
 function on_message(self, message_id, message, sender)
 	
-	if message_id==hash("moveCameraUp") then
-		moveCamera(CAMERA_DIRECTION_UP)
-	elseif message_id==hash("moveCameraDown") then
-		moveCamera(CAMERA_DIRECTION_DOWN)
-	elseif message_id==hash("moveCameraRight")then
-		moveCamera(CAMERA_DIRECTION_RIGHT)
-	elseif message_id==hash("moveCameraLeft")then
-		moveCamera(CAMERA_DIRECTION_LEFT)
-	elseif message_id==hash("newInput")then
+	if message_id==hash("newInput")then
 		decideIfShouldMove(message.action.x,message.action.y)
 	elseif message_id==hash("look")then
 		look(message.x,message.y)
@@ -99,31 +94,34 @@ function look(x,y)
 	
 end
 
-function moveCamera(dir)
+function moveCamera(dir,dt)
 	
 	local pos=go.get_position()
 	
+	local toMove=dt*800
+	
 	if dir==CAMERA_DIRECTION_LEFT then
 		if pos.x-CAMERA_SPEED > 0 then
-			pos.x=pos.x-CAMERA_SPEED
-			CAMERA_OFFSETX=CAMERA_OFFSETX-CAMERA_SPEED
+			pos.x=pos.x-toMove
+			CAMERA_OFFSETX=CAMERA_OFFSETX-toMove
 		end
 	elseif dir==CAMERA_DIRECTION_RIGHT then
 		if pos.x+CAMERA_SPEED < (TILEMAP_MAXX*TILE_SIZE-getScreenWidth()*ZOOM_LEVEL) then
-			pos.x=pos.x+CAMERA_SPEED
-			CAMERA_OFFSETX=CAMERA_OFFSETX+CAMERA_SPEED
+			pos.x=pos.x+toMove
+			CAMERA_OFFSETX=CAMERA_OFFSETX+toMove
 		end
 	elseif dir==CAMERA_DIRECTION_DOWN then
 		if pos.y-CAMERA_SPEED > 0 then
-			pos.y=pos.y-CAMERA_SPEED
-			CAMERA_OFFSETY=CAMERA_OFFSETY-CAMERA_SPEED
+			pos.y=pos.y-toMove
+			CAMERA_OFFSETY=CAMERA_OFFSETY-toMove
 		end
 	elseif dir==CAMERA_DIRECTION_UP then
 		if pos.y+CAMERA_SPEED < (TILEMAP_MAXY*TILE_SIZE-getScreenHeight()*ZOOM_LEVEL) then
-			pos.y=pos.y+CAMERA_SPEED
-			CAMERA_OFFSETY=CAMERA_OFFSETY+CAMERA_SPEED
+			pos.y=pos.y+toMove
+			CAMERA_OFFSETY=CAMERA_OFFSETY+toMove
 		end
 	end
+	
 		
 	go.set_position(pos)
 end

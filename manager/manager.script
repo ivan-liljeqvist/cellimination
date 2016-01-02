@@ -32,7 +32,7 @@ function init(self)
     --a table of nodes that will be used for pathfinding
 	populateNodeArray(tilemap)
 	
-
+	--msg.post("@system:", "toggle_profile")
 	
 end
 

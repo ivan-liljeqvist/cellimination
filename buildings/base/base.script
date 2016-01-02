@@ -9,6 +9,7 @@ function init(self)
 	self.y=go.get_position().y
 	
 	self.initialScale=0.7
+	self.constructionScale=0.5
 	self.fogRadius=BASE_FOG_RADIUS
 	
 	self.willBecomeBuilding=true
