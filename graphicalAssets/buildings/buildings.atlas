@@ -16,6 +16,15 @@ images {
 images {
   image: "/graphicalAssets/war/obj_lookout.png"
 }
+images {
+  image: "/graphicalAssets/buildings/dna.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/block.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/blankPixel.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

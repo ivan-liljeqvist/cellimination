@@ -36,6 +36,8 @@ function init(self)
 					button7=nil,
 					button8=nil,
 					button9=nil}
+					
+	self.constructionScale=0.5
 						
 					
 end

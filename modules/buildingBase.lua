@@ -31,6 +31,8 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.constructionProgress=0
 	self.constructionTime=CONSTRUCTION_TIME[self.name]
 	
+	self.construction=nil
+	
 end
 
 function buildingMessageHandler(self,go,message_id,message,sender)
@@ -48,7 +50,14 @@ function buildingMessageHandler(self,go,message_id,message,sender)
 		print("self.buitAtX,self.buitAtY: ", self.builtAtX,self.builtAtX)
 		buildHere( self.builtAtX, self.builtAtY,self)
 		
-		msg.post("#sprite", "play_animation", {id = hash("construction")})
+		msg.post("#sprite", "play_animation", {id = hash("blankPixel")})
+		
+		self.construction = self.factory.create("#constructionFactory")
+		
+		if self.constructionScale then
+			local s = vmath.vector3(self.constructionScale, self.constructionScale, self.constructionScale)
+			go.set_scale(s,self.construction)
+		end
 	end
 
 end
@@ -60,6 +69,8 @@ function constructionDone(self)
 	self.GUILayout=self.GUILayoutComplete
 	
 	msg.post("#sprite", "play_animation", {id = hash(BUILDING_COMPLETED_SPRITE[self.name])})
+	
+	go.delete(self.construction)
 	
 end
 
