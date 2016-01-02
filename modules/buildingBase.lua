@@ -34,6 +34,9 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.construction=self.factory.create("#constructionFactory")
 	self.building = self.factory.create("#buildingFactory")
 	
+
+	go.set_scale(vmath.vector3(0.8, 0.8, 0.8),self.construction)
+
 end
 
 function buildingMessageHandler(self,go,message_id,message,sender)
@@ -53,10 +56,7 @@ function buildingMessageHandler(self,go,message_id,message,sender)
 		self.y=self.builtAtY
 		
 
-		if self.constructionScale then
-			local s = vmath.vector3(self.constructionScale, self.constructionScale, self.constructionScale)
-			go.set_scale(s,self.construction)
-		end
+
 		
 	end
 
