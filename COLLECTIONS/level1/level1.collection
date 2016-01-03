@@ -1,4 +1,4 @@
-name: "main"
+name: "level1"
 instances {
   id: "HUD"
   prototype: "/gui/HUD/HUD.go"
