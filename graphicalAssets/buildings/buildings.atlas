@@ -44,9 +44,6 @@ images {
   image: "/graphicalAssets/icons/sword.png"
 }
 images {
-  image: "/graphicalAssets/buildings/orange.png"
-}
-images {
   image: "/graphicalAssets/buildings/storage/piggy.png"
 }
 images {
