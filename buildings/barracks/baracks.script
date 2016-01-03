@@ -1,0 +1,122 @@
+
+
+
+function init(self)
+
+	self.go=go
+	
+	self.x=go.get_position().x
+	self.y=go.get_position().y
+	
+	self.initialScale=0.7
+	self.constructionScale=0.5
+	self.fogRadius=BASE_FOG_RADIUS
+	
+	self.willBecomeBuilding=true
+	self.factory=factory
+	self.sprite=sprite
+	
+	self.needsWaypoint=true
+	
+    initBasicUnit(self,BASE_NAME,go.get_id())
+	initBuilding(self,sprite,{startPointFromCenter={x=0,y=1},width=1,height=0},go)
+	initProductionUnit(self)
+	
+	self.parseInput=function(self, action_id, action)
+		
+		buildingInput(self,action,action_id)
+	end
+	
+	local buildRedBloodCellAction=function() 
+		queue(self,RBC_NAME)
+	end
+	
+	local buildHeal1Action=function()
+		queue(self,HEAL1_NAME)
+	end
+	
+	local buildHeal2Action=function()
+		queue(self,HEAL2_NAME)
+	end
+	
+	local buildTank1Action=function()
+		queue(self,TANK1_NAME)
+	end
+	
+	self.productionComplete=function(itemName,self)
+		productionDone(self,itemName)
+	end
+	
+	self.requiresGUI=true
+	
+	local deselectAction=function() msg.post("manager","deselectAll",{}) end
+	
+	self.GUILayout={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
+					button2=nil,
+					button3=nil,
+					button4=nil,
+					button5=nil,
+					button6=nil,
+					button7=nil,
+					button8=nil,
+					button9=nil,
+					productionButton1={icon="deselectIcon",action=productionButton1Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
+					productionButton2={icon="deselectIcon",action=productionButton2Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
+					productionButton3={icon="deselectIcon",action=productionButton3Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
+					productionButton4={icon="deselectIcon",action=productionButton4Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end}}
+
+	
+	self.GUILayoutComplete={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
+					button2={icon="RBCIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[RBC_NAME] end},
+					button3={icon="heal1Icon", action=buildHeal1Action, hover=function() return HOVER_LAYOUT[HEAL1_NAME] end},
+					button4={icon="heal2Icon", action=buildHeal2Action, hover=function() return HOVER_LAYOUT[HEAL2_NAME] end},
+					button5={icon="tank1Icon", action=buildTank1Action, hover=function() return HOVER_LAYOUT[TANK1_NAME] end},
+					button6=nil,
+					button7=nil,
+					button8=nil,
+					button9=nil,
+					productionButton1={icon="deselectIcon",action=productionButton1Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
+					productionButton2={icon="deselectIcon",action=productionButton2Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
+					productionButton3={icon="deselectIcon",action=productionButton3Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
+					productionButton4={icon="deselectIcon",action=productionButton4Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end}}
+	
+end
+
+
+function queue(self,unitName)
+	--do we have the resources?
+	if canAfford(unitName) then
+		if table.getn(self.toProduce)<MAX_PRODUCTION_QUEUE then
+			deductResources(unitName)
+			table.insert(self.toProduce,unitName)
+		end
+	else
+		msg.post("HUD","displayErrorMessage",{text=NOT_ENOUGH_RESOURCES})
+	end
+end
+
+
+function update(self, dt)
+
+	basicUnitUpdate(self,dt,go)
+    buildingUpdate(self,dt,go)
+    updateProductionUnit(self,dt)
+    
+end
+
+function on_message(self, message_id, message, sender)
+
+	handleSelectMethods(self,go,message_id,message)
+	basicUnitMessageHandler(self,go,message_id,message,sender)
+	buildingMessageHandler(self,go,message_id,message,sender)
+	
+	if message_id == hash("deleteGO")then
+		go.delete(go.get_id())
+	end
+	
+end
+
+
+
+
+

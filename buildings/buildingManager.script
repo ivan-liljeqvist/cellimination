@@ -19,6 +19,10 @@ function on_message(self, message_id, message, sender)
 	
 		newBuilding=factory.create("#fatExtractorFactory")
 		
+	elseif message_id == hash("newBarracks") then
+		
+		newBuilding=factory.create("#baracksFactory")
+		
 	end
 	
 	
