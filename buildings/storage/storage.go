@@ -30,7 +30,7 @@ components {
 }
 components {
   id: "script"
-  component: "/buildings/base/base.script"
+  component: "/buildings/storage/storage.script"
   position {
     x: 0.0
     y: 0.0

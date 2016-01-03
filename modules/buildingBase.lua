@@ -37,6 +37,8 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	
 	hideConstruction(self)
 	
+	print("self.constructionScale "..self.constructionScale)
+	
 	go.set_scale(vmath.vector3(self.constructionScale, self.constructionScale, self.constructionScale),self.construction)
 	go.set_scale(vmath.vector3(self.initialScale, self.initialScale, self.initialScale),self.building)
 
@@ -199,7 +201,7 @@ function buildingInput(self,action,action_id)
 			workerPos.y=workerPos.y-CAMERA_OFFSETY
 			workerPos.x=workerPos.x+TILE_SIZE
 			
-			
+			print("wokerPos: "..workerPos.x)
 			
 			msg.post(self.workerID,"goToBuildingSite",{pos=workerPos})
 			
