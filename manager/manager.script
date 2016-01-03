@@ -1,10 +1,12 @@
 
+
 require "modules.data.unitData"
 require "modules.data.fighters"
 require "modules.data.tanks"
 require "modules.data.healers"
 require "modules.data.extractors"
 require "modules.data.buildings"
+require "modules.data.language"
 
 require "modules.HUDHelper"
 require "modules.resources"
@@ -44,11 +46,11 @@ end
 
 function update(self, dt)
 	updateFoW(tilemap)
-	updateStorage()
+	updateStorage(dt)
 end
 
 
-function updateStorage()
+function updateStorage(dt)
 
 	local proteinIncrease=(PROTEIN_EXTRACTORS_MADE*dt*8)
 	local newProtein=PROTEIN+proteinIncrease

@@ -29,6 +29,10 @@ function init(self)
    
    hideUnitCostAndDesc()
  
+ 	self.storageColorRed=false
+ 	self.timeSinceSwitchedStorageColor=0
+ 	
+ 	self.houseColor=vmath.vector3(1,1,1)
 end
 
 
@@ -40,7 +44,7 @@ function update(self, dt)
     local foundSelectedWithGUI=false
     
     updateResourcesLabels()
-    updateStorageAndHouseLabels()
+    updateStorageAndHouseLabels(self,dt)
     
 
 
@@ -601,17 +605,44 @@ function hideEverything()
 		hideUnitCostAndDesc()
 end
 
-function updateStorageAndHouseLabels()
-	updateStorageLabel()
-	updateHouseLabel()
+function updateStorageAndHouseLabels(self,dt)
+	updateStorageLabel(self,dt)
+	updateHouseLabel(self,dt)
 end
 
-function updateHouseLabel()
-	gui.set_text(gui.get_node("storageText"), math.floor(HOUSE).."/"..math.floor(MAX_HOUSE).." capacity")
+function updateHouseLabel(self,dt)
+	gui.set_text(gui.get_node("houseText"), math.floor(HOUSE).."/"..math.floor(MAX_HOUSE).." capacity")
 end
 
-function updateStorageLabel()
-	gui.set_text(gui.get_node("houseText"), math.floor(TOTAL_STORAGE).."/"..math.floor(MAX_STORAGE).." storage")
+function updateStorageLabel(self,dt)
+
+	if TOTAL_STORAGE>=MAX_STORAGE then
+		blinkStorage(self,dt)
+	else
+		gui.set_color(gui.get_node("storageText"), vmath.vector3(1,1,1))
+	end
+
+	gui.set_text(gui.get_node("storageText"), math.floor(TOTAL_STORAGE).."/"..math.floor(MAX_STORAGE).." storage")
+end
+
+function blinkStorage(self,dt)
+	if not self.storageColorRed then
+		if self.timeSinceSwitchedStorageColor>0.3 then
+			gui.set_color(gui.get_node("storageText"), vmath.vector3(1,0,0))
+			self.storageColorRed=true
+			self.timeSinceSwitchedStorageColor=0
+			
+			msg.post("HUD","displayErrorMessage",{text=MORE_STORAGE})
+		end
+	else
+		if self.timeSinceSwitchedStorageColor>0.3 then
+			gui.set_color(gui.get_node("storageText"), vmath.vector3(1,1,1))
+			self.storageColorRed=false
+			self.timeSinceSwitchedStorageColor=0
+		end
+	end
+	
+	self.timeSinceSwitchedStorageColor=self.timeSinceSwitchedStorageColor+dt
 end
 
 function updateSelectedUnits(self)
