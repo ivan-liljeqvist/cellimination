@@ -1,4 +1,0 @@
-tile_set: "/main/logo.atlas"
-default_animation: "whiteRectangle"
-material: "/minimap/miniRectangle.material"
-blend_mode: BLEND_MODE_ALPHA
