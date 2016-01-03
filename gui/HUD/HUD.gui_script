@@ -1,44 +1,6 @@
 
 
 
-HUDButtons={}
-
-
-BUTTON1="hudButton1"
-BUTTON2="hudButton2"
-BUTTON3="hudButton3"
-BUTTON4="hudButton4"
-BUTTON5="hudButton5"
-BUTTON6="hudButton6"
-BUTTON7="hudButton7"
-BUTTON8="hudButton8"
-BUTTON9="hudButton9"
-
-PRODUCTION_BUTTON1="productionButton1"
-PRODUCTION_BUTTON2="productionButton2"
-PRODUCTION_BUTTON3="productionButton3"
-PRODUCTION_BUTTON4="productionButton4"
-PRODUCTION_TITLE="productionTitle"
-PRODUCTION_PERCENT="productionPercent"
-
-COST_CARB_ICON="costCarbIcon"
-COST_FAT_ICON="costFatIcon"
-COST_PROTEIN_ICON="costProteinIcon"
-
-COST_CARB="costCarb"
-COST_PROTEIN="costProtein"
-COST_FAT="costFat"
-
-UNIT_DESCRIPTION="unitDescription"
-
-
-NO_BUTTON=""
-
-currentlyHitButton=NO_BUTTON;
-
-displayingError=false
-displayingErrorTimeSinceStarted=0
-displayingErrorTime=3
 
 local unitWithGUI={}
 
@@ -66,41 +28,176 @@ function init(self)
    addButton(PRODUCTION_BUTTON4)
    
    hideUnitCostAndDesc()
-   
---[[
-	
-	local my_file_path = sys.get_save_file("my_game", "my_file2")
-	local my_table = sys.load(my_file_path)
-	if not next(my_table) then
-	   gui.set_text(gui.get_node("saveTest"),"0")
-	   
-	   my_table.x=0
+ 
+end
+
+
+
+
+function update(self, dt)
+    
+    local selectionTextNew=""
+    local foundSelectedWithGUI=false
+    
+    updateResourcesLabels()
+    updateStorageAndHouseLabels()
+    
+
+
+	if displayingError then
+		if displayingErrorTimeSinceStarted<displayingErrorTime then
+			displayingErrorTimeSinceStarted=displayingErrorTimeSinceStarted+dt
+		else
+			displayingError=false
+			displayingErrorTimeSinceStarted=0
+			displayingErrorTime=3
+		end
 	else
-		gui.set_text(gui.get_node("saveTest"),my_table.x)
+		gui.set_text(gui.get_node("errorText"), "")
 	end
 
-	my_table.x=my_table.x+1
-	
-	local my_file_path = sys.get_save_file("my_game", "my_file2")
-	if not sys.save(my_file_path, my_table) then
-	    -- Alert user that the data could not be saved
-	end
+    local selectedUnits=updateSelectedUnits(self)
    
-       --]]
+   if unitWithGUI.producer then
+   		showProductionSection()
+   		updateProductionPercentage()
+   else
+   		hideProductionSection()
+   end
+   
+   applyGUILayout(unitWithGUI.GUILayout)
+   
+   
+   currentLayout=unitWithGUI.GUILayout
+   
+
+	if selectedUnits<=0 then
+   		hideEverything()
+	end
 end
 
 
-function showUnitCostAndDesc()
-   showNode(COST_CARB_ICON)
-   showNode(COST_FAT_ICON)
-   showNode(COST_PROTEIN_ICON)
-   
-   showNode(COST_CARB)
-   showNode(COST_PROTEIN)
-   showNode(COST_FAT)
-   
-   showNode(UNIT_DESCRIPTION)
+
+
+function on_message(self, message_id, message, sender)
+    -- Add message-handling code here
+    -- Remove this function if not needed
+    
+    if message_id==hash("newInput") then
+		checkIfAnyButtonClicked(message.action,message.action_id)
+	elseif message_id==hash("unitDestroyed")then
+		if unitWithGUI then
+			if unitWithGUI.id==message.id then
+				unitWithGUI={}
+			end
+		else
+			unitWithGUI={}
+		end
+	elseif message_id==hash("displayErrorMessage")then
+		--errorText
+		displayingError=true
+		displayingErrorTimeSinceStarted=0
+		gui.set_text(gui.get_node("errorText"), message.text)
+	end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------  MESS APPROACHING -----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------  BEWARE  -----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function hideUnitCostAndDesc()
    hideNode(COST_CARB_ICON)
@@ -113,6 +210,9 @@ function hideUnitCostAndDesc()
    
    hideNode(UNIT_DESCRIPTION)
 end
+
+
+
 
 function displayNodesOnHover(nodesToDisplay)
 
@@ -137,84 +237,6 @@ end
 
 
 
-function update(self, dt)
-    
-    local selectionTextNew=""
-    local foundSelectedWithGUI=false
-    
-    updateResourcesLabels()
-    
-
-
-	if displayingError then
-		if displayingErrorTimeSinceStarted<displayingErrorTime then
-			displayingErrorTimeSinceStarted=displayingErrorTimeSinceStarted+dt
-		else
-			displayingError=false
-			displayingErrorTimeSinceStarted=0
-			displayingErrorTime=3
-		end
-	else
-		gui.set_text(gui.get_node("errorText"), "")
-	end
-
-    local selectedUnitsNumberLookup={}
-    
-    local selectedUnits=0
-    
-    for unit,stillHere in pairs(SELECTED_UNITS) do 
-    
-    	if stillHere and unit and ALIVE[unit.id] then
-    	
-    		if selectedUnitsNumberLookup[unit.name]==nil then
-    			selectedUnitsNumberLookup[unit.name]=0
-    		end
-    		
-    		selectedUnitsNumberLookup[unit.name]=selectedUnitsNumberLookup[unit.name]+1
-    		
-    		if unit.requiresGUI then
-    			unitWithGUI=unit
-    		end
-    		
-    		selectedUnits=selectedUnits+1
-    	end
-    end
-    
-   if self.selectionText == nil then
-   	   self.selectionText = gui.get_node("selectionText")
-   end
-   
-   local selectionNewText=""
-   for unitName, numberSelected in pairs(selectedUnitsNumberLookup) do
-		selectionNewText=selectionNewText.."\n"..numberSelected.." "..unitName
-   end
-	
-   gui.set_text(self.selectionText,selectionNewText)	
-   
-   if unitWithGUI.producer then
-   		showProductionSection()
-   		updateProductionPercentage()
-   else
-   		hideProductionSection()
-   end
-   
-   applyGUILayout(unitWithGUI.GUILayout)
-   
-   
-   currentLayout=unitWithGUI.GUILayout
-   
-
-	if selectedUnits<=0 then
-   		hideEverything()
-	end
-end
-
-function updateResourcesLabels()
-	gui.set_text(gui.get_node("proteinText"), math.floor(PROTEIN).." protein")
-	gui.set_text(gui.get_node("fatText"), math.floor(FAT).." fat")
-	gui.set_text(gui.get_node("carbsText"), math.floor(CARBS).." carbs.")
-end
-
 
 function hideProductionSection()
    hideButton(PRODUCTION_BUTTON1)
@@ -224,6 +246,9 @@ function hideProductionSection()
    hideNode(PRODUCTION_TITLE)
    hideNode(PRODUCTION_PERCENT)
 end
+
+
+
 
 function showProductionSection()
 
@@ -280,18 +305,6 @@ function setIconForButton(buttonId,iconId)
 	
 end
 
-function updateProductionPercentage()
-
-
-	if unitWithGUI.currentProductionProgress>0 then
-		gui.set_text(gui.get_node(PRODUCTION_PERCENT),math.floor(unitWithGUI.currentProductionProgress*100).." %")
-	elseif unitWithGUI.isBuilding and not unitWithGUI.constructionDone then
-		gui.set_text(gui.get_node(PRODUCTION_TITLE),UNDER_CONSTRUCTION)
-   		gui.set_text(gui.get_node(PRODUCTION_PERCENT),math.floor(unitWithGUI.constructionProgress/unitWithGUI.constructionTime*100).." %")
-   	else
-		hideNode(PRODUCTION_PERCENT)
-	end
-end
 
 
 function applyGUILayout(layout)
@@ -489,42 +502,9 @@ function handleButtonHovered(id)
 end
 
 
-function final(self)
-    -- Add finalization code here
-    -- Remove this function if not needed
-end
-
-function on_message(self, message_id, message, sender)
-    -- Add message-handling code here
-    -- Remove this function if not needed
-    
-    if message_id==hash("newInput") then
-		checkIfAnyButtonClicked(message.action,message.action_id)
-	elseif message_id==hash("unitDestroyed")then
-		if unitWithGUI then
-			if unitWithGUI.id==message.id then
-				unitWithGUI={}
-			end
-		else
-			unitWithGUI={}
-		end
-	elseif message_id==hash("displayErrorMessage")then
-		--errorText
-		displayingError=true
-		displayingErrorTimeSinceStarted=0
-		gui.set_text(gui.get_node("errorText"), message.text)
-	end
-end
 
 
 
-function on_reload(self)
-    -- Add input-handling code here
-    -- Remove this function if not needed
-end
-
-
---helper methods for button management
 
 function addButton(id)
 	HUDButtons[id]={id=id,visible=false}
@@ -605,6 +585,89 @@ function showButtonWithIcon(id,icon)
 	end
 end
 
+
+
+function hideEverything()
+	hideButton(BUTTON1)
+		hideButton(BUTTON2)
+		hideButton(BUTTON3)
+		hideButton(BUTTON4)
+		hideButton(BUTTON5)
+		hideButton(BUTTON6)
+		hideButton(BUTTON7)
+		hideButton(BUTTON8)
+		hideButton(BUTTON9)
+		hideProductionSection()
+		hideUnitCostAndDesc()
+end
+
+function updateStorageAndHouseLabels()
+	updateStorageLabel()
+	updateHouseLabel()
+end
+
+function updateHouseLabel()
+end
+
+function updateStorageLabel()
+end
+
+function updateSelectedUnits(self)
+	local selectedUnitsNumberLookup={}
+    
+    local selectedUnits=0
+    
+    for unit,stillHere in pairs(SELECTED_UNITS) do 
+    
+    	if stillHere and unit and ALIVE[unit.id] then
+    	
+    		if selectedUnitsNumberLookup[unit.name]==nil then
+    			selectedUnitsNumberLookup[unit.name]=0
+    		end
+    		
+    		selectedUnitsNumberLookup[unit.name]=selectedUnitsNumberLookup[unit.name]+1
+    		
+    		if unit.requiresGUI then
+    			unitWithGUI=unit
+    		end
+    		
+    		selectedUnits=selectedUnits+1
+    	end
+    end
+    
+   if self.selectionText == nil then
+   	   self.selectionText = gui.get_node("selectionText")
+   end
+   
+   local selectionNewText=""
+   for unitName, numberSelected in pairs(selectedUnitsNumberLookup) do
+		selectionNewText=selectionNewText.."\n"..numberSelected.." "..unitName
+   end
+	
+   gui.set_text(self.selectionText,selectionNewText)
+   
+   return selectedUnits	
+end
+
+
+function updateResourcesLabels()
+	gui.set_text(gui.get_node("proteinText"), math.floor(PROTEIN).." protein")
+	gui.set_text(gui.get_node("fatText"), math.floor(FAT).." fat")
+	gui.set_text(gui.get_node("carbsText"), math.floor(CARBS).." carbs.")
+end
+
+
+
+
+
+
+
+
+
+
+--helper methods for button management
+
+
 function setCarbPrice(price)
 	gui.set_text(gui.get_node("costCarb"),price)
 	
@@ -643,16 +706,30 @@ function setUnitDescription(description,unitName)
 
 end
 
-function hideEverything()
-	hideButton(BUTTON1)
-		hideButton(BUTTON2)
-		hideButton(BUTTON3)
-		hideButton(BUTTON4)
-		hideButton(BUTTON5)
-		hideButton(BUTTON6)
-		hideButton(BUTTON7)
-		hideButton(BUTTON8)
-		hideButton(BUTTON9)
-		hideProductionSection()
-		hideUnitCostAndDesc()
+
+function updateProductionPercentage()
+
+
+	if unitWithGUI.currentProductionProgress>0 then
+		gui.set_text(gui.get_node(PRODUCTION_PERCENT),math.floor(unitWithGUI.currentProductionProgress*100).." %")
+	elseif unitWithGUI.isBuilding and not unitWithGUI.constructionDone then
+		gui.set_text(gui.get_node(PRODUCTION_TITLE),UNDER_CONSTRUCTION)
+   		gui.set_text(gui.get_node(PRODUCTION_PERCENT),math.floor(unitWithGUI.constructionProgress/unitWithGUI.constructionTime*100).." %")
+   	else
+		hideNode(PRODUCTION_PERCENT)
+	end
 end
+
+function showUnitCostAndDesc()
+   showNode(COST_CARB_ICON)
+   showNode(COST_FAT_ICON)
+   showNode(COST_PROTEIN_ICON)
+   
+   showNode(COST_CARB)
+   showNode(COST_PROTEIN)
+   showNode(COST_FAT)
+   
+   showNode(UNIT_DESCRIPTION)
+end
+
+
