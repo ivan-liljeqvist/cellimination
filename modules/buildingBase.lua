@@ -197,7 +197,7 @@ function buildingInput(self,action,action_id)
 			local workerPos=go.get_position()
 			workerPos.x=workerPos.x-CAMERA_OFFSETX
 			workerPos.y=workerPos.y-CAMERA_OFFSETY
-			workerPos.x=workerPos.x+(self.buildingSize.width*2*TILE_SIZE)
+			workerPos.x=workerPos.x+TILE_SIZE
 			
 			
 			
@@ -265,20 +265,28 @@ function canBuildAt(self,x,y)
 	
 	local centerTileX, centerTileY = pixelToTileCoords(x*ZOOM_LEVEL,y*ZOOM_LEVEL)
 	
+	
+
 	--go through each row and column
-	local minTileX = centerTileX + self.buildingSize.startPointFromCenter.x
+	local minTileX = centerTileX+1+ self.buildingSize.startPointFromCenter.x
 	local maxTileX = minTileX + self.buildingSize.width
-	local minTileY = centerTileY + self.buildingSize.startPointFromCenter.y
+	local minTileY = centerTileY +1+ self.buildingSize.startPointFromCenter.y
 	local maxTileY = minTileY + self.buildingSize.height
 	
 	
 	for currentX=minTileX, maxTileX, 1 do
 		for currentY=minTileY, maxTileY, 1 do
+			
+			
+			
 			if canBuildAtTile(self,currentX,currentY) == false then
 				return false
 			end
+			
+			
 		end
 	end
+	
 	
 	
 	return true
@@ -299,7 +307,7 @@ function setTilesUnderMeToNotOccupied(self,x,y)
 	for currentX=minTileX, maxTileX, 1 do
 		for currentY=minTileY, maxTileY, 1 do
 		
-			local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX][currentY] 
+			local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX+1][currentY+1] 
 			
 			if TILEMAP_NODES[nodeIndex].occupiedBy == self then
 				TILEMAP_NODES[nodeIndex].occupied=false
@@ -333,13 +341,13 @@ function setTilesUnderMeToOccupied(self,x,y)
 	for currentX=minTileX, maxTileX, 1 do
 		for currentY=minTileY, maxTileY, 1 do
 		
-			local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX][currentY] 
+			local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX+1][currentY+1] 
 			TILEMAP_NODES[nodeIndex].occupied=true
 			TILEMAP_NODES[nodeIndex].occupiedBy=self
 			TILEMAP_NODES[nodeIndex].blocked=true
 			TILEMAP_NODES[nodeIndex].occupiedByID=self.id
 			
-			tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 0)
+			--tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 0)
 
 			 		
 		end
@@ -356,8 +364,10 @@ end
 
 function canBuildAtTile(self,tileX,tileY)
 	
-	tileX=tileX+1
-	tileY=tileY+1
+	--tileX=tileX+1
+	--tileY=tileY+1
+	
+	--tilemapObject.set_tile("world#tilemap", "reachable", tileX, tileX, 0)
 
 	local nodeIndex = TILEMAP_INDEX_LOOKUP[tileX][tileY] 
 	local tileNode = TILEMAP_NODES[nodeIndex] 
