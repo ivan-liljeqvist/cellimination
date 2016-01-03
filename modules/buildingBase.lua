@@ -201,7 +201,10 @@ function buildingInput(self,action,action_id)
 			workerPos.y=workerPos.y-CAMERA_OFFSETY
 			workerPos.x=workerPos.x+TILE_SIZE
 			
-			print("wokerPos: "..workerPos.x)
+			if self.isExtractor then
+				workerPos.x=workerPos.x+TILE_SIZE
+			end
+			
 			
 			msg.post(self.workerID,"goToBuildingSite",{pos=workerPos})
 			
