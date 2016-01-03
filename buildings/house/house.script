@@ -8,6 +8,8 @@ function init(self)
 	self.x=go.get_position().x
 	self.y=go.get_position().y
 	
+	self.boundsWidthScale=0.5
+	
 	self.initialScale=0.7
 	self.constructionScale=0.5
 	self.fogRadius=BASE_FOG_RADIUS
@@ -23,7 +25,6 @@ function init(self)
 	initProductionUnit(self)
 	
 	self.parseInput=function(self, action_id, action)
-		
 		buildingInput(self,action,action_id)
 	end
 	

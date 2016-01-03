@@ -339,7 +339,7 @@ function setTilesUnderMeToOccupied(self,x,y)
 			TILEMAP_NODES[nodeIndex].blocked=true
 			TILEMAP_NODES[nodeIndex].occupiedByID=self.id
 			
-			--tilemapObject.set_tile("world#tilemap", "blocked", currentX, currentY, 0)
+			tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 0)
 
 			 		
 		end

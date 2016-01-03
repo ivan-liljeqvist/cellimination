@@ -1,31 +1,20 @@
 
-function getSpriteBounds(id)
+function getSpriteBounds(id,self)
 	local pos = go.get_position()
 	
-	local Xmin = pos.x-go.get(id, "size.x")/2*go.get(id, "scale.x")
+	local Xmin = pos.x-go.get(id, "size.x")/2*go.get(id, "scale.x")*self.boundsWidthScale
 	local Ymin = pos.y-go.get(id, "size.y")/2*go.get(id, "scale.y")
-	local Xmax = pos.x+go.get(id, "size.x")*0.5*go.get(id, "scale.x")
+	local Xmax = pos.x+go.get(id, "size.x")*0.5*go.get(id, "scale.x")*self.boundsWidthScale
 	local Ymax = pos.y+go.get(id, "size.y")*0.5*go.get(id, "scale.y")
 	
 	return {Xmin,Xmax,Ymin,Ymax}
 end
 
-function isSpriteHit(action)
 
-	
-	if ((action.x > getSpriteBounds("#sprite")[1] and action.x < getSpriteBounds("#sprite")[2]) and 
-		(action.y > getSpriteBounds("#sprite")[3] and action.y < getSpriteBounds("#sprite")[4])) then
-    	return true
-	end
-	
-	return false
-end
-
-
-function isInsideSelection(startMouse, currentMouse, pivot)
+function isInsideSelection(startMouse, currentMouse, pivot,self)
 	
 	
-	local bounds = getSpriteBounds("#sprite")
+	local bounds = getSpriteBounds("#sprite",self)
 	
 	--selection
 	local RectA={}

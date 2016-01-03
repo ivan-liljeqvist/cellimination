@@ -12,6 +12,8 @@ function init(self)
 	self.constructionScale=0.5
 	self.fogRadius=BASE_FOG_RADIUS
 	
+	self.boundsWidthScale=0.5
+	
 	self.isProteinExtractor=true
 	
 	self.willBecomeBuilding=true

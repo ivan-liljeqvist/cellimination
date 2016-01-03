@@ -11,6 +11,7 @@ function init(self)
 	
 	self.id=go.get_id()
 	
+	self.boundsWidthScale=0.5
 	self.initialScale=0.6
 	
 	self.factory=factory
