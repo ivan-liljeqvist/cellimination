@@ -8,6 +8,7 @@ require "modules.data.extractors"
 require "modules.data.buildings"
 require "modules.data.language"
 
+require "modules.livingUnit"
 require "modules.HUDHelper"
 require "modules.resources"
 require "modules.productionMethods"

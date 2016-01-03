@@ -32,7 +32,8 @@ function init(self)
  	self.storageColorRed=false
  	self.timeSinceSwitchedStorageColor=0
  	
- 	self.houseColor=vmath.vector3(1,1,1)
+ 	self.houseColorRed=false
+ 	self.timeSinceSwitchedHouseColor=0
 end
 
 
@@ -611,7 +612,14 @@ function updateStorageAndHouseLabels(self,dt)
 end
 
 function updateHouseLabel(self,dt)
-	gui.set_text(gui.get_node("houseText"), math.floor(HOUSE).."/"..math.floor(MAX_HOUSE).." capacity")
+
+	if TOTAL_HOUSE>=MAX_HOUSE then
+		blinkHouse(self,dt)
+	else
+		gui.set_color(gui.get_node("houseText"), vmath.vector3(1,1,1))
+	end
+	
+	gui.set_text(gui.get_node("houseText"), math.floor(TOTAL_HOUSE).."/"..math.floor(MAX_HOUSE).." capacity")
 end
 
 function updateStorageLabel(self,dt)
@@ -623,6 +631,26 @@ function updateStorageLabel(self,dt)
 	end
 
 	gui.set_text(gui.get_node("storageText"), math.floor(TOTAL_STORAGE).."/"..math.floor(MAX_STORAGE).." storage")
+end
+
+function blinkHouse(self,dt)
+	if not self.houseColorRed then
+		if self.timeSinceSwitchedHouseColor>0.3 then
+			gui.set_color(gui.get_node("houseText"), vmath.vector3(1,0,0))
+			self.houseColorRed=true
+			self.timeSinceSwitchedHouseColor=0
+			
+			msg.post("HUD","displayErrorMessage",{text=MORE_HOUSE})
+		end
+	else
+		if self.timeSinceSwitchedHouseColor>0.3 then
+			gui.set_color(gui.get_node("houseText"), vmath.vector3(1,1,1))
+			self.houseColorRed=false
+			self.timeSinceSwitchedHouseColor=0
+		end
+	end
+	
+	self.timeSinceSwitchedHouseColor=self.timeSinceSwitchedHouseColor+dt
 end
 
 function blinkStorage(self,dt)

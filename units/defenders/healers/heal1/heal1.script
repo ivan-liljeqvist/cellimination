@@ -21,6 +21,8 @@ function init(self)
     initBasicUnit(self,HEAL1_NAME,go.get_id())
     initMovableUnit(self)
     initHealingUnit(self)
+    initLivingUnit(self)
+    
     self.fogRadius=FOG_RADIUS[self.name]
     
     self.currentAnimation="normal"

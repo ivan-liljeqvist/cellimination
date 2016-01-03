@@ -70,8 +70,9 @@ end
 function destroyUnit(self)
 
 	if ALIVE[self.id] then
-		print("destory unt team "..self.teamNumber)
+
 		ALIVE[self.id]=false
+		destroyLivingUnit(self)
 		
 		if self.worker then
 			abortConstruction(self)

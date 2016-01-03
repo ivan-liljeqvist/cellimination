@@ -19,6 +19,7 @@ function init(self)
     initBasicUnit(self,RBC_NAME,go.get_id())
     initMovableUnit(self)
     initFightingUnit(self,false)
+    initLivingUnit(self)
     
     self.fogRadius=FOG_RADIUS[self.name]
     

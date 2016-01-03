@@ -25,9 +25,13 @@ function updateProductionUnit(self,dt)
     	self.timeSinceLastProductionStarted=0
     	self.currentlyProducingItem=self.toProduce[1]
 
-    elseif self.currentlyProducing then
+    elseif self.currentlyProducing and TOTAL_HOUSE<MAX_HOUSE then
+    
     	if self.currentProductionProgress < 1.0 then
+	    	
+	    	
 	    	self.timeSinceLastProductionStarted=self.timeSinceLastProductionStarted+dt
+	    	
 	    	local percent=(self.timeSinceLastProductionStarted)/TIME_TO_PRODUCE[self.currentlyProducingItem]
 	    	self.currentProductionProgress=percent
 	    else
@@ -35,6 +39,7 @@ function updateProductionUnit(self,dt)
 	    	table.remove(self.toProduce,1)
 			resetProduction(self)
 	    end
+	    
     end
 end
 
