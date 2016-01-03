@@ -51,7 +51,7 @@ function update(self, dt)
 
     basicUnitUpdate(self,dt,go)
     buildingUpdate(self,dt,go)
-   
+    updateExtractor(self,dt)
     
 end
 

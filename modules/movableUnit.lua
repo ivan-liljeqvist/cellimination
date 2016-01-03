@@ -96,8 +96,8 @@ function unitUpdate(self,go,dt)
 
 	if self.worker and self.headingForExtractor and table.getn(self.currentPath)<=0 then
 
-		self.headingForExtractor=false
-		destroyUnit(self)
+		
+		arrivedAtExtractor(self)
 		
 	end
 

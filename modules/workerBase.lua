@@ -9,8 +9,7 @@ function initBasicWorker(self)
 	self.headingForExtractor=false
 	self.extractorLocation={}
 	self.jumpingToExtractor=false
-	self.extractorOffsetX={}
-	self.extractorOffsetY={}
+	self.headingToExtractorID={}
 
 end
 
@@ -51,14 +50,33 @@ function workerMessageHandler(self,go,message_id,message,sender)
 		
 		self.extractorLocation.x = self.extractorLocation.x+TILE_SIZE*2
 		
+		self.headingToExtractorID=message.extractorID
 		
 		generateNewPathToMouseClick(self,self.extractorLocation,tilemapObject)
 		
-		
-	
+	elseif message_id == hash("permittedToEnterExtractor") then
+		if message.canEnter then
+			destroyUnit(self)
+			self.headingForExtractor=false
+		else
+			self.headingForExtractor=false
+			self.extractorLocation={}
+			self.jumpingToExtractor=false
+			self.headingToExtractorID={}
+		end
 	end
 
 end
+
+
+function arrivedAtExtractor(self)
+	
+	
+	msg.post(self.headingToExtractorID,"workerEntered")
+	
+	
+end
+
 
 function abortConstruction(self)
 	
