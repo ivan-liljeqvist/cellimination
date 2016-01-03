@@ -44,11 +44,54 @@ end
 
 function update(self, dt)
 	updateFoW(tilemap)
-	
-	PROTEIN=PROTEIN+PROTEIN_EXTRACTORS_MADE*dt*8
-	CARBS=CARBS+CARB_EXTRACTORS_MADE*dt*8
-	FAT=FAT+FAT_EXTRACTORS_MADE*dt*8
+	updateStorage()
 end
+
+
+function updateStorage()
+
+	local proteinIncrease=(PROTEIN_EXTRACTORS_MADE*dt*8)
+	local newProtein=PROTEIN+proteinIncrease
+	
+	local carbsIncrease=(CARB_EXTRACTORS_MADE*dt*8)
+	local newCarbs=CARBS+carbsIncrease
+	
+	local fatIncrease=(FAT_EXTRACTORS_MADE*dt*8)
+	local newFat=FAT+fatIncrease
+	
+	local totalStorage=newProtein+newCarbs+newFat
+	
+	if totalStorage>MAX_STORAGE then
+
+		local diff = totalStorage-MAX_STORAGE
+		local totalIncrease=proteinIncrease+carbsIncrease+fatIncrease
+		
+		newProtein=newProtein-math.ceil(diff*(proteinIncrease/totalStorage))
+		newCarbs=newCarbs-math.ceil(diff*(carbsIncrease/totalStorage))
+		newFat=newFat-math.ceil(diff*(fatIncrease/totalStorage))
+		
+		totalStorage=newProtein+newCarbs+newFat
+		diff = MAX_STORAGE-totalStorage
+		
+		if diff>0 then
+			if proteinIncrease>0 then
+				newProtein=newProtein+diff
+			elseif carbsIncrease>0 then
+				newCarbs=newCarbs+diff
+			elseif fatIncrease>0 then
+				newFat=newFat+diff
+			end
+		end
+	end
+	
+	TOTAL_STORAGE=newProtein+newCarbs+newFat
+	
+	PROTEIN=newProtein
+	CARBS=newCarbs
+	FAT=newFat
+	
+end
+
 
 function on_message(self, message_id, message, sender)
     

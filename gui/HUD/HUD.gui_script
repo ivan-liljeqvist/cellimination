@@ -611,7 +611,7 @@ function updateHouseLabel()
 end
 
 function updateStorageLabel()
-	gui.set_text(gui.get_node("houseText"), math.floor(STORAGE).."/"..math.floor(MAX_STORAGE).." storage")
+	gui.set_text(gui.get_node("houseText"), math.floor(TOTAL_STORAGE).."/"..math.floor(MAX_STORAGE).." storage")
 end
 
 function updateSelectedUnits(self)

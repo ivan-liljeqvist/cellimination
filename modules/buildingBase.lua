@@ -175,7 +175,7 @@ function buildingInput(self,action,action_id)
 		
 		local newWPPos=vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1)
 		
-		if math.abs(newWPPos.x-self.x)>400 or math.abs(newWPPos.y-self.y)>400 then
+		if math.abs(newWPPos.x-(self.x+self.orOffX))>400 or math.abs(newWPPos.y-(self.y+self.orOffY))>400 then
 			msg.post("HUD","displayErrorMessage",{text=WAYPOINT_TOO_FAR})
 		else
 			self.waypointPosition=newWPPos
