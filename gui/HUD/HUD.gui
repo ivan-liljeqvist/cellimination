@@ -4248,7 +4248,7 @@ nodes {
 }
 nodes {
   position {
-    x: 438.9727
+    x: 440.0
     y: 1060.3301
     z: 0.0
     w: 1.0
@@ -4301,7 +4301,7 @@ nodes {
 }
 nodes {
   position {
-    x: 483.9727
+    x: 470.0
     y: 1060.3301
     z: 0.0
     w: 1.0
@@ -4337,7 +4337,7 @@ nodes {
   id: "houseText"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_W
   outline {
     x: 1.0
     y: 1.0
@@ -4364,7 +4364,7 @@ nodes {
 }
 nodes {
   position {
-    x: 588.21497
+    x: 611.2671
     y: 1060.3301
     z: 0.0
     w: 1.0
@@ -4400,7 +4400,7 @@ nodes {
   id: "storageText"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_W
   outline {
     x: 1.0
     y: 1.0
@@ -4427,7 +4427,7 @@ nodes {
 }
 nodes {
   position {
-    x: 543.1904
+    x: 581.2671
     y: 1060.3301
     z: 0.0
     w: 1.0

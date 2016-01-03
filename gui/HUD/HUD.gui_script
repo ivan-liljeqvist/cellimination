@@ -607,9 +607,11 @@ function updateStorageAndHouseLabels()
 end
 
 function updateHouseLabel()
+	gui.set_text(gui.get_node("storageText"), math.floor(HOUSE).."/"..math.floor(MAX_HOUSE).." capacity")
 end
 
 function updateStorageLabel()
+	gui.set_text(gui.get_node("houseText"), math.floor(STORAGE).."/"..math.floor(MAX_STORAGE).." storage")
 end
 
 function updateSelectedUnits(self)
