@@ -56,7 +56,7 @@ function updateFoW()
 					end
 			
 			else
-				print("prototype mode!")
+				--print("prototype mode!")
 			end
 		end
 		

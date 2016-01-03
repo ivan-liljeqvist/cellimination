@@ -33,7 +33,7 @@ function init(self)
 	local buildRedBloodCellAction=function() msg.post("unitManager", "newJeep") end
 		self.requiresGUI=true
 	local deselectAction=function() msg.post("manager","deselectAll",{}) end
-	self.GUILayout={button1={text="Deselect",action=deselectAction},
+	self.GUILayout={button1={text="Deselect",action=deselectAction,hover=function() return HOVER_LAYOUT[DESELECT]  end},
 					button2=nil,
 					button3=nil,
 					button4=nil,
@@ -62,10 +62,8 @@ function on_message(self, message_id, message, sender)
 	handleSelectMethods(self,go,message_id,message)
 	basicUnitMessageHandler(self,go,message_id,message,sender)
 	buildingMessageHandler(self,go,message_id,message,sender)
+	extractorMessages(self, message_id, message, sender)
 	
-	if self.selected then
-		CURRENT_PRODUCER_POSITION={x=go.get_position().x,y=go.get_position().y}
-	end
 	
 	if message_id == hash("deleteGO")then
 		go.delete(go.get_id())

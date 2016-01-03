@@ -202,7 +202,7 @@ function buildingInput(self,action,action_id)
 			workerPos.x=workerPos.x+TILE_SIZE
 			
 			if self.isExtractor then
-				workerPos.x=workerPos.x+TILE_SIZE
+				workerPos.x=workerPos.x+TILE_SIZE*2
 			end
 			
 			

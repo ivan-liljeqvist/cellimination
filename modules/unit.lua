@@ -78,6 +78,10 @@ function destroyUnit(self)
 			abortConstruction(self)
 		end
 		
+		if self.isExtractor then
+			EXTRACTORS[self]=nil
+		end
+		
 		if self.isBuilding then
 			if self.building then
 				go.delete(self.building)

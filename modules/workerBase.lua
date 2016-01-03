@@ -5,6 +5,13 @@ function initBasicWorker(self)
 	self.headingToBuilding=false
 	
 	self.generateCounter=1 --we can generate 2 times before we abort the construction. the first time is when he is heading the initialtime
+
+	self.headingForExtractor=false
+	self.extractorLocation={}
+	self.jumpingToExtractor=false
+	self.extractorOffsetX={}
+	self.extractorOffsetY={}
+
 end
 
 function workerUpdate(self,go,dt)
@@ -36,6 +43,19 @@ function workerMessageHandler(self,go,message_id,message,sender)
 		self.currentBuilding = nil
 		self.headingToBuilding=false
 		self.generateCounter=1
+		
+	elseif message_id == hash("goToExtractor") then
+	
+		self.headingForExtractor=true
+		self.extractorLocation=message.preciseLocation
+		
+		self.extractorLocation.x = self.extractorLocation.x+TILE_SIZE*2
+		
+		
+		generateNewPathToMouseClick(self,self.extractorLocation,tilemapObject)
+		
+		
+	
 	end
 
 end

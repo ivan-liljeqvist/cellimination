@@ -22,10 +22,16 @@ function init(self)
 				
 				
 				
-				generateNewPathForGroupToPixel(SELECTED_UNITS,action)
+				local foundWay=generateNewPathForGroupToPixel(SELECTED_UNITS,action)
 				
 				for unit,alive in pairs(SELECTED_UNITS)do
+				
 					unit.orderedToMove=true
+					
+					if not foundWay and unit.worker then
+						goToExtractorIfItsThere(self,action,unit)
+					end
+				
 				end
 				
 			elseif action_id==hash("rightClicked") and action.pressed then
@@ -108,6 +114,21 @@ function init(self)
 	
 	hideSelection()
 	
+end
+
+function goToExtractorIfItsThere(self,action,worker)
+
+	for unit,isAlive in pairs(EXTRACTORS) do
+		if isAlive then
+			
+			msg.post(unit.id,"extractorRightClicked",{start={action.x,action.y},
+													  current={action.x+1,action.y+1},
+													  pivot=gui.get_pivot(gui.get_node("selectionBox")),
+													  workerID=worker.id})
+
+		end
+	end
+
 end
 
 function showSelection(startCoordinates, currentCoordinates)

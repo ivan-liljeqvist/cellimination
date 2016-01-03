@@ -13,12 +13,18 @@ function generateNewPathForGroupToPixel(group,action)
 		local pathFound={}
 		local leadingUnit={}
 		
+		local success=true
+		
 		for unit,isSelected in pairs(group) do 
 			--key is the GO, value is true/nil
 			if isSelected==true and unit.movableUnit then
 				
 				if foundAPathForWholeSelection==false then
-					generateNewPathToMouseClick(unit,action,tilemapObject)
+					
+					if not generateNewPathToMouseClick(unit,action,tilemapObject) then
+						success=false
+					end
+					
 					pathFound=unit.currentPath
 					foundAPathForWholeSelection=true
 					leadingUnit=unit
@@ -27,7 +33,9 @@ function generateNewPathForGroupToPixel(group,action)
 					if math.abs(unit.x-leadingUnit.x)<200 and math.abs(unit.y-leadingUnit.y)<200 then
 						loadPath(unit,pathFound)
 					else --otherwise find own path
-						generateNewPathToMouseClick(unit,action,tilemapObject)
+						if not generateNewPathToMouseClick(unit,action,tilemapObject) then
+							success=false
+						end
 					end
 				end
 				
@@ -37,6 +45,9 @@ function generateNewPathForGroupToPixel(group,action)
 				--print("not movable selected unit!")
 			end
 		end
+		
+		
+		return success
 				
 end
 
@@ -46,7 +57,7 @@ end
 
 function generateNewPathToMouseClick(self,action)
 		local tileX,tileY=pixelToTileCoords(action.x*ZOOM_LEVEL,action.y*ZOOM_LEVEL)
-    	generateNewPathToTileCoords(self,tileX,tileY)
+    	return generateNewPathToTileCoords(self,tileX,tileY)
 end
 
 function generateNewPathToTile(self,tileNode)

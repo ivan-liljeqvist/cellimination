@@ -94,6 +94,12 @@ function unitUpdate(self,go,dt)
 	
 	orderToMoveResetManager(self,dt)
 
+	if self.worker and self.headingForExtractor and table.getn(self.currentPath)<=0 then
+
+		self.headingForExtractor=false
+		destroyUnit(self)
+		
+	end
 
 end
 
