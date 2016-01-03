@@ -43,6 +43,21 @@ function init(self)
 					button9=nil}
 					
 					
+	self.GUILayoutComplete={button1={text="Deselect",action=deselectAction,hover=function() return HOVER_LAYOUT[DESELECT]  end},
+					button2=nil,
+					button3=nil,
+					button4=nil,
+					button5=nil,
+					button6=nil,
+					button7=nil,
+					button8=nil,
+					button9=nil,
+					productionButton1={icon="deselectIcon",action=productionButton1PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end},
+					productionButton2={icon="deselectIcon",action=productionButton2PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end},
+					productionButton3={icon="deselectIcon",action=productionButton3PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end},
+					productionButton4={icon="deselectIcon",action=productionButton4PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end}}
+					
+					
 end
 
 

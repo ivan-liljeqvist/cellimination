@@ -86,6 +86,12 @@ function constructionDone(self)
 	
 	go.delete(self.construction)
 	
+	if self.name==STORAGE_NAME then
+		MAX_STORAGE=MAX_STORAGE+STORAGE_INCREASE
+	elseif self.name==HOUSE_NAME then
+		MAX_HOUSE=MAX_HOUSE+HOUSING_INCREASE
+	end
+	
 end
 
 

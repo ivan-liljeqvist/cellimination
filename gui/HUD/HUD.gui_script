@@ -621,7 +621,7 @@ function updateHouseLabel(self,dt)
 		gui.set_color(gui.get_node("houseText"), vmath.vector3(1,1,1))
 	end
 	
-	gui.set_text(gui.get_node("houseText"), math.floor(TOTAL_HOUSE).."/"..math.floor(MAX_HOUSE).." capacity")
+	gui.set_text(gui.get_node("houseText"), math.floor(TOTAL_HOUSE).."/"..math.floor(MAX_HOUSE).." housing")
 end
 
 function updateStorageLabel(self,dt)

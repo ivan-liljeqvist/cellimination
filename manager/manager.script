@@ -41,6 +41,8 @@ function init(self)
 	
 	--msg.post("@system:", "toggle_profile")
 	
+	self.timeSinceLastStorageUpdate=0
+	
 end
 
 function final(self)
@@ -49,52 +51,65 @@ end
 
 function update(self, dt)
 	updateFoW(tilemap)
-	updateStorage(dt)
+	updateStorage(self,dt)
 end
 
 
-function updateStorage(dt)
+function updateStorage(self,dt)
 
-	local proteinIncrease=(PROTEIN_EXTRACTORS_MADE*dt*8)
-	local newProtein=PROTEIN+proteinIncrease
+	if self.timeSinceLastStorageUpdate>= 1.0 then
 	
-	local carbsIncrease=(CARB_EXTRACTORS_MADE*dt*8)
-	local newCarbs=CARBS+carbsIncrease
-	
-	local fatIncrease=(FAT_EXTRACTORS_MADE*dt*8)
-	local newFat=FAT+fatIncrease
-	
-	local totalStorage=newProtein+newCarbs+newFat
-	
-	if totalStorage>MAX_STORAGE then
+		print("updateStorage!")
+		self.timeSinceLastStorageUpdate=0
+		
+		local proteinIncrease=0
+		local carbsIncrease=0
+		local fatIncrease=0
+		--WORKER_RPM
+		
+		proteinIncrease=proteinIncrease+(WORKER_RPM/60)*WORKERS_EXTRACTING_PROTEIN
+		fatIncrease=fatIncrease+(WORKER_RPM/60)*WORKERS_EXTRACTING_FAT
+		carbsIncrease=carbsIncrease+(WORKER_RPM/60)*WORKERS_EXTRACTING_CARB
 
-		local diff = totalStorage-MAX_STORAGE
-		local totalIncrease=proteinIncrease+carbsIncrease+fatIncrease
+	
+		local newProtein=PROTEIN+proteinIncrease
+		local newCarbs=CARBS+carbsIncrease
+		local newFat=FAT+fatIncrease
 		
-		newProtein=newProtein-math.ceil(diff*(proteinIncrease/totalStorage))
-		newCarbs=newCarbs-math.ceil(diff*(carbsIncrease/totalStorage))
-		newFat=newFat-math.ceil(diff*(fatIncrease/totalStorage))
+		local totalStorage=newProtein+newCarbs+newFat
 		
-		totalStorage=newProtein+newCarbs+newFat
-		diff = MAX_STORAGE-totalStorage
-		
-		if diff>0 then
-			if proteinIncrease>0 then
-				newProtein=newProtein+diff
-			elseif carbsIncrease>0 then
-				newCarbs=newCarbs+diff
-			elseif fatIncrease>0 then
-				newFat=newFat+diff
+		if totalStorage>MAX_STORAGE then
+	
+			local diff = totalStorage-MAX_STORAGE
+			local totalIncrease=proteinIncrease+carbsIncrease+fatIncrease
+			
+			newProtein=newProtein-math.ceil(diff*(proteinIncrease/totalStorage))
+			newCarbs=newCarbs-math.ceil(diff*(carbsIncrease/totalStorage))
+			newFat=newFat-math.ceil(diff*(fatIncrease/totalStorage))
+			
+			totalStorage=newProtein+newCarbs+newFat
+			diff = MAX_STORAGE-totalStorage
+			
+			if diff>0 then
+				if proteinIncrease>0 then
+					newProtein=newProtein+diff
+				elseif carbsIncrease>0 then
+					newCarbs=newCarbs+diff
+				elseif fatIncrease>0 then
+					newFat=newFat+diff
+				end
 			end
 		end
+		
+		TOTAL_STORAGE=newProtein+newCarbs+newFat
+		
+		PROTEIN=newProtein
+		CARBS=newCarbs
+		FAT=newFat
+		
 	end
 	
-	TOTAL_STORAGE=newProtein+newCarbs+newFat
-	
-	PROTEIN=newProtein
-	CARBS=newCarbs
-	FAT=newFat
-	
+	self.timeSinceLastStorageUpdate=self.timeSinceLastStorageUpdate+dt
 end
 
 

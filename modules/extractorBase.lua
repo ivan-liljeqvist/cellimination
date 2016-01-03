@@ -30,6 +30,15 @@ function extractorMessages(self, message_id, message, sender,go)
 		print("worker entered!")
 		if self.workersInside<=(self.maxWorkersInside-1) then
 			self.workersInside=self.workersInside+1
+			
+			if self.isFatExtractor then
+				WORKERS_EXTRACTING_FAT=WORKERS_EXTRACTING_FAT+1
+			elseif self.isProteinExtractor then
+				WORKERS_EXTRACTING_PROTEIN=WORKERS_EXTRACTING_PROTEIN+1
+			elseif self.isCarbExtractor then
+				WORKERS_EXTRACTING_CARB=WORKERS_EXTRACTING_CARB+1
+			end
+			
 			msg.post(sender,"permittedToEnterExtractor",{canEnter=true})
 			self.currentlyProducingItem=RBC_NAME
 			table.insert(self.toProduce,RBC_NAME)
