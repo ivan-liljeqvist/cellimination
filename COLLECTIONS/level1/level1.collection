@@ -460,6 +460,86 @@ instances {
   }
 }
 instances {
+  id: "worker1"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1481.5332
+    y: 929.6468
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker2"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 457.5728
+    y: 788.4109
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker3"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 484.05457
+    y: 417.6666
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker4"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 837.14435
+    y: 347.04865
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "world"
   prototype: "/ground/world.go"
   position {

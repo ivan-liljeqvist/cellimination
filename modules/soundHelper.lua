@@ -1,3 +1,9 @@
+
+ENABLE_SOUND=true
+ENABLE_MUSIC=true
+ENABLE_SOUND_EFFECTS=true
+
+
 --sound effects have variations, for example slime1, slime2
 NUMBER_OF_VARIATIONS={}
 NUMBER_OF_VARIATIONS["slime"]=2
