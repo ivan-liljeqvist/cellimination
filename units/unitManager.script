@@ -14,6 +14,7 @@ COMMAND_FACTORY_MAP[hash("new"..RBC_NAME)]="#rbcFactory"
 COMMAND_FACTORY_MAP[hash("new"..HEAL1_NAME)]="#heal1Factory"
 COMMAND_FACTORY_MAP[hash("new"..HEAL2_NAME)]="#heal2Factory"
 COMMAND_FACTORY_MAP[hash("new"..TANK1_NAME)]="#tank1Factory"
+COMMAND_FACTORY_MAP[hash("new"..WORKER_NAME)]="#workerFactory"
 
 function on_message(self, message_id, message, sender)
 	

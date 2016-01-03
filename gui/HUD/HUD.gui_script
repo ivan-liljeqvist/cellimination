@@ -296,7 +296,7 @@ function showProductionSection()
    	if unitWithGUI.producer and string.len(unitWithGUI.currentlyProducingItem)>0 and not unitWithGUI.isExtractor then
    		gui.set_text(gui.get_node(PRODUCTION_TITLE),"Making "..unitWithGUI.currentlyProducingItem)
    	elseif unitWithGUI.isExtractor and unitWithGUI.producer and string.len(unitWithGUI.currentlyProducingItem)>0 then
-   		gui.set_text(gui.get_node(PRODUCTION_TITLE),unitWithGUI.workersInside.." cells inside (click on one to make it leave)")
+   		gui.set_text(gui.get_node(PRODUCTION_TITLE),unitWithGUI.workersInside.." cells inside\n(click on one to make it leave)")
    	else	
    		gui.set_text(gui.get_node(PRODUCTION_TITLE),"")
    	end

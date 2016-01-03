@@ -62,3 +62,26 @@ function productionButton4Pressed(self)
 	table.remove(self.toProduce,4)
 	resetProduction(self)
 end
+
+
+function productionButton1PressedExtractor(self)
+	table.remove(self.toProduce,1)
+	resetProduction(self)
+	msg.post("unitManager", "new"..WORKER_NAME, {position=vmath.vector3(self.x+self.orOffX,self.y+self.orOffY,1), producerPosition=vmath.vector3(self.x+self.orOffX,self.y+self.orOffY+30,1)}) 
+	self.workersInside=self.workersInside-1
+end
+
+function productionButton2PressedExtractor(self)
+	table.remove(self.toProduce,2)
+	resetProduction(self)
+end
+
+function productionButton3PressedExtractor(self)
+	table.remove(self.toProduce,3)
+	resetProduction(self)
+end
+
+function productionButton4PressedExtractor(self)
+	table.remove(self.toProduce,4)
+	resetProduction(self)
+end
