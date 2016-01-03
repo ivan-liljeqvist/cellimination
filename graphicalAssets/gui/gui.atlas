@@ -28,6 +28,18 @@ images {
 images {
   image: "/graphicalAssets/gui/tank1Icon.png"
 }
+images {
+  image: "/graphicalAssets/buildings/evolution/level.png"
+}
+images {
+  image: "/graphicalAssets/buildings/house/bed.png"
+}
+images {
+  image: "/graphicalAssets/buildings/storage/piggy.png"
+}
+images {
+  image: "/graphicalAssets/icons/sword.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

@@ -22,6 +22,18 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("newBarracks") then
 		
 		newBuilding=factory.create("#baracksFactory")
+	
+	elseif message_id == hash("newStorage") then
+		
+		newBuilding=factory.create("#storageFactory")
+		
+	elseif message_id == hash("newHouse") then
+		
+		newBuilding=factory.create("#houseFactory")
+		
+	elseif message_id == hash("newEvolution") then
+		
+		newBuilding=factory.create("#evolutionFactory")
 		
 	end
 	

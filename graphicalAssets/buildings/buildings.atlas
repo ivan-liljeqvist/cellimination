@@ -1,14 +1,5 @@
 images {
-  image: "/graphicalAssets/buildings/waypoint.png"
-}
-images {
-  image: "/graphicalAssets/buildings/generic/block.png"
-}
-images {
   image: "/graphicalAssets/buildings/generic/blankPixel.png"
-}
-images {
-  image: "/graphicalAssets/buildings/generic/block2.png"
 }
 images {
   image: "/graphicalAssets/buildings/base/baseInvalid.png"
@@ -17,13 +8,10 @@ images {
   image: "/graphicalAssets/buildings/base/flag.png"
 }
 images {
-  image: "/graphicalAssets/buildings/generic/block4.png"
-}
-images {
-  image: "/graphicalAssets/buildings/generic/block5.png"
-}
-images {
   image: "/graphicalAssets/buildings/generic/carbEIcon.png"
+}
+images {
+  image: "/graphicalAssets/buildings/waypoint.png"
 }
 images {
   image: "/graphicalAssets/buildings/generic/proteinEIcon.png"
@@ -33,9 +21,6 @@ images {
 }
 images {
   image: "/graphicalAssets/red/redEyes.png"
-}
-images {
-  image: "/graphicalAssets/buildings/generic/block3.png"
 }
 images {
   image: "/graphicalAssets/red/redBody.png"
@@ -52,6 +37,21 @@ images {
 images {
   image: "/graphicalAssets/buildings/house/bed.png"
 }
+images {
+  image: "/graphicalAssets/buildings/generic/block4.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/block.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/block5.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/block3.png"
+}
+images {
+  image: "/graphicalAssets/buildings/generic/block2.png"
+}
 margin: 0
 extrude_borders: 0
-inner_padding: 0
+inner_padding: 10

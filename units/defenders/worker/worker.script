@@ -24,23 +24,28 @@ function init(self)
 	self.requiresGUI=true
 	
 	
-	local buildBaseAction=function() msg.post("buildingManager", "newBase", {workerID = self.id}) end
+	
 	local deselectAction=function() msg.post("manager","deselectAll",{}) end
+	
+	local buildBaseAction=function() msg.post("buildingManager", "newBase", {workerID = self.id}) end
 	local buildCarbExtractor=function() msg.post("buildingManager", "newCarbExtractor", {workerID = self.id}) end
 	local buildFatExtractor=function() msg.post("buildingManager", "newFatExtractor", {workerID = self.id}) end
 	local buildProteinExtractor=function() msg.post("buildingManager", "newProteinExtractor", {workerID = self.id}) end
 	local buildBarracks=function() msg.post("buildingManager", "newBarracks", {workerID = self.id}) end
+	local buildStorage=function() msg.post("buildingManager", "newStorage", {workerID = self.id}) end
+	local buildEvolution=function() msg.post("buildingManager", "newEvolution", {workerID = self.id}) end
+	local buildHouse=function() msg.post("buildingManager", "newHouse", {workerID = self.id}) end
 	
 	
 	self.GUILayout={button1={icon="deselectIcon",action=deselectAction, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
-					button2=nil,
-					button3={icon="proteinExtractorIcon",action=buildBarracks,hover= function() return HOVER_LAYOUT[PROTEIN_EXTRACTOR_NAME] end},
+					button2={icon="level",action=buildEvolution,hover= function() return HOVER_LAYOUT[PROTEIN_EXTRACTOR_NAME] end},
+					button3={icon="sword",action=buildBarracks,hover= function() return HOVER_LAYOUT[PROTEIN_EXTRACTOR_NAME] end},
 					button4={icon="proteinExtractorIcon",action=buildProteinExtractor,hover= function() return HOVER_LAYOUT[PROTEIN_EXTRACTOR_NAME] end},
 					button5={icon="fatExtractorIcon",action=buildFatExtractor, hover=function() return HOVER_LAYOUT[FAT_EXTRACTOR_NAME] end},
 					button6={icon="carbExtractorIcon",action=buildCarbExtractor, hover=function() return HOVER_LAYOUT[CARB_EXTRACTOR_NAME] end},
 					button7={icon="mainBaseIcon",action=buildBaseAction,hover=function() return HOVER_LAYOUT[BASE_NAME] end},
-					button8=nil,
-					button9=nil}
+					button8={icon="bed",action=buildHouse,hover= function() return HOVER_LAYOUT[PROTEIN_EXTRACTOR_NAME] end},
+					button9={icon="piggy",action=buildStorage,hover= function() return HOVER_LAYOUT[PROTEIN_EXTRACTOR_NAME] end}}
 					
 	self.originalHealth=100
 	self.health=100

@@ -29,8 +29,53 @@ components {
   }
 }
 components {
+  id: "evolutionFactory"
+  component: "/buildings/evolution/evolution.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "houseFactory"
+  component: "/buildings/house/house.factory"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
   id: "script"
   component: "/buildings/buildingManager.script"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "storageFactory"
+  component: "/buildings/storage/storage.factory"
   position {
     x: 0.0
     y: 0.0
