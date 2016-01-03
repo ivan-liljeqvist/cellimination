@@ -582,7 +582,6 @@ function showNode(id)
 end
 
 function showButtonWithIcon(id,icon)
-	print("icon "..icon)
 	showButton(id)
 	if icon then
 		gui.set_texture(gui.get_node(id.."/icon"), "gui")

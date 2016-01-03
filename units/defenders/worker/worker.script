@@ -10,6 +10,7 @@ function init(self)
 	self.y=go.get_position().y
 	
 	self.boundsWidthScale=0.5
+	self.boundsHeightScale=0.4
 	self.initialScale=0.5
 	
 	self.parseInput=function(self, action_id, action)
