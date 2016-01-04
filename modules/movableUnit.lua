@@ -93,8 +93,7 @@ function unitUpdate(self,go,dt)
 	
 	orderToMoveResetManager(self,dt)
 
-	if self.worker and self.headingForExtractor and not self.noNextNode then
-
+	if self.worker and self.headingForExtractor and table.getn(self.currentPath)<=0 then
 		
 		arrivedAtExtractor(self)
 		

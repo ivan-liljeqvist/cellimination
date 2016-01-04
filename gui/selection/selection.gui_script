@@ -72,7 +72,7 @@ function init(self)
 				self.releasedSinceLast=true
 				
 				self.triedToSelectOnlyOneLast=false
-				print("hej")
+
 				--if no mass selection, pretend we have a selection of 1x1 and only one unit will be selected
 				if self.massSelectionMode~=true and GUI_CLICKED==false and self.doubleClicked==false and not PLACING_NEW_BUILDING then
 					

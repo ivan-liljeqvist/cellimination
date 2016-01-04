@@ -217,8 +217,6 @@ function hideProgressBar(self)
 		
 		if self.isBuilding or self.willBecomeBuilding then
 			msg.post(msg.url("#progressGUI"),"hide")
-		else
-			print("VAN RFAS")
 		end
 		self.showingProgressBar=false
 	end
@@ -297,16 +295,6 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 
 		
 		local didFindAWay=false
-		--[[if message.waypointSet then
-		
-			--if we didn't find a way, use regular goStraightToNode() in the if below
-			didFindAWay=generateNewPathToTileCoordsB(self,tileX,tileY)
-			
-			if not didFindAWay then --set the goal back to the producer, not the waypoint
-				pixelX,pixelY=message.prodX,message.prodY
-				tileX,tileY=pixelToTileCoords(pixelX-CAMERA_OFFSETX,pixelY-CAMERA_OFFSETY)
-			end
-		end--]]
 		
 		if didFindAWay==false then
 			local nodeIndex=TILEMAP_INDEX_LOOKUP[tileX+1][tileY+1]

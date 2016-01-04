@@ -48,13 +48,11 @@ function moveAccordingToPath(self,go,dt)
 	local xDiff=pos.x-self.goalX
 	local reachedGoal=(yDiff<1 and yDiff>-1) and (xDiff<1 and xDiff>-1)
 	
-	--print(math.abs(pos.y-self.goalY),math.abs(pos.x-self.goalX))
-	
     if reachedGoal==false then
     	self.go.set_position(pos-self.dir*MOVE_SPEED[self.name]*2*dt)
     	
     	moveHealthbar(self)
-    elseif not self.noNextNode then
+    elseif not self.noNextNode or self.headingForExtractor  then
     	followPath(self)
     end
     
@@ -102,6 +100,7 @@ function followPath(self)
 		
 		self.lastNodeInPath=nextNode
 		
+
 		self.goalX,self.goalY=tileToPixelCoords(nextNode.x-1,nextNode.y-1)
 		
 		giveFollowersMyPosition(self)

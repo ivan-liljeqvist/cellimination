@@ -7,6 +7,7 @@ require "modules.data.healers"
 require "modules.data.extractors"
 require "modules.data.buildings"
 require "modules.data.language"
+require "modules.data.upgrades"
 
 require "modules.creations"
 require "modules.extractorBase"
@@ -57,7 +58,6 @@ function updateStorage(self,dt)
 
 	if self.timeSinceLastStorageUpdate>= 1.0 then
 	
-		print("updateStorage!")
 		self.timeSinceLastStorageUpdate=0
 		
 		local proteinIncrease=0

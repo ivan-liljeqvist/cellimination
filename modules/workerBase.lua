@@ -48,11 +48,15 @@ function workerMessageHandler(self,go,message_id,message,sender)
 		self.headingForExtractor=true
 		self.extractorLocation=message.preciseLocation
 		
-		self.extractorLocation.x = self.extractorLocation.x+TILE_SIZE*2
+		self.extractorLocation.x = self.extractorLocation.x*ZOOM_LEVEL+TILE_SIZE*3--+CAMERA_OFFSETX	
+		--print("extractor at ",self.extractorLocation.x,self.extractorLocation.y)
 		
 		self.headingToExtractorID=message.extractorID
 		
-		generateNewPathToMouseClick(self,self.extractorLocation,tilemapObject)
+		local tileX,tileY = pixelToTileCoords(self.extractorLocation.x,self.extractorLocation.y)
+		generateNewPathToTileCoords(self,tileX,tileY)
+		
+		print("path to etract size: "..table.getn(self.currentPath))
 		
 	elseif message_id == hash("permittedToEnterExtractor") then
 		if message.canEnter then
