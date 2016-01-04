@@ -28,7 +28,7 @@ function init(self)
 	
 	
 	local deselectAction=function() msg.post("manager","deselectAll",{}) end
-	
+
 	local buildBaseAction=function() msg.post("buildingManager", "newBase", {workerID = self.id}) end
 	local buildCarbExtractor=function() msg.post("buildingManager", "newCarbExtractor", {workerID = self.id}) end
 	local buildFatExtractor=function() msg.post("buildingManager", "newFatExtractor", {workerID = self.id}) end
@@ -48,7 +48,8 @@ function init(self)
 					button7={icon="mainBaseIcon",action=buildBaseAction,hover=function() return HOVER_LAYOUT[BASE_NAME] end},
 					button8={icon="bed",action=buildHouse,hover= function() return HOVER_LAYOUT[HOUSE_NAME] end},
 					button9={icon="piggy",action=buildStorage,hover= function() return HOVER_LAYOUT[STORAGE_NAME] end}}
-					
+
+				
 	self.originalHealth=100
 	self.health=100
 end

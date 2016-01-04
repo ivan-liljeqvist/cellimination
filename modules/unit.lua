@@ -6,6 +6,8 @@ function initBasicUnit(self,name,goID)
 
 	populateNodeArray()
 	
+	self.healthCounter=0
+	
 	self.bounds=getSpriteBounds("#sprite",self) 
 	   
     self.selected=false
@@ -158,44 +160,50 @@ function handleProgressbar(self)
 end
 
 
+
 function handleHealthbar(self,dt)
-	--update healthbar
-	--if self.showingHealthBar or self.showingHelthTemp then
-	
-		--1) move the bar after the unit
-		local pos = go.get_position()
-		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
-		pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
-		
-		msg.post(msg.url("#healthGUI"),"setPosition",{position=pos})
-		
-		
-		local ratio = self.health/self.originalHealth 
-		--2) if the health is below 30% - set low health
-		if ratio < 0.3 and self.highHealth then
-			msg.post(msg.url("#healthGUI"),"lowHealth",{position=pos})
-			self.highHealth=false
-		elseif ratio >= 0.3 and self.highHealth==false then
-			msg.post(msg.url("#healthGUI"),"highHealth",{position=pos})
-			self.highHealth=true
-		end
-		
-		--3) update the width of the health bar
-		msg.post(msg.url("#healthGUI"),"updateSize",{ratio=ratio})
-	--end
-	
-	--see if we should hide the temporary healthbar
-	if self.showingHelthTemp then
-		
+
+	self.healthCounter=self.healthCounter+1
+	if self.healthCounter%2==0 then
+			self.healthCounter=0
+			--update healthbar
+			if self.showingHealthBar or self.showingHelthTemp then
 			
-			self.timeSinceTempShowHealth=self.timeSinceTempShowHealth+dt
-			
-			if self.timeSinceTempShowHealth>2 then
-				msg.post(msg.url("#healthGUI"),"hide")
-				self.showingHelthTemp=false
+				--1) move the bar after the unit
+				local pos = go.get_position()
+				pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
+				pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
+				
+				msg.post(msg.url("#healthGUI"),"setPosition",{position=pos})
+				
+				
+				local ratio = self.health/self.originalHealth 
+				--2) if the health is below 30% - set low health
+				if ratio < 0.3 and self.highHealth then
+					msg.post(msg.url("#healthGUI"),"lowHealth",{position=pos})
+					self.highHealth=false
+				elseif ratio >= 0.3 and self.highHealth==false then
+					msg.post(msg.url("#healthGUI"),"highHealth",{position=pos})
+					self.highHealth=true
+				end
+				
+				--3) update the width of the health bar
+				msg.post(msg.url("#healthGUI"),"updateSize",{ratio=ratio})
 			end
 			
-		
+			--see if we should hide the temporary healthbar
+			if self.showingHelthTemp then
+				
+					
+					self.timeSinceTempShowHealth=self.timeSinceTempShowHealth+dt
+					
+					if self.timeSinceTempShowHealth>2 then
+						msg.post(msg.url("#healthGUI"),"hide")
+						self.showingHelthTemp=false
+					end
+					
+				
+			end
 	end
 end
 

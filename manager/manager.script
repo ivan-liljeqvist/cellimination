@@ -45,9 +45,7 @@ function init(self)
 	
 end
 
-function final(self)
 
-end
 
 function update(self, dt)
 	updateFoW(tilemap)

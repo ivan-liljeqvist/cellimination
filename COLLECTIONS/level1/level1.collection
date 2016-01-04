@@ -120,6 +120,26 @@ instances {
   }
 }
 instances {
+  id: "jeep1"
+  prototype: "/units/defenders/fighters/rbc/rbc.go"
+  position {
+    x: 1067.0925
+    y: 1449.9845
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "manager"
   prototype: "/manager/manager.go"
   position {
@@ -220,27 +240,7 @@ instances {
   }
 }
 instances {
-  id: "purple"
-  prototype: "/units/viruses/purple/purple.go"
-  position {
-    x: 1580.9131
-    y: 170.47067
-    z: 0.2
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "purple1"
+  id: "purple34"
   prototype: "/units/viruses/purple/purple.go"
   position {
     x: 3333.9478
@@ -260,11 +260,11 @@ instances {
   }
 }
 instances {
-  id: "purple2"
+  id: "purple35"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 3243.2734
-    y: 2004.1046
+    x: 3333.9478
+    y: 714.5159
     z: 0.2
   }
   rotation {
@@ -280,11 +280,11 @@ instances {
   }
 }
 instances {
-  id: "purple3"
+  id: "purple36"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 4734.3604
-    y: 3726.9146
+    x: 3333.9478
+    y: 714.5159
     z: 0.2
   }
   rotation {
@@ -300,11 +300,11 @@ instances {
   }
 }
 instances {
-  id: "purple4"
+  id: "purple37"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 4794.81
-    y: 2477.6255
+    x: 3333.9478
+    y: 714.5159
     z: 0.2
   }
   rotation {
@@ -320,11 +320,11 @@ instances {
   }
 }
 instances {
-  id: "purple5"
+  id: "purple38"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 4855.2593
-    y: 2739.5732
+    x: 3333.9478
+    y: 714.5159
     z: 0.2
   }
   rotation {
@@ -340,11 +340,11 @@ instances {
   }
 }
 instances {
-  id: "purple6"
+  id: "purple39"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 5046.6826
-    y: 2477.6255
+    x: 3333.9478
+    y: 714.5159
     z: 0.2
   }
   rotation {
@@ -360,11 +360,271 @@ instances {
   }
 }
 instances {
-  id: "purple7"
+  id: "purple40"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 4945.9336
-    y: 1742.1569
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple41"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple42"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple43"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple44"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple45"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple46"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple47"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple48"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple49"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple50"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple51"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple52"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple53"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3333.9478
+    y: 714.5159
     z: 0.2
   }
   rotation {
@@ -401,6 +661,46 @@ instances {
 }
 instances {
   id: "tank1"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 364.07977
+    y: 1260.8
+    z: 0.35
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank2"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 364.07977
+    y: 1260.8
+    z: 0.35
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank3"
   prototype: "/units/defenders/tanks/tank1/tank1.go"
   position {
     x: 364.07977
@@ -460,71 +760,51 @@ instances {
   }
 }
 instances {
-  id: "worker1"
-  prototype: "/units/defenders/worker/worker.go"
-  position {
-    x: 1481.5332
-    y: 929.6468
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "worker2"
-  prototype: "/units/defenders/worker/worker.go"
-  position {
-    x: 457.5728
-    y: 788.4109
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "worker3"
-  prototype: "/units/defenders/worker/worker.go"
-  position {
-    x: 484.05457
-    y: 417.6666
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "worker4"
+  id: "worker7"
   prototype: "/units/defenders/worker/worker.go"
   position {
     x: 837.14435
     y: 347.04865
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker8"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 837.14435
+    y: 347.04865
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker9"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1146.0979
+    y: 594.2115
     z: 0.5
   }
   rotation {

@@ -77,6 +77,7 @@ end
 
 function unitUpdate(self,go,dt)
 	
+
 	
 	if self.canFight then
 		fightingUnitUpdate(self,go,dt)
@@ -94,7 +95,7 @@ function unitUpdate(self,go,dt)
 	
 	orderToMoveResetManager(self,dt)
 
-	if self.worker and self.headingForExtractor and table.getn(self.currentPath)<=0 then
+	if self.worker and self.headingForExtractor and not self.noNextNode then
 
 		
 		arrivedAtExtractor(self)

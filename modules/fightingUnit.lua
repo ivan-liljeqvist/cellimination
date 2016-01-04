@@ -12,6 +12,8 @@ function initFightingUnit(self)
 	self.targetEnemyTeam=nil
 	self.currentShot=nil
 	self.attackers={}
+	
+	self.isInHostileArea=false
 
 	
 	self.firingRange=FIRING_RANGE[self.name]
@@ -62,7 +64,7 @@ end
 function fightingUnitUpdate(self,go,dt)
 	
 	
-	if self.canFight==false then return end
+	if self.canFight==false or not self.isInHostileArea then return end
 
 	if self.fightUpdateCounter%20==0 then
 		searchForTarget(self)

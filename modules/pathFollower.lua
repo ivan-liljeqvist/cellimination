@@ -8,6 +8,8 @@ function loadPath(self,path)
 	TILEMAP_NODES[self.lastDestIndex].occupiedBy=nil
 	TILEMAP_NODES[self.lastDestIndex].occupiedByID=nil
 	self.currentPath=copyTable(path)--concatTables(self.currentPath,copyTable(path))
+	
+	self.noNextNode=false
 end
 
 
@@ -38,22 +40,20 @@ function goStraightToNode(self,nodeIndex)
 end
 
 function moveAccordingToPath(self,go,dt)
+
 	local pos = getPosition(self)
-	local reachedGoal=(math.abs(pos.y-self.goalY)<1) and (math.abs(pos.x-self.goalX)<1)
+	local yDiff=pos.y-self.goalY
+	local xDiff=pos.x-self.goalX
+	local reachedGoal=(yDiff<1 and yDiff>-1) and (xDiff<1 and xDiff>-1)
 	
 	--print(math.abs(pos.y-self.goalY),math.abs(pos.x-self.goalX))
 	
     if reachedGoal==false then
     	self.go.set_position(pos-self.dir*self.speed*dt)
-    elseif self.currentPath then
-    
-
-		
-    	--check if the current path has more nodes
-    	if table.getn(self.currentPath)~=0 then
-    		followPath(self)
-    	end
+    elseif not self.noNextNode then
+    	followPath(self)
     end
+    
 end
 
 function abortPath(self)
@@ -79,6 +79,8 @@ function followPath(self)
 	local nextNode=table.remove(self.currentPath, 1)
 	
 	if nextNode then
+	
+		self.noNextNode=false
 
 		if nextNode.occupied==true and nextNode.occupiedBy~=self and table.getn(self.currentPath)<1 then
 			
@@ -106,7 +108,7 @@ function followPath(self)
 		self.tileCoordinates={nextNode.x,nextNode.y}
 	else 	
 		print("nextNode is nil")
-		
+		self.noNextNode=true
 	end
 	
 	

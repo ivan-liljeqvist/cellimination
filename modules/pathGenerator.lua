@@ -144,6 +144,7 @@ function generateNewPathToTileCoords(self,tileX,tileY)
 				return false
 			else
 				--print("path with "..table.getn(self.currentPath).." nodes")
+				self.noNextNode=false
 			end
 
     	else

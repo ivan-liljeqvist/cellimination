@@ -1,5 +1,18 @@
+--	ProFi = require 'modules.ProFi'
+	
 function init(self)
      registerForInput(go.get_id())
+     
+   
+  --  ProFi:start()
+
+   
+end
+
+function final(self)
+		
+		--ProFi:stop()
+        --P-roFi:writeReport( 'MyProfilingReport.txt' )
 end
 
 function on_message(self, message_id, message, sender)

@@ -15,7 +15,7 @@ end
 
 function workerUpdate(self,go,dt)
 
-	if table.getn(self.currentPath)<=0 and self.headingToBuilding and self.currentBuilding then
+	if self.noNextNode and self.headingToBuilding and self.currentBuilding then
 		print("seind worker arrived from worker to building")
 		msg.post(self.currentBuilding,"workerArrived")
 
