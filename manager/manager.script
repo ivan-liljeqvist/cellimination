@@ -126,6 +126,13 @@ function on_message(self, message_id, message, sender)
 		    	pcall(msg.post,unit,"massSelection",message)
 		    end
 		end
+		
+	elseif message_id==hash("massSelectionUrgent")then
+		for _,unit in  pairs(selectableUnits) do 
+			if unit and ALIVE[unit] then
+		    	pcall(msg.post,unit,"massSelectionUrgent",message)
+		    end
+		end
 	
 	--double click, select all of a kind on screen	
 	elseif message_id==hash("allOnScreenSelectSpecific") then

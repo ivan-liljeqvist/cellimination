@@ -41,6 +41,8 @@ end
 
 function moveAccordingToPath(self,go,dt)
 
+	if self.teamNumber~=PLAYER_TEAM and not self.isFighting then return end
+
 	local pos = getPosition(self)
 	local yDiff=pos.y-self.goalY
 	local xDiff=pos.x-self.goalX
@@ -49,7 +51,9 @@ function moveAccordingToPath(self,go,dt)
 	--print(math.abs(pos.y-self.goalY),math.abs(pos.x-self.goalX))
 	
     if reachedGoal==false then
-    	self.go.set_position(pos-self.dir*self.speed*dt)
+    	self.go.set_position(pos-self.dir*MOVE_SPEED[self.name]*2*dt)
+    	
+    	moveHealthbar(self)
     elseif not self.noNextNode then
     	followPath(self)
     end

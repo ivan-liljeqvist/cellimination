@@ -43,6 +43,8 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	go.set_scale(vmath.vector3(self.initialScale, self.initialScale, self.initialScale),self.building)
 
 	spriteObject.set_constant("#sprite", "tint", vmath.vector4(0,0,0,0))
+	
+	
 end
 
 function buildingMessageHandler(self,go,message_id,message,sender)

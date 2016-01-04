@@ -1,10 +1,10 @@
---	ProFi = require 'modules.ProFi'
+--ProFi = require 'modules.ProFi'
 	
 function init(self)
      registerForInput(go.get_id())
      
    
-  --  ProFi:start()
+    --ProFi:start()
 
    
 end
@@ -12,7 +12,7 @@ end
 function final(self)
 		
 		--ProFi:stop()
-        --P-roFi:writeReport( 'MyProfilingReport.txt' )
+        --ProFi:writeReport( 'MyProfilingReport.txt' )
 end
 
 function on_message(self, message_id, message, sender)

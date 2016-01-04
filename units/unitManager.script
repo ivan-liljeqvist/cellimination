@@ -40,3 +40,13 @@ function on_message(self, message_id, message, sender)
 	
 end
 
+function adjustAllNeededHealthbars()
+
+	for unit,stillHere in pairs(SELECTED_UNITS) do 
+    	if stillHere and unit and ALIVE[unit.id] then
+    		msg.post(unit.id,"moveHealthbar")
+    	end
+    end
+    
+end
+

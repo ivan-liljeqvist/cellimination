@@ -16,6 +16,8 @@ function init(self)
 	self.factory=factory
 	self.sprite=sprite
 	
+	self.isBuilding=true
+	
 	self.needsWaypoint=true
 	
     initBasicUnit(self,EVOLUTION_NAME,go.get_id())

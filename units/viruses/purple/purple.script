@@ -67,8 +67,10 @@ end
 
 function on_message(self, message_id, message, sender)
 
+	
 	handleSelectMethods(self,go,message_id,message,sender)
 	basicUnitMessageHandler(self,go,message_id,message,sender)
+	
 	if self.canFight then
 		fightingUnitMessageHandler(self,go,message_id,message,sender)
 	end

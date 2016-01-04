@@ -14,21 +14,6 @@ components {
   }
 }
 components {
-  id: "progressGUI"
-  component: "/gui/progressBar/progressBar.gui"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-components {
   id: "script"
   component: "/units/defenders/tanks/tank1/tank1.script"
   position {

@@ -15,10 +15,6 @@ function initBasicUnit(self,name,goID)
     self.canFight=false
     
     self.isBuilding=false
-    local pos=self.go.get_position()
-    pos.x=pos.x
-	pos.y=pos.y
-	self.go.set_position(pos)
 	
     self.name=name
     self.id=goID
@@ -59,7 +55,10 @@ function initBasicUnit(self,name,goID)
 	
 	self.originalHealth=MAX_HEALTH[self.name]
 	self.health=self.originalHealth
+	self.lastHealth=self.health
 	self.needsHealing=false
+	
+	moveHealthbar(self)
 	
 	self.showingProgressBar=true
 	self.producingSomething=false
@@ -68,6 +67,12 @@ function initBasicUnit(self,name,goID)
 end
 
 
+function moveHealthbar(self)
+	local pos = go.get_position()
+	pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
+	pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
+	msg.post(msg.url("#healthGUI"),"setPosition",{position=pos})	
+end
 
 function destroyUnit(self)
 
@@ -149,12 +154,12 @@ function handleHealingStatus(self)
 end
 
 function handleProgressbar(self)
-	--if self.producing then
+	if self.isBuilding then
 		local pos = go.get_position()
 		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
 		pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
 		msg.post(msg.url("#progressGUI"),"setPosition",{position=pos})
-	--end
+	end
 	
 	checkIfShouldShowProgress(self)
 end
@@ -162,21 +167,21 @@ end
 
 
 function handleHealthbar(self,dt)
+	
+	local healthChanged=false
+	
+	if self.lastHealth~=self.health then healthChanged=true self.lastHealth=self.health end
+
+	if not self.showingHealthBar and not self.showingHelthTemp then
+		return
+	end
 
 	self.healthCounter=self.healthCounter+1
 	if self.healthCounter%2==0 then
 			self.healthCounter=0
 			--update healthbar
-			if self.showingHealthBar or self.showingHelthTemp then
+			if (self.showingHealthBar or self.showingHelthTemp) and healthChanged then
 			
-				--1) move the bar after the unit
-				local pos = go.get_position()
-				pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
-				pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
-				
-				msg.post(msg.url("#healthGUI"),"setPosition",{position=pos})
-				
-				
 				local ratio = self.health/self.originalHealth 
 				--2) if the health is below 30% - set low health
 				if ratio < 0.3 and self.highHealth then
@@ -208,14 +213,23 @@ function handleHealthbar(self,dt)
 end
 
 function hideProgressBar(self)
-	if self.showingProgressBar then
-		msg.post(msg.url("#progressGUI"),"hide")
+	if  self.showingProgressBar then
+		
+		if self.isBuilding or self.willBecomeBuilding then
+			msg.post(msg.url("#progressGUI"),"hide")
+		else
+			print("VAN RFAS")
+		end
+		self.showingProgressBar=false
 	end
 end
 
 function showProgressBar(self)
 	if not self.showingProgressBar then
-		msg.post(msg.url("#progressGUI"),"show")
+		self.showingProgressBar=true
+		if self.isBuilding then
+			msg.post(msg.url("#progressGUI"),"show")
+		end
 	end
 end
 
@@ -270,6 +284,10 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 	elseif message_id==hash("heal")then
 	
 		increaseHealth(self,message.hp)
+		
+	elseif message_id==hash("moveHealthbar")then
+	
+		moveHealthbar(self)
 
 	elseif message_id==hash("rollOutOfProducer") then
 		--generateNewPathToMouseClick(self,message,tilemap)--last argument is to ignore camera offset
@@ -313,6 +331,7 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 		end
 		
 	elseif message_id == hash("contact_point_response") then
+	
 	
 		if message.other_id ~= self.hitByLastId and BULLET_OWNER[message.other_id]~=self.id and not BULLET_HIT_ALREADY[message.other_id] then
 		

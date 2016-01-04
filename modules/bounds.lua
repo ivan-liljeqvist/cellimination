@@ -71,6 +71,8 @@ function massSelect(self,title,go)
 		if self.waypointHidden~=true then
 			 tempShowWP(self)
 		end
+		
+		moveHealthbar(self)
 	end
 end
 

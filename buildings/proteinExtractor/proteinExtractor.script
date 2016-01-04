@@ -20,6 +20,8 @@ function init(self)
 	self.willBecomeBuilding=true
 	self.factory=factory
 	
+	self.isBuilding=true
+	
     initBasicUnit(self,PROTEIN_EXTRACTOR_NAME,go.get_id())
 	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=1},width=1,height=0},go)
 	initExtractor(self)

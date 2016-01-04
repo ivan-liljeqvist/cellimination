@@ -42,6 +42,8 @@ function on_message(self, message_id, message, sender)
 	
 		msg.post(message.workerID,"setCurrentBuilding",{building=newBuilding})
 		msg.post(newBuilding,"setWorkerID",{workerID=message.workerID})
+		
+		PLACING_NEW_BUILDING=true
 	
 	end
 	

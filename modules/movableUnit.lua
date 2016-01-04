@@ -76,9 +76,7 @@ function initMovableUnit(self)
 end
 
 function unitUpdate(self,go,dt)
-	
 
-	
 	if self.canFight then
 		fightingUnitUpdate(self,go,dt)
 	end

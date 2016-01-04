@@ -46,6 +46,9 @@ end
 
 
 function handleSelectMethods(self,go,message_id,message)
+
+	if self.teamNumber~=PLAYER_TEAM then return end
+
 	if not self.selCounter then self.selCounter=0 end
 	
 	self.selCounter=self.selCounter+1
@@ -90,6 +93,17 @@ function handleSelectMethods(self,go,message_id,message)
 	 if message_id==hash("deselect") then
 			removeFromSelectedUnits(self)
 			deselect(self,go)
+	 elseif message_id==hash("massSelectionUrgent") then
+			
+			if isInsideSelection(message.start,message.current,message.pivot,self) and alreadySelected()==false and self.teamNumber==PLAYER_TEAM then
+				
+				addToSelectedUnits(self)
+				massSelect(self,"hej",go)
+			else
+		
+				removeFromSelectedUnits(self)
+				deselect(self,go)
+			end
 	 end
  	
  	if message_id==hash("newInput") then

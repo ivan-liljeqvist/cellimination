@@ -72,15 +72,18 @@ function init(self)
 				self.releasedSinceLast=true
 				
 				self.triedToSelectOnlyOneLast=false
-				
+				print("hej")
 				--if no mass selection, pretend we have a selection of 1x1 and only one unit will be selected
-				if self.massSelectionMode~=true and GUI_CLICKED==false and self.doubleClicked==false then
+				if self.massSelectionMode~=true and GUI_CLICKED==false and self.doubleClicked==false and not PLACING_NEW_BUILDING then
 					
 					self.triedToSelectOnlyOneLast=true
 					msg.post("manager","deselectAll",{})
-					msg.post("manager","massSelection",{start=mouseDownStartCoordinates,
+					msg.post("manager","massSelectionUrgent",{start=mouseDownStartCoordinates,
 														current={mouseDownStartCoordinates[1]+1,mouseDownStartCoordinates[2]+1},
 														pivot=gui.get_pivot(gui.get_node("selectionBox"))})
+					
+				elseif self.massSelectionMode~=true and GUI_CLICKED==false and self.doubleClicked==false and PLACING_NEW_BUILDING then
+					PLACING_NEW_BUILDING=false	
 				end
 				
 				

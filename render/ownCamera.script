@@ -122,9 +122,12 @@ function moveCamera(dir,dt)
 		end
 	end
 	
+	
+	adjustAllNeededHealthbars()
 		
 	go.set_position(pos)
 end
+
 
 function on_input(self, action_id, action)
 
