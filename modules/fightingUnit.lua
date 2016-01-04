@@ -201,7 +201,7 @@ function fightingUnitMessageHandler(self,go,message_id,message,sender)
 		self.targetEnemyPosition=message.position
 		shootOrChase(self)
 	
-	--1) we get shot by someone
+	
 	end
 
 end
@@ -252,11 +252,14 @@ function getFirstEnemyInRange(self)
 						if tileNode.occupied then
 								if pcall(tryAccess,tileNode) then
 									if tileNode.occupiedBy.teamNumber~=self.teamNumber then
+										
+										
 										return tileNode.occupiedBy
 									end
 								else
-									TILEMAP_NODES[tileNodeIndex].occupied=false
-									TILEMAP_NODES[tileNodeIndex].occupiedBy=nil
+									--TILEMAP_NODES[tileNodeIndex].occupied=false
+									--TILEMAP_NODES[tileNodeIndex].occupiedBy=nil
+									
 									resetTargetEnemy(self)
 								end
 						end
@@ -264,9 +267,13 @@ function getFirstEnemyInRange(self)
 					
 				end
 			end
+			
+		
 		
 		end--
 	end
+	
+	
 	
 	return nil
 end

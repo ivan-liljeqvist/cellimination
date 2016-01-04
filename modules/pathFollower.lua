@@ -72,21 +72,30 @@ end
 
 function followPath(self)
 
-	if self.lastNodeInPath then
-		self.lastNodeInPath.occupied=false
-		self.lastNodeInPath.occupiedBy=nil
-		self.lastNodeInPath.occupiedByID=nil
-	end
+	if self.noNextNode then return end
+
+
 	
 	local nextNode=table.remove(self.currentPath, 1)
 	
 	if nextNode then
 	
+		if self.lastNodeInPath then
+			TILEMAP_NODES[self.lastNodeInPath.tilemapIndex].occupied=false
+			TILEMAP_NODES[self.lastNodeInPath.tilemapIndex].occupiedBy=nil
+			TILEMAP_NODES[self.lastNodeInPath.tilemapIndex].occupiedByID=nil
+			--tilemapObject.set_tile("world#tilemap", "reachable", self.lastNodeInPath.x, self.lastNodeInPath.y, 1)
+		end
+	
+		
+		print(" next node position ",nextNode.x,nextNode.y)
+	
 		self.noNextNode=false
 
 		if nextNode.occupied==true and nextNode.occupiedBy~=self and table.getn(self.currentPath)<1 then
 			
-			local newNodeIndex=findNotOccupiedNeighbour(nextNode.x-1,nextNode.y-1,3) --the last is the total number of recursions allowed
+			print("findNotOccupiedNeighbour")
+			local newNodeIndex=findNotOccupiedNeighbour(nextNode.x,nextNode.y,3) --the last is the total number of recursions allowed
     		if newNodeIndex then
     				
     			nextNode=TILEMAP_NODES[newNodeIndex]
@@ -94,9 +103,13 @@ function followPath(self)
     		end
 		end
 		
-		nextNode.occupied=true
-		nextNode.occupiedBy=self
-		nextNode.occupiedByID=self.id
+		if nextNode then
+			print("occupiing new node")
+			TILEMAP_NODES[nextNode.tilemapIndex].occupied=true
+			TILEMAP_NODES[nextNode.tilemapIndex].occupiedBy=self
+			TILEMAP_NODES[nextNode.tilemapIndex].occupiedByID=self.id
+			--tilemapObject.set_tile("world#tilemap", "reachable", nextNode.x, nextNode.y, 0)
+		end
 		
 		self.lastNodeInPath=nextNode
 		
@@ -110,7 +123,6 @@ function followPath(self)
 		
 		self.tileCoordinates={nextNode.x,nextNode.y}
 	else 	
-		print("nextNode is nil")
 		self.noNextNode=true
 	end
 	

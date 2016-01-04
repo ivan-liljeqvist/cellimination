@@ -110,6 +110,7 @@ function populateNodeArray()
 					newNode.occupied=false
 					newNode.occupiedBy=nil
 					newNode.blocked=false
+					newNode.tilemapIndex=tilemapIndex
 					
 					
 					TILEMAP_INDEX_LOOKUP[xCounter][yCounter]=tilemapIndex

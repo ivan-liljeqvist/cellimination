@@ -8,8 +8,9 @@ function initBasicUnit(self,name,goID)
 	
 	self.healthCounter=0
 	
-	self.bounds=getSpriteBounds("#sprite",self) 
-	   
+	self.bounds=getSpriteBounds("#sprite",self)
+
+
     self.selected=false
     
     self.canFight=false
