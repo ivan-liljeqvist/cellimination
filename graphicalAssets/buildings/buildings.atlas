@@ -46,6 +46,9 @@ images {
 images {
   image: "/graphicalAssets/buildings/generic/block2.png"
 }
+images {
+  image: "/graphicalAssets/red/redBody.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 10

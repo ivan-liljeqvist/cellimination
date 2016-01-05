@@ -1,7 +1,7 @@
 
 --HEALER TIER 1
-HEAL1_NAME="HEALING CELL"
-UNIT_DESCRIPTIONS[HEAL1_NAME]="Healing cell heals units"
+HEAL1_NAME="STEM CELL (HEALER)"
+UNIT_DESCRIPTIONS[HEAL1_NAME]="Heals other cells and structures. Knows nothing about combat."
 PRICES[HEAL1_NAME]={carb=10,protein=10,fat=10}
 HOVER_LAYOUT[HEAL1_NAME] = {name=HEAL1_NAME, price=PRICES[HEAL1_NAME], description=UNIT_DESCRIPTIONS[HEAL1_NAME] }
 ICONS[HEAL1_NAME]="heal1Icon"

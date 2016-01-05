@@ -23,13 +23,6 @@ NUMBER_QUEUED={}
 HIT_DAMAGE={}
 
 
---worker
-WORKER_NAME="WORKER"
-UNIT_DESCRIPTIONS[WORKER_NAME]="Worker can build things but cannot fight"
-MAX_HEALTH[WORKER_NAME]=100
-FOG_RADIUS[WORKER_NAME]=1
-MOVE_SPEED[WORKER_NAME]=10
-
 
 DESELECT="deselect"
 HOVER_LAYOUT[DESELECT] = { name="",description="Deselect all units" }

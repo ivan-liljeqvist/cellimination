@@ -1,7 +1,7 @@
 
 --Red blood cell
-TANK1_NAME="TANK CELL"
-UNIT_DESCRIPTIONS[TANK1_NAME]="Tank Cell has a lot of health, but deals little damage"
+TANK1_NAME="MACROPHAGE (DEFENSIVE)"
+UNIT_DESCRIPTIONS[TANK1_NAME]="Slow, but with a lot of health. Used to absorb damage from enemies."
 PRICES[TANK1_NAME]={carb=10,protein=10,fat=10}
 HOVER_LAYOUT[TANK1_NAME] = {name=TANK1_NAME, price=PRICES[TANK1_NAME], description=UNIT_DESCRIPTIONS[TANK1_NAME] }
 ICONS[TANK1_NAME]="tank1Icon"
