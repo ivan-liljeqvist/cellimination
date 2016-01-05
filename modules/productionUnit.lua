@@ -34,6 +34,13 @@ function updateProductionUnit(self,dt)
 	    	
 	    	local percent=(self.timeSinceLastProductionStarted)/TIME_TO_PRODUCE[self.currentlyProducingItem]
 	    	self.currentProductionProgress=percent
+	    	
+	    	
+	    	if self.constructionDone then
+		    	local ratio=percent
+				msg.post(msg.url("progressBars#gui"),"show",{unitId=self.id})
+				msg.post(msg.url("progressBars#gui"),"updateSize",{ratio=ratio,unitId=self.id})
+			end
 	    else
 	    	self.productionComplete(self.currentlyProducingItem,self)
 	    	table.remove(self.toProduce,1)

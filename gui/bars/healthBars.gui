@@ -1,14 +1,21 @@
 script: "/gui/bars/healthBars.gui_script"
 background_color {
+  x: 0.0
+  y: 0.0
+  z: 0.0
   w: 1.0
 }
 nodes {
   position {
     x: 960.0
     y: 540.0
+    z: 0.0
     w: 1.0
   }
   rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
     w: 1.0
   }
   scale {
@@ -20,6 +27,7 @@ nodes {
   size {
     x: 80.0
     y: 5.0
+    z: 0.0
     w: 1.0
   }
   color {
@@ -28,38 +36,27 @@ nodes {
     z: 0.015686275
     w: 1.0
   }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
   id: "healthBox"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  layer: ""
   inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
   alpha: 0.0
+  template_node_child: false
 }
-nodes {
-  position {
-    x: 1189.5643
-    y: 529.3931
-    w: 1.0
-  }
-  rotation {
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 80.0
-    y: 5.0
-    w: 1.0
-  }
-  color {
-    x: 0.9921569
-    y: 1.0
-    z: 0.9568628
-    w: 1.0
-  }
-  id: "progressBox"
-  inherit_alpha: true
-  alpha: 0.0
-}
+material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

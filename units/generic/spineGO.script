@@ -12,7 +12,7 @@ function update(self, dt)
 
 	--gui.set_position(gui.get_node("#gui"),go.get_world_position())   
 
-	msg.post(self.cantBuildGUI,"setPosition",{pos=vmath.vector3(LAST_ACTIONX,LAST_ACTIONY,0)})
+	--msg.post(self.cantBuildGUI,"setPosition",{pos=vmath.vector3(LAST_ACTIONX,LAST_ACTIONY,0)})
 
 end
 

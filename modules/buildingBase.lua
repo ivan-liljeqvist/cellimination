@@ -464,8 +464,10 @@ function buildingUpdate(self,dt,go)
 		self.constructionProgress=self.constructionProgress+dt
 		
 		local ratio=self.constructionProgress/self.constructionTime
-		msg.post(msg.url("#progressGUI"),"show")
-		msg.post(msg.url("#progressGUI"),"updateSize",{ratio=ratio})
+		msg.post(msg.url("progressBars#gui"),"show",{unitId=self.id})
+		msg.post(msg.url("progressBars#gui"),"updateSize",{ratio=ratio,unitId=self.id})
+		
+		
 		
 		if ratio>=1 then
 			self.constructionDone=true

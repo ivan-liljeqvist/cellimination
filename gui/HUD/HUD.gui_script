@@ -228,6 +228,8 @@ function displayNodesOnHover(nodesToDisplay)
 		if nodesToDisplay.price and nodesToDisplay.description then
 			showUnitCostAndDesc()
 
+			
+
 			setCarbPrice(math.ceil(nodesToDisplay.price.carb+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name]))
 			setProteinPrice(math.ceil(nodesToDisplay.price.protein+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name]))
 			setFatPrice(math.ceil(nodesToDisplay.price.fat+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name]))

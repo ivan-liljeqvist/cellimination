@@ -164,7 +164,8 @@ function handleProgressbar(self)
 		local pos = go.get_position()
 		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
 		pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
-		--msg.post(msg.url("#progressGUI"),"setPosition",{position=pos})
+		msg.post(msg.url("progressBars#gui"),"setPosition",{unitId=self.id,position=pos})
+		--msg.post(msg.url("progressBars#gui"),"makeWhite",{unitId=self.id})
 	end
 	
 	checkIfShouldShowProgress(self)
@@ -192,9 +193,7 @@ function handleHealthbar(self,dt)
 		
 		msg.post(msg.url("healthBars#gui"),"update",{ratio=getHealthRatio(self),unitId=self.id})
 		moveHealthbar(self)
-	end
-			
-			
+	end	
 			
 	--see if we should hide the temporary healthbar
 	if self.showingHelthTemp then
@@ -216,7 +215,7 @@ function hideProgressBar(self)
 	if  self.showingProgressBar then
 		
 		if self.isBuilding or self.willBecomeBuilding then
-			--msg.post(msg.url("#progressGUI"),"hide")
+			--msg.post(msg.url("progressBars#gui"),"hide",{unitId=self.id})
 		end
 		self.showingProgressBar=false
 	end
@@ -226,7 +225,7 @@ function showProgressBar(self)
 	if not self.showingProgressBar then
 		self.showingProgressBar=true
 		if self.isBuilding then
-			--msg.post(msg.url("#progressGUI"),"show")
+			msg.post(msg.url("progressBars#gui"),"show",{unitId=self.id})
 		end
 	end
 end

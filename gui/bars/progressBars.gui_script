@@ -1,29 +1,47 @@
 function init(self)
-    -- Add initialization code here
-    -- Remove this function if not needed
+	self.progressBars={}
+	self.originalProgressWidth = gui.get_size(gui.get_node("progressBox")).x
 end
 
-function final(self)
-    -- Add finalization code here
-    -- Remove this function if not needed
+function makeProgressbar(self,unitId)
+	if not self.progressBars[unitId] then
+		self.progressBars[unitId]=gui.clone(gui.get_node("progressBox"))
+		gui.set_color(self.progressBars[unitId], vmath.vector4(1,1,1,1))
+	end
 end
 
-function update(self, dt)
-    -- Add update code here
-    -- Remove this function if not needed
+function deleteProgressbar(self,unitId)
+	if self.progressBars[unitId] then
+		gui.delete_node(self.progressBars[unitId])
+		self.progressBars[unitId]=nil
+	end
 end
+
 
 function on_message(self, message_id, message, sender)
-    -- Add message-handling code here
-    -- Remove this function if not needed
+	if message_id == hash("setPosition") then
+	
+		
+		if self.progressBars[message.unitId] then
+	   		gui.set_position(self.progressBars[message.unitId],message.position)
+	   	else
+	   		deleteProgressbar(self,message.unitId)
+	   	end
+	   	
+	elseif message_id == hash("show") then
+	   	makeProgressbar(self,message.unitId)
+	elseif message_id == hash("hide") then
+		deleteProgressbar(self,message.unitId)
+	elseif message_id == hash("updateSize") then
+   		--we get a message with the ratio progress/maxProgress - set the width to that ratio
+   		local newWidth = self.originalProgressWidth*(1-message.ratio)
+   		local size = gui.get_size(self.progressBars[message.unitId])
+   		size.x=newWidth
+   		gui.set_size(self.progressBars[message.unitId],size)
+   		
+   	elseif message_id==hash("makeWhite")then
+   		gui.set_color(self.progressBars[message.unitId], vmath.vector4(1,1,1,1))
+	end
 end
 
-function on_input(self, action_id, action)
-    -- Add input-handling code here
-    -- Remove this function if not needed
-end
 
-function on_reload(self)
-    -- Add input-handling code here
-    -- Remove this function if not needed
-end

@@ -7,8 +7,8 @@ background_color {
 }
 nodes {
   position {
-    x: 668.24786
-    y: 523.1273
+    x: 130.64027
+    y: 317.60834
     z: 0.0
     w: 1.0
   }
