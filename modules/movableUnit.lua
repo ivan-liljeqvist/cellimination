@@ -41,7 +41,7 @@ function updateRotation(self,go)
 		self.go.set_rotation(vmath.quat_rotation_z(angle))
 		self.needToUpdateRotation=false
 		
-		self.dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
+		
 		
 
 	end

@@ -48,8 +48,35 @@ function moveAccordingToPath(self,go,dt)
 	local xDiff=pos.x-self.goalX
 	local reachedGoal=(yDiff<1 and yDiff>-1) and (xDiff<1 and xDiff>-1)
 	
+	self.dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
+	
     if reachedGoal==false then
-    	self.go.set_position(pos-self.dir*MOVE_SPEED[self.name]*2*dt)
+    	print("moving")
+    	--self.go.set_position(pos-self.dir*MOVE_SPEED[self.name]*2*dt)
+    	
+    	local step=MOVE_SPEED[self.name]*dt*50
+    	
+    	if self.name == TANK1_NAME and self.teamNumber==PLAYER_TEAM then
+    		step=step+NUMBER_BOUGHT[UPGRADE_TANK_NAME]*5
+    	end
+    	
+    	if pos.y<self.goalY then 
+    		pos.y=pos.y+step
+    		if pos.y>self.goalY then pos.y=self.goalY end
+    	elseif pos.y>self.goalY then 
+    		pos.y=pos.y-step 
+    		if pos.y<self.goalY then pos.y=self.goalY end
+    	end
+    	
+       if pos.x<self.goalX then 
+    		pos.x=pos.x+step
+    		if pos.x>self.goalX then pos.x=self.goalX end
+    	elseif pos.x>self.goalX then 
+    		pos.x=pos.x-step 
+    		if pos.x<self.goalX then pos.x=self.goalX end
+    	end
+    	
+    	self.go.set_position(pos)
     	
     	moveHealthbar(self)
     elseif not self.noNextNode or self.headingForExtractor  then
