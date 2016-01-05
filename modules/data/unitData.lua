@@ -16,6 +16,10 @@ HEALING_RATE={}
 
 FOG_RADIUS={}
 
+INFLATION={}
+NUMBER_BOUGHT={}
+NUMBER_QUEUED={}
+
 
 
 
@@ -51,6 +55,7 @@ function canAfford(unitName)
 end
 
 function deductResources(unitName)
+
 	if PRICES[unitName].protein<=PROTEIN and
 	   PRICES[unitName].carb<=CARBS and 
 	   PRICES[unitName].fat<=FAT then

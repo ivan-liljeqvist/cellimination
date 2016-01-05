@@ -3,6 +3,10 @@ fonts {
   name: "gameFont"
   font: "/fonts/gameFont.font"
 }
+fonts {
+  name: "smallerFont"
+  font: "/fonts/smallerFont.font"
+}
 textures {
   name: "gui"
   texture: "/graphicalAssets/gui/gui.atlas"
@@ -15,8 +19,8 @@ background_color {
 }
 nodes {
   position {
-    x: 640.0
-    y: 400.0
+    x: 959.2514
+    y: 562.5964
     z: 0.0
     w: 1.0
   }
@@ -68,8 +72,8 @@ nodes {
 }
 nodes {
   position {
-    x: 640.0
-    y: 400.0
+    x: 959.2514
+    y: 562.5964
     z: 0.0
     w: 1.0
   }
@@ -131,8 +135,8 @@ nodes {
 }
 nodes {
   position {
-    x: 640.0
-    y: 398.13995
+    x: 959.2514
+    y: 560.7363
     z: 0.0
     w: 1.0
   }

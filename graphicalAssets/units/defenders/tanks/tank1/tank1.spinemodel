@@ -2,4 +2,4 @@ spine_scene: "/graphicalAssets/units/defenders/tanks/tank1/tank1.spinescene"
 default_animation: "animation"
 skin: ""
 blend_mode: BLEND_MODE_ALPHA
-material: "/builtins/materials/spine.material"
+material: "/render/spine.material"

@@ -44,23 +44,28 @@ function updateProductionUnit(self,dt)
 end
 
 function productionButton1Pressed(self)
-	table.remove(self.toProduce,1)
+	local unitName=table.remove(self.toProduce,1)
 	resetProduction(self)
+	
+	NUMBER_QUEUED[unitName]=NUMBER_QUEUED[unitName]-1
 end
 
 function productionButton2Pressed(self)
-	table.remove(self.toProduce,2)
-	resetProduction(self)
+	local unitName=table.remove(self.toProduce,2)
+	resetProduction(self)	
+	NUMBER_QUEUED[unitName]=NUMBER_QUEUED[unitName]-1
 end
 
 function productionButton3Pressed(self)
-	table.remove(self.toProduce,3)
-	resetProduction(self)
+	local unitName=table.remove(self.toProduce,3)
+	resetProduction(self)	
+	NUMBER_QUEUED[unitName]=NUMBER_QUEUED[unitName]-1
 end
 
 function productionButton4Pressed(self)
-	table.remove(self.toProduce,4)
-	resetProduction(self)
+	local unitName=table.remove(self.toProduce,4)
+	resetProduction(self)	
+	NUMBER_QUEUED[unitName]=NUMBER_QUEUED[unitName]-1
 end
 
 

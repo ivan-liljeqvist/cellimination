@@ -38,6 +38,8 @@ function update(self, dt)
 	if currentCursorPosition.y>getScreenHeight()-threshold then
 		moveCamera(CAMERA_DIRECTION_UP,dt)
 	end
+	
+	
 end
 
 function on_message(self, message_id, message, sender)
@@ -97,6 +99,8 @@ end
 function moveCamera(dir,dt)
 	
 	local pos=go.get_position()
+
+	
 	
 	local toMove=dt*800
 	

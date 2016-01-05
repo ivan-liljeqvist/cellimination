@@ -99,6 +99,8 @@ function on_message(self, message_id, message, sender)
 		else
 			unitWithGUI={}
 		end
+	elseif message_id==hash("refreshLayout")then
+		
 	elseif message_id==hash("displayErrorMessage")then
 		--errorText
 		displayingError=true
@@ -225,10 +227,14 @@ function displayNodesOnHover(nodesToDisplay)
 	if nodesToDisplay then
 		if nodesToDisplay.price and nodesToDisplay.description then
 			showUnitCostAndDesc()
-			setCarbPrice(nodesToDisplay.price.carb)
-			setProteinPrice(nodesToDisplay.price.protein)
-			setFatPrice(nodesToDisplay.price.fat)
+
+			print("NUMBER_QUEUED[nodesToDisplay.name] "..NUMBER_QUEUED[nodesToDisplay.name],nodesToDisplay.name)
+			
+			setCarbPrice(nodesToDisplay.price.carb+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name])
+			setProteinPrice(nodesToDisplay.price.protein+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name])
+			setFatPrice(nodesToDisplay.price.fat+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name])
 			setUnitDescription(nodesToDisplay.description,nodesToDisplay.name)
+			
 		elseif nodesToDisplay.description then
 			showNode(UNIT_DESCRIPTION)
 			setUnitDescription(nodesToDisplay.description,nodesToDisplay.name)
@@ -259,7 +265,6 @@ end
 function showProductionSection()
 
 	local producer=unitWithGUI
-
    
 	local numToProduce = table.getn(producer.toProduce)
 
@@ -312,7 +317,6 @@ function setIconForButton(buttonId,iconId)
 	end
 	
 end
-
 
 
 function applyGUILayout(layout)
@@ -431,6 +435,7 @@ function checkIfAnyButtonClicked(action,action_id)
 				currentlyHitButton=id
 				--send the id to the handler of the click
 				handleButtonClicked(id)
+				
 			end
 		end
 	--if released, just dehighlight the current button 
@@ -478,7 +483,6 @@ end
 function handleButtonHovered(id) 
 
 	--each hover() returns an object telling which objects to display on hover
-	
 	if id==BUTTON1 then
 		displayNodesOnHover(currentLayout.button1.hover())
 	elseif id==BUTTON2 then
@@ -584,11 +588,12 @@ function showNode(id)
 	gui.set_color(gui.get_node(id), vmath.vector4(1, 1, 1, 1))
 end
 
-function showButtonWithIcon(id,icon)
+function showButtonWithIcon(id,iconId)
 	showButton(id)
-	if icon then
+	
+	if iconId then
 		gui.set_texture(gui.get_node(id.."/icon"), "gui")
-		gui.play_flipbook(gui.get_node(id.."/icon"), icon)
+		gui.play_flipbook(gui.get_node(id.."/icon"), iconId)
 	end
 end
 
@@ -779,6 +784,7 @@ function updateProductionPercentage()
 		gui.set_text(gui.get_node(PRODUCTION_TITLE),UNDER_CONSTRUCTION)
    		gui.set_text(gui.get_node(PRODUCTION_PERCENT),math.floor(unitWithGUI.constructionProgress/unitWithGUI.constructionTime*100).." %")
    	else
+  
 		hideNode(PRODUCTION_PERCENT)
 	end
 end

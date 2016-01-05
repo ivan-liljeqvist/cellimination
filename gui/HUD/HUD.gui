@@ -304,7 +304,7 @@ nodes {
 }
 nodes {
   position {
-    x: 719.26825
+    x: 700.0
     y: 23.815142
     z: 0.0
     w: 1.0
@@ -2224,6 +2224,7 @@ nodes {
   overridden_fields: 1
   overridden_fields: 2
   overridden_fields: 4
+  overridden_fields: 8
   overridden_fields: 10
   template_node_child: true
 }
@@ -2852,6 +2853,7 @@ nodes {
   outline_alpha: 1.0
   shadow_alpha: 1.0
   overridden_fields: 1
+  overridden_fields: 8
   template_node_child: true
 }
 nodes {
@@ -4123,7 +4125,7 @@ nodes {
 nodes {
   position {
     x: 1908.1494
-    y: 286.50037
+    y: 330.50037
     z: 0.0
     w: 1.0
   }

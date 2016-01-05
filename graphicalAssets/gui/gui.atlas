@@ -40,6 +40,27 @@ images {
 images {
   image: "/graphicalAssets/icons/sword.png"
 }
+images {
+  image: "/graphicalAssets/icons/proteinUpgradeIcon1.png"
+}
+images {
+  image: "/graphicalAssets/icons/fatUpgradeIcon1.png"
+}
+images {
+  image: "/graphicalAssets/icons/carbUpgradeIcon1.png"
+}
+images {
+  image: "/graphicalAssets/icons/healthUpgradeIcon1.png"
+}
+images {
+  image: "/graphicalAssets/icons/healUpgradeIcon1.png"
+}
+images {
+  image: "/graphicalAssets/icons/soldierUpgradeIcon1.png"
+}
+images {
+  image: "/graphicalAssets/icons/tankUpgradeIcon1.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

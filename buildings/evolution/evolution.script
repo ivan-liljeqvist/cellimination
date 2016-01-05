@@ -8,6 +8,11 @@ function init(self)
 	self.x=go.get_position().x
 	self.y=go.get_position().y
 	
+	self.isEvolution=true
+	
+	self.boundsWidthScale=0.4
+	self.boundsHeightScale=0.4
+	
 	self.initialScale=0.7
 	self.constructionScale=0.5
 	self.fogRadius=BASE_FOG_RADIUS
@@ -29,21 +34,7 @@ function init(self)
 		buildingInput(self,action,action_id)
 	end
 	
-	local buildRedBloodCellAction=function() 
-		queue(self,RBC_NAME)
-	end
 	
-	local buildHeal1Action=function()
-		queue(self,HEAL1_NAME)
-	end
-	
-	local buildHeal2Action=function()
-		queue(self,HEAL2_NAME)
-	end
-	
-	local buildTank1Action=function()
-		queue(self,TANK1_NAME)
-	end
 	
 	self.productionComplete=function(itemName,self)
 		productionDone(self,itemName)
@@ -52,6 +43,13 @@ function init(self)
 	self.requiresGUI=true
 	
 	local deselectAction=function() msg.post("manager","deselectAll",{}) end
+	local upgradeHealth=function() queue(self,UPGRADE_HEALTH_NAME) end
+	local upgradeCarb=function() queue(self,UPGRADE_MORE_CARB_NAME) end
+	local upgradeProtein=function() queue(self,UPGRADE_MORE_PROTEIN_NAME) end
+	local upgradeFat=function() queue(self,UPGRADE_MORE_FAT_NAME) end
+	local upgradeHealer=function() queue(self,UPGRADE_HEALER_NAME) end
+	local upgradeTank=function() queue(self,UPGRADE_TANK_NAME) end
+	local upgradeSoldier=function() queue(self,UPGRADE_SOLDIER_NAME) end
 	
 	self.GUILayout={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
 					button2=nil,
@@ -69,14 +67,14 @@ function init(self)
 
 	
 	self.GUILayoutComplete={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
-					button2={icon="RBCIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[RBC_NAME] end},
-					button3={icon="heal1Icon", action=buildHeal1Action, hover=function() return HOVER_LAYOUT[HEAL1_NAME] end},
-					button4={icon="heal2Icon", action=buildHeal2Action, hover=function() return HOVER_LAYOUT[HEAL2_NAME] end},
-					button5={icon="tank1Icon", action=buildTank1Action, hover=function() return HOVER_LAYOUT[TANK1_NAME] end},
-					button6=nil,
-					button7=nil,
-					button8=nil,
-					button9=nil,
+					button2=nil,
+					button3={icon="healthUpgradeIcon1", action=upgradeHealth, hover=function() return HOVER_LAYOUT[UPGRADE_HEALTH_NAME] end},
+					button4={icon="carbUpgradeIcon1", action=upgradeCarb, hover=function() return HOVER_LAYOUT[UPGRADE_MORE_CARB_NAME] end},
+					button5={icon="proteinUpgradeIcon1", action=upgradeProtein, hover=function() return HOVER_LAYOUT[UPGRADE_MORE_PROTEIN_NAME] end},
+					button6={icon="fatUpgradeIcon1", action=upgradeFat, hover=function() return HOVER_LAYOUT[UPGRADE_MORE_FAT_NAME] end},
+					button7={icon="healUpgradeIcon1", action=upgradeHealer, hover=function() return HOVER_LAYOUT[UPGRADE_HEALER_NAME] end},
+					button8={icon="tankUpgradeIcon1", action=upgradeTank, hover=function() return HOVER_LAYOUT[UPGRADE_TANK_NAME] end},
+					button9={icon="soldierUpgradeIcon1", action=upgradeSoldier, hover=function() return HOVER_LAYOUT[UPGRADE_SOLDIER_NAME] end},
 					productionButton1={icon="deselectIcon",action=productionButton1Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
 					productionButton2={icon="deselectIcon",action=productionButton2Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
 					productionButton3={icon="deselectIcon",action=productionButton3Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
@@ -84,18 +82,6 @@ function init(self)
 	
 end
 
-
-function queue(self,unitName)
-	--do we have the resources?
-	if canAfford(unitName) then
-		if table.getn(self.toProduce)<MAX_PRODUCTION_QUEUE then
-			deductResources(unitName)
-			table.insert(self.toProduce,unitName)
-		end
-	else
-		msg.post("HUD","displayErrorMessage",{text=NOT_ENOUGH_RESOURCES})
-	end
-end
 
 
 function update(self, dt)

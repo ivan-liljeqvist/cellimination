@@ -16,26 +16,56 @@ COMMAND_FACTORY_MAP[hash("new"..HEAL2_NAME)]="#heal2Factory"
 COMMAND_FACTORY_MAP[hash("new"..TANK1_NAME)]="#tank1Factory"
 COMMAND_FACTORY_MAP[hash("new"..WORKER_NAME)]="#workerFactory"
 
+COMMAND_FACTORY_MAP[hash("new"..UPGRADE_MORE_PROTEIN_NAME)]="upgrade"
+COMMAND_FACTORY_MAP[hash("new"..UPGRADE_MORE_CARB_NAME)]="upgrade"
+COMMAND_FACTORY_MAP[hash("new"..UPGRADE_MORE_FAT_NAME)]="upgrade"
+COMMAND_FACTORY_MAP[hash("new"..UPGRADE_HEALER_NAME)]="upgrade"
+COMMAND_FACTORY_MAP[hash("new"..UPGRADE_TANK_NAME)]="upgrade"
+COMMAND_FACTORY_MAP[hash("new"..UPGRADE_SOLDIER_NAME)]="upgrade"
+COMMAND_FACTORY_MAP[hash("new"..UPGRADE_HEALTH_NAME)]="upgrade"
+
 function on_message(self, message_id, message, sender)
 	
 	local factoryID=COMMAND_FACTORY_MAP[message_id]
 	
-	print("factoryID "..factoryID)
-	
 	if factoryID then
 	
-		local initialPosition=vmath.vector3(message.producerPosition.x,
-												    message.producerPosition.y-TILE_SIZE,1)
-		local newUnit=factory.create(factoryID,initialPosition)
+		if factoryID == "upgrade" then 
+
+			
+			if message_id==hash("new"..UPGRADE_MORE_PROTEIN_NAME) then
+				upgradePurchase(UPGRADE_MORE_PROTEIN_NAME)
+			elseif message_id==hash("new"..UPGRADE_MORE_CARB_NAME) then
+				upgradePurchase(UPGRADE_MORE_CARB_NAME)
+			elseif message_id==hash("new"..UPGRADE_MORE_FAT_NAME) then
+				upgradePurchase(UPGRADE_MORE_FAT_NAME)
+			elseif message_id==hash("new"..UPGRADE_HEALER_NAME) then
+				upgradePurchase(UPGRADE_HEALER_NAME)
+			elseif message_id==hash("new"..UPGRADE_TANK_NAME) then
+				upgradePurchase(UPGRADE_TANK_NAME)
+			elseif message_id==hash("new"..UPGRADE_SOLDIER_NAME) then
+				upgradePurchase(UPGRADE_SOLDIER_NAME)
+			elseif message_id==hash("new"..UPGRADE_HEALTH_NAME) then
+				upgradePurchase(UPGRADE_HEALTH_NAME)
+			end
+			
+			
+		else
 		
-		local rollOutPosition=vmath.vector3(message.position.x,
-												    message.position.y-TILE_SIZE,1)
+			local initialPosition=vmath.vector3(message.producerPosition.x,
+													    message.producerPosition.y-TILE_SIZE,1)
+			local newUnit=factory.create(factoryID,initialPosition)
+			
+			local rollOutPosition=vmath.vector3(message.position.x,
+													    message.position.y-TILE_SIZE,1)
+			
+					
+			msg.post(msg.url(newUnit), "rollOutOfProducer", {x=rollOutPosition.x,
+													 y=rollOutPosition.y,waypointSet=message.waypointSet,prodX=message.producerPosition.x,prodY=message.producerPosition.y-TILE_SIZE})
+									    
+		end	
 		
-				
-		msg.post(msg.url(newUnit), "rollOutOfProducer", {x=rollOutPosition.x,
-												 y=rollOutPosition.y,waypointSet=message.waypointSet,prodX=message.producerPosition.x,prodY=message.producerPosition.y-TILE_SIZE})
-								    
-	end	
+	end
 
 	
 end
