@@ -28,21 +28,6 @@ components {
     w: 1.0
   }
 }
-components {
-  id: "sprite"
-  component: "/units/defenders/fighters/soldiers/soldier1/soldier.sprite"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
 embedded_components {
   id: "collisionobject"
   type: "collisionobject"

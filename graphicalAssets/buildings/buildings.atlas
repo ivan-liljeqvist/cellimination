@@ -20,12 +20,6 @@ images {
   image: "/graphicalAssets/buildings/generic/fatEIcon.png"
 }
 images {
-  image: "/graphicalAssets/red/redEyes.png"
-}
-images {
-  image: "/graphicalAssets/red/redBody.png"
-}
-images {
   image: "/graphicalAssets/icons/sword.png"
 }
 images {

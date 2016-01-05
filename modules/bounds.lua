@@ -2,10 +2,10 @@
 function getSpriteBounds(id,self)
 	local pos = go.get_position()
 	
-	local Xmin = pos.x-go.get(id, "size.x")/2*go.get(id, "scale.x")*self.boundsWidthScale
-	local Ymin = pos.y-go.get(id, "size.y")/2*go.get(id, "scale.y")*self.boundsHeightScale
-	local Xmax = pos.x+go.get(id, "size.x")*0.5*go.get(id, "scale.x")*self.boundsWidthScale
-	local Ymax = pos.y+go.get(id, "size.y")*0.5*go.get(id, "scale.y")*self.boundsHeightScale
+	local Xmin = pos.x-200/2*self.boundsWidthScale
+	local Ymin = pos.y-200/2*self.boundsHeightScale
+	local Xmax = pos.x+200*0.5*self.boundsWidthScale
+	local Ymax = pos.y+200*0.5*self.boundsHeightScale
 	
 	return {Xmin,Xmax,Ymin,Ymax}
 end

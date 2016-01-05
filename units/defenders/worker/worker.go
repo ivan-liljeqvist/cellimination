@@ -14,8 +14,8 @@ components {
   }
 }
 components {
-  id: "sprite"
-  component: "/units/defenders/worker/worker.sprite"
+  id: "spinemodel"
+  component: "/graphicalAssets/red/rbc.spinemodel"
   position {
     x: 0.0
     y: 0.0

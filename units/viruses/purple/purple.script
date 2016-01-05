@@ -33,10 +33,6 @@ function init(self)
 
 	self.selectEffect="slime"
     
-
-    
-    go.set("#sprite", "scale.x", 8)
-    go.set("#sprite", "scale.y", 8)
 	
 	
 	self.requiresGUI=true

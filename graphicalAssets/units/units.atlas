@@ -1,10 +1,4 @@
 images {
-  image: "/graphicalAssets/red/redBody.png"
-}
-images {
-  image: "/graphicalAssets/red/redEyes.png"
-}
-images {
   image: "/graphicalAssets/units/defenders/healers/green/eyeCute.png"
 }
 images {
@@ -30,6 +24,15 @@ images {
 }
 images {
   image: "/graphicalAssets/units/defenders/fighters/white/whiteEyeContainer.png"
+}
+images {
+  image: "/graphicalAssets/red/rbcBody.png"
+}
+images {
+  image: "/graphicalAssets/red/rbcEyeContainer.png"
+}
+images {
+  image: "/graphicalAssets/units/viruses/purple/redEyes.png"
 }
 margin: 0
 extrude_borders: 0
