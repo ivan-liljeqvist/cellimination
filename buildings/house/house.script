@@ -8,8 +8,8 @@ function init(self)
 	self.x=go.get_position().x
 	self.y=go.get_position().y
 	
-	self.boundsWidthScale=0.4
-	self.boundsHeightScale=0.4
+	self.boundsWidthScale=0.6
+	self.boundsHeightScale=0.6
 	
 	self.initialScale=1
 	self.constructionScale=0.5
@@ -70,11 +70,11 @@ function init(self)
 					productionButton4={icon="deselectIcon",action=productionButton4Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end}}
 
 	
-	self.GUILayoutComplete={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
-					button2={icon="RBCIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[SOLDIER_NAME] end},
-					button3={icon="heal1Icon", action=buildHeal1Action, hover=function() return HOVER_LAYOUT[HEAL1_NAME] end},
-					button4={icon="heal2Icon", action=buildHeal2Action, hover=function() return HOVER_LAYOUT[HEAL2_NAME] end},
-					button5={icon="tank1Icon", action=buildTank1Action, hover=function() return HOVER_LAYOUT[TANK1_NAME] end},
+	self.GUILayoutComplete={button1=nil,
+					button2=nil,
+					button3=nil,
+					button4=nil,
+					button5=nil,
 					button6=nil,
 					button7=nil,
 					button8=nil,

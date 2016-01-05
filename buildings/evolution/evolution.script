@@ -10,7 +10,7 @@ function init(self)
 	
 	self.isEvolution=true
 	
-	self.boundsWidthScale=0.4
+	self.boundsWidthScale=0.9
 	self.boundsHeightScale=0.4
 	
 	self.initialScale=0.7

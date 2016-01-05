@@ -392,7 +392,7 @@ function canBuildAtTile(self,tileX,tileY)
 	
 
 	--if normal building, not an extractor
-	if self.isProteinExtractor~=true and self.isCarbExtractor~=true 
+	if tileNode and self.isProteinExtractor~=true and self.isCarbExtractor~=true 
 		and self.isFatExtractor~=true then
 		
 		if tileNode.type~=TILE_NOT_REACHABLE_CODE and tileNode.occupied==false then

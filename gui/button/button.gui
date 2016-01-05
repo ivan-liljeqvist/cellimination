@@ -136,7 +136,7 @@ nodes {
 nodes {
   position {
     x: 959.2514
-    y: 560.7363
+    y: 562.47424
     z: 0.0
     w: 1.0
   }
@@ -153,8 +153,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 40.0
-    y: 40.0
+    x: 60.0
+    y: 60.0
     z: 0.0
     w: 1.0
   }
@@ -166,7 +166,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/RBCIcon"
+  texture: "gui/healthUpgradeIcon1"
   id: "icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

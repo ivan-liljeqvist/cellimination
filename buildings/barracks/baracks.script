@@ -8,8 +8,8 @@ function init(self)
 	self.x=go.get_position().x
 	self.y=go.get_position().y
 	
-	self.boundsWidthScale=0.8
-	self.boundsHeightScale=0.8
+	self.boundsWidthScale=0.9
+	self.boundsHeightScale=0.9
 	
 	self.initialScale=0.7
 	self.constructionScale=0.5
@@ -72,13 +72,13 @@ function init(self)
 
 	
 	self.GUILayoutComplete={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
-					button2={icon="RBCIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[SOLDIER_NAME] end},
-					button3={icon="heal1Icon", action=buildHeal1Action, hover=function() return HOVER_LAYOUT[HEAL1_NAME] end},
-					button4={icon="heal2Icon", action=buildHeal2Action, hover=function() return HOVER_LAYOUT[HEAL2_NAME] end},
+					button2={icon="soldierIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[SOLDIER_NAME] end},
+					button3=nil,
+					button4=nil,
 					button5={icon="tank1Icon", action=buildTank1Action, hover=function() return HOVER_LAYOUT[TANK1_NAME] end},
 					button6=nil,
 					button7=nil,
-					button8=nil,
+					button8={icon="heal1Icon", action=buildHeal1Action, hover=function() return HOVER_LAYOUT[HEAL1_NAME] end},
 					button9=nil,
 					productionButton1={icon="deselectIcon",action=productionButton1Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
 					productionButton2={icon="deselectIcon",action=productionButton2Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},

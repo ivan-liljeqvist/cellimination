@@ -794,7 +794,11 @@ end
 
 function setUnitDescription(description,unitName)	
 	if unitName and string.len(unitName)>0 then
-		description="Build "..unitName.."\n"..description
+		if unitWithGUI.isEvolution then
+			description=unitName.."\n"..description
+		else
+			description="Build "..unitName.."\n"..description
+		end
 	end
 	gui.set_text(gui.get_node("unitDescription"),description)
 

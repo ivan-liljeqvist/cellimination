@@ -95,14 +95,14 @@ function init(self)
 	
 	
 	self.GUILayout={button1={icon="deselectIcon",action=deselectAction, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
-					button2={icon="level",action=buildEvolution,hover= function() return HOVER_LAYOUT[EVOLUTION_NAME] end},
-					button3={icon="sword",action=buildBarracks,hover= function() return HOVER_LAYOUT[BARACKS_NAME] end},
+					button2={icon="evolutionIcon",action=buildEvolution,hover= function() return HOVER_LAYOUT[EVOLUTION_NAME] end},
+					button3={icon="barracksIcon",action=buildBarracks,hover= function() return HOVER_LAYOUT[BARACKS_NAME] end},
 					button4={icon="proteinExtractorIcon",action=buildProteinExtractor,hover= function() return HOVER_LAYOUT[PROTEIN_EXTRACTOR_NAME] end},
 					button5={icon="fatExtractorIcon",action=buildFatExtractor, hover=function() return HOVER_LAYOUT[FAT_EXTRACTOR_NAME] end},
 					button6={icon="carbExtractorIcon",action=buildCarbExtractor, hover=function() return HOVER_LAYOUT[CARB_EXTRACTOR_NAME] end},
-					button7={icon="mainBaseIcon",action=buildBaseAction,hover=function() return HOVER_LAYOUT[BASE_NAME] end},
-					button8={icon="bed",action=buildHouse,hover= function() return HOVER_LAYOUT[HOUSE_NAME] end},
-					button9={icon="piggy",action=buildStorage,hover= function() return HOVER_LAYOUT[STORAGE_NAME] end}}
+					button7={icon="baseIcon",action=buildBaseAction,hover=function() return HOVER_LAYOUT[BASE_NAME] end},
+					button8={icon="houseIcon",action=buildHouse,hover= function() return HOVER_LAYOUT[HOUSE_NAME] end},
+					button9={icon="storageIcon",action=buildStorage,hover= function() return HOVER_LAYOUT[STORAGE_NAME] end}}
 
 				
 	self.originalHealth=100
