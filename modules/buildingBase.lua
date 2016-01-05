@@ -201,24 +201,30 @@ function buildingInput(self,action,action_id)
 	
 		if self.canBuildHere then
 			
-			go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1),self.construction)
-			go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1))
-			
-			local workerPos=go.get_position()
-			workerPos.x=workerPos.x-CAMERA_OFFSETX
-			workerPos.y=workerPos.y-CAMERA_OFFSETY
-			workerPos.x=workerPos.x+TILE_SIZE
-			
-			if self.isExtractor then
-				workerPos.x=workerPos.x+TILE_SIZE*2
+			if canAfford(self.name) then
+				go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1),self.construction)
+				go.set_position(vmath.vector3(action.x*ZOOM_LEVEL+CAMERA_OFFSETX,action.y*ZOOM_LEVEL+CAMERA_OFFSETY,1))
+				
+				local workerPos=go.get_position()
+				workerPos.x=workerPos.x-CAMERA_OFFSETX
+				workerPos.y=workerPos.y-CAMERA_OFFSETY
+				workerPos.x=workerPos.x+TILE_SIZE
+				
+				if self.isExtractor then
+					workerPos.x=workerPos.x+TILE_SIZE*2
+				end
+				
+				
+				msg.post(self.workerID,"goToBuildingSite",{pos=workerPos})
+				
+				deductResources(self.name)	
+				NUMBER_BOUGHT[self.name]=NUMBER_BOUGHT[self.name]+1
+				
+				--buildHere(action.x*ZOOM_LEVEL,action.y*ZOOM_LEVEL,self)
+				putPrototypeHere(action.x,action.y,self)
+			else
+				msg.post("HUD","displayErrorMessage",{text=NOT_ENOUGH_RESOURCES})
 			end
-			
-			
-			msg.post(self.workerID,"goToBuildingSite",{pos=workerPos})
-			
-			deductResources(self.name)
-			--buildHere(action.x*ZOOM_LEVEL,action.y*ZOOM_LEVEL,self)
-			putPrototypeHere(action.x,action.y,self)
 		else
 			self.builtAtX=action.x*ZOOM_LEVEL
 			self.builtAtY=action.y*ZOOM_LEVEL

@@ -4,7 +4,7 @@ function on_message(self, message_id, message, sender)
 	local newBuilding=nil
 	
 	if message_id == hash("newBase") then
-	
+		
 		newBuilding=factory.create("#baseFactory")
 		
 	elseif message_id == hash("newCarbExtractor")then

@@ -228,11 +228,9 @@ function displayNodesOnHover(nodesToDisplay)
 		if nodesToDisplay.price and nodesToDisplay.description then
 			showUnitCostAndDesc()
 
-			print("NUMBER_QUEUED[nodesToDisplay.name] "..NUMBER_QUEUED[nodesToDisplay.name],nodesToDisplay.name)
-			
-			setCarbPrice(nodesToDisplay.price.carb+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name])
-			setProteinPrice(nodesToDisplay.price.protein+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name])
-			setFatPrice(nodesToDisplay.price.fat+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name])
+			setCarbPrice(math.ceil(nodesToDisplay.price.carb+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name]))
+			setProteinPrice(math.ceil(nodesToDisplay.price.protein+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name]))
+			setFatPrice(math.ceil(nodesToDisplay.price.fat+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name]))
 			setUnitDescription(nodesToDisplay.description,nodesToDisplay.name)
 			
 		elseif nodesToDisplay.description then

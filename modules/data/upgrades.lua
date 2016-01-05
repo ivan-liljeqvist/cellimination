@@ -78,6 +78,7 @@ function upgradePurchase(name)
 	
 	print(name,NUMBER_BOUGHT[name],PRICES[name],INFLATION[name])
 	
+	
 	NUMBER_BOUGHT[name]=NUMBER_BOUGHT[name]+1
 	NUMBER_QUEUED[name]=NUMBER_QUEUED[name]-1
 

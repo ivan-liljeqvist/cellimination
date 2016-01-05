@@ -42,26 +42,3 @@ HOVER_LAYOUT[RELEASE_WORKER] = { name="",description="Release worker" }
 
 NOT_ENOUGH_RESOURCES = "Not enough resources"
 CANT_BUILD_HERE = "Can't build here"
-
-function canAfford(unitName)
-	if PRICES[unitName].protein<=PROTEIN and
-	   PRICES[unitName].carb<=CARBS and 
-	   PRICES[unitName].fat<=FAT then
-	   
-	   return true
-	else
-		return false
-	end
-end
-
-function deductResources(unitName)
-
-	if PRICES[unitName].protein<=PROTEIN and
-	   PRICES[unitName].carb<=CARBS and 
-	   PRICES[unitName].fat<=FAT then
-	   
-	   PROTEIN=PROTEIN-PRICES[unitName].protein
-	   FAT=PROTEIN-PRICES[unitName].fat
-	   CARBS=PROTEIN-PRICES[unitName].carb
-	end
-end

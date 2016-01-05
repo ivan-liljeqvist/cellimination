@@ -3,13 +3,32 @@ function initExtractor(self)
 
 	self.isExtractor = true
 	
-	self.maxWorkersInside=5
+
+	
+	updateMaxWorkers(self)
+	
 	self.workersInside=0
 	
 	EXTRACTORS[self]=true
 	
 	initProductionUnit(self)
+	
+	self.timeSinceUpdatedWorkers=0
 
+end
+
+function updateMaxWorkers(self)
+	
+	self.maxWorkersInside=2
+	
+	if self.isProteinExtractor then
+		self.maxWorkersInside=self.maxWorkersInside+NUMBER_BOUGHT[UPGRADE_MORE_PROTEIN_NAME]
+	elseif self.isFatExtractor then
+		self.maxWorkersInside=self.maxWorkersInside+NUMBER_BOUGHT[UPGRADE_MORE_FAT_NAME]
+	elseif self.isCarbExtractor then
+		self.maxWorkersInside=self.maxWorkersInside+NUMBER_BOUGHT[UPGRADE_MORE_CARB_NAME]
+	end
+	
 end
 
 
@@ -52,6 +71,13 @@ end
 
 function updateExtractor(self,dt)
 	handleWorkerAndRPMGUI(self)
+	
+	if self.timeSinceUpdatedWorkers>1.0 then
+		updateMaxWorkers(self)
+		self.timeSinceUpdatedWorkers=0
+	end
+	
+	self.timeSinceUpdatedWorkers=self.timeSinceUpdatedWorkers+dt
 end
 
 
