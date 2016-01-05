@@ -82,11 +82,12 @@ end
 
 
 function handleWorkerAndRPMGUI(self)
+
 	if self.constructionDone then
 		local pos = go.get_position()
 		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
 		pos.y=(pos.y-30-CAMERA_OFFSETY)/ZOOM_LEVEL
-		msg.post(msg.url("#workerAndRPMGUI"),"setPosition",{position=pos})
+		--msg.post(msg.url("#workerAndRPMGUI"),"setPosition",{position=pos})
 		
 		local resource="protein"
 		if self.isFatExtractor then
@@ -95,10 +96,10 @@ function handleWorkerAndRPMGUI(self)
 			resource="carbs."
 		end
 		
-		msg.post(msg.url("#workerAndRPMGUI"),"setText",{text=self.workersInside.."/"..self.maxWorkersInside.." cells, "..WORKER_RPM*self.workersInside.." "..resource.."/min"})
-	else
-	
-		msg.post(msg.url("#workerAndRPMGUI"),"setText",{text=""})
+		local text=self.workersInside.."/"..self.maxWorkersInside.." cells, "..WORKER_RPM*self.workersInside.." "..resource.."/min"
+		msg.post(msg.url("extractorInfo"),"updateExtractorInfo",
+				{text=text,position=pos,userId=self.id})
+
 	
 	end
 end

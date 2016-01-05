@@ -1,0 +1,25 @@
+function init(self)
+    
+    self.extractorInfos={}
+
+end
+
+function on_message(self, message_id, message, sender)
+  
+  	if message_id == hash("updateExtractorInfo") then
+  	
+  		--make sure we have the object before use
+  		if not self.extractorInfos[message.userId] then
+  			self.extractorInfos[message.userId]=gui.clone(gui.get_node("text"))
+  		end
+  	
+  		if self.extractorInfos[message.userId] then
+  			gui.set_text(self.extractorInfos[message.userId],message.text)
+  			gui.set_position(self.extractorInfos[message.userId],message.position)		
+  		end
+  		
+  		
+  	end
+
+end
+
