@@ -80,6 +80,26 @@ instances {
   }
 }
 instances {
+  id: "healthBars"
+  prototype: "/gui/bars/healthBars.go"
+  position {
+    x: 3072.0
+    y: 2528.0
+    z: 0.35
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "inputLayer"
   prototype: "/inputLayer/inputLayer.go"
   position {
@@ -481,26 +501,6 @@ instances {
 }
 instances {
   id: "worker1"
-  prototype: "/units/defenders/worker/worker.go"
-  position {
-    x: 1499.1877
-    y: 867.8561
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "worker10"
   prototype: "/units/defenders/worker/worker.go"
   position {
     x: 1499.1877

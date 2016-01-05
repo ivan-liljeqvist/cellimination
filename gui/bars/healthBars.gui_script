@@ -1,0 +1,84 @@
+
+function init(self)
+	self.healthBars={}
+	
+	self.originalHealthWidth = gui.get_size(gui.get_node("healthBox")).x
+end
+
+function final(self)
+
+end
+
+function update(self, dt)
+
+
+end
+
+function makeHealthbar(self,unitId)
+	self.healthBars[unitId]=gui.clone(gui.get_node("healthBox"))
+	gui.set_color(self.healthBars[unitId], vmath.vector4(0,1,0,0.0))
+end
+
+function deleteHealthbar(self,unitId)
+	if self.healthBars[unitId] then
+		gui.delete_node(self.healthBars[unitId])
+		self.healthBars[unitId]=nil
+	end
+end
+
+function lowHealth(self,unitId)
+	if self.healthBars[unitId] then
+		gui.set_color(self.healthBars[unitId],vmath.vector4(1,0,0,0.5))
+	else 
+		deleteHealthbar(self,message.unitId)
+	end
+end
+
+function highHealth(self,unitId)
+	if self.healthBars[unitId] then
+		gui.set_color(self.healthBars[unitId],vmath.vector4(0,1,0,0.5))
+	else
+		deleteHealthbar(self,message.unitId)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+
+	if message_id == hash("setPosition") then
+	
+		if self.healthBars[message.unitId] then
+			
+			message.position.y=message.position.y+5
+	   		gui.set_position(self.healthBars[message.unitId],message.position)
+	   	else
+	   		deleteHealthbar(self,message.unitId)
+	   	end
+	   	
+	elseif message_id == hash("show") then
+	   	makeHealthbar(self,message.unitId)
+	elseif message_id == hash("hide") then
+		deleteHealthbar(self,message.unitId)
+	elseif message_id == hash("lowHealth") then
+		lowHealth(self,message.unitId)
+	elseif message_id == hash("highHealth") then
+		highHealth(self,message.unitId)
+	elseif message_id == hash("update") then
+	
+		if self.healthBars[message.unitId] then
+			--color
+			if message.ratio<0.5 then lowHealth(self,message.unitId) else highHealth(self,message.unitId) end
+		
+			--size
+			local newWidth = self.originalHealthWidth*message.ratio
+	   		local size = gui.get_size(self.healthBars[message.unitId])
+	   		size.x=newWidth
+	   		gui.set_size(self.healthBars[message.unitId],size)
+	   	else
+	   		deleteHealthbar(self,message.unitId)
+	   	end
+	   	
+	end
+
+end
+
+

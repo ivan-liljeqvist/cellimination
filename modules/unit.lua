@@ -70,10 +70,12 @@ end
 
 
 function moveHealthbar(self)
+	
 	local pos = go.get_position()
 	pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
 	pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
-	msg.post(msg.url("#healthGUI"),"setPosition",{position=pos})	
+	
+	msg.post(msg.url("healthBars#gui"),"setPosition",{position=pos,unitId=self.id})	
 end
 
 function destroyUnit(self)
@@ -82,6 +84,8 @@ function destroyUnit(self)
 
 		ALIVE[self.id]=false
 		destroyLivingUnit(self)
+		
+		msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
 		
 		if self.worker then
 			abortConstruction(self)
@@ -160,74 +164,59 @@ function handleProgressbar(self)
 		local pos = go.get_position()
 		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
 		pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
-		msg.post(msg.url("#progressGUI"),"setPosition",{position=pos})
+		--msg.post(msg.url("#progressGUI"),"setPosition",{position=pos})
 	end
 	
 	checkIfShouldShowProgress(self)
 end
 
-
+function getHealthRatio(self)	
+	local ratio = self.health/self.originalHealth
+		
+	if self.teamNumber==PLAYER_TEAM then 
+		ratio = (self.health+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS)/
+			    (self.originalHealth+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS)
+	end 
+	
+	return ratio
+end
 
 function handleHealthbar(self,dt)
 	
-	local healthChanged=false
-	
-	--MAX_HEALTH[RBC_NAME]
-	
-	
-	if self.lastHealth~=self.health then healthChanged=true self.lastHealth=self.health end
-
 	if not self.showingHealthBar and not self.showingHelthTemp then
 		return
 	end
 
-	self.healthCounter=self.healthCounter+1
-	if self.healthCounter%2==0 then
-			self.healthCounter=0
-			--update healthbar
-			if (self.showingHealthBar or self.showingHelthTemp) and healthChanged then
-			
-				local ratio = self.health/self.originalHealth
-				
-				if self.teamNumber==PLAYER_TEAM then 
-					ratio = (self.health+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS)/
-						    (self.originalHealth+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS)
-				end 
-				
-				--2) if the health is below 30% - set low health
-				if ratio < 0.3 and self.highHealth then
-					msg.post(msg.url("#healthGUI"),"lowHealth",{position=pos})
-					self.highHealth=false
-				elseif ratio >= 0.3 and self.highHealth==false then
-					msg.post(msg.url("#healthGUI"),"highHealth",{position=pos})
-					self.highHealth=true
-				end
-				
-				--3) update the width of the health bar
-				msg.post(msg.url("#healthGUI"),"updateSize",{ratio=ratio})
-			end
-			
-			--see if we should hide the temporary healthbar
-			if self.showingHelthTemp then
-				
-					
-					self.timeSinceTempShowHealth=self.timeSinceTempShowHealth+dt
-					
-					if self.timeSinceTempShowHealth>2 then
-						msg.post(msg.url("#healthGUI"),"hide")
-						self.showingHelthTemp=false
-					end
-					
-				
-			end
+
+	if (self.showingHealthBar or self.showingHelthTemp) then
+		
+		msg.post(msg.url("healthBars#gui"),"update",{ratio=getHealthRatio(self),unitId=self.id})
+		moveHealthbar(self)
 	end
+			
+			
+			
+	--see if we should hide the temporary healthbar
+	if self.showingHelthTemp then
+		
+			
+			self.timeSinceTempShowHealth=self.timeSinceTempShowHealth+dt
+			
+			if self.timeSinceTempShowHealth>2 then
+				msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
+				self.showingHelthTemp=false
+			end
+			
+		
+	end
+
 end
 
 function hideProgressBar(self)
 	if  self.showingProgressBar then
 		
 		if self.isBuilding or self.willBecomeBuilding then
-			msg.post(msg.url("#progressGUI"),"hide")
+			--msg.post(msg.url("#progressGUI"),"hide")
 		end
 		self.showingProgressBar=false
 	end
@@ -237,7 +226,7 @@ function showProgressBar(self)
 	if not self.showingProgressBar then
 		self.showingProgressBar=true
 		if self.isBuilding then
-			msg.post(msg.url("#progressGUI"),"show")
+			--msg.post(msg.url("#progressGUI"),"show")
 		end
 	end
 end
@@ -251,21 +240,25 @@ function checkIfShouldShowProgress(self)
 end
 
 function hideHealthBar(self)
-	msg.post(msg.url("#healthGUI"),"hide")
+	msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
 	self.showingHealthBar=false
 end
 
 function showHealthBar(self)
 	if not (self.isBuilding and self.putDownAndWaitingForWorker) then
-		msg.post(msg.url("#healthGUI"),"show")
+		msg.post(msg.url("healthBars#gui"),"show",{unitId=self.id})
 		self.showingHealthBar=true
 	end
 end
 
 function showHealthBarTemporarily(self)
-	msg.post(msg.url("#healthGUI"),"show")
-	self.timeSinceTempShowHealth=0
-	self.showingHelthTemp=true
+	
+	if not self.showingHelthTemp then
+		print("showHealthBarTemporarily")
+		msg.post(msg.url("healthBars#gui"),"show",{unitId=self.id})
+		self.timeSinceTempShowHealth=0
+		self.showingHelthTemp=true
+	end
 end
 
 function registerForInput(id)
@@ -296,7 +289,7 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 		
 	elseif message_id==hash("moveHealthbar")then
 	
-		moveHealthbar(self)
+		
 
 	elseif message_id==hash("rollOutOfProducer") then
 		--generateNewPathToMouseClick(self,message,tilemap)--last argument is to ignore camera offset

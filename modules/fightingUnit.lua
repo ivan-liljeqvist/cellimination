@@ -175,11 +175,11 @@ function targetWithinVisionRange(self)
 		if distance <= self.visionRange then
 			return true
 		else
-			print("targetWithinFiringRange is not within")
+			--print("targetWithinFiringRange is not within")
 		end
 		
 	else
-		print("targetWithinFiringRange is nil")
+		--print("targetWithinFiringRange is nil")
 	end
 	
 	return false

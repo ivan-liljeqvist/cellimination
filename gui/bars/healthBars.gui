@@ -1,0 +1,65 @@
+script: "/gui/bars/healthBars.gui_script"
+background_color {
+  w: 1.0
+}
+nodes {
+  position {
+    x: 960.0
+    y: 540.0
+    w: 1.0
+  }
+  rotation {
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 80.0
+    y: 5.0
+    w: 1.0
+  }
+  color {
+    x: 0.054901965
+    y: 0.4156863
+    z: 0.015686275
+    w: 1.0
+  }
+  id: "healthBox"
+  inherit_alpha: true
+  alpha: 0.0
+}
+nodes {
+  position {
+    x: 1189.5643
+    y: 529.3931
+    w: 1.0
+  }
+  rotation {
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 80.0
+    y: 5.0
+    w: 1.0
+  }
+  color {
+    x: 0.9921569
+    y: 1.0
+    z: 0.9568628
+    w: 1.0
+  }
+  id: "progressBox"
+  inherit_alpha: true
+  alpha: 0.0
+}
+adjust_reference: ADJUST_REFERENCE_PARENT

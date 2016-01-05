@@ -78,7 +78,7 @@ function moveAccordingToPath(self,go,dt)
     	
     	self.go.set_position(pos)
     	
-    	moveHealthbar(self)
+    	--moveHealthbar(self)
     elseif not self.noNextNode or self.headingForExtractor  then
     	followPath(self)
     end
@@ -115,13 +115,13 @@ function followPath(self)
 		end
 	
 		
-		print(" next node position ",nextNode.x,nextNode.y)
+		
 	
 		self.noNextNode=false
 
 		if nextNode.occupied==true and nextNode.occupiedBy~=self and table.getn(self.currentPath)<1 then
 			
-			print("findNotOccupiedNeighbour")
+		
 			local newNodeIndex=findNotOccupiedNeighbour(nextNode.x,nextNode.y,3) --the last is the total number of recursions allowed
     		if newNodeIndex then
     				
@@ -131,7 +131,7 @@ function followPath(self)
 		end
 		
 		if nextNode then
-			print("occupiing new node")
+	
 			TILEMAP_NODES[nextNode.tilemapIndex].occupied=true
 			TILEMAP_NODES[nextNode.tilemapIndex].occupiedBy=self
 			TILEMAP_NODES[nextNode.tilemapIndex].occupiedByID=self.id
