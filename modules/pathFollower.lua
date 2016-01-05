@@ -51,7 +51,7 @@ function moveAccordingToPath(self,go,dt)
 	self.dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
 	
     if reachedGoal==false then
-    	print("moving")
+  
     	--self.go.set_position(pos-self.dir*MOVE_SPEED[self.name]*2*dt)
     	
     	local step=MOVE_SPEED[self.name]*dt*50

@@ -53,10 +53,23 @@ function searchForSomeoneToHeal(self)
 			if tile.occupied and tile.occupiedBy then
 				
 				if tile.occupiedBy.id ~= self.id and tile.occupiedBy.needsHealing then
-					if self.timeSinceLastHeal>=self.healingRate then
-						msg.post(tile.occupiedBy.id,"heal",{hp=self.healingStrength})
-						self.timeSinceLastHeal=0
+				
+					if self.teamNumber~=PLAYER_TEAM then
+				
+						if self.timeSinceLastHeal>=self.healingRate then
+							msg.post(tile.occupiedBy.id,"heal",{hp=self.healingStrength})
+							self.timeSinceLastHeal=0
+						end
+						
+					else
+					
+						if self.timeSinceLastHeal>=self.healingRate-(HEAL_CONS*NUMBER_BOUGHT[UPGRADE_HEALER_NAME]) then
+							msg.post(tile.occupiedBy.id,"heal",{hp=self.healingStrength})
+							self.timeSinceLastHeal=0
+						end
+						
 					end
+					
 					self.healing=true
 				else
 					--self.healing=false
