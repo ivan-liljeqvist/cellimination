@@ -6,7 +6,7 @@ end
 function makeProgressbar(self,unitId)
 	if not self.progressBars[unitId] then
 		self.progressBars[unitId]=gui.clone(gui.get_node("progressBox"))
-		gui.set_color(self.progressBars[unitId], vmath.vector4(1,1,1,1))
+		gui.set_color(self.progressBars[unitId], vmath.vector4(1,1,1,0))
 	end
 end
 
@@ -40,7 +40,9 @@ function on_message(self, message_id, message, sender)
    		gui.set_size(self.progressBars[message.unitId],size)
    		
    	elseif message_id==hash("makeWhite")then
-   		gui.set_color(self.progressBars[message.unitId], vmath.vector4(1,1,1,1))
+   		if self.progressBars[message.unitId] then
+   			gui.set_color(self.progressBars[message.unitId], vmath.vector4(1,1,1,0.5))
+   		end
 	end
 end
 

@@ -164,8 +164,13 @@ function handleProgressbar(self)
 		local pos = go.get_position()
 		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
 		pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
+		
+
 		msg.post(msg.url("progressBars#gui"),"setPosition",{unitId=self.id,position=pos})
-		--msg.post(msg.url("progressBars#gui"),"makeWhite",{unitId=self.id})
+		msg.post(msg.url("progressBars#gui"),"makeWhite",{unitId=self.id})
+		
+		
+		
 	end
 	
 	checkIfShouldShowProgress(self)
