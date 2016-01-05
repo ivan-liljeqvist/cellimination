@@ -55,6 +55,7 @@ function initBasicUnit(self,name,goID)
 	end
 	
 	self.originalHealth=MAX_HEALTH[self.name]
+	
 	self.health=self.originalHealth
 	self.lastHealth=self.health
 	self.needsHealing=false
@@ -171,6 +172,9 @@ function handleHealthbar(self,dt)
 	
 	local healthChanged=false
 	
+	--MAX_HEALTH[RBC_NAME]
+	
+	
 	if self.lastHealth~=self.health then healthChanged=true self.lastHealth=self.health end
 
 	if not self.showingHealthBar and not self.showingHelthTemp then
@@ -183,7 +187,13 @@ function handleHealthbar(self,dt)
 			--update healthbar
 			if (self.showingHealthBar or self.showingHelthTemp) and healthChanged then
 			
-				local ratio = self.health/self.originalHealth 
+				local ratio = self.health/self.originalHealth
+				
+				if self.teamNumber==PLAYER_TEAM then 
+					ratio = (self.health+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS)/
+						    (self.originalHealth+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS)
+				end 
+				
 				--2) if the health is below 30% - set low health
 				if ratio < 0.3 and self.highHealth then
 					msg.post(msg.url("#healthGUI"),"lowHealth",{position=pos})
@@ -358,7 +368,12 @@ end
 function increaseHealth(self,amount)
 	self.health=self.health+amount
 	
-	if self.health>self.originalHealth then self.health = self.originalHealth end
+	if self.teamNumber==PLAYER_TEAM then
+		
+		if (self.health+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS)>(self.originalHealth+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS) then self.health = self.originalHealth end
+	else
+		if self.health>self.originalHealth then self.health = self.originalHealth end
+	end
 	
 	if self.showingHealthBar==false then
 		showHealthBarTemporarily(self)
@@ -368,10 +383,16 @@ end
 function decreaseHealth(self,amount)
 	self.health=self.health-amount
 	
-	if self.health<0 then self.health=0 end
-	
-	if self.health <= 0 then
-		destroyUnit(self)
+	if self.teamNumber~=PLAYER_TEAM then
+		if self.health<0 then self.health=0 end
+		
+		if self.health <= 0 then
+			destroyUnit(self)
+		end
+	else
+		if (self.health+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS) <= 0 then
+			destroyUnit(self)
+		end
 	end
 	
 	if self.showingHealthBar==false then
