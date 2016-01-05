@@ -53,6 +53,7 @@ function on_message(self, message_id, message, sender)
 	if message_id==hash("setOwnerUrl") then
 		self.ownerUrl=msg.url(message.id)
 		self.ownerId=message.id
+		self.ownerName=message.name
 	elseif message_id==hash("die")then
 		die(self)
 	elseif message_id==hash("setDirection")then
@@ -60,7 +61,14 @@ function on_message(self, message_id, message, sender)
 	elseif message_id==hash("setTeam")then
 		self.team=message.team
 	elseif message_id==hash("requestOwner")then
-		msg.post(sender,"shotOwnerCallback",{ownerId=self.ownerId, team=self.team,damage=10})
+	
+		local damage=HIT_DAMAGE[self.ownerName]
+		
+		if self.team==PLAYER_TEAM then
+			damage=damage+NUMBER_BOUGHT[UPGRADE_SOLDIER_NAME]
+		end
+
+		msg.post(sender,"shotOwnerCallback",{ownerId=self.ownerId, team=self.team, damage=damage})
 	
 	 
 	end    

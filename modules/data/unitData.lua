@@ -20,7 +20,7 @@ INFLATION={}
 NUMBER_BOUGHT={}
 NUMBER_QUEUED={}
 
-
+HIT_DAMAGE={}
 
 
 --worker

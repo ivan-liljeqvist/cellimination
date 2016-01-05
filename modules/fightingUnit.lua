@@ -122,7 +122,7 @@ function shootTarget(self)
 	if self.currentShot == nil and self.targetEnemyPosition and self.timeSinceLastShot>=FIRE_RATE[self.name]then
 				
 		self.currentShot=self.factory.create("#shotFactory", nil, nil, {})
-		msg.post(msg.url(self.currentShot),"setOwnerUrl",{id=self.id})
+		msg.post(msg.url(self.currentShot),"setOwnerUrl",{id=self.id,name=self.name})
 		msg.post(msg.url(self.currentShot),"setTeam",{team=self.teamNumber})
 		
 		BULLET_OWNER[self.currentShot]=self.id
