@@ -59,8 +59,8 @@ function extractorMessages(self, message_id, message, sender,go)
 			end
 			
 			msg.post(sender,"permittedToEnterExtractor",{canEnter=true})
-			self.currentlyProducingItem=RBC_NAME
-			table.insert(self.toProduce,RBC_NAME)
+			self.currentlyProducingItem=SOLDIER_NAME
+			table.insert(self.toProduce,SOLDIER_NAME)
 		else
 			msg.post(sender,"permittedToEnterExtractor",{canEnter=false})
 		end

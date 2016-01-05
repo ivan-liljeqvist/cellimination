@@ -32,7 +32,7 @@ function init(self)
 	end
 	
 	local buildRedBloodCellAction=function() 
-		queue(self,RBC_NAME)
+		queue(self,SOLDIER_NAME)
 	end
 	
 	local buildHeal1Action=function()
@@ -71,7 +71,7 @@ function init(self)
 
 	
 	self.GUILayoutComplete={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
-					button2={icon="RBCIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[RBC_NAME] end},
+					button2={icon="RBCIcon", action=buildRedBloodCellAction, hover=function() return HOVER_LAYOUT[SOLDIER_NAME] end},
 					button3={icon="heal1Icon", action=buildHeal1Action, hover=function() return HOVER_LAYOUT[HEAL1_NAME] end},
 					button4={icon="heal2Icon", action=buildHeal2Action, hover=function() return HOVER_LAYOUT[HEAL2_NAME] end},
 					button5={icon="tank1Icon", action=buildTank1Action, hover=function() return HOVER_LAYOUT[TANK1_NAME] end},

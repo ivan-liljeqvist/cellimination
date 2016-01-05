@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/units/defenders/fighters/rbc/rbc.script"
+  component: "/units/defenders/fighters/soldiers/soldier1/soldier.script"
   position {
     x: 0.0
     y: 0.0
@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "spine"
-  component: "/graphicalAssets/units/defenders/fighters/red/redMonster.spinemodel"
+  component: "/graphicalAssets/units/defenders/fighters/white/white.spinemodel"
   position {
     x: 0.0
     y: 0.0
@@ -30,7 +30,7 @@ components {
 }
 components {
   id: "sprite"
-  component: "/units/defenders/fighters/rbc/rbc.sprite"
+  component: "/units/defenders/fighters/soldiers/soldier1/soldier.sprite"
   position {
     x: 0.0
     y: 0.0

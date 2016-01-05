@@ -5,18 +5,6 @@ images {
   image: "/graphicalAssets/red/redEyes.png"
 }
 images {
-  image: "/graphicalAssets/eyes/dotEye.png"
-}
-images {
-  image: "/graphicalAssets/notUsed/red.png"
-}
-images {
-  image: "/graphicalAssets/teeth/lower.png"
-}
-images {
-  image: "/graphicalAssets/teeth/upper.png"
-}
-images {
   image: "/graphicalAssets/units/defenders/healers/green/eyeCute.png"
 }
 images {
@@ -33,6 +21,15 @@ images {
 }
 images {
   image: "/graphicalAssets/units/defenders/tanks/tank1/angryEyesR.png"
+}
+images {
+  image: "/graphicalAssets/units/defenders/fighters/white/wbc.png"
+}
+images {
+  image: "/graphicalAssets/units/defenders/fighters/white/whiteEye.png"
+}
+images {
+  image: "/graphicalAssets/units/defenders/fighters/white/whiteEyeContainer.png"
 }
 margin: 0
 extrude_borders: 0

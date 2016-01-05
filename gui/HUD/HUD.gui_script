@@ -63,6 +63,8 @@ function update(self, dt)
 
     local selectedUnits=updateSelectedUnits(self)
    
+   upgradeInfoUpdate()
+   
    if unitWithGUI.producer then
    		showProductionSection()
    		updateProductionPercentage()
@@ -83,7 +85,24 @@ function update(self, dt)
 end
 
 
+function upgradeInfoUpdate()
 
+	local text=""
+	
+
+	if unitWithGUI.name == SOLDIER_NAME then
+		text="DAMAGE LEVEL "..(NUMBER_BOUGHT[UPGRADE_SOLDIER_NAME]+1).."\nHEALTH BOOST "..(NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]+1)
+	elseif unitWithGUI.name==HEAL1_NAME then
+		text="HEALING LEVEL "..(NUMBER_BOUGHT[UPGRADE_HEALER_NAME]+1).."\nHEALTH BOOST "..(NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]+1)
+	elseif unitWithGUI.name==TANK1_NAME then
+		text="MOBILITY LEVEL "..(NUMBER_BOUGHT[UPGRADE_TANK_NAME]+1).."\nHEALTH BOOST "..(NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]+1)
+	elseif unitWithGUI.name==WORKER_NAME or unitWithGUI.isBuilding then
+		text="HEALTH LEVEL "..(NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]+1)
+	end 
+	
+	gui.set_text(gui.get_node("upgradeInfo"),text)
+
+end
 
 function on_message(self, message_id, message, sender)
     -- Add message-handling code here
@@ -600,7 +619,7 @@ end
 
 
 function hideEverything()
-	hideButton(BUTTON1)
+		hideButton(BUTTON1)
 		hideButton(BUTTON2)
 		hideButton(BUTTON3)
 		hideButton(BUTTON4)
@@ -611,6 +630,8 @@ function hideEverything()
 		hideButton(BUTTON9)
 		hideProductionSection()
 		hideUnitCostAndDesc()
+		
+		gui.set_text(gui.get_node("upgradeInfo"),"")
 end
 
 function updateStorageAndHouseLabels(self,dt)
@@ -680,8 +701,12 @@ function blinkStorage(self,dt)
 	self.timeSinceSwitchedStorageColor=self.timeSinceSwitchedStorageColor+dt
 end
 
+
+    
 function updateSelectedUnits(self)
 	local selectedUnitsNumberLookup={}
+    
+
     
     local selectedUnits=0
     
@@ -702,6 +727,7 @@ function updateSelectedUnits(self)
     		selectedUnits=selectedUnits+1
     	end
     end
+    
     
    if self.selectionText == nil then
    	   self.selectionText = gui.get_node("selectionText")

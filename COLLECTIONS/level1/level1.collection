@@ -7,12 +7,6 @@ instances {
     y: 447.8071
     z: 0.5
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -26,12 +20,6 @@ instances {
     x: 845.08307
     y: 614.66876
     z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -47,12 +35,6 @@ instances {
     y: 2528.0
     z: 0.35
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -62,17 +44,6 @@ instances {
 instances {
   id: "fog"
   prototype: "/ground/fog.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -86,12 +57,6 @@ instances {
     x: 1990.6787
     y: 1331.5911
     z: 0.35
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -107,12 +72,6 @@ instances {
     y: 2528.0
     z: 0.35
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -126,12 +85,6 @@ instances {
     x: 845.08307
     y: 614.66876
     z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -147,12 +100,6 @@ instances {
     y: 447.8071
     z: 0.5
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -166,12 +113,6 @@ instances {
     x: 3703.6409
     y: 2720.0
     z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -187,12 +128,6 @@ instances {
     y: 801.13135
     z: 0.5
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -206,12 +141,6 @@ instances {
     x: 1984.0
     y: 1663.8071
     z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -227,12 +156,6 @@ instances {
     y: 2528.0
     z: 0.35
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -246,12 +169,6 @@ instances {
     x: 2033.2711
     y: 971.98236
     z: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -267,12 +184,6 @@ instances {
     y: 1049.9512
     z: 0.2
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -286,12 +197,6 @@ instances {
     x: 3219.1936
     y: 1049.9512
     z: 0.2
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -307,12 +212,6 @@ instances {
     y: 1049.9512
     z: 0.2
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -327,12 +226,6 @@ instances {
     y: 1049.9512
     z: 0.2
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -341,17 +234,11 @@ instances {
 }
 instances {
   id: "rbc"
-  prototype: "/units/defenders/fighters/rbc/rbc.go"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
     x: 1228.4767
     y: 1553.7028
     z: 0.35
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -361,17 +248,11 @@ instances {
 }
 instances {
   id: "rbc1"
-  prototype: "/units/defenders/fighters/rbc/rbc.go"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
     x: 1228.4767
     y: 1553.7028
     z: 0.35
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -381,17 +262,11 @@ instances {
 }
 instances {
   id: "rbc2"
-  prototype: "/units/defenders/fighters/rbc/rbc.go"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
     x: 1228.4767
     y: 1553.7028
     z: 0.35
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -407,12 +282,6 @@ instances {
     y: 623.71063
     z: 0.5
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -426,12 +295,6 @@ instances {
     x: 364.07977
     y: 1260.8
     z: 0.35
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -447,12 +310,6 @@ instances {
     y: 1260.8
     z: 0.35
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -466,12 +323,6 @@ instances {
     x: 364.07977
     y: 1260.8
     z: 0.35
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -487,12 +338,6 @@ instances {
     y: 1260.8
     z: 0.35
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -506,12 +351,6 @@ instances {
     x: 864.0
     y: 671.6624
     z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -527,12 +366,6 @@ instances {
     y: 867.8561
     z: 0.5
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -546,12 +379,6 @@ instances {
     x: 1499.1877
     y: 867.8561
     z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -567,12 +394,6 @@ instances {
     y: 867.8561
     z: 0.5
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -586,12 +407,6 @@ instances {
     x: 1499.1877
     y: 867.8561
     z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -607,12 +422,6 @@ instances {
     y: 867.8561
     z: 0.5
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -626,12 +435,6 @@ instances {
     x: 1499.1877
     y: 867.8561
     z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -647,12 +450,6 @@ instances {
     y: 867.8561
     z: 0.5
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -666,12 +463,6 @@ instances {
     x: 1499.1877
     y: 867.8561
     z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -687,12 +478,6 @@ instances {
     y: 867.8561
     z: 0.5
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -707,12 +492,6 @@ instances {
     y: 867.8561
     z: 0.5
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -722,21 +501,9 @@ instances {
 instances {
   id: "world"
   prototype: "/ground/world.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 1.0
     y: 1.0
     z: 1.0
   }
 }
-scale_along_z: 0

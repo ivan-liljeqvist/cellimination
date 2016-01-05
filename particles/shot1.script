@@ -64,7 +64,7 @@ function on_message(self, message_id, message, sender)
 	
 		local damage=HIT_DAMAGE[self.ownerName]
 		
-		if self.team==PLAYER_TEAM and self.ownerName==RBC_NAME then
+		if self.team==PLAYER_TEAM and self.ownerName==SOLDIER_NAME then
 			damage=damage+NUMBER_BOUGHT[UPGRADE_SOLDIER_NAME]
 		end
 

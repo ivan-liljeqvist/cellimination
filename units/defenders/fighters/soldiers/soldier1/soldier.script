@@ -14,14 +14,14 @@ function init(self)
 	self.boundsWidthScale=0.5
 	
 	self.boundsHeightScale=0.4
-	self.initialScale=0.05
+	self.initialScale=0.4
 	self.fogRadius=JEEP_FOG_RADIUS
 	
 	self.spotEnemiesRadius=2
 	
 	self.factory=factory
 	
-    initBasicUnit(self,RBC_NAME,go.get_id())
+    initBasicUnit(self,SOLDIER_NAME,go.get_id())
     initMovableUnit(self)
     initFightingUnit(self,false)
     initLivingUnit(self)

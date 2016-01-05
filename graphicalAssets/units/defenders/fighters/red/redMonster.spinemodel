@@ -1,5 +1,0 @@
-spine_scene: "/graphicalAssets/units/defenders/fighters/red/redMonster.spinescene"
-default_animation: "normal"
-skin: ""
-blend_mode: BLEND_MODE_ALPHA
-material: "/render/spine.material"
