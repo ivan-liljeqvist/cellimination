@@ -22,7 +22,7 @@ function updateFoW()
 	else 
 		fogCounter=0
 	end
-
+	
 	--go through all of player's units
 	for unit,isAlive in pairs(MY_UNITS) do
 		

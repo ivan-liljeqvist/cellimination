@@ -1,0 +1,467 @@
+name: "level1"
+instances {
+  id: "HUD"
+  prototype: "/gui/HUD/HUD.go"
+  position {
+    x: 384.0
+    y: 447.8071
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildingManager"
+  prototype: "/buildings/buildingManager.go"
+  position {
+    x: 845.08307
+    y: 614.66876
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "extractorInfo"
+  prototype: "/gui/extractor/extractorInfo.go"
+  position {
+    x: 3072.0
+    y: 2528.0
+    z: 0.35
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "fog"
+  prototype: "/ground/fog.go"
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "heal1"
+  prototype: "/units/defenders/healers/heal1/heal1.go"
+  position {
+    x: 1990.6787
+    y: 1331.5911
+    z: 0.35
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "healthBars"
+  prototype: "/gui/bars/healthBars.go"
+  position {
+    x: 3072.0
+    y: 2528.0
+    z: 0.35
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "inputLayer"
+  prototype: "/inputLayer/inputLayer.go"
+  position {
+    x: 845.08307
+    y: 614.66876
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "manager"
+  prototype: "/manager/manager.go"
+  position {
+    x: 384.0
+    y: 447.8071
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "miniRectangle"
+  prototype: "/minimap/miniRectangle.go"
+  position {
+    x: 3703.6409
+    y: 2720.0
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mixer"
+  prototype: "/audio/mixer.go"
+  position {
+    x: 826.8083
+    y: 801.13135
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "ownCamera"
+  prototype: "/render/ownCamera.go"
+  position {
+    x: 1984.0
+    y: 1663.8071
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "progressBars"
+  prototype: "/gui/bars/progressBars.go"
+  position {
+    x: 3072.0
+    y: 2528.0
+    z: 0.35
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "protein"
+  prototype: "/ground/protein/protein.go"
+  position {
+    x: 2033.2711
+    y: 971.98236
+    z: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple96"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3219.1936
+    y: 1049.9512
+    z: 0.2
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "rbc"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 1228.4767
+    y: 1553.7028
+    z: 0.35
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "rbc1"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 1228.4767
+    y: 1553.7028
+    z: 0.35
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "rbc2"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 1228.4767
+    y: 1553.7028
+    z: 0.35
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "selection"
+  prototype: "/gui/selection/selection.go"
+  position {
+    x: 448.0
+    y: 623.71063
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tana"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 364.07977
+    y: 1260.8
+    z: 0.35
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank1"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 364.07977
+    y: 1260.8
+    z: 0.35
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank8"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 364.07977
+    y: 1260.8
+    z: 0.35
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank9"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 364.07977
+    y: 1260.8
+    z: 0.35
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "unitManager"
+  prototype: "/units/unitManager.go"
+  position {
+    x: 864.0
+    y: 671.6624
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1499.1877
+    y: 867.8561
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker1"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1499.1877
+    y: 867.8561
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker2"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1499.1877
+    y: 867.8561
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker3"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1499.1877
+    y: 867.8561
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker4"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1499.1877
+    y: 867.8561
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker5"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1499.1877
+    y: 867.8561
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker6"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1499.1877
+    y: 867.8561
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker7"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1499.1877
+    y: 867.8561
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker8"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1499.1877
+    y: 867.8561
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker9"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 1499.1877
+    y: 867.8561
+    z: 0.5
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "world"
+  prototype: "/ground/playground/world.go"
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}

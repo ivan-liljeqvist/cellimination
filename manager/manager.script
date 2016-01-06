@@ -37,6 +37,8 @@ require "modules.healingUnit"
 
 require "modules.transactions"
 
+require "modules.storyteller"
+
 function init(self)
     
     --give the global tilemap object to this function (globals.lua) and create

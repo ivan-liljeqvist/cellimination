@@ -1,4 +1,6 @@
 
+LEVEL = 1
+LIGHTHOUSES={}
 
 
 WORKER_RPM = 60

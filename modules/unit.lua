@@ -398,7 +398,7 @@ function decreaseHealth(self,amount)
 end
 
 function getPosition(self)
-	local posTemp = self.go.get_position()
+	local posTemp = self.go.get_world_position()
 	return vmath.vector3(self.x,self.y,posTemp.z)
 end
 
