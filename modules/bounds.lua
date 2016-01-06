@@ -66,7 +66,8 @@ function massSelect(self,title,go)
 		self.selected=true
 		go.set_scale(self.initialScale*1.2)
 		showHealthBar(self)
-		msg.post("mixer","slime",{})
+		
+		playCallSound(self.name)
 		
 		if self.waypointHidden~=true then
 			 tempShowWP(self)
@@ -91,7 +92,6 @@ function select(self,title,go)
 	self.selected=true
     go.set_scale(self.initialScale*1.2)
     
-    msg.post("mixer","slime",{})
     
     msg.post("HUD","setLeftTitle",{text=title})
     msg.post("manager","unitSelected",{selectedId=go.get_id()})

@@ -1,5 +1,5 @@
 
-ENABLE_SOUND=false
+ENABLE_SOUND=true
 ENABLE_MUSIC=true
 ENABLE_SOUND_EFFECTS=true
 
@@ -7,6 +7,10 @@ ENABLE_SOUND_EFFECTS=true
 --sound effects have variations, for example slime1, slime2
 NUMBER_OF_VARIATIONS={}
 NUMBER_OF_VARIATIONS["slime"]=2
+NUMBER_OF_VARIATIONS["workerCall"]=1
+NUMBER_OF_VARIATIONS["tankCall"]=1
+NUMBER_OF_VARIATIONS["soldierCall"]=1
+NUMBER_OF_VARIATIONS["healerCall"]=2
 
 --store the just played id of each sound effect
 OLD_PLAYED_IDS={}
@@ -68,4 +72,16 @@ function startBackgroundMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
     	msg.post("#calm", "play_sound", {delay = 0, gain = 0.5})
     end
+end
+
+function playCallSound(unitName)
+	if unitName == WORKER_NAME then
+		msg.post("mixer","workerCall",{})
+	elseif unitName == TANK1_NAME then
+		msg.post("mixer","tankCall",{})
+	elseif unitName == SOLDIER_NAME then
+		msg.post("mixer","soldierCall",{})
+	elseif unitName == HEAL1_NAME then
+		msg.post("mixer","healerCall",{})
+	end
 end
