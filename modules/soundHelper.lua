@@ -8,9 +8,13 @@ ENABLE_SOUND_EFFECTS=true
 NUMBER_OF_VARIATIONS={}
 NUMBER_OF_VARIATIONS["slime"]=2
 NUMBER_OF_VARIATIONS["workerCall"]=1
+NUMBER_OF_VARIATIONS["workerResponse"]=1
 NUMBER_OF_VARIATIONS["tankCall"]=1
+NUMBER_OF_VARIATIONS["tankResponse"]=1
 NUMBER_OF_VARIATIONS["soldierCall"]=1
+NUMBER_OF_VARIATIONS["soldierResponse"]=1
 NUMBER_OF_VARIATIONS["healerCall"]=2
+NUMBER_OF_VARIATIONS["healerResponse"]=1
 
 --store the just played id of each sound effect
 OLD_PLAYED_IDS={}
@@ -28,9 +32,9 @@ function playSoundEffect(soundEffectId)
 		
 		if OLD_PLAYED_IDS[soundEffectId]~=newSoundId then
 			msg.post(OLD_PLAYED_IDS[soundEffectId], "stop_sound")
-			msg.post(newSoundId, "play_sound", {delay = 0, gain = 0.2})
+			msg.post(newSoundId, "play_sound", {delay = 0, gain = 0.8})
 		else
-			msg.post(newSoundId, "play_sound", {delay = 0, gain = 0.2})
+			msg.post(newSoundId, "play_sound", {delay = 0, gain = 0.8})
 		end
 		
 		
@@ -83,5 +87,17 @@ function playCallSound(unitName)
 		msg.post("mixer","soldierCall",{})
 	elseif unitName == HEAL1_NAME then
 		msg.post("mixer","healerCall",{})
+	end
+end
+
+function playResponseSound(unitName)
+	if unitName == WORKER_NAME then
+		msg.post("mixer","workerResponse",{})
+	elseif unitName == TANK1_NAME then
+		msg.post("mixer","tankResponse",{})
+	elseif unitName == SOLDIER_NAME then
+		msg.post("mixer","soldierResponse",{})
+	elseif unitName == HEAL1_NAME then
+		msg.post("mixer","healerResponse",{})
 	end
 end

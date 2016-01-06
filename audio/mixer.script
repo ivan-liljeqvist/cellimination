@@ -10,10 +10,9 @@ function init(self)
 end
 
 function on_message(self, message_id, message, sender)
-	
-	if message_id == hash("slime") and CAN_PLAY_SOUND_EFFECTS then
-		playSoundEffect("slime")
-	elseif message_id == hash("workerCall") and CAN_PLAY_SOUND_EFFECTS then
+
+	--CALLS	
+	if message_id == hash("workerCall") and CAN_PLAY_SOUND_EFFECTS then
 		playSoundEffect("workerCall")
 	elseif message_id == hash("tankCall") and CAN_PLAY_SOUND_EFFECTS then
 		playSoundEffect("tankCall")
@@ -21,6 +20,16 @@ function on_message(self, message_id, message, sender)
 		playSoundEffect("soldierCall")
 	elseif message_id == hash("healerCall") and CAN_PLAY_SOUND_EFFECTS then
 		playSoundEffect("healerCall")
+		
+	--RESPONSES
+	elseif message_id == hash("workerResponse") and CAN_PLAY_SOUND_EFFECTS then
+		playSoundEffect("workerResponse")
+	elseif message_id == hash("tankResponse") and CAN_PLAY_SOUND_EFFECTS then
+		playSoundEffect("tankResponse")
+	elseif message_id == hash("soldierResponse") and CAN_PLAY_SOUND_EFFECTS then
+		playSoundEffect("soldierResponse")
+	elseif message_id == hash("healerResponse") and CAN_PLAY_SOUND_EFFECTS then
+		playSoundEffect("healerResponse")
 	end
 	
 end

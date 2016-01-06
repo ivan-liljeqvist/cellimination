@@ -24,6 +24,9 @@ function init(self)
 				
 				local foundWay=generateNewPathForGroupToPixel(SELECTED_UNITS,action)
 				
+				playResponseSound(unitWithGUI.name)
+				
+				
 				for unit,alive in pairs(SELECTED_UNITS)do
 				
 					unit.orderedToMove=true

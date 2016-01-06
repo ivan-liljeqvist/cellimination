@@ -2,7 +2,7 @@
 
 
 
-local unitWithGUI={}
+unitWithGUI={}
 
 
 local releasedSinceLast=true
