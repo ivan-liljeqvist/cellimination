@@ -3,6 +3,11 @@ LAST_CAN_PLAY_SOUND_EFFECTS=CAN_PLAY_SOUND_EFFECTS
 
 sinceLastTimeSoundEffects=0
 
+BATTLE_MODE=false
+BACKGROUND_LOWERED=false
+
+currentVoice=nil
+
 function init(self)
 	--
 	startSoundscapeMusic()
@@ -30,6 +35,39 @@ function on_message(self, message_id, message, sender)
 		playSoundEffect("soldierResponse")
 	elseif message_id == hash("healerResponse") and CAN_PLAY_SOUND_EFFECTS then
 		playSoundEffect("healerResponse")
+		
+	
+	--MISSION 1 VOICE
+	elseif message_id == hash("mission1Voice1")  and ENABLE_SOUND then
+		msg.post("#mission1Voice1", "play_sound", {delay = 0, gain = 0.5})
+		currentVoice="#mission1Voice1"
+	elseif message_id == hash("mission1Voice2")  and ENABLE_SOUND  then
+		msg.post("#mission1Voice2", "play_sound", {delay = 0, gain = 0.5})	
+		currentVoice="#mission1Voice2"
+	elseif message_id == hash("mission1Voice3")  and ENABLE_SOUND  then
+		msg.post("#mission1Voice3", "play_sound", {delay = 0, gain = 0.5})	
+		currentVoice="#mission1Voice3"
+		
+		
+	--MISC
+	elseif message_id == hash("stopVoice") then
+		if currentVoice then
+			msg.post(currentVoice, "stop_sound")
+		end
+	elseif message_id == hash("lowerBackground") then
+		if not BATTLE_MODE then
+			print("lowerBackground")
+			msg.post("#main", "set_gain", {gain = 0.1})
+			BACKGROUND_LOWERED=true
+		else
+		end
+	elseif message_id == hash("normalBackground")then
+		if not BATTLE_MODE then
+			print("normalBackground")
+			msg.post("#main", "set_gain", {gain = 0.5})
+			BACKGROUND_LOWERED=false
+		else
+		end
 	end
 	
 end

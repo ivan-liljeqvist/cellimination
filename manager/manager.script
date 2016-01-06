@@ -39,6 +39,10 @@ require "modules.transactions"
 
 require "modules.storyteller"
 
+require "modules.missions.1.section2"
+require "modules.missions.1.section1"
+require "modules.missions.1.level1"
+
 function init(self)
     
     --give the global tilemap object to this function (globals.lua) and create
@@ -56,6 +60,9 @@ end
 function update(self, dt)
 	updateFoW(tilemap)
 	updateStorage(self,dt)
+	
+	GAME_TIME=GAME_TIME+dt
+	act()
 end
 
 

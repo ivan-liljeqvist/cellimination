@@ -8,6 +8,9 @@ unitWithGUI={}
 local releasedSinceLast=true
 local currentLayout={}
 
+local sinceUpdatedLarge=0
+local missionChar=1
+
 
 function init(self)
     
@@ -82,6 +85,17 @@ function update(self, dt)
 	if selectedUnits<=0 then
    		hideEverything()
 	end
+	
+	sinceUpdatedLarge=sinceUpdatedLarge+dt
+	--[[
+	if sinceUpdatedLarge>0.1 then
+		local text="21:30, kidney"
+		local textToDisplay=string.sub(text, 0, missionChar)
+		
+		gui.set_text(gui.get_node("largeText"),textToDisplay)
+		missionChar=missionChar+1
+		sinceUpdatedLarge=0
+	end--]]
 end
 
 
@@ -125,6 +139,10 @@ function on_message(self, message_id, message, sender)
 		displayingError=true
 		displayingErrorTimeSinceStarted=0
 		gui.set_text(gui.get_node("errorText"), message.text)
+	
+	elseif message_id==hash("setMissionObjectiveText")then
+		gui.set_text(gui.get_node("objectiveText"), message.text)
+		
 	end
 end
 

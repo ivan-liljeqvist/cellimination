@@ -141,7 +141,20 @@ function basicUnitUpdate(self,dt,go)
 	handleProgressbar(self)
 	handleHealthbar(self,dt)
 	
-	
+	if self.x == self.goalX and self.y==self.goalY then
+		self.tileCoordinates={pixelToTileCoords(self.x-CAMERA_OFFSETX,self.y-CAMERA_OFFSETY)}
+		if TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1] then
+		    local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
+		   
+		    if self.willBecomeBuilding~=true then
+			    if TILEMAP_NODES[currentNodeIndex].occupied==false then
+			    	TILEMAP_NODES[currentNodeIndex].occupied=true
+			    	TILEMAP_NODES[currentNodeIndex].occupiedBy = self
+			    	--tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1]+1, self.tileCoordinates[2]+1, 0)
+				end
+			end
+		end
+	end
 
 end
 

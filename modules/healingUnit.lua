@@ -45,34 +45,38 @@ function searchForSomeoneToHeal(self)
 	for x = minX, maxX, 1 do
 		
 		for y = minY, maxY, 1 do 
-		
-			local nodeIndex = TILEMAP_INDEX_LOOKUP[x][y]
-			local tile = TILEMAP_NODES[nodeIndex]
 			
-
-			if tile.occupied and tile.occupiedBy then
+			if TILEMAP_INDEX_LOOKUP[x] then
+				local nodeIndex = TILEMAP_INDEX_LOOKUP[x][y]
+				local tile = TILEMAP_NODES[nodeIndex]
 				
-				if tile.occupiedBy.id ~= self.id and tile.occupiedBy.needsHealing then
-				
-					if self.teamNumber~=PLAYER_TEAM then
-				
-						if self.timeSinceLastHeal>=self.healingRate then
-							msg.post(tile.occupiedBy.id,"heal",{hp=self.healingStrength})
-							self.timeSinceLastHeal=0
+	
+				if tile.occupied and tile.occupiedBy and pcall(tryHealAccess,tile) then
+					
+					if tile.occupiedBy.id ~= self.id and tile.occupiedBy.needsHealing and tile.occupiedBy.teamNumber==PLAYER_TEAM then
+					
+						if self.teamNumber~=PLAYER_TEAM then
+					
+							if self.timeSinceLastHeal>=self.healingRate then
+								msg.post(tile.occupiedBy.id,"heal",{hp=self.healingStrength})
+								self.timeSinceLastHeal=0
+							end
+							
+						else
+						
+							if self.timeSinceLastHeal>=self.healingRate-(HEAL_CONS*NUMBER_BOUGHT[UPGRADE_HEALER_NAME]) then
+								msg.post(tile.occupiedBy.id,"heal",{hp=self.healingStrength})
+								self.timeSinceLastHeal=0
+							end
+							
 						end
 						
+						if tile.occupiedBy.teamNumber==PLAYER_TEAM then
+							self.healing=true
+						end
 					else
-					
-						if self.timeSinceLastHeal>=self.healingRate-(HEAL_CONS*NUMBER_BOUGHT[UPGRADE_HEALER_NAME]) then
-							msg.post(tile.occupiedBy.id,"heal",{hp=self.healingStrength})
-							self.timeSinceLastHeal=0
-						end
-						
+						--self.healing=false
 					end
-					
-					self.healing=true
-				else
-					--self.healing=false
 				end
 			end
 		
@@ -98,4 +102,8 @@ function handleCircleAnimations(self)
 		end
 	end
 	
+end
+
+function tryHealAccess(tile)
+	local a = tile.occupiedBy.id
 end

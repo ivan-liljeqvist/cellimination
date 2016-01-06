@@ -80,6 +80,46 @@ instances {
   }
 }
 instances {
+  id: "heal1"
+  prototype: "/units/defenders/healers/heal1/heal1.go"
+  position {
+    x: 98.55323
+    y: 380.35132
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "heal2"
+  prototype: "/units/defenders/healers/heal1/heal1.go"
+  position {
+    x: 319.497
+    y: 367.3546
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "healthBars"
   prototype: "/gui/bars/healthBars.go"
   position {
@@ -206,6 +246,166 @@ instances {
     x: 3072.0
     y: 2528.0
     z: 0.35
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3501.4666
+    y: 1744.5925
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple1"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 932.60144
+    y: 455.6846
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple2"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 932.60144
+    y: 455.6846
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple3"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 932.60144
+    y: 455.6846
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple4"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 932.60144
+    y: 455.6846
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple5"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 932.60144
+    y: 455.6846
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple6"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 932.60144
+    y: 455.6846
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple7"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 932.60144
+    y: 455.6846
+    z: 0.0
   }
   rotation {
     x: 0.0

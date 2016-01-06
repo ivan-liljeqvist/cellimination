@@ -29,12 +29,16 @@ function playSoundEffect(soundEffectId)
 		local variationNumber = math.random(1, NUMBER_OF_VARIATIONS[soundEffectId])
 		local newSoundId ="#"..soundEffectId..variationNumber
 		
+		local gain=0.15
+		if BACKGROUND_LOWERED then gain=0.03 end
 		
 		if OLD_PLAYED_IDS[soundEffectId]~=newSoundId then
 			msg.post(OLD_PLAYED_IDS[soundEffectId], "stop_sound")
-			msg.post(newSoundId, "play_sound", {delay = 0, gain = 0.8})
+			
+			
+			msg.post(newSoundId, "play_sound", {delay = 0, gain =gain})
 		else
-			msg.post(newSoundId, "play_sound", {delay = 0, gain = 0.8})
+			msg.post(newSoundId, "play_sound", {delay = 0, gain = gain})
 		end
 		
 		
@@ -62,7 +66,7 @@ end
 
 function startMainBackgroundMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
-    	msg.post("#battle", "play_sound", {delay = 0, gain = 0.2})
+    	msg.post("#main", "play_sound", {delay = 0, gain = 0.2})
     end
 end
 
@@ -78,12 +82,13 @@ function startBackgroundMusic()
     end
 end
 
+
 function playCallSound(unitName)
-	if unitName == WORKER_NAME then
+	if unitName == WORKER_NAME and ENABLE_SOUND then
 		msg.post("mixer","workerCall",{})
-	elseif unitName == TANK1_NAME then
+	elseif unitName == TANK1_NAME and ENABLE_SOUND then
 		msg.post("mixer","tankCall",{})
-	elseif unitName == SOLDIER_NAME then
+	elseif unitName == SOLDIER_NAME and ENABLE_SOUND then
 		msg.post("mixer","soldierCall",{})
 	elseif unitName == HEAL1_NAME then
 		msg.post("mixer","healerCall",{})
@@ -91,13 +96,13 @@ function playCallSound(unitName)
 end
 
 function playResponseSound(unitName)
-	if unitName == WORKER_NAME then
+	if unitName == WORKER_NAME and ENABLE_SOUND then
 		msg.post("mixer","workerResponse",{})
-	elseif unitName == TANK1_NAME then
+	elseif unitName == TANK1_NAME and ENABLE_SOUND then
 		msg.post("mixer","tankResponse",{})
-	elseif unitName == SOLDIER_NAME then
+	elseif unitName == SOLDIER_NAME and ENABLE_SOUND then
 		msg.post("mixer","soldierResponse",{})
-	elseif unitName == HEAL1_NAME then
+	elseif unitName == HEAL1_NAME and ENABLE_SOUND then
 		msg.post("mixer","healerResponse",{})
 	end
 end

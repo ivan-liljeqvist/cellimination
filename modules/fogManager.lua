@@ -46,14 +46,14 @@ function updateFoW()
 					
 					--make the tile the unit stands on visible
 					if tileX+1<TILEMAP_MAXX and tileY+1<TILEMAP_MAXY then
-						tilemapObject.set_tile("fog#tilemap", "fog", tileX+1, tileY+1,0)
+						tilemapObject.set_tile("fog#tilemap", "fog", tileX, tileY,0)
 					end
 					
-					for counter=1, unit.fogRadius, 1 do
+					--for counter=1, unit.fogRadius, 1 do
 				
-						loopAreaAroundTile(tileX,tileY,unit.fogRadius,clearFogFunc)
+					loopAreaAroundTile(tileX,tileY,3,clearFogFunc)
 					
-					end
+					--end
 			
 			else
 				--print("prototype mode!")

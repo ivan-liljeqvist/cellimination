@@ -71,17 +71,7 @@ function handleSelectMethods(self,go,message_id,message)
 				deselect(self,go)
 			end
 			
-		elseif message_id==hash("allOnScreenSelectSpecific") then
-			
-			if isInsideSelection({0,0},{getScreenWidth(),getScreenHeight()},gui.PIVOT_SW,self) and self.name==message.name and self.teamNumber==PLAYER_TEAM then
-				
-				addToSelectedUnits(self)
-				massSelect(self,"hej",go)
-			else
 		
-				removeFromSelectedUnits(self)
-				deselect(self,go)
-			end
 			
 		elseif message_id==hash("deselect") then
 			
@@ -96,6 +86,17 @@ function handleSelectMethods(self,go,message_id,message)
 	 elseif message_id==hash("massSelectionUrgent") then
 			
 			if isInsideSelection(message.start,message.current,message.pivot,self) and alreadySelected()==false and self.teamNumber==PLAYER_TEAM then
+				
+				addToSelectedUnits(self)
+				massSelect(self,"hej",go)
+			else
+		
+				removeFromSelectedUnits(self)
+				deselect(self,go)
+			end
+	 elseif message_id==hash("allOnScreenSelectSpecific") then
+			
+			if isInsideSelection({0,0},{getScreenWidth(),getScreenHeight()},gui.PIVOT_SW,self) and self.name==message.name and self.teamNumber==PLAYER_TEAM then
 				
 				addToSelectedUnits(self)
 				massSelect(self,"hej",go)

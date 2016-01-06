@@ -76,6 +76,8 @@ function moveAccordingToPath(self,go,dt)
     		if pos.x<self.goalX then pos.x=self.goalX end
     	end
     	
+    	triggerCheck(pos.x,pos.y)
+    	
     	self.go.set_position(pos)
     	
     	--moveHealthbar(self)

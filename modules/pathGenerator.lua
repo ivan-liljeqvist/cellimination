@@ -106,7 +106,7 @@ function generateNewPathToTileCoords(self,tileX,tileY)
     			--do nothing
     		--if occupied find a neighbour tile that is not occupied and set it as new destination
     		else
-    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,3) --the last is the total number of recursions allowed
+    			local newDestIndex=findNotOccupiedNeighbour(tileX+1,tileY+1,5) --the last is the total number of recursions allowed
     			if newDestIndex then
     				
     				destIndex=newDestIndex
@@ -131,7 +131,7 @@ function generateNewPathToTileCoords(self,tileX,tileY)
     		self.currentPath=pathfinder.path (startNode, finishNode, TILEMAP_NODES, true, validator )
     		
     		--for some reason the first goal in first path is wrong, just remove it
-    		if self.currentPath and self.neverMoved and table.getn(self.currentPath)>0 then
+    		if self.currentPath and table.getn(self.currentPath)>0 then
     			table.remove(self.currentPath, 1)
     			self.neverMoved=false
     		end

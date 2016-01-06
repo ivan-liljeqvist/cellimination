@@ -121,13 +121,13 @@ function shootTarget(self)
 
 	if self.currentShot == nil and self.targetEnemyPosition and self.timeSinceLastShot>=FIRE_RATE[self.name]then
 				
-		self.currentShot=self.factory.create("#shotFactory", nil, nil, {})
+		self.currentShot=self.factory.create("#shotFactory", vmath.vector3(self.x,self.y,1), nil, {})
 		msg.post(msg.url(self.currentShot),"setOwnerUrl",{id=self.id,name=self.name})
 		msg.post(msg.url(self.currentShot),"setTeam",{team=self.teamNumber})
 		
 		BULLET_OWNER[self.currentShot]=self.id
 		
-		local shotDirection = vmath.vector3(self.x,self.y,1)-vmath.vector3(self.targetEnemyPosition.x,self.targetEnemyPosition.y,1)
+		local shotDirection = vmath.vector3(self.x,self.y,0)-vmath.vector3(self.targetEnemyPosition.x,self.targetEnemyPosition.y,0)
 		msg.post(msg.url(self.currentShot),"setDirection",{dir=-vmath.normalize(shotDirection)})
 		
 		self.timeSinceLastShot=0
@@ -239,7 +239,7 @@ function getFirstEnemyInRange(self)
 		for y = minY, maxY, 1 do 
 			
 			
-			if  TILEMAP_INDEX_LOOKUP then
+			if  TILEMAP_INDEX_LOOKUP[x] then
 				
 				local tileNodeIndex = TILEMAP_INDEX_LOOKUP[x][y]
 				local tileNode = TILEMAP_NODES[tileNodeIndex]
