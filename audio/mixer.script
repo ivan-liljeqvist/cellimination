@@ -5,6 +5,7 @@ sinceLastTimeSoundEffects=0
 
 BATTLE_MODE=false
 BACKGROUND_LOWERED=false
+PLAYING_VICTORY_OR_DEFEAT=false
 
 currentVoice=nil
 
@@ -58,6 +59,10 @@ function on_message(self, message_id, message, sender)
 	--MISC
 	elseif message_id == hash("battleMode") then
 		startBattleBackgroundMusic()
+	elseif message_id == hash("victory") then
+		startVictoryMusic()
+	elseif message_id == hash("defeat") then
+		startDefeatMusic()
 	elseif message_id == hash("stopVoice") then
 		if currentVoice then
 			msg.post(currentVoice, "stop_sound")

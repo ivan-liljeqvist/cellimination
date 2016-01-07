@@ -126,6 +126,10 @@ function on_message(self, message_id, message, sender)
     
     if message_id==hash("newInput") then
 		checkIfAnyButtonClicked(message.action,message.action_id)
+	elseif message_id == hash("setGameOverTitle") then
+		gui.set_text(gui.get_node("gameOverTitle"),message.text)
+	elseif message_id == hash("setGameOverText") then
+		gui.set_text(gui.get_node("gameOverText"),message.text)
 	elseif message_id==hash("unitDestroyed")then
 		if unitWithGUI then
 			if unitWithGUI.id==message.id then

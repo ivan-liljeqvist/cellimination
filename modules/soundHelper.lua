@@ -66,10 +66,41 @@ end
 
 
 function startBattleBackgroundMusic()
+
 	if ENABLE_SOUND and ENABLE_MUSIC then
 		msg.post("#main", "stop_sound")
     	msg.post("#battle", "play_sound", {delay = 0, gain = 0.2})
+    	BATTLE_MODE=true
     end
+    
+end
+
+function startVictoryMusic()
+	if ENABLE_SOUND and ENABLE_MUSIC then
+	
+		if BATTLE_MODE then
+			msg.post("#battle", "stop_sound")
+		else
+			msg.post("#main", "stop_sound")
+		end
+		
+		msg.post("#victory", "play_sound", {delay = 0, gain = 0.2})
+	
+	end
+end
+
+function startDefeatMusic()
+	if ENABLE_SOUND and ENABLE_MUSIC then
+	
+		if BATTLE_MODE then
+			msg.post("#battle", "stop_sound")
+		else
+			msg.post("#main", "stop_sound")
+		end
+		
+		msg.post("#defeat", "play_sound", {delay = 0, gain = 0.2})
+	
+	end
 end
 
 

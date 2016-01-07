@@ -34,6 +34,26 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "defeat"
+  type: "sound"
+  data: "sound: \"/audio/music/Defeat.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "healerCall1"
   type: "sound"
   data: "sound: \"/audio/healer/Healer_Call_1.ogg\"\n"
@@ -637,6 +657,26 @@ embedded_components {
   id: "tankResponse4"
   type: "sound"
   data: "sound: \"/audio/tank/Tank_Response_4.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "victory"
+  type: "sound"
+  data: "sound: \"/audio/music/Victory.ogg\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

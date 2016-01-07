@@ -65,7 +65,7 @@ function update(self, dt)
 	act()
 	
 	GAME_TIME=GAME_TIME+dt
-	msg.post("HUD","displayErrorMessage",{text=GAME_TIME..", "..dt})
+	--msg.post("HUD","displayErrorMessage",{text=GAME_TIME..", "..dt})
 end
 
 

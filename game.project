@@ -3,7 +3,7 @@ title = My Project
 version = 0.1
 
 [bootstrap]
-main_collection = /COLLECTIONS/playground.collectionc
+main_collection = /COLLECTIONS/game.collectionc
 render = /render/ownRender.renderc
 
 [input]

@@ -1,6 +1,6 @@
 function init(self)
 	msg.post(".", "acquire_input_focus")
-    msg.post("loader#level1", "load")
+    msg.post("loader#level"..LEVEL, "load")
 end
 
 function final(self)
@@ -9,8 +9,9 @@ function final(self)
 end
 
 function update(self, dt)
-    -- Add update code here
-    -- Remove this function if not needed
+    if CURRENT_LEVEL_COMPLETE then
+    	 msg.post("loader#level"..LEVEL, "set_time_step", {factor = 0, mode = 1})
+    end
 end
 
 function on_message(self, message_id, message, sender)
@@ -18,6 +19,7 @@ function on_message(self, message_id, message, sender)
     if message_id == hash("proxy_loaded") and sender.fragment == hash("level1") then
             msg.post(sender, "init")
             msg.post(sender, "enable")
+          
     end
     
 end

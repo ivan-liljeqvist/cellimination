@@ -24,6 +24,8 @@ end
 function update(self, dt)
 	local threshold=50
 	
+	dt=0.016
+	
 	if JUST_CLICKED_MINIMAP then threshold=30 end
 	
 	if currentCursorPosition.x<threshold then
