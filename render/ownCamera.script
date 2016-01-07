@@ -71,14 +71,17 @@ function look(x,y)
 	
 	local tooFarOut=false
 	
-	if pos.x>(TILEMAP_MAXX*TILE_SIZE-getScreenWidth()*ZOOM_LEVEL) then
+	if pos.x>(TILEMAP_MAXX*TILE_SIZE) then
 		tooFarOut=true
 	end
 	
-	if pos.y>(TILEMAP_MAXY*TILE_SIZE-getScreenHeight()*ZOOM_LEVEL) then
+	if pos.y>(TILEMAP_MAXY*TILE_SIZE) then
 		tooFarOut=true
 	end
 	
+	print("a!")
+	
+	if tooFarOut then print("tooFarOut") end
 	
 	if tooFarOut==false then
 		CAMERA_OFFSETX=CAMERA_OFFSETX-diffX

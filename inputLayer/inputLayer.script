@@ -41,9 +41,15 @@ end
 
 local holdingDownOnMinimap=false
 
+MINIMAP_BOUNDS={}
+MINIMAP_BOUNDS[1]={x=230,y=230}
+
 function moveMinimap(action,action_id)
-	if action.x<HUD_RIGHT_HEIGHT and action.y<HUD_RIGHT_HEIGHT  then
 	
+	
+	
+	if action.x<MINIMAP_BOUNDS[LEVEL].x and action.y<MINIMAP_BOUNDS[LEVEL].y   then
+		
 		GUI_CLICKED=true
 		
 		if action_id==hash("leftClicked") and action.pressed and holdingDownOnMinimap==false then

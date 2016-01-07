@@ -11,8 +11,8 @@ game_binding = /input/game.input_bindingc
 repeat_delay = 0.2
 
 [display]
-width = 1280
-height = 720
+width = 1920
+height = 1080
 fullscreen = 0
 dynamic_orientation = 0
 

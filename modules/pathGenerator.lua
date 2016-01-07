@@ -30,7 +30,9 @@ function generateNewPathForGroupToPixel(group,action)
 					leadingUnit=unit
 				else
 					--only follow leader if near leader
-					if math.abs(unit.x-leadingUnit.x)<200 and math.abs(unit.y-leadingUnit.y)<200 then
+					local nearThreshold=300
+					if LEVEL==1 then nearThreshold=600 end
+					if math.abs(unit.x-leadingUnit.x)<nearThreshold and math.abs(unit.y-leadingUnit.y)<nearThreshold then
 						loadPath(unit,pathFound)
 					else --otherwise find own path
 						if not generateNewPathToMouseClick(unit,action,tilemapObject) then
