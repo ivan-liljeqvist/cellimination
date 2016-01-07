@@ -75,7 +75,7 @@ function level1Subtitles()
 		
 	--TRACK5
 	elseif  level1State.VOICE5_START_TIME and GAME_TIME>level1State.VOICE5_START_TIME and not level1State.sub20 then
-		msg.post("HUD","setSubtitleText",{text="COMMANDER! I’m afraid the threat is on a whole different level than we expected."})
+		msg.post("HUD","setSubtitleText",{text="COMMANDER! I am afraid the threat is on a whole different level than we expected."})
 		level1State.sub20=true
 	elseif  level1State.VOICE5_START_TIME and GAME_TIME>level1State.VOICE5_START_TIME+3 and not level1State.sub21 then
 		msg.post("HUD","setSubtitleText",{text="The viruses have come in outrageous numbers."})
@@ -89,6 +89,12 @@ function level1Subtitles()
 	elseif  level1State.VOICE5_START_TIME and GAME_TIME>level1State.VOICE5_START_TIME+11 and not level1State.sub24 then
 		msg.post("HUD","setSubtitleText",{text="Safety is no. 1 priority!"})
 		level1State.sub24=true
+	elseif  level1State.VOICE5_START_TIME and GAME_TIME>level1State.VOICE5_START_TIME+15 and not level1State.sub25 then
+		msg.post("HUD","setSubtitleText",{text="*EVIL LAUGH* MINIONS! ASSEMBLE YOUR FORCES! *EVIL LAUGH*"})
+		level1State.sub25=true
+		elseif  level1State.VOICE5_START_TIME and GAME_TIME>level1State.VOICE5_START_TIME+19 and not level1State.sub26 then
+		msg.post("HUD","setSubtitleText",{text=""})
+		level1State.sub26=true
 	end
 	
 end

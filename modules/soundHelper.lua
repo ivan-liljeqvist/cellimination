@@ -6,15 +6,15 @@ ENABLE_SOUND_EFFECTS=true
 
 --sound effects have variations, for example slime1, slime2
 NUMBER_OF_VARIATIONS={}
-NUMBER_OF_VARIATIONS["slime"]=2
-NUMBER_OF_VARIATIONS["workerCall"]=1
-NUMBER_OF_VARIATIONS["workerResponse"]=1
-NUMBER_OF_VARIATIONS["tankCall"]=1
-NUMBER_OF_VARIATIONS["tankResponse"]=1
-NUMBER_OF_VARIATIONS["soldierCall"]=1
-NUMBER_OF_VARIATIONS["soldierResponse"]=1
-NUMBER_OF_VARIATIONS["healerCall"]=2
-NUMBER_OF_VARIATIONS["healerResponse"]=1
+
+NUMBER_OF_VARIATIONS["workerCall"]=3
+NUMBER_OF_VARIATIONS["workerResponse"]=4
+NUMBER_OF_VARIATIONS["tankCall"]=4
+NUMBER_OF_VARIATIONS["tankResponse"]=4
+NUMBER_OF_VARIATIONS["soldierCall"]=4
+NUMBER_OF_VARIATIONS["soldierResponse"]=4
+NUMBER_OF_VARIATIONS["healerCall"]=4
+NUMBER_OF_VARIATIONS["healerResponse"]=4
 
 --store the just played id of each sound effect
 OLD_PLAYED_IDS={}
