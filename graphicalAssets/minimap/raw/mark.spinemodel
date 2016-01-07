@@ -1,0 +1,4 @@
+spine_scene: "/graphicalAssets/minimap/raw/mark.spinescene"
+default_animation: "animation"
+skin: ""
+material: "/graphicalAssets/minimap/material/mark.material"

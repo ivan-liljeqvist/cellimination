@@ -10,6 +10,7 @@ function init(self)
 	self.mini_rectangle = render.predicate({"minirectangle"})
 	self.non_transparent_gui=render.predicate({"non_transparent_gui"})
 	self.owntile=render.predicate({"owntile"})
+	self.mark=render.predicate({"mark"})
 
     self.clear_color = vmath.vector4(0, 0, 0, 0)
     self.clear_color.x = sys.get_config("render.clear_color_red", 0)
@@ -37,6 +38,7 @@ function renderMinimap(self)
 
     render.draw(self.tile_pred)
     render.draw(self.owntile)
+    render.draw(self.mark)
 
     
     render.set_viewport(0, 0, HUD_RIGHT_HEIGHT, HUD_RIGHT_HEIGHT)

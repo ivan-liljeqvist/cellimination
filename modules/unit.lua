@@ -46,14 +46,16 @@ function initBasicUnit(self,name,goID)
     self.hitByLastId={}
     
     self.tileCoordinates={pixelToTileCoords(self.goalX,self.goalY)}
-    local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
-   
-    if self.willBecomeBuilding~=true then
-	    TILEMAP_NODES[currentNodeIndex].occupied = true
-	    TILEMAP_NODES[currentNodeIndex].occupiedBy = self
-	    --tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1]+1, self.tileCoordinates[2]+1, 4)
+    if self.tileCoordinates and TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1] then
+	    local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
+	   
+	    if self.willBecomeBuilding~=true and TILEMAP_NODES[currentNodeIndex] then
+		    TILEMAP_NODES[currentNodeIndex].occupied = true
+		    TILEMAP_NODES[currentNodeIndex].occupiedBy = self
+		    --tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1]+1, self.tileCoordinates[2]+1, 4)
+		end
 	end
-	
+		
 	self.originalHealth=MAX_HEALTH[self.name]
 	
 	self.health=self.originalHealth
@@ -82,6 +84,10 @@ function destroyUnit(self)
 
 	if ALIVE[self.id] then
 
+		if self.teamNumber~=PLAYER_TEAM and LEVEL==1 then
+			level1PurpleDeath()
+		end
+		
 		ALIVE[self.id]=false
 		destroyLivingUnit(self)
 		
@@ -342,8 +348,10 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 	elseif message_id == hash("contact_point_response") then
 	
 	
-		if message.other_id ~= self.hitByLastId and BULLET_OWNER[message.other_id]~=self.id and not BULLET_HIT_ALREADY[message.other_id] then
+		if BULLET_OWNER[message.other_id]~=self.id  then
 		
+			print("I'm shot! "..self.name)
+			
 			--get owner and damage
 			msg.post(message.other_id,"requestOwner",{}) --request the shot for it's owner
 			BULLET_HIT_ALREADY[message.other_id]=true
@@ -354,7 +362,9 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 	--2) now we know who shot us
 	elseif message_id == hash("shotOwnerCallback")then
 		
+		
 		if message.team ~= self.teamNumber and message.ownerId ~= self.id then
+			
 			
 			--if we don't have a target, set the shooter as target
 			if self.targetEnemyId == nil and self.canFight then
@@ -363,7 +373,7 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 			
 			end
 			
-			
+			BULLET_HIT_ALREADY[self.hitByLastId]=false
 		
 			msg.post(self.hitByLastId,"die")	
 		

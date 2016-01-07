@@ -4,17 +4,28 @@
 --dont update on every iteration
 fogCounter=0
 
+FOG_BLACK_TILE=12
+CLEARED_CELLS={}
+local clearedIndex=1
+
+local sinceClearedLast=0
+
 local clearFogFunc=function(x,y)
 		
 		if isWithinTilemap(x,y) then
+			clearedIndex=x..","..y
+			CLEARED_CELLS[clearedIndex]={x=x,y=y}  --save the cells we clear
 			tilemapObject.set_tile("fog#tilemap", "fog", x, y,0)
 		end
 	
 end
 
-function updateFoW()
+function updateFoW(dt)
 
 
+	
+	sinceClearedLast=sinceClearedLast+dt
+	
 	fogCounter=fogCounter+1
 	
 	if fogCounter%5 ~= 0 then
@@ -46,6 +57,12 @@ function updateFoW()
 					
 					--make the tile the unit stands on visible
 					if tileX+1<TILEMAP_MAXX and tileY+1<TILEMAP_MAXY then
+						
+						
+						clearedIndex=tileX..","..tileY
+						CLEARED_CELLS[clearedIndex]={x=tileX,y=tileY}  --save the cells we clear
+						
+						
 						tilemapObject.set_tile("fog#tilemap", "fog", tileX, tileY,0)
 					end
 					
@@ -54,6 +71,7 @@ function updateFoW()
 					loopAreaAroundTile(tileX,tileY,3,clearFogFunc)
 					
 					--end
+					
 			
 			else
 				--print("prototype mode!")
@@ -63,6 +81,16 @@ function updateFoW()
 	end
 end
 
+function hideClearedCells()
+	
+	for index,coords in pairs(CLEARED_CELLS) do
+		if coords then
+			tilemapObject.set_tile("fog#tilemap", "fog", coords.x, coords.y,FOG_BLACK_TILE)
+			CLEARED_CELLS[index]=nil
+		end
+	end
+
+end
 
 
 

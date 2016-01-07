@@ -58,7 +58,7 @@ end
 
 
 function update(self, dt)
-	updateFoW(tilemap)
+	updateFoW(dt)
 	updateStorage(self,dt)
 	
 	GAME_TIME=GAME_TIME+dt

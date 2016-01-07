@@ -47,9 +47,17 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("mission1Voice3")  and ENABLE_SOUND  then
 		msg.post("#mission1Voice3", "play_sound", {delay = 0, gain = 0.5})	
 		currentVoice="#mission1Voice3"
-		
+	elseif message_id == hash("mission1Voice4")  and ENABLE_SOUND  then
+		msg.post("#mission1Voice4", "play_sound", {delay = 0, gain = 0.5})	
+		currentVoice="#mission1Voice4"
+	elseif message_id == hash("mission1Voice5")  and ENABLE_SOUND  then
+		msg.post("#mission1Voice5", "play_sound", {delay = 0, gain = 0.5})	
+		currentVoice="#mission1Voice5"
+			
 		
 	--MISC
+	elseif message_id == hash("battleMode") then
+		startBattleBackgroundMusic()
 	elseif message_id == hash("stopVoice") then
 		if currentVoice then
 			msg.post(currentVoice, "stop_sound")
@@ -57,7 +65,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("lowerBackground") then
 		if not BATTLE_MODE then
 			print("lowerBackground")
-			msg.post("#main", "set_gain", {gain = 0.1})
+			msg.post("#main", "set_gain", {gain = 0.2})
 			BACKGROUND_LOWERED=true
 		else
 		end

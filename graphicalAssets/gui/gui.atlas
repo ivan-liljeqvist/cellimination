@@ -82,6 +82,6 @@ images {
 images {
   image: "/graphicalAssets/gui/houseIcon.png"
 }
-margin: 0
-extrude_borders: 0
-inner_padding: 0
+images {
+  image: "/graphicalAssets/minimap/raw/mark.png"
+}

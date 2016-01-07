@@ -65,7 +65,7 @@ instances {
   position {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: -1.0
   }
   rotation {
     x: 0.0
@@ -180,6 +180,26 @@ instances {
   }
 }
 instances {
+  id: "mark"
+  prototype: "/graphicalAssets/minimap/mark.go"
+  position {
+    x: 504.15094
+    y: 691.6488
+    z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "miniRectangle"
   prototype: "/minimap/miniRectangle.go"
   position {
@@ -263,8 +283,8 @@ instances {
   id: "purple"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 3501.4666
-    y: 1744.5925
+    x: 2055.0317
+    y: 2503.6165
     z: 0.0
   }
   rotation {
@@ -283,8 +303,8 @@ instances {
   id: "purple1"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 932.60144
-    y: 455.6846
+    x: 1991.6581
+    y: 1814.0547
     z: 0.0
   }
   rotation {
@@ -303,8 +323,8 @@ instances {
   id: "purple2"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 932.60144
-    y: 455.6846
+    x: 702.72516
+    y: 2668.173
     z: 0.0
   }
   rotation {
@@ -323,8 +343,8 @@ instances {
   id: "purple3"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 932.60144
-    y: 455.6846
+    x: 522.5612
+    y: 2828.4214
     z: 0.0
   }
   rotation {
@@ -343,8 +363,8 @@ instances {
   id: "purple4"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 932.60144
-    y: 455.6846
+    x: 887.71356
+    y: 1869.6898
     z: 0.0
   }
   rotation {
@@ -363,8 +383,8 @@ instances {
   id: "purple5"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 932.60144
-    y: 455.6846
+    x: 1015.44226
+    y: 2293.2112
     z: 0.0
   }
   rotation {
@@ -383,8 +403,8 @@ instances {
   id: "purple6"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 932.60144
-    y: 455.6846
+    x: 944.12933
+    y: 3252.9187
     z: 0.0
   }
   rotation {
@@ -403,8 +423,8 @@ instances {
   id: "purple7"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 932.60144
-    y: 455.6846
+    x: 450.50195
+    y: 2730.5425
     z: 0.0
   }
   rotation {
@@ -465,6 +485,86 @@ instances {
   position {
     x: 505.48203
     y: 487.04886
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier10"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 216.42027
+    y: 714.7945
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier11"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 216.42027
+    y: 714.7945
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier12"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 216.42027
+    y: 714.7945
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier13"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 216.42027
+    y: 714.7945
     z: 0.0
   }
   rotation {
@@ -560,12 +660,112 @@ instances {
   }
 }
 instances {
+  id: "soldier6"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 216.42027
+    y: 714.7945
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier7"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 216.42027
+    y: 714.7945
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier8"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 216.42027
+    y: 714.7945
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier9"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 216.42027
+    y: 714.7945
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "unitManager"
   prototype: "/units/unitManager.go"
   position {
-    x: 864.0
-    y: 671.6624
+    x: 2815.2449
+    y: 1183.3221
     z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weakPurpleSpawner"
+  prototype: "/levelGOs/1/weakPurpleSpawner/weakPurpleSpawner.go"
+  position {
+    x: 2786.592
+    y: 1900.0
+    z: 0.0
   }
   rotation {
     x: 0.0

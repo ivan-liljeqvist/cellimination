@@ -1,0 +1,49 @@
+function init(self)
+    self.used=false
+end
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+function update(self, dt)
+    -- Add update code here
+    -- Remove this function if not needed
+    
+	  	
+end
+
+function on_message(self, message_id, message, sender)
+	  
+	  if message_id == hash("spawn") and not  self.used then
+	  		print("SPAWN IN WAK PURPLR")
+	  		 self.used=true
+	  		factory.create("#factory",vmath.vector3(867,1269,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(767,1169,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(757,1569,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(450,2730,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(980,2517,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(803,3216,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(590,3068,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(509,2701,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(877,2561,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(1143,3232,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(2815,1183,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(3075,1747,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(1991,2223,0),nil,{})
+	  		factory.create("#factory",vmath.vector3(1791,1270,0),nil,{})
+	  		
+	  end
+	  
+end
+
+function on_input(self, action_id, action)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end
+
+function on_reload(self)
+    -- Add reload-handling code here
+    -- Remove this function if not needed
+end

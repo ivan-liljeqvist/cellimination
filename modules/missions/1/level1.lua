@@ -8,9 +8,15 @@ level1State.VOICE1_DONE_TIME=25
 level1State.VOICE2_START_TIME=28
 level1State.VOICE2_DONE_TIME=50
 
+level1State.FIRST_VIRUS_DEAD=false
 
 level1State.VOICE3_DONE_TIME=nil --will be set when it's triggered
 
+level1State.VOICE4_DONE_TIME=nil
+
+level1State.VOICE5_DONE_TIME=nil
+
+level1State.KILLED_VIRUSES=0
 
 function level1Act()
 
@@ -18,6 +24,14 @@ function level1Act()
 		lvl1Section1Act()
 	elseif not level1State.section2Done then
 		lvl1Section2Act()
+	end
+end
+
+
+function level1PurpleDeath()
+	level1State.KILLED_VIRUSES=level1State.KILLED_VIRUSES+1
+	if not level1State.FIRST_VIRUS_DEAD then
+		level1State.FIRST_VIRUS_DEAD=true
 	end
 end
 

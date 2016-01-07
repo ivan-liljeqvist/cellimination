@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/units/defenders/fighters/soldiers/soldier1/soldier.script"
+  component: "/units/viruses/purpleWeak/purpleWeak.script"
   position {
     x: 0.0
     y: 0.0
@@ -14,8 +14,8 @@ components {
   }
 }
 components {
-  id: "spine"
-  component: "/graphicalAssets/units/defenders/fighters/white/white.spinemodel"
+  id: "spinemodel"
+  component: "/graphicalAssets/units/viruses/purple/purpleSpineModel.spinemodel"
   position {
     x: 0.0
     y: 0.0
@@ -55,8 +55,8 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 75.0\n"
-  "  data: 75.0\n"
+  "  data: 25.0\n"
+  "  data: 25.0\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"
@@ -79,6 +79,26 @@ embedded_components {
   id: "shotFactory"
   type: "factory"
   data: "prototype: \"/particles/shot1.go\"\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "sprite"
+  type: "sprite"
+  data: "tile_set: \"/graphicalAssets/war/jeep.atlas\"\n"
+  "default_animation: \"blackCircle\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
     x: 0.0

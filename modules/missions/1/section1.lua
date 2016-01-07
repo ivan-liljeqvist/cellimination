@@ -4,7 +4,6 @@ function lvl1Section1Act()
 
 	if not level1State.playedVoice1 and GAME_TIME>level1State.VOICE1_START_TIME then
 	
-		
 		msg.post("mixer","lowerBackground")
 		msg.post("mixer","mission1Voice1")
 		
@@ -16,6 +15,7 @@ function lvl1Section1Act()
 		   not level1State.resetBackground and
 		   GAME_TIME<level1State.VOICE2_START_TIME
 		   then
+		
 		
 		msg.post("mixer","normalBackground")
 		level1State.resetBackground=true

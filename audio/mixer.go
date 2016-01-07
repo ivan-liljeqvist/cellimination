@@ -174,6 +174,46 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "mission1Voice4"
+  type: "sound"
+  data: "sound: \"/audio/missions/1/Voice_Mission_One_4.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "mission1Voice5"
+  type: "sound"
+  data: "sound: \"/audio/missions/1/Voice_Mission_One_5.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "soldierCall1"
   type: "sound"
   data: "sound: \"/audio/soldier/Soldier_Call.ogg\"\n"

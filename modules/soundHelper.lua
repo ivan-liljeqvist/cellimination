@@ -1,5 +1,5 @@
 
-ENABLE_SOUND=true
+ENABLE_SOUND=false
 ENABLE_MUSIC=true
 ENABLE_SOUND_EFFECTS=true
 
@@ -30,7 +30,7 @@ function playSoundEffect(soundEffectId)
 		local newSoundId ="#"..soundEffectId..variationNumber
 		
 		local gain=0.15
-		if BACKGROUND_LOWERED then gain=0.03 end
+		if BACKGROUND_LOWERED then gain=0.02 end
 		
 		if OLD_PLAYED_IDS[soundEffectId]~=newSoundId then
 			msg.post(OLD_PLAYED_IDS[soundEffectId], "stop_sound")
@@ -64,6 +64,15 @@ function checkIfCanPlaySFX(dt)
 	end
 end
 
+
+function startBattleBackgroundMusic()
+	if ENABLE_SOUND and ENABLE_MUSIC then
+		msg.post("#main", "stop_sound")
+    	msg.post("#battle", "play_sound", {delay = 0, gain = 0.2})
+    end
+end
+
+
 function startMainBackgroundMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
     	msg.post("#main", "play_sound", {delay = 0, gain = 0.2})
@@ -76,11 +85,6 @@ function startSoundscapeMusic()
     end
 end
 
-function startBackgroundMusic()
-	if ENABLE_SOUND and ENABLE_MUSIC then
-    	msg.post("#calm", "play_sound", {delay = 0, gain = 0.5})
-    end
-end
 
 
 function playCallSound(unitName)
