@@ -26,6 +26,12 @@ function healerUpdate(self,go,dt)
 	--show and hide the circle animation
 	handleCircleAnimations(self)
 	
+	if self.healing and not HEALING_PLAYING then
+		msg.post("mixer","healing")
+	elseif not self.healing and HEALING_PLAYING then
+		msg.post("mixer","stopHealing")
+	end
+	
 end
 
 function searchForSomeoneToHeal(self)

@@ -11,6 +11,8 @@ function init(self)
 	
 	self.id=go.get_id()
 	
+	self.teamNumber=2
+	
 	self.boundsWidthScale=0.5
 	self.boundsHeightScale=0.4
 	
@@ -47,7 +49,7 @@ function init(self)
 					button8=nil,
 					button9=nil}
 				
-	self.teamNumber=2
+	
 end
 
 

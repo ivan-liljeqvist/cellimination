@@ -18,7 +18,6 @@ NUMBER_OF_VARIATIONS["healerResponse"]=4
 
 --store the just played id of each sound effect
 OLD_PLAYED_IDS={}
-OLD_PLAYED_IDS["slime"]=""
 
 
 function playSoundEffect(soundEffectId)

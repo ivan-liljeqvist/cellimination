@@ -24,7 +24,7 @@ end
 function update(self, dt)
 	local threshold=50
 	
-	dt=0.016
+	dt=0.022
 	
 	if JUST_CLICKED_MINIMAP then threshold=30 end
 	

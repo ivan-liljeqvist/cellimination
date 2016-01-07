@@ -8,9 +8,14 @@ function final(self)
     -- Remove this function if not needed
 end
 
+local timeSinceLevelComplete=0
+
 function update(self, dt)
     if CURRENT_LEVEL_COMPLETE then
-    	 msg.post("loader#level"..LEVEL, "set_time_step", {factor = 0, mode = 1})
+    	timeSinceLevelComplete=timeSinceLevelComplete+dt
+    	if timeSinceLevelComplete >0.5 then
+    	 	msg.post("loader#level"..LEVEL, "set_time_step", {factor = 0, mode = 1})
+    	 end
     end
 end
 

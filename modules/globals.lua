@@ -67,6 +67,12 @@ MAX_PRODUCTION_QUEUE = 4
 TIME_TO_PRODUCE={}
 
 
+function numberOfPlayerUnits()
+  local count = 0
+  for unit,isAlive in pairs(MY_UNITS) do if isAlive then count = count + 1 end end
+  return count
+end
+
 require "modules.pathfinder"
 
 function getScreenWidth()

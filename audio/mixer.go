@@ -34,6 +34,26 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "death"
+  type: "sound"
+  data: "sound: \"/audio/misc/Cell_Spawn.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "defeat"
   type: "sound"
   data: "sound: \"/audio/music/Defeat.ogg\"\n"
@@ -197,6 +217,86 @@ embedded_components {
   id: "healerResponse4"
   type: "sound"
   data: "sound: \"/audio/healer/Healer_Call_4.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "healing"
+  type: "sound"
+  data: "sound: \"/audio/healer/Healing_Short_1_.ogg\"\n"
+  "looping: 1\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "hit1"
+  type: "sound"
+  data: "sound: \"/audio/misc/Attack_Impact_1.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "hit2"
+  type: "sound"
+  data: "sound: \"/audio/misc/Attack_Impact_2.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "hit3"
+  type: "sound"
+  data: "sound: \"/audio/misc/Attack_Impact_3.ogg\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

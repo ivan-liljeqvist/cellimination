@@ -151,6 +151,7 @@ function on_message(self, message_id, message, sender)
 		
 	elseif message_id==hash("setSubtitleText") then
 	
+		print("setSubtitleText "..message.text)
 		local function on_animation_done(self, node)
 		    
 		    if currentSubtitleNode == 1 then

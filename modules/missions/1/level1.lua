@@ -42,6 +42,8 @@ end
 
 function level1TriggerCheck(x,y)
 
+	
+
 	--walked back to safety
 	
 	if level1State.VOICE5_DONE_TIME and  GAME_TIME>level1State.VOICE5_DONE_TIME  and y<780 and x <740 and not level1State.levelOver then

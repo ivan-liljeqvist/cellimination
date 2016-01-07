@@ -25,6 +25,8 @@ function init(self)
 
 	end
 	
+	self.teamNumber=2
+	
     initBasicUnit(self,PURPLE_WEAK_NAME,go.get_id())
     initMovableUnit(self)
     initFightingUnit(self,false)
@@ -47,7 +49,7 @@ function init(self)
 					button8=nil,
 					button9=nil}
 				
-	self.teamNumber=2
+	
 end
 
 

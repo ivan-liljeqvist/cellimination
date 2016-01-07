@@ -36,9 +36,11 @@ function initBasicUnit(self,name,goID)
     
     go.set_scale(self.initialScale)
     
-    MY_UNITS[self]=true
+    if not self.teamNumber then self.teamNumber=PLAYER_TEAM end
+    if self.teamNumber==PLAYER_TEAM then
+    	MY_UNITS[self]=true
+    end
     
-    self.teamNumber=PLAYER_TEAM
     
     self.goalX = getPosition(self).x
     self.goalY = getPosition(self).y
@@ -83,6 +85,10 @@ end
 function destroyUnit(self)
 
 	if ALIVE[self.id] then
+	
+		msg.post("mixer","death")
+		
+		if self.healing then msg.post("mixer","stopHealing") end
 
 		if self.teamNumber~=PLAYER_TEAM and LEVEL==1 then
 			level1PurpleDeath()
@@ -402,6 +408,8 @@ end
 
 function decreaseHealth(self,amount)
 	self.health=self.health-amount
+	
+	msg.post("mixer","hit")
 	
 	if self.teamNumber~=PLAYER_TEAM then
 		if self.health<0 then self.health=0 end
