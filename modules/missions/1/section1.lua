@@ -9,6 +9,8 @@ function lvl1Section1Act()
 		
 		level1State.playedVoice1=true
 		level1State.resetBackground=false
+		
+	
 	
 	elseif level1State.playedVoice1 and 
 		   GAME_TIME>level1State.VOICE1_DONE_TIME and 
@@ -27,6 +29,8 @@ function lvl1Section1Act()
 		msg.post("mixer","mission1Voice2")
 		level1State.resetBackground=false
 		level1State.playedVoice2=true
+		
+		
 		
 		
 	elseif level1State.playedVoice2 and  

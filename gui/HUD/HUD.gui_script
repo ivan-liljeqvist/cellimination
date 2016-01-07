@@ -11,6 +11,8 @@ local currentLayout={}
 local sinceUpdatedLarge=0
 local missionChar=1
 
+local currentSubtitleNode=1
+
 
 function init(self)
     
@@ -143,6 +145,41 @@ function on_message(self, message_id, message, sender)
 	elseif message_id==hash("setMissionObjectiveText")then
 		gui.set_text(gui.get_node("objectiveText"), message.text)
 		
+	elseif message_id==hash("setSubtitleText") then
+	
+		local function on_animation_done(self, node)
+		    
+		    if currentSubtitleNode == 1 then
+		    	gui.animate(gui.get_node("subtitleText2"), gui.PROP_POSITION, vmath.vector3(964, 197,0), gui.EASING_INOUTQUAD,0.1)
+		    else
+		    	gui.animate(gui.get_node("subtitleText1"), gui.PROP_POSITION, vmath.vector3(964, 197,0), gui.EASING_INOUTQUAD,0.1)
+		    end
+
+		end
+
+		if currentSubtitleNode==1 then
+		
+			--gui.set_text(gui.get_node("subtitleText1"), "")
+			gui.set_text(gui.get_node("subtitleText2"), message.text)
+			currentSubtitleNode=2
+			
+			gui.animate(gui.get_node("subtitleText2"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_INOUTQUAD, 0.4)
+			gui.animate(gui.get_node("subtitleText1"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 0), gui.EASING_INOUTQUAD, 0.4,0.0,on_animation_done)
+			gui.animate(gui.get_node("subtitleText1"), gui.PROP_POSITION, vmath.vector3(964, 237,0), gui.EASING_INOUTQUAD, 0.4,0.0,on_animation_done)
+			
+		elseif currentSubtitleNode==2 then
+		
+			--gui.set_text(gui.get_node("subtitleText2"), "")
+			gui.set_text(gui.get_node("subtitleText1"), message.text)
+			currentSubtitleNode=1
+			
+			gui.animate(gui.get_node("subtitleText1"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_INOUTQUAD, 0.4)
+			gui.animate(gui.get_node("subtitleText2"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 0), gui.EASING_INOUTQUAD, 0.4,0.0,on_animation_done)
+			gui.animate(gui.get_node("subtitleText2"), gui.PROP_POSITION, vmath.vector3(964, 237,0), gui.EASING_INOUTQUAD, 0.4)
+			
+		end
+			
+			
 	end
 end
 

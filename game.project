@@ -15,6 +15,7 @@ width = 1920
 height = 1080
 fullscreen = 0
 dynamic_orientation = 0
+variable_dt = 1
 
 [physics]
 scale = 0.02

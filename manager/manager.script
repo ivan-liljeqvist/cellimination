@@ -1,6 +1,4 @@
 
-require "modules.io.luaio"
-
 require "modules.data.unitData"
 require "modules.data.worker"
 require "modules.data.fighters"
@@ -40,6 +38,7 @@ require "modules.transactions"
 
 require "modules.storyteller"
 
+require "modules.missions.1.subtitlesLevel1"
 require "modules.missions.1.section2"
 require "modules.missions.1.section1"
 require "modules.missions.1.level1"
@@ -62,8 +61,11 @@ function update(self, dt)
 	updateFoW(dt)
 	updateStorage(self,dt)
 	
-	GAME_TIME=GAME_TIME+dt
+	
 	act()
+	
+	GAME_TIME=GAME_TIME+dt
+	msg.post("HUD","displayErrorMessage",{text=GAME_TIME..", "..dt})
 end
 
 
