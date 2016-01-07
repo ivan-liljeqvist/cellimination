@@ -84,6 +84,7 @@ function level1TriggerCheck(x,y)
 		level1State.VOICE3_START_TIME=GAME_TIME
 		level1State.VOICE3_DONE_TIME=GAME_TIME+20
 		
+		
 		msg.post("mixer","lowerBackground")
 		msg.post("mixer","mission1Voice3")
 		

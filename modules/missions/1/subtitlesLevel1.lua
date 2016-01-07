@@ -61,6 +61,34 @@ function level1Subtitles()
 	elseif level1State.VOICE3_START_TIME and GAME_TIME>level1State.VOICE3_START_TIME+18 and not level1State.sub16 then
 		msg.post("HUD","setSubtitleText",{text=""})
 		level1State.sub16=true
+		
+	--TRACK4
+	elseif  level1State.VOICE4_START_TIME and GAME_TIME>level1State.VOICE4_START_TIME and not level1State.sub17 then
+		msg.post("HUD","setSubtitleText",{text="Well done, commander!\nThe Headquarters will be proud."})
+		level1State.sub17=true
+	elseif  level1State.VOICE4_START_TIME and GAME_TIME>level1State.VOICE4_START_TIME+3 and not level1State.sub18 then
+		msg.post("HUD","setSubtitleText",{text="But remember, viruses rarely come alone.\nKeep moving forwards and expect encounters!"})
+		level1State.sub18=true
+	elseif level1State.VOICE4_START_TIME and GAME_TIME>level1State.VOICE4_START_TIME+8 and not level1State.sub19 then
+		msg.post("HUD","setSubtitleText",{text=""})
+		level1State.sub19=true
+		
+	--TRACK5
+	elseif  level1State.VOICE5_START_TIME and GAME_TIME>level1State.VOICE5_START_TIME and not level1State.sub20 then
+		msg.post("HUD","setSubtitleText",{text="COMMANDER! I’m afraid the threat is on a whole different level than we expected."})
+		level1State.sub20=true
+	elseif  level1State.VOICE5_START_TIME and GAME_TIME>level1State.VOICE5_START_TIME+3 and not level1State.sub21 then
+		msg.post("HUD","setSubtitleText",{text="The viruses have come in outrageous numbers."})
+		level1State.sub21=true
+	elseif  level1State.VOICE5_START_TIME and GAME_TIME>level1State.VOICE5_START_TIME+6 and not level1State.sub22 then
+		msg.post("HUD","setSubtitleText",{text=" You have to turn back now!"})
+		level1State.sub22=true
+	elseif  level1State.VOICE5_START_TIME and GAME_TIME>level1State.VOICE5_START_TIME+8 and not level1State.sub23 then
+		msg.post("HUD","setSubtitleText",{text="Retreat to the starting point where you will\nrendezvous with an evacuation squad."})
+		level1State.sub23=true
+	elseif  level1State.VOICE5_START_TIME and GAME_TIME>level1State.VOICE5_START_TIME+11 and not level1State.sub24 then
+		msg.post("HUD","setSubtitleText",{text="Safety is no. 1 priority!"})
+		level1State.sub24=true
 	end
 	
 end
