@@ -50759,13 +50759,6 @@ layers {
     v_flip: 0
   }
   cell {
-    x: 65
-    y: 61
-    tile: 139
-    h_flip: 0
-    v_flip: 0
-  }
-  cell {
     x: 64
     y: 60
     tile: 152
@@ -50783,20 +50776,6 @@ layers {
     x: 64
     y: 61
     tile: 138
-    h_flip: 0
-    v_flip: 0
-  }
-  cell {
-    x: 64
-    y: 62
-    tile: 124
-    h_flip: 0
-    v_flip: 0
-  }
-  cell {
-    x: 65
-    y: 62
-    tile: 125
     h_flip: 0
     v_flip: 0
   }

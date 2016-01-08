@@ -22,6 +22,7 @@ function generateNewPathForGroupToPixel(group,action)
 				if foundAPathForWholeSelection==false then
 					
 					if not generateNewPathToMouseClick(unit,action,tilemapObject) then
+						print("generateNewPathForGroupToPixel fail 1 "..action.x.." "..action.y)
 						success=false
 					end
 					
@@ -36,6 +37,7 @@ function generateNewPathForGroupToPixel(group,action)
 						loadPath(unit,pathFound)
 					else --otherwise find own path
 						if not generateNewPathToMouseClick(unit,action,tilemapObject) then
+							
 							success=false
 						end
 					end
@@ -48,6 +50,7 @@ function generateNewPathForGroupToPixel(group,action)
 			end
 		end
 		
+	
 		
 		return success
 				
@@ -78,6 +81,7 @@ function generateNewPathToTileCoords(self,tileX,tileY)
 	end
 
 	if tileX<TILEMAP_MINX or tileX>TILEMAP_MAXX or tileY<TILEMAP_MINY or tileY>TILEMAP_MAXY then
+		print ( "path outside map "..tileX,tileY,TILEMAP_MAXX,TILEMAP_MAXY )
 		return false
 	end
 		

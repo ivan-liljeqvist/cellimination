@@ -41,7 +41,9 @@ end
 
 function moveAccordingToPath(self,go,dt)
 
-	if self.teamNumber~=PLAYER_TEAM and not self.isFighting then return end
+	
+
+	--if self.teamNumber~=PLAYER_TEAM and not self.isFighting and not self.movingTowardsPlayer then return end
 
 	local pos = getPosition(self)
 	local yDiff=pos.y-self.goalY
@@ -51,6 +53,8 @@ function moveAccordingToPath(self,go,dt)
 	self.dir=vmath.vector3(pos.x-self.goalX,pos.y-self.goalY,0)
 	
     if reachedGoal==false then
+    	
+    	
   
     	--self.go.set_position(pos-self.dir*MOVE_SPEED[self.name]*2*dt)
     	

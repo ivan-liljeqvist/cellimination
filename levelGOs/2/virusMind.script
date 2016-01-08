@@ -1,29 +1,43 @@
+
+
+
 function init(self)
-    -- Add initialization code here
-    -- Remove this function if not needed
+	self.spawnedViruses=0
 end
 
 function final(self)
-    -- Add finalization code here
-    -- Remove this function if not needed
+
 end
 
 function update(self, dt)
-    -- Add update code here
-    -- Remove this function if not needed
+
 end
 
 function on_message(self, message_id, message, sender)
-    -- Add message-handling code here
-    -- Remove this function if not needed
+	if message_id == hash("attack") then
+		attack(self)
+
+
+	end
+end	
+
+function attack(self)
+	
+	msg.post(spawnVirus(self),"attackPlayer")
+	msg.post(spawnVirus(self),"attackPlayer")
+	msg.post(spawnVirus(self),"attackPlayer")
+	msg.post(spawnVirus(self),"attackPlayer")
+	msg.post(spawnVirus(self),"attackPlayer")
+	msg.post(spawnVirus(self),"attackPlayer")
+	
+	
 end
 
-function on_input(self, action_id, action)
-    -- Add input-handling code here
-    -- Remove this function if not needed
+function spawnVirus(self)
+	local pos = go.get_position()
+	pos.x=pos.x+math.random(-200, 200)
+	pos.y=pos.y+math.random(-200, 200)
+	return factory.create("#factory",pos)
 end
 
-function on_reload(self)
-    -- Add reload-handling code here
-    -- Remove this function if not needed
-end
+

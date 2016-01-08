@@ -85,7 +85,6 @@ function look(x,y)
 		tooFarOut=true
 	end
 	
-	print("a!")
 	
 	if tooFarOut then print("tooFarOut") end
 	

@@ -9,6 +9,7 @@ require "modules.data.buildings"
 require "modules.data.language"
 require "modules.data.upgrades"
 
+
 require "modules.creations"
 require "modules.extractorBase"
 require "modules.livingUnit"
@@ -33,6 +34,7 @@ require "modules.colors"
 require "modules.fogManager"
 require "modules.fightingUnit"
 require "modules.healingUnit"
+require "modules.virus"
 
 require "modules.transactions"
 
@@ -69,7 +71,7 @@ function update(self, dt)
 	GAME_TIME=GAME_TIME+dt
 	--msg.post("HUD","displayErrorMessage",{text=GAME_TIME..", "..dt})
 	
-	msg.post("HUD","displayErrorMessage",{text=tilemapObject.get_tile("world#tilemap","blocked",1,1)..tilemapObject.get_tile("world#tilemap","blocked",2,1)})
+	msg.post("HUD","displayErrorMessage",{text=CAMERA_OFFSETX.." "..CAMERA_OFFSETY})
 end
 
 

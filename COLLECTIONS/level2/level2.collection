@@ -380,12 +380,72 @@ instances {
   }
 }
 instances {
+  id: "soldier"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 6261.0376
+    y: 3657.4055
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier1"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 6335.9565
+    y: 3417.6648
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "unitManager"
   prototype: "/units/unitManager.go"
   position {
     x: 2815.2449
     y: 1183.3221
     z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "virusMind"
+  prototype: "/levelGOs/2/virusMind.go"
+  position {
+    x: 7804.3677
+    y: 3522.5513
+    z: 0.0
   }
   rotation {
     x: 0.0

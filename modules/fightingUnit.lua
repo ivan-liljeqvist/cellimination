@@ -132,6 +132,10 @@ function shootTarget(self)
 		
 		self.timeSinceLastShot=0
 		
+		if self.teamNumber~=PLAYER_TEAM then
+				turnOffZombieMode(self)
+		end
+		
 	else
 	end
 end

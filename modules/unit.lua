@@ -385,6 +385,9 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 		
 			decreaseHealth(self,message.damage)
 	
+			if self.teamNumber~=PLAYER_TEAM then
+				turnOffZombieMode(self)
+			end
 
 	   end
 
