@@ -3,6 +3,8 @@ function init(self)
     -- Remove this function if not needed
     
     msg.post("#sprite", "play_animation", {id = hash("anim")})
+    
+     particlefx.play("#particlefx")
 end
 
 function final(self)

@@ -34,6 +34,26 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "constructionComplete"
+  type: "sound"
+  data: "sound: \"/audio/worker/Worker_Construction_Complete.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "death"
   type: "sound"
   data: "sound: \"/audio/misc/Cell_Spawn.ogg\"\n"

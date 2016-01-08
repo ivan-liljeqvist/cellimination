@@ -85,3 +85,9 @@ images {
 images {
   image: "/graphicalAssets/minimap/raw/mark.png"
 }
+images {
+  image: "/graphicalAssets/gui/back.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

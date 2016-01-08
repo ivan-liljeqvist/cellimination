@@ -1,6 +1,7 @@
 function init(self)
 	msg.post(".", "acquire_input_focus")
     msg.post("loader#level"..LEVEL, "load")
+    --msg.post("loader#mainMenuBackground","load")
 end
 
 function final(self)
@@ -21,10 +22,14 @@ end
 
 function on_message(self, message_id, message, sender)
 
-    if message_id == hash("proxy_loaded") and sender.fragment == hash("level1") then
+    if message_id == hash("proxy_loaded") 
+    --and sender.fragment == hash("level1") 
+    then
+   -- 
+   --WHEN STARTING LEVEL2, move camera to the middle
             msg.post(sender, "init")
             msg.post(sender, "enable")
-          
+          print("proxy loaded")
     end
     
 end

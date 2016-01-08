@@ -61,7 +61,7 @@ function on_message(self, message_id, message, sender)
 			
 					
 			msg.post(msg.url(newUnit), "rollOutOfProducer", {x=rollOutPosition.x,
-													 y=rollOutPosition.y,waypointSet=message.waypointSet,prodX=message.producerPosition.x,prodY=message.producerPosition.y-TILE_SIZE})
+													 y=rollOutPosition.y,waypointSet=message.waypointSet,prodX=message.producerPosition.x,prodY=message.producerPosition.y-TILE_SIZE*2})
 									    
 		end	
 		

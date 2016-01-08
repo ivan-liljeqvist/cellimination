@@ -15,6 +15,10 @@ function init(self)
 	self.goalY=0
 	
 	go.set_position(pos)
+	
+	if LEVEL==2 then
+		look(5000,4300)
+	end
 end
 
 function final(self)

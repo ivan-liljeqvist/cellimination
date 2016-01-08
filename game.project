@@ -48,7 +48,7 @@ max_count = 16384
 [sound]
 
 [html5]
-set_custom_heap_size = 0
-custom_heap_size = 8388608
+set_custom_heap_size = 1
+custom_heap_size = 308435456
 include_dev_tool = 0
 

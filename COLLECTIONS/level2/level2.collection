@@ -1,0 +1,462 @@
+name: "default"
+instances {
+  id: "HUD"
+  prototype: "/gui/HUD/HUD.go"
+  position {
+    x: 384.0
+    y: 447.8071
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "base"
+  prototype: "/buildings/base/base.go"
+  position {
+    x: 4393.0303
+    y: 3983.9392
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffect"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 4946.8696
+    y: 3462.6765
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffect2"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 4760.8057
+    y: 3230.412
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffect3"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 4489.8125
+    y: 3244.5405
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffect4"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 3973.0044
+    y: 3286.4238
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffect5"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 4320.028
+    y: 3416.4414
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffect6"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 4007.3318
+    y: 3472.91
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildingManager"
+  prototype: "/buildings/buildingManager.go"
+  position {
+    x: 845.08307
+    y: 614.66876
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "extractorInfo"
+  prototype: "/gui/extractor/extractorInfo.go"
+  position {
+    x: 3072.0
+    y: 2528.0
+    z: 0.35
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "fog"
+  prototype: "/ground/level2/fog/level2fog.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "healthBars"
+  prototype: "/gui/bars/healthBars.go"
+  position {
+    x: 444.1659
+    y: 381.9355
+    z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "inputLayer"
+  prototype: "/inputLayer/inputLayer.go"
+  position {
+    x: 845.08307
+    y: 614.66876
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "manager"
+  prototype: "/manager/manager.go"
+  position {
+    x: 384.0
+    y: 447.8071
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "miniRectangle"
+  prototype: "/minimap/miniRectangle.go"
+  position {
+    x: 3703.6409
+    y: 2720.0
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mixer"
+  prototype: "/audio/mixer.go"
+  position {
+    x: 826.8083
+    y: 801.13135
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "ownCamera"
+  prototype: "/render/ownCamera.go"
+  position {
+    x: 1984.0
+    y: 1663.8071
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "progressBars"
+  prototype: "/gui/bars/progressBars.go"
+  position {
+    x: 3072.0
+    y: 2528.0
+    z: 0.35
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "selection"
+  prototype: "/gui/selection/selection.go"
+  position {
+    x: 448.0
+    y: 623.71063
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "unitManager"
+  prototype: "/units/unitManager.go"
+  position {
+    x: 2815.2449
+    y: 1183.3221
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weakPurpleSpawner"
+  prototype: "/levelGOs/1/weakPurpleSpawner/weakPurpleSpawner.go"
+  position {
+    x: 2786.592
+    y: 1900.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 4789.931
+    y: 4002.0513
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "world"
+  prototype: "/ground/level2/ground/level2World.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

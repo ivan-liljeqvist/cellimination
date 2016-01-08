@@ -44,6 +44,10 @@ local holdingDownOnMinimap=false
 MINIMAP_BOUNDS={}
 MINIMAP_BOUNDS[0]={x=230,y=230}
 MINIMAP_BOUNDS[1]={x=230,y=230}
+MINIMAP_BOUNDS[2]={x=230,y=230}
+MINIMAP_BOUNDS[3]={x=230,y=230}
+MINIMAP_BOUNDS[4]={x=230,y=230}
+MINIMAP_BOUNDS[5]={x=230,y=230}
 
 function moveMinimap(action,action_id)
 	

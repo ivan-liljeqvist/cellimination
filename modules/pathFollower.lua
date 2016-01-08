@@ -21,11 +21,11 @@ function goStraightToNode(self,nodeIndex)
 	self.tileCoordinates={pixelToTileCoords(self.goalX,self.goalY)}
     local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
    
-    
-	TILEMAP_NODES[currentNodeIndex].occupied = false
-	TILEMAP_NODES[currentNodeIndex].occupiedBy = nil
-	   -- tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1]+1, self.tileCoordinates[2]+1, 4)
-
+    if TILEMAP_NODES[currentNodeIndex] then
+		TILEMAP_NODES[currentNodeIndex].occupied = false
+		TILEMAP_NODES[currentNodeIndex].occupiedBy = nil
+		   -- tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1]+1, self.tileCoordinates[2]+1, 4)
+	end
 	
 	TILEMAP_NODES[self.lastDestIndex].occupied=false
 	TILEMAP_NODES[self.lastDestIndex].occupiedByID=nil

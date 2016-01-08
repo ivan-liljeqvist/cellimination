@@ -72,7 +72,10 @@ end
 
 
 function constructionDone(self)
-	print("constructiond done! "..self.name)
+	
+	msg.post(msg.url("mixer"),"constructionDone")
+	
+	msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
 	
 	if self.isFatExtractor==true then FAT_EXTRACTORS_MADE=FAT_EXTRACTORS_MADE+1
 	elseif self.isCarbExtractor==true then CARB_EXTRACTORS_MADE=CARB_EXTRACTORS_MADE+1
@@ -376,7 +379,8 @@ function setTilesUnderMeToOccupied(self,x,y)
 end
 
 function isFatTile(type)
-	if type==7 or type==8 or type==21 or type==22 then return true end
+	if type==37 or type==51
+	   then return true end
 	return false
 end
 
@@ -395,7 +399,7 @@ function canBuildAtTile(self,tileX,tileY)
 	if tileNode and self.isProteinExtractor~=true and self.isCarbExtractor~=true 
 		and self.isFatExtractor~=true then
 		
-		if tileNode.type~=TILE_NOT_REACHABLE_CODE and tileNode.occupied==false then
+		if tileNode.type~=TILE_NOT_REACHABLE_CODE and tileNode.occupied==false and not isFatTile(tileNode.blockedType) then
 			return true
 		end
 	
@@ -477,5 +481,16 @@ function buildingUpdate(self,dt,go)
 	end
 	
 	
+end
+
+
+function spawnNow(self,x,y)
+		self.orOffX=CAMERA_OFFSETX
+		self.orOffY=CAMERA_OFFSETY
+		self.constructionDone=true
+		self.constructionStarted=true
+		self.GUILayout=self.GUILayoutComplete
+		setTilesUnderMeToOccupied(self,go.get_position().x,go.get_position().y)
+		buildHere(x,y,self)
 end
 

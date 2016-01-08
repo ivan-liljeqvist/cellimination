@@ -96,6 +96,8 @@ function on_message(self, message_id, message, sender)
 		msg.post(path,"play_sound", {delay = 0, gain =0.5})
 	elseif message_id == hash("death") then
 		msg.post("#death","play_sound", {delay = 0, gain =0.5})
+	elseif message_id == hash("constructionDone") then
+		msg.post("#constructionComplete","play_sound", {delay = 0, gain =0.5})
 	end
 	
 end

@@ -25,7 +25,7 @@ function updateProductionUnit(self,dt)
     	self.timeSinceLastProductionStarted=0
     	self.currentlyProducingItem=self.toProduce[1]
 
-    elseif self.currentlyProducing and TOTAL_HOUSE<MAX_HOUSE then
+    elseif self.currentlyProducing and TOTAL_HOUSE<MAX_HOUSE and self.currentlyProducingItem and TIME_TO_PRODUCE[self.currentlyProducingItem] then
     
     	if self.currentProductionProgress < 1.0 then
 	    	
@@ -42,6 +42,7 @@ function updateProductionUnit(self,dt)
 				msg.post(msg.url("progressBars#gui"),"updateSize",{ratio=ratio,unitId=self.id})
 			end
 	    else
+	    	msg.post(msg.url("progressBars#gui"),"hide",{unitId=self.id})
 	    	self.productionComplete(self.currentlyProducingItem,self)
 	    	table.remove(self.toProduce,1)
 			resetProduction(self)

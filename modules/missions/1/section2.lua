@@ -6,7 +6,7 @@ function lvl1Section2Act()
 	--voice 3 is triggered, after it we need to reset the background 
 	if  level1State.playedVoice3 and GAME_TIME>level1State.VOICE3_DONE_TIME and not level1State.playedVoice4 and not level1State.resetBackground then
 	
-		msg.post("HUD","setMissionObjectiveText",{text="MISSION OBJECTIVES:\nSearch the area for abnormalities.\nIf you see a virus, kill it!"})
+		msg.post("HUD","setMissionObjectiveText",{text="MISSION OBJECTIVES:\nFollow the path until you encounter viruses.\nIf you see a virus, kill it!"})
 		print("normalBackground3")
 		msg.post("mixer","normalBackground")
 		level1State.resetBackground=true
