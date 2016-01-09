@@ -52,6 +52,7 @@ function buildingMessageHandler(self,go,message_id,message,sender)
 
 		self.workerID=message.workerID
 	elseif message_id == hash("abortConstruction") and self.workerID then
+		
 		destroyUnit(self)
 	elseif message_id == hash("workerArrived") and self.workerID then
 		print("worker arrived!")
@@ -271,6 +272,7 @@ end
 
 function alertCantBuildHere()
 	--play sound or something
+	msg.post("mixer","errorSound")
 	msg.post("HUD","displayErrorMessage",{text=CANT_BUILD_HERE})
 end
 

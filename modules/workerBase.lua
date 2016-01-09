@@ -30,6 +30,7 @@ function workerMessageHandler(self,go,message_id,message,sender)
 		local tileX,tileY = pixelToTileCoords(message.pos.x,message.pos.y)
 		generateNewPathToTileCoords(self,tileX,tileY)
 		self.headingToBuilding=true
+		playResponseSound(self.name)
 	
 	elseif message_id == hash("setCurrentBuilding") then
 		abortConstruction(self)
@@ -60,11 +61,15 @@ function workerMessageHandler(self,go,message_id,message,sender)
 		local tileX,tileY = pixelToTileCoords(self.extractorLocation.x,self.extractorLocation.y)
 		generateNewPathToTileCoords(self,tileX,tileY)
 		
+		playResponseSound(self.name)
+		
+		playResponseSound(self.name)
+		
 		print("path to etract size: "..table.getn(self.currentPath))
 		
 	elseif message_id == hash("permittedToEnterExtractor") then
 		if message.canEnter then
-			msg.post("mixer","enteringExtractor")
+			--msg.post("mixer","enteringExtractor")
 			
 			if LEVEL==2 then level2State.needMissionObjectiveUpdate=true end
 			

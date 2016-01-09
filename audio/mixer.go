@@ -56,7 +56,47 @@ embedded_components {
 embedded_components {
   id: "death"
   type: "sound"
-  data: "sound: \"/audio/misc/Cell_Spawn.ogg\"\n"
+  data: "sound: \"/audio/misc/Cell_Death.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "deathVoice1"
+  type: "sound"
+  data: "sound: \"/audio/misc/Death_1.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "deathVoice2"
+  type: "sound"
+  data: "sound: \"/audio/misc/Death_2.ogg\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"
@@ -97,6 +137,26 @@ embedded_components {
   id: "enteringExtractor"
   type: "sound"
   data: "sound: \"/audio/worker/Worker_Extractor.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "errorSound"
+  type: "sound"
+  data: "sound: \"/audio/misc/Error_Message_2.ogg\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

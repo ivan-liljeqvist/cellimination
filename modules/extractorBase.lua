@@ -41,7 +41,11 @@ function extractorMessages(self, message_id, message, sender,go)
 			local action={x=message.start[1],y=message.start[2]}
 			
 			msg.post(message.workerID,"goToExtractor",{preciseLocation=action,extractorID=self.id})
-			
+		else
+			--if not foundWay then
+				msg.post("mixer","errorSound")
+				msg.post("HUD","displayErrorMessage",{text="Unreachable location!"})
+			--end
 		end
 		
 	elseif message_id == hash("workerEntered") then

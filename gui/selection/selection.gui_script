@@ -24,7 +24,10 @@ function init(self)
 				
 				local foundWay=generateNewPathForGroupToPixel(SELECTED_UNITS,action)
 				
-				playResponseSound(unitWithGUI.name)
+
+				if foundWay then
+					playResponseSound(unitWithGUI.name)
+				end
 				
 				
 				for unit,alive in pairs(SELECTED_UNITS)do
@@ -124,6 +127,7 @@ end
 
 function goToExtractorIfItsThere(self,action,worker)
 
+	local count=0
 	for unit,isAlive in pairs(EXTRACTORS) do
 		if isAlive then
 			
@@ -132,7 +136,13 @@ function goToExtractorIfItsThere(self,action,worker)
 													  pivot=gui.get_pivot(gui.get_node("selectionBox")),
 													  workerID=worker.id})
 
+			count=count+1
 		end
+	end
+	
+	if count<=0 then
+		msg.post("mixer","errorSound")
+		msg.post("HUD","displayErrorMessage",{text="Unreachable location!"})
 	end
 
 end

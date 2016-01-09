@@ -1,5 +1,5 @@
 
-ENABLE_SOUND=false
+ENABLE_SOUND=true
 ENABLE_MUSIC=true
 ENABLE_SOUND_EFFECTS=true
 
@@ -15,6 +15,7 @@ NUMBER_OF_VARIATIONS["soldierCall"]=4
 NUMBER_OF_VARIATIONS["soldierResponse"]=4
 NUMBER_OF_VARIATIONS["healerCall"]=4
 NUMBER_OF_VARIATIONS["healerResponse"]=4
+NUMBER_OF_VARIATIONS["deathVoice"]=2
 
 --store the just played id of each sound effect
 OLD_PLAYED_IDS={}
@@ -22,6 +23,8 @@ OLD_PLAYED_IDS={}
 
 function playSoundEffect(soundEffectId)
 
+		print("playSoundEffect "..soundEffectId)
+		
 		if ENABLE_SOUND == false then return end
 		if ENABLE_SOUND_EFFECTS == false then return end
 

@@ -1,6 +1,5 @@
 
 
-
 function init(self)
 
 	tilemapObject=tilemap
@@ -79,6 +78,8 @@ function init(self)
 		spawnNow(self,go.get_position().x,go.get_position().y)
 		BASES_SPAWNED_LEVEL2=BASES_SPAWNED_LEVEL2+1
 	end
+	
+	
 end
 
 

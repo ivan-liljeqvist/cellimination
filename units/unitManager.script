@@ -59,7 +59,10 @@ function on_message(self, message_id, message, sender)
 			local rollOutPosition=vmath.vector3(message.position.x,
 													    message.position.y-TILE_SIZE,1)
 			
-					
+			if not message.cameFromExtractor then
+				TOTAL_HOUSE=TOTAL_HOUSE+1
+			end
+			
 			msg.post(msg.url(newUnit), "rollOutOfProducer", {x=rollOutPosition.x,
 													 y=rollOutPosition.y,waypointSet=message.waypointSet,prodX=message.producerPosition.x,prodY=message.producerPosition.y-TILE_SIZE*2})
 									    

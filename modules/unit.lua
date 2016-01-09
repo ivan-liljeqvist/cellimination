@@ -82,11 +82,11 @@ function moveHealthbar(self)
 	msg.post(msg.url("healthBars#gui"),"setPosition",{position=pos,unitId=self.id})	
 end
 
+
 function destroyUnit(self)
 
 	if ALIVE[self.id] then
 	
-		msg.post("mixer","death")
 		
 		if self.healing then msg.post("mixer","stopHealing") end
 
@@ -95,7 +95,10 @@ function destroyUnit(self)
 		end
 		
 		ALIVE[self.id]=false
-		destroyLivingUnit(self)
+		
+		if not (self.isBuilding and (self.putDownAndWaitingForWorker or self.prototypeMode)) then
+			destroyLivingUnit(self)
+		end
 		
 		msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
 		
