@@ -139,6 +139,8 @@ end
 
 function showSelection(startCoordinates, currentCoordinates)
 	
+	SHOWING_SELECTION=true 
+	
 	--change where we start drawing the selection depending on where the user dragged
 	
 	if startCoordinates[2] > currentCoordinates[2] then
@@ -170,6 +172,7 @@ function showSelection(startCoordinates, currentCoordinates)
 end
 
 function hideSelection()
+	SHOWING_SELECTION=false
 	 gui.set_color(gui.get_node("selectionBox"), vmath.vector4(0, 0, 0, 0))
 end
 
