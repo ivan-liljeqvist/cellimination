@@ -103,20 +103,14 @@ end
 
 function upgradeInfoUpdate()
 
-	local text=""
+	local text="WHITE BLOOD CELL HIT LVL: "..(NUMBER_BOUGHT[UPGRADE_SOLDIER_NAME]+1)..
+				"   STEM CELL HEAL LVL: "..(NUMBER_BOUGHT[UPGRADE_HEALER_NAME]+1)..
+				"   MACROPHAGE MOBILITY LEVEL: "..(NUMBER_BOUGHT[UPGRADE_TANK_NAME]+1)..
+				"   HP BOOST: "..(NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]+1)
 	
 
-	if unitWithGUI.name == SOLDIER_NAME then
-		text="DAMAGE LEVEL "..(NUMBER_BOUGHT[UPGRADE_SOLDIER_NAME]+1).."\nHEALTH BOOST "..(NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]+1)
-	elseif unitWithGUI.name==HEAL1_NAME then
-		text="HEALING LEVEL "..(NUMBER_BOUGHT[UPGRADE_HEALER_NAME]+1).."\nHEALTH BOOST "..(NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]+1)
-	elseif unitWithGUI.name==TANK1_NAME then
-		text="MOBILITY LEVEL "..(NUMBER_BOUGHT[UPGRADE_TANK_NAME]+1).."\nHEALTH BOOST "..(NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]+1)
-	elseif unitWithGUI.name==WORKER_NAME or unitWithGUI.isBuilding then
-		text="HEALTH LEVEL "..(NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]+1)
-	end 
 	
-	gui.set_text(gui.get_node("upgradeInfo"),text)
+	gui.set_text(gui.get_node("upgradeText"),text)
 
 end
 

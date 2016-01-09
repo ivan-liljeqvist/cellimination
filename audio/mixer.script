@@ -75,6 +75,10 @@ function on_message(self, message_id, message, sender)
 			
 		
 	--MISC
+	elseif message_id == hash("upgradeComplete") then
+		local gain=0.5
+		if BACKGROUND_LOWERED then gain=0.2 end
+		msg.post("#upgradeComplete","play_sound", {delay = 0, gain = gain})
 	elseif message_id == hash("enteringExtractor") then
 		local gain=0.5
 		if BACKGROUND_LOWERED then gain=0.2 end

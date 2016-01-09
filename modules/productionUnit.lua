@@ -46,6 +46,10 @@ function updateProductionUnit(self,dt)
 	    	self.productionComplete(self.currentlyProducingItem,self)
 	    	table.remove(self.toProduce,1)
 			resetProduction(self)
+			
+			if self.name==EVOLUTION_NAME then 
+				msg.post("mixer","upgradeComplete")
+			end
 	    end
 	    
     end
