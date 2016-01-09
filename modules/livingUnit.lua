@@ -4,7 +4,7 @@ function initLivingUnit(self)
 	if self.teamNumber==PLAYER_TEAM then
 		self.requiresCapacity = true
 		self.takenCapcity = false
-		TOTAL_HOUSE = TOTAL_HOUSE+1
+		--TOTAL_POPULATION = TOTAL_POPULATION+1
 	end
 end
 
@@ -16,7 +16,7 @@ function destroyLivingUnit(self)
 		end
 		
 		if not self.headingForExtractor then
-			TOTAL_HOUSE = TOTAL_HOUSE-1
+			TOTAL_POPULATION = TOTAL_POPULATION-1
 		end
 	end
 	

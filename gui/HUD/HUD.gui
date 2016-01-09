@@ -31,6 +31,10 @@ fonts {
   name: "objectivesFont"
   font: "/fonts/objectivesFont.font"
 }
+fonts {
+  name: "gameOver"
+  font: "/fonts/gameOver.font"
+}
 textures {
   name: "resources"
   texture: "/graphicalAssets/resourceIcons/resources.atlas"
@@ -4796,7 +4800,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: ""
-  font: "megaFont"
+  font: "gameOver"
   id: "gameOverText"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

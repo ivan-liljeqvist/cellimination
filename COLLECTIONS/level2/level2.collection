@@ -280,6 +280,46 @@ instances {
   }
 }
 instances {
+  id: "bloodEffectBig"
+  prototype: "/ground/terrainEffects/blood/bloodEffectBig.go"
+  position {
+    x: 6592.027
+    y: 3574.0684
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffectBig1"
+  prototype: "/ground/terrainEffects/blood/bloodEffectBig.go"
+  position {
+    x: 6776.217
+    y: 3392.7122
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "buildingManager"
   prototype: "/buildings/buildingManager.go"
   position {

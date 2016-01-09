@@ -700,13 +700,13 @@ end
 
 function updateHouseLabel(self,dt)
 
-	if TOTAL_HOUSE>=MAX_HOUSE then
+	if TOTAL_POPULATION>=MAX_POPULATION then
 		blinkHouse(self,dt)
 	else
 		gui.set_color(gui.get_node("houseText"), vmath.vector3(1,1,1))
 	end
 	
-	gui.set_text(gui.get_node("houseText"), math.floor(TOTAL_HOUSE).."/"..math.floor(MAX_HOUSE).." housing")
+	gui.set_text(gui.get_node("houseText"), math.floor(TOTAL_POPULATION).."/"..math.floor(MAX_POPULATION).." population")
 end
 
 function updateStorageLabel(self,dt)
