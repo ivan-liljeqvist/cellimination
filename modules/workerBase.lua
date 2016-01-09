@@ -32,6 +32,8 @@ function workerMessageHandler(self,go,message_id,message,sender)
 		self.headingToBuilding=true
 	
 	elseif message_id == hash("setCurrentBuilding") then
+		abortConstruction(self)
+		self.currentPath={}
 		self.currentBuilding = nil
 		self.headingToBuilding=false
 		self.generateCounter=1
@@ -39,9 +41,11 @@ function workerMessageHandler(self,go,message_id,message,sender)
 		self.currentBuilding = message.building
 	elseif message_id == hash("resetBuilding") then
 		print("resetBuildingresetBuilding")
+		abortConstruction(self)
 		self.currentBuilding = nil
 		self.headingToBuilding=false
 		self.generateCounter=1
+		
 		
 	elseif message_id == hash("goToExtractor") then
 	
