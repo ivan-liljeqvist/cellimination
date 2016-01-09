@@ -3,6 +3,10 @@ function lvl2Section1Act()
 	
 	if not level2State.playedVoice1 and GAME_TIME>level2State.VOICE1_START_TIME then
 		
+		if not level2State.topTextSet then
+			msg.post("HUD","setTopBigText",{text="Press Enter to skip the introduction"})
+			level2State.topTextSet=true
+		end
 	
 		msg.post("mixer","lowerBackground")
 		msg.post("mixer","mission2Voice1")

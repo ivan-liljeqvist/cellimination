@@ -15,6 +15,9 @@ HIT_VARIATIONS=3
 
 sinceLastError=0
 
+ROAMING_UNIT_LENGTH=43.2
+timeCurrentRoamingPlaying=0
+
 function init(self)
 	--
 	startSoundscapeMusic()
@@ -105,17 +108,20 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("lowerBackground") then
 		if not BATTLE_MODE then
-			print("lowerBackground")
-			msg.post("#main", "set_gain", {gain = 0.2})
-			BACKGROUND_LOWERED=true
+			sound.set_group_gain("main",0.2)
 		else
+			sound.set_group_gain("battle",0.2)
 		end
+		BACKGROUND_LOWERED=true
+		
 	elseif message_id == hash("normalBackground")then
 		if not BATTLE_MODE then
-			msg.post("#main", "set_gain", {gain = 0.5})
-			BACKGROUND_LOWERED=false
+			sound.set_group_gain("main",0.5)
 		else
+			sound.set_group_gain("battle",0.5)
 		end
+		BACKGROUND_LOWERED=false
+		
 	elseif message_id == hash("healing") and HEALING_PLAYING==false then	
 		msg.post("#healing","play_sound", {delay = 0, gain = 0.5})	
 		HEALING_PLAYING=true
@@ -135,11 +141,24 @@ function on_message(self, message_id, message, sender)
 	
 end
 
-
+local counter=4
 
 function update(self, dt)
+
 	checkIfCanPlaySFX(dt)
+	
 	sinceLastError=sinceLastError+dt
+	timeCurrentRoamingPlaying=timeCurrentRoamingPlaying+dt
+	
+	--msg.post("HUD","displayErrorMessage",{text=timeCurrentRoamingPlaying})
+	
+	if timeCurrentRoamingPlaying>=ROAMING_UNIT_LENGTH and counter<=5 then
+		
+		msg.post("#roamingUnit"..counter, "set_gain", {gain = 0.5})
+		timeCurrentRoamingPlaying=0
+		counter=counter+1
+	end
+	
 end
 
 

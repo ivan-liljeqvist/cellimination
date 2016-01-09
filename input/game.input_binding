@@ -1,3 +1,7 @@
+key_trigger {
+  input: KEY_ENTER
+  action: "enterPressed"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_1
   action: "leftClicked"

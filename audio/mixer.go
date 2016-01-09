@@ -18,7 +18,7 @@ embedded_components {
   type: "sound"
   data: "sound: \"/audio/music/battle.ogg\"\n"
   "looping: 1\n"
-  "group: \"master\"\n"
+  "group: \"battle\"\n"
   "gain: 1.0\n"
   ""
   position {
@@ -418,7 +418,7 @@ embedded_components {
   type: "sound"
   data: "sound: \"/audio/music/main.ogg\"\n"
   "looping: 1\n"
-  "group: \"master\"\n"
+  "group: \"main\"\n"
   "gain: 1.0\n"
   ""
   position {
@@ -599,6 +599,86 @@ embedded_components {
   data: "sound: \"/audio/missions/2/Voice_Mission_Two_4.ogg\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "roamingUnit2"
+  type: "sound"
+  data: "sound: \"/audio/music/roamingUnits/2Roaming_Theme_French_Horn_Unit.ogg\"\n"
+  "looping: 1\n"
+  "group: \"main\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "roamingUnit3"
+  type: "sound"
+  data: "sound: \"/audio/music/roamingUnits/3Roaming_Theme_Trumpet_Block.ogg\"\n"
+  "looping: 1\n"
+  "group: \"main\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "roamingUnit4"
+  type: "sound"
+  data: "sound: \"/audio/music/roamingUnits/4Romaing_Theme_Harp_Block.ogg\"\n"
+  "looping: 1\n"
+  "group: \"main\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "roamingUnit5"
+  type: "sound"
+  data: "sound: \"/audio/music/roamingUnits/5Romaing_Theme_Pluck_Block.ogg\"\n"
+  "looping: 1\n"
+  "group: \"main\"\n"
   "gain: 1.0\n"
   ""
   position {

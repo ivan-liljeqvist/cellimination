@@ -108,7 +108,13 @@ end
 
 function startMainBackgroundMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
+	
+		msg.post("#roamingUnit2","play_sound", {delay = 0, gain = 0.0})
     	msg.post("#main", "play_sound", {delay = 0, gain = 0.5})
+    	msg.post("#roamingUnit3","play_sound", {delay = 0, gain = 0.0})
+    	msg.post("#roamingUnit5","play_sound", {delay = 0, gain = 0.0})
+    	msg.post("#roamingUnit4","play_sound", {delay = 0, gain = 0.0})
+    	
     end
 end
 

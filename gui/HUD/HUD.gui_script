@@ -39,6 +39,25 @@ function init(self)
  	
  	self.houseColorRed=false
  	self.timeSinceSwitchedHouseColor=0
+ 	
+ 	self.topBarFadeOut=true
+
+ 	gui.set_text(gui.get_node("topBigText"),"")
+
+	gui.animate(gui.get_node("topBigText"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 0.5), gui.EASING_INOUTQUAD, 0.5, 0.0, on_animation_done)
+ 	
+
+
+end
+
+function on_animation_done(self, node)
+ 		if self.topBarFadeOut then
+    		gui.animate(node, gui.PROP_COLOR, vmath.vector4(1,1, 1, 1), gui.EASING_OUTQUAD, 0.8, 0.0, on_animation_done)
+    		self.topBarFadeOut=false
+    	else
+    		gui.animate(gui.get_node("topBigText"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 0.5), gui.EASING_INOUTQUAD, 0.8, 0.0, on_animation_done)
+    		self.topBarFadeOut=true
+    	end
 end
 
 
@@ -147,7 +166,9 @@ function on_message(self, message_id, message, sender)
 			gui.set_color(gui.get_node("objectivesTitle"),vmath.vector4(1,1,1,0))
 		end
 		gui.set_text(gui.get_node("objectiveText"), message.text)
-		
+	
+	elseif message_id==hash("setTopBigText") then
+		gui.set_text(gui.get_node("topBigText"),message.text)
 	elseif message_id==hash("setSubtitleText") then
 	
 		print("setSubtitleText "..message.text)
