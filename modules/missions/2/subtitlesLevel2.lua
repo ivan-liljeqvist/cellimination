@@ -70,7 +70,7 @@ function level2Subtitles()
 	 	msg.post("HUD","setSubtitleText",{text="Command a worker to build this."})
 		level2State.sub18=true	
 		
-	elseif level2State.VOICE3_START_TIME and GAME_TIME>level2State.VOICE3_START_TIME+13.5 and not level2State.sub18extra then
+	elseif level2State.VOICE3_START_TIME and GAME_TIME>level2State.VOICE3_START_TIME+13.5 and not level2State.sub18extra and not level2State.sub19 then
 	 
 	 	msg.post("HUD","setSubtitleText",{text=""})
 		level2State.sub18extra=true	
@@ -90,7 +90,7 @@ function level2Subtitles()
 	 	msg.post("HUD","setSubtitleText",{text="the blue cells, the Monocytes are defensive units\nwith higher health than White Cells"})
 		level2State.sub22=true
 	elseif level2State.VOICE4_START_TIME and GAME_TIME>level2State.VOICE4_START_TIME+13.5 and not level2State.sub23 then
-	 	msg.post("HUD","setSubtitleText",{text="and the green Stem Cells are supportive units that are able to heal units and structures."})
+	 	msg.post("HUD","setSubtitleText",{text="and the green Stem Cells are supportive units that are able\n to heal units and structures."})
 		level2State.sub23=true
 	elseif level2State.VOICE4_START_TIME and GAME_TIME>level2State.VOICE4_START_TIME+19.5 and not level2State.sub24 then
 	 	msg.post("HUD","setSubtitleText",{text="Brief descriptions and costs of all commands can be found\nby pointing at the various build icons."})

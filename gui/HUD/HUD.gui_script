@@ -792,12 +792,24 @@ function updateSelectedUnits(self)
    	   self.selectionText = gui.get_node("selectionText")
    end
    
+   local unitWithGUISelected=0
+   
    local selectionNewText=""
    for unitName, numberSelected in pairs(selectedUnitsNumberLookup) do
-		selectionNewText=selectionNewText.."\n"..numberSelected.." "..unitName
+   		if unitName~=unitWithGUI.name then
+			selectionNewText=selectionNewText.."\n"..numberSelected.." "..unitName
+		else
+			unitWithGUISelected=numberSelected
+		end
    end
 	
    gui.set_text(self.selectionText,selectionNewText)
+   
+   if unitWithGUISelected>0 then
+   		gui.set_text(gui.get_node("topUnit"),unitWithGUISelected.." "..unitWithGUI.name)
+   else
+   		gui.set_text(gui.get_node("topUnit"),"")
+   end
    
    return selectedUnits	
 end
