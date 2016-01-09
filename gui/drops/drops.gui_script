@@ -1,0 +1,71 @@
+function init(self)
+    -- Add initialization code here
+    -- Remove this function if not needed
+end
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+DROPS={}
+
+function update(self, dt)
+    
+   for guiId, alive in pairs(DROPS) do
+   	
+   		if alive then 
+   			
+   			
+   			DROPS[guiId].position.x=DROPS[guiId].position.x-(CAMERA_OFFSETX-DROPS[guiId].orOffX)/ZOOM_LEVEL
+    		DROPS[guiId].orOffX=CAMERA_OFFSETX
+    		
+    		DROPS[guiId].position.y=DROPS[guiId].position.y-(CAMERA_OFFSETY-DROPS[guiId].orOffY)/ZOOM_LEVEL+100*dt
+    		DROPS[guiId].orOffY=CAMERA_OFFSETY
+
+    		gui.set_position(guiId,DROPS[guiId].position)
+    		
+    		if not DROPS[guiId].setText then
+				gui.set_text(guiId,DROPS[guiId].text)
+				DROPS[guiId].setText=true
+			end
+    
+   		end
+   
+   end
+   
+    
+end
+
+function on_message(self, message_id, message, sender)
+
+	if message_id == hash("newDrop") then
+	
+		newDrop=gui.clone(gui.get_node("dropDownText"))
+		
+		DROPS[newDrop]={}
+		DROPS[newDrop].orOffX=message.orOffX
+		DROPS[newDrop].orOffY=message.orOffY
+		DROPS[newDrop].position=message.position
+		DROPS[newDrop].text=message.text
+		
+		gui.animate(newDrop, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 0), gui.EASING_INOUTQUAD,1, 0.0, dropAnimationDone)
+		
+	end   
+
+end
+
+function dropAnimationDone(self, node)
+   DROPS[node]=nil
+   gui.delete_node(node)
+end
+
+function on_input(self, action_id, action)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end
+
+function on_reload(self)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end

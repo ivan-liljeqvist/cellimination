@@ -10,6 +10,7 @@ require "modules.data.language"
 require "modules.data.upgrades"
 
 
+require "modules.dropManager"
 require "modules.creations"
 require "modules.extractorBase"
 require "modules.livingUnit"

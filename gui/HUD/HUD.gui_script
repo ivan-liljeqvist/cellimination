@@ -168,6 +168,7 @@ function on_message(self, message_id, message, sender)
 		gui.set_text(gui.get_node("objectiveText"), message.text)
 	
 	elseif message_id==hash("setTopBigText") then
+		print("setTopBigText "..message.text)
 		gui.set_text(gui.get_node("topBigText"),message.text)
 	elseif message_id==hash("setSubtitleText") then
 	

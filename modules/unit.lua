@@ -95,6 +95,18 @@ function destroyUnit(self)
 			level1PurpleDeath()
 		end
 		
+		if self.isExtractor then
+			msg.post(msg.url("extractorInfo"),"updateExtractorInfo",
+				{text=" ",position=go.get_position(),userId=self.id})
+		end
+		
+		if self.teamNumber~=PLAYER_TEAM then
+			local pos = go.get_position()
+			pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
+			pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
+			msg.post("drops#gui","newDrop",{text=generateDrop(self),position=pos,orOffX=CAMERA_OFFSETX,orOffY=CAMERA_OFFSETY})
+		end
+		
 		ALIVE[self.id]=false
 		
 		if not (self.isBuilding and (self.putDownAndWaitingForWorker or self.prototypeMode)) then
@@ -114,9 +126,6 @@ function destroyUnit(self)
 		if self.isBuilding then
 			if self.building then
 				go.delete(self.building)
-			end
-			if self.construction then
-				go.delete(self.construction)
 			end
 		end
 		

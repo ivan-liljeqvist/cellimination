@@ -30,10 +30,10 @@ end
 function reachedPlayer(self)
 
 	if self.attackingFromRight then
-		print("attacking form right dist: "..self.goalX-PLAYER_X)
+		
 		if (self.goalX-PLAYER_X)<0 then return true end
 	else
-		print("attacking form left dist: "..self.goalX-PLAYER_X)
+		
 		if (self.goalX-PLAYER_X)>0 then return true end
 	end
 

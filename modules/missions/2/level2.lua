@@ -2,7 +2,7 @@
 
 level2State={}
 
-level2State.FIRST_ATTACK_TIME=200
+level2State.FIRST_ATTACK_TIME=20
 level2State.attacked=false
 
 level2State.fatExtractorDone=false

@@ -8,6 +8,8 @@ function on_message(self, message_id, message, sender)
   
   	if message_id == hash("updateExtractorInfo") then
   	
+ 
+  	
   		--make sure we have the object before use
   		if not self.extractorInfos[message.userId] then
   			self.extractorInfos[message.userId]=gui.clone(gui.get_node("text"))

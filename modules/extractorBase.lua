@@ -14,6 +14,8 @@ function initExtractor(self)
 	initProductionUnit(self)
 	
 	self.timeSinceUpdatedWorkers=0
+	
+	
 
 end
 
@@ -88,6 +90,7 @@ end
 function handleWorkerAndRPMGUI(self)
 
 	if self.constructionDone then
+	
 		local pos = go.get_position()
 		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
 		pos.y=(pos.y-30-CAMERA_OFFSETY)/ZOOM_LEVEL
