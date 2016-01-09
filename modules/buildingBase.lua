@@ -277,7 +277,9 @@ function alertCantBuildHere()
 end
 
 function destroyBuilding(self)
-	setTilesUnderMeToNotOccupied(self,self.builtAtX,self.builtAtY)
+	if not self.prototypeMode then
+		setTilesUnderMeToNotOccupied(self,self.builtAtX,self.builtAtY)
+	end
 end
 
 

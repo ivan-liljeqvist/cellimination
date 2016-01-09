@@ -47,114 +47,8 @@ background_color {
 }
 nodes {
   position {
-    x: 1769.966
-    y: -2.8219154
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 510.0
-    y: 210.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.07058824
-    y: 0.023529414
-    z: 0.019607844
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "box3"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_SE
-  adjust_mode: ADJUST_MODE_FIT
-  layer: ""
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 0.0
-  template_node_child: false
-}
-nodes {
-  position {
-    x: -2.4097364
-    y: -19.277891
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 1920.0
-    y: 230.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "container"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_SW
-  adjust_mode: ADJUST_MODE_FIT
-  layer: ""
-  inherit_alpha: false
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 0.0
-  template_node_child: false
-}
-nodes {
-  position {
-    x: 222.03001
-    y: 147.02718
+    x: 14.977187
+    y: 303.74402
     z: 0.0
     w: 1.0
   }
@@ -189,7 +83,7 @@ nodes {
   id: "selectionText"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_SW
   outline {
     x: 1.0
     y: 1.0
@@ -216,8 +110,8 @@ nodes {
 }
 nodes {
   position {
-    x: 558.3461
-    y: -1.5368125
+    x: 1163.4564
+    y: 47.14419
     z: 0.0
     w: 1.0
   }
@@ -449,8 +343,8 @@ nodes {
 }
 nodes {
   position {
-    x: 558.3461
-    y: 63.46318
+    x: 1163.4564
+    y: 112.14419
     z: 0.0
     w: 1.0
   }
@@ -681,8 +575,8 @@ nodes {
 }
 nodes {
   position {
-    x: 558.3461
-    y: 128.46321
+    x: 1163.4564
+    y: 177.14421
     z: 0.0
     w: 1.0
   }
@@ -913,8 +807,8 @@ nodes {
 }
 nodes {
   position {
-    x: 415.9361
-    y: -2.7860246
+    x: 1021.0463
+    y: 45.89498
     z: 0.0
     w: 1.0
   }
@@ -1145,8 +1039,8 @@ nodes {
 }
 nodes {
   position {
-    x: 415.9361
-    y: 62.213966
+    x: 1021.0463
+    y: 110.89497
     z: 0.0
     w: 1.0
   }
@@ -1377,8 +1271,8 @@ nodes {
 }
 nodes {
   position {
-    x: 415.9361
-    y: 127.214
+    x: 1021.0463
+    y: 175.895
     z: 0.0
     w: 1.0
   }
@@ -1609,8 +1503,8 @@ nodes {
 }
 nodes {
   position {
-    x: 272.2768
-    y: -4.035236
+    x: 877.387
+    y: 44.645767
     z: 0.0
     w: 1.0
   }
@@ -1841,8 +1735,8 @@ nodes {
 }
 nodes {
   position {
-    x: 272.2768
-    y: 60.96476
+    x: 877.387
+    y: 109.64577
     z: 0.0
     w: 1.0
   }
@@ -2073,8 +1967,8 @@ nodes {
 }
 nodes {
   position {
-    x: 272.2768
-    y: 125.964775
+    x: 877.387
+    y: 174.64578
     z: 0.0
     w: 1.0
   }
@@ -2707,8 +2601,8 @@ nodes {
 }
 nodes {
   position {
-    x: 624.36707
-    y: 46.879745
+    x: 844.2545
+    y: 49.756855
     z: 0.0
     w: 1.0
   }
@@ -2934,8 +2828,8 @@ nodes {
 }
 nodes {
   position {
-    x: 684.36707
-    y: 46.879745
+    x: 904.2545
+    y: 49.756855
     z: 0.0
     w: 1.0
   }
@@ -3159,8 +3053,8 @@ nodes {
 }
 nodes {
   position {
-    x: 744.36707
-    y: 46.879745
+    x: 964.2545
+    y: 49.756855
     z: 0.0
     w: 1.0
   }
@@ -3383,8 +3277,8 @@ nodes {
 }
 nodes {
   position {
-    x: 804.36707
-    y: 46.879745
+    x: 1024.2545
+    y: 49.756855
     z: 0.0
     w: 1.0
   }
@@ -3607,8 +3501,8 @@ nodes {
 }
 nodes {
   position {
-    x: 739.06976
-    y: 135.15027
+    x: 960.0
+    y: 138.02737
     z: 0.0
     w: 1.0
   }
@@ -3670,8 +3564,8 @@ nodes {
 }
 nodes {
   position {
-    x: 737.71204
-    y: 112.068306
+    x: 960.0
+    y: 114.94541
     z: 0.0
     w: 1.0
   }
@@ -3733,8 +3627,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1912.9689
-    y: 249.8094
+    x: 1900.1246
+    y: 295.68152
     z: 0.0
     w: 1.0
   }
@@ -3796,8 +3690,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1734.4076
-    y: 231.33151
+    x: 1721.5634
+    y: 277.20364
     z: 0.0
     w: 1.0
   }
@@ -3849,8 +3743,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1807.5536
-    y: 229.52943
+    x: 1794.7094
+    y: 275.40155
     z: 0.0
     w: 1.0
   }
@@ -3902,8 +3796,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1873.4915
-    y: 229.52943
+    x: 1860.6472
+    y: 275.40155
     z: 0.0
     w: 1.0
   }
@@ -3955,8 +3849,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1774.2094
-    y: 223.22217
+    x: 1761.3651
+    y: 269.0943
     z: 0.0
     w: 1.0
   }
@@ -4018,8 +3912,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1844.4901
-    y: 223.22217
+    x: 1831.6459
+    y: 269.0943
     z: 0.0
     w: 1.0
   }
@@ -4081,8 +3975,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1909.3647
-    y: 223.22217
+    x: 1896.5205
+    y: 269.0943
     z: 0.0
     w: 1.0
   }
@@ -4144,8 +4038,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1908.1494
-    y: 330.50037
+    x: 1895.3052
+    y: 376.3725
     z: 0.0
     w: 1.0
   }
@@ -4628,7 +4522,7 @@ nodes {
 }
 nodes {
   position {
-    x: 964.92944
+    x: 960.0
     y: 197.4025
     z: 0.0
     w: 1.0
@@ -4691,7 +4585,7 @@ nodes {
 }
 nodes {
   position {
-    x: 964.92944
+    x: 960.0
     y: 199.86723
     z: 0.0
     w: 1.0

@@ -47,14 +47,15 @@ function initBasicUnit(self,name,goID)
     
     self.hitByLastId={}
     
-    self.tileCoordinates={pixelToTileCoords(self.goalX,self.goalY)}
+    self.tileCoordinates={pixelToTileCoords(self.goalX-CAMERA_OFFSETX,self.goalY-CAMERA_OFFSETY)}
     if self.tileCoordinates and TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1] then
 	    local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
 	   
 	    if self.willBecomeBuilding~=true and TILEMAP_NODES[currentNodeIndex] then
 		    TILEMAP_NODES[currentNodeIndex].occupied = true
 		    TILEMAP_NODES[currentNodeIndex].occupiedBy = self
-		    --tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1]+1, self.tileCoordinates[2]+1, 4)
+		   -- tilemapObject.set_tile("world#tilemap", "reachable", self.tileCoordinates[1]+1, self.tileCoordinates[2]+1, 4)
+			self.lastNodeInPath=TILEMAP_NODES[currentNodeIndex]
 		end
 	end
 		

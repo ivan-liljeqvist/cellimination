@@ -70,6 +70,7 @@ function workerMessageHandler(self,go,message_id,message,sender)
 	elseif message_id == hash("permittedToEnterExtractor") then
 		if message.canEnter then
 			--msg.post("mixer","enteringExtractor")
+			msg.post("mixer","death")
 			
 			if LEVEL==2 then level2State.needMissionObjectiveUpdate=true end
 			
