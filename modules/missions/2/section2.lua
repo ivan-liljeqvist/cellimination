@@ -12,7 +12,7 @@ function lvl2Section2Act()
 	elseif level2State.playedVoice3 and 
 			level2State.VOICE3_DONE_TIME and 
 			GAME_TIME>level2State.VOICE3_DONE_TIME and not 
-			level2State.resetBackground then
+			level2State.resetBackground and not level2State.playedVoice4 then
 		
 		
 		msg.post("mixer","normalBackground")

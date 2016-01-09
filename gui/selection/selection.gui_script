@@ -141,7 +141,7 @@ function goToExtractorIfItsThere(self,action,worker)
 	end
 	
 	if count<=0 then
-		msg.post("mixer","errorSound")
+		--msg.post("mixer","errorSound")
 		msg.post("HUD","displayErrorMessage",{text="Unreachable location!"})
 	end
 

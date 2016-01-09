@@ -45,6 +45,7 @@ require "modules.missions.1.section2"
 require "modules.missions.1.section1"
 require "modules.missions.1.level1"
 
+require "modules.missions.2.subtitlesLevel2"
 require "modules.missions.2.section2"
 require "modules.missions.2.section1"
 require "modules.missions.2.level2"

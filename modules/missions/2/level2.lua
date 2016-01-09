@@ -18,6 +18,9 @@ level2State.VOICE2_DONE_TIME=level2State.VOICE2_START_TIME+40
 level2State.VOICE3_START_TIME=nil
 level2State.VOICE3_DONE_TIME=nil
 
+level2State.VOICE4_START_TIME=nil
+level2State.VOICE4_DONE_TIME=nil
+
 function level2Act()
 
 	if not level2State.section1Done then
@@ -25,6 +28,8 @@ function level2Act()
 	elseif not level1State.section2Done then
 		lvl2Section2Act()
 	end
+	
+	level2Subtitles()
 	
 	level2MissionObjectives()
 
@@ -59,9 +64,10 @@ function level2MissionObjectives()
 			local string="Build a REPLICATION STATION."
 			msg.post("HUD","setMissionObjectiveText",{text=string})
 		else
+			print("replication station done")
 			msg.post("HUD","setMissionObjectiveText",{text=""})
 			level2State.VOICE4_START_TIME=GAME_TIME
-			level2State.VOICE4_DONE_TIME=level2State.VOICE4_START_TIME+7
+			level2State.VOICE4_DONE_TIME=level2State.VOICE4_START_TIME+30
 		end
 		
 		level2State.needMissionObjectiveUpdate=false
@@ -105,7 +111,7 @@ function level2MissionObjectives()
 				msg.post("HUD","setMissionObjectiveText",{text=""})
 				level2State.section1Done=true
 				level2State.VOICE3_START_TIME=GAME_TIME
-				level2State.VOICE3_DONE_TIME=level2State.VOICE3_START_TIME+38
+				level2State.VOICE3_DONE_TIME=level2State.VOICE3_START_TIME+12.5
 			end
 		end
 		

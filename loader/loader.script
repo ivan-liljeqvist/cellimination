@@ -30,6 +30,8 @@ function on_message(self, message_id, message, sender)
             msg.post(sender, "init")
             msg.post(sender, "enable")
           print("proxy loaded")
+          
+          msg.post(sender,"set_time_step", {factor = 5, mode = 1})
     end
     
 end
