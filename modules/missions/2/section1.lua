@@ -1,4 +1,6 @@
 
+
+
 function lvl2Section1Act()
 	
 	if not level2State.playedVoice1 and GAME_TIME>level2State.VOICE1_START_TIME then
@@ -26,7 +28,6 @@ function lvl2Section1Act()
 	
 	elseif not level2State.playedVoice2 and GAME_TIME>level2State.VOICE2_START_TIME then
 		
-		msg.post("marrowHelp","show")
 		msg.post("mixer","lowerBackground")
 		msg.post("mixer","mission2Voice2")
 		
@@ -41,6 +42,9 @@ function lvl2Section1Act()
 		
 		level2State.needMissionObjectiveUpdate=true
 		msg.post("extractorHelp","show")
+		level2State.cantSkipIntro=true
+		
+		msg.post("HUD","setTopBigText",{text=""})
 		
 		msg.post("mixer","normalBackground")
 		level2State.resetBackground=true

@@ -134,6 +134,26 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "engineer2"
+  type: "sound"
+  data: "sound: \"/audio/missions/2/engineer2.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "enteringExtractor"
   type: "sound"
   data: "sound: \"/audio/worker/Worker_Extractor.ogg\"\n"
@@ -597,6 +617,26 @@ embedded_components {
   id: "mission2Voice4"
   type: "sound"
   data: "sound: \"/audio/missions/2/Voice_Mission_Two_4.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "mission2Voice5"
+  type: "sound"
+  data: "sound: \"/audio/missions/2/engineer1.ogg\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

@@ -34,6 +34,12 @@ function lvl2Section2Act()
 		msg.post("mixer","normalBackground")
 		level2State.resetBackground=true
 		level2State.needMissionObjectiveUpdate=true
+		
+		level2State.section2Done=true
+		
+		level2State.VOICE5_START_TIME=GAME_TIME+10
+		
+		level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET
 	end
 
 end

@@ -16,7 +16,7 @@ function init(self)
 	self.boundsWidthScale=0.5
 	self.boundsHeightScale=0.4
 	
-	self.initialScale=0.5
+	self.initialScale=0.7
 	self.fogRadius=JEEP_FOG_RADIUS
 	
 	self.spotEnemiesRadius=2
@@ -27,7 +27,7 @@ function init(self)
 
 	end
 	
-    initBasicUnit(self,PURPLE_NAME,go.get_id())
+    initBasicUnit(self,PURPLE_WEAK_NAME,go.get_id())
     initMovableUnit(self)
     initFightingUnit(self,false)
     

@@ -21,7 +21,7 @@ end
 
 function updateMaxWorkers(self)
 	
-	self.maxWorkersInside=2
+	self.maxWorkersInside=5
 	
 	if self.isProteinExtractor then
 		self.maxWorkersInside=self.maxWorkersInside+NUMBER_BOUGHT[UPGRADE_MORE_PROTEIN_NAME]
@@ -65,8 +65,8 @@ function extractorMessages(self, message_id, message, sender,go)
 			end
 			
 			msg.post(sender,"permittedToEnterExtractor",{canEnter=true})
-			self.currentlyProducingItem=SOLDIER_NAME
-			table.insert(self.toProduce,SOLDIER_NAME)
+			self.currentlyProducingItem=WORKER_NAME
+			table.insert(self.toProduce,WORKER_NAME)
 		else
 			msg.post(sender,"permittedToEnterExtractor",{canEnter=false})
 		end

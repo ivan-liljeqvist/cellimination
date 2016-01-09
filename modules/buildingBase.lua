@@ -394,7 +394,7 @@ function setTilesUnderMeToOccupied(self,x,y)
 end
 
 function isFatTile(type)
-	if type==37 or type==51
+	if type==5 or type==6 or type==19 or type==20
 	   then return true end
 	return false
 end

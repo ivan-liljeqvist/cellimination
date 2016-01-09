@@ -30,7 +30,6 @@ function init(self)
 		buildingInput(self,action,action_id)
 	end
 	
-	local buildRedBloodCellAction=function() msg.post("unitManager", "newJeep") end
 		self.requiresGUI=true
 	local deselectAction=function() msg.post("manager","deselectAll",{}) end
 	self.GUILayout={button1={text="Deselect",action=deselectAction,hover=function() return HOVER_LAYOUT[DESELECT]  end},
@@ -53,10 +52,10 @@ function init(self)
 					button7=nil,
 					button8=nil,
 					button9=nil,
-					productionButton1={icon="deselectIcon",action=productionButton1PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end},
-					productionButton2={icon="deselectIcon",action=productionButton2PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end},
-					productionButton3={icon="deselectIcon",action=productionButton3PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end},
-					productionButton4={icon="deselectIcon",action=productionButton4PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end}}
+					productionButton1={icon="RBCIcon",action=productionButton1PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end},
+					productionButton2={icon="RBCIcon",action=productionButton2PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end},
+					productionButton3={icon="RBCIcon",action=productionButton3PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end},
+					productionButton4={icon="RBCIcon",action=productionButton4PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end}}
 					
 						
 					

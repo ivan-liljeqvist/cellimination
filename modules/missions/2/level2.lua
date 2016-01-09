@@ -2,7 +2,9 @@
 
 level2State={}
 
-level2State.FIRST_ATTACK_TIME=20
+level2State.FIRST_ATTACK_TIME=nil
+level2State.FIRST_ATTACK_TIME_OFFSET=5
+
 level2State.attacked=false
 
 level2State.fatExtractorDone=false
@@ -21,9 +23,14 @@ level2State.VOICE3_DONE_TIME=nil
 level2State.VOICE4_START_TIME=nil
 level2State.VOICE4_DONE_TIME=nil
 
+level2State.VOICE5_START_TIME=0
+level2State.VOICE5_DONE_TIME=nil
+
 level2State.tutorialSkipped=false
 
 level2State.topTextSet=false
+
+local attackCounter=0
 
 function level2Act()
 
@@ -31,7 +38,7 @@ function level2Act()
 		
 		if not level2State.section1Done then
 			lvl2Section1Act()
-		elseif not level1State.section2Done then
+		elseif not level2State.section2Done then
 			lvl2Section2Act()
 		end
 		
@@ -41,17 +48,21 @@ function level2Act()
 	
 	
 	level2MissionObjectives()
+	
 
-	if GAME_TIME>level2State.FIRST_ATTACK_TIME and not level2State.attacked then
+	if level2State.FIRST_ATTACK_TIME and GAME_TIME>level2State.FIRST_ATTACK_TIME and not level2State.attacked then
 		msg.post("virusMind","attack",{fromRight=true})
 		msg.post("virusMind1","attack",{fromRight=false})
-		level2State.attacked=true
+		--level2State.attacked=true
+		
+		level2State.FIRST_ATTACK_TIME=level2State.FIRST_ATTACK_TIME+(60-attackCounter*3)
+		attackCounter=attackCounter+1
 	end
 
 end
 
 function skipTutorial()
-	if not level2State.tutorialSkipped then
+	if not level2State.tutorialSkipped and not level2State.cantSkipIntro then
 		level2State.tutorialSkipped=true
 		level2State.needMissionObjectiveUpdate=true
 		msg.post("mixer","stopVoice")
@@ -59,6 +70,8 @@ function skipTutorial()
 		msg.post("HUD","setTopBigText",{text=""})
 		msg.post("mixer","normalBackground")
 		level2State.resetBackground=true
+		
+		level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET+70
 	end
 end
 
@@ -75,6 +88,7 @@ function level2MissionObjectives()
 				
 				msg.post("HUD","setMissionObjectiveText",{text="Collect 1000 FAT, 1000 PROTEIN and 1000 CARBS.\nSurvive the attacks."})
 				level2State.needMissionObjectiveUpdate=false
+				
 		end
 	
 		--replication station
@@ -157,6 +171,7 @@ function level2FatExtractorDone()
 	if not level2State.fatExtractorDone then
 		level2State.fatExtractorDone=true
 		level2State.needMissionObjectiveUpdate=true
+		msg.post("extractorHelp","hide")
 	end
 end
 
@@ -164,6 +179,7 @@ function level2ProteinExtractorDone()
 	if not level2State.proteinExtractorDone then
 		level2State.proteinExtractorDone=true
 		level2State.needMissionObjectiveUpdate=true
+		msg.post("extractorHelp","hide")
 	end
 end
 
@@ -171,6 +187,7 @@ function level2CarbsExtractorDone()
 	if not level2State.carbsExtractorDone then
 		level2State.carbsExtractorDone=true
 		level2State.needMissionObjectiveUpdate=true
+		msg.post("extractorHelp","hide")
 	end
 end
 

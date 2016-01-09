@@ -29,10 +29,6 @@ function attack(self,fromRight)
 	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
 	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
 	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
-	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
-	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
-	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
-	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
 
 	
 	

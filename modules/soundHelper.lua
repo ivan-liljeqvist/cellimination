@@ -23,7 +23,6 @@ OLD_PLAYED_IDS={}
 
 function playSoundEffect(soundEffectId)
 
-		print("playSoundEffect "..soundEffectId)
 		
 		if ENABLE_SOUND == false then return end
 		if ENABLE_SOUND_EFFECTS == false then return end
@@ -58,7 +57,7 @@ function checkIfCanPlaySFX(dt)
 	if CAN_PLAY_SOUND_EFFECTS==false and LAST_CAN_PLAY_SOUND_EFFECTS==true then
 		sinceLastTimeSoundEffects=sinceLastTimeSoundEffects+dt
 		
-		if sinceLastTimeSoundEffects >= 1 then
+		if sinceLastTimeSoundEffects >= 1.5 then
 			LAST_CAN_PLAY_SOUND_EFFECTS=true
 			CAN_PLAY_SOUND_EFFECTS=true
 			sinceLastTimeSoundEffects=0
