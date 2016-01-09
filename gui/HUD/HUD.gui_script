@@ -147,6 +147,11 @@ function on_message(self, message_id, message, sender)
 		gui.set_text(gui.get_node("errorText"), message.text)
 	
 	elseif message_id==hash("setMissionObjectiveText")then
+		if message.text~="" then
+			gui.set_color(gui.get_node("objectivesTitle"),vmath.vector4(1,1,1,1))
+		else
+			gui.set_color(gui.get_node("objectivesTitle"),vmath.vector4(1,1,1,0))
+		end
 		gui.set_text(gui.get_node("objectiveText"), message.text)
 		
 	elseif message_id==hash("setSubtitleText") then

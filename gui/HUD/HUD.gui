@@ -23,6 +23,14 @@ fonts {
   name: "gameOverTitle"
   font: "/fonts/gameOverTitle.font"
 }
+fonts {
+  name: "cantBuildFont"
+  font: "/fonts/cantBuildFont.font"
+}
+fonts {
+  name: "objectivesFont"
+  font: "/fonts/objectivesFont.font"
+}
 textures {
   name: "resources"
   texture: "/graphicalAssets/resourceIcons/resources.atlas"
@@ -2385,9 +2393,9 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_BOX
@@ -4262,8 +4270,8 @@ nodes {
 }
 nodes {
   position {
-    x: 440.0
-    y: 1060.3301
+    x: 479.38736
+    y: 1060.8881
     z: 0.0
     w: 1.0
   }
@@ -4315,8 +4323,8 @@ nodes {
 }
 nodes {
   position {
-    x: 470.0
-    y: 1060.3301
+    x: 509.38736
+    y: 1060.8881
     z: 0.0
     w: 1.0
   }
@@ -4378,8 +4386,8 @@ nodes {
 }
 nodes {
   position {
-    x: 611.2671
-    y: 1060.3301
+    x: 697.91925
+    y: 1060.8881
     z: 0.0
     w: 1.0
   }
@@ -4441,8 +4449,8 @@ nodes {
 }
 nodes {
   position {
-    x: 581.2671
-    y: 1060.3301
+    x: 667.91925
+    y: 1060.8881
     z: 0.0
     w: 1.0
   }
@@ -4557,8 +4565,8 @@ nodes {
 }
 nodes {
   position {
-    x: 41.653107
-    y: 967.37476
+    x: 30.0
+    y: 977.43964
     z: 0.0
     w: 1.0
   }
@@ -4581,15 +4589,15 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.96470594
+    x: 1.0
     y: 1.0
-    z: 0.9725491
+    z: 1.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: ""
-  font: "bigFont"
+  font: "objectivesFont"
   id: "objectiveText"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -4919,6 +4927,69 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  outline_alpha: 0.0
+  shadow_alpha: 0.0
+  template_node_child: false
+}
+nodes {
+  position {
+    x: 30.0
+    y: 1020.2285
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "MISSION OBJECTIVES:"
+  font: "bigFont"
+  id: "objectivesTitle"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_NW
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  layer: ""
+  inherit_alpha: true
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 0.0
   outline_alpha: 0.0
   shadow_alpha: 0.0
   template_node_child: false

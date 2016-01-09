@@ -88,6 +88,10 @@ function constructionDone(self)
 		if LEVEL==2 then level2ProteinExtractorDone() end
 	end
 	
+	if self.name==BARACKS_NAME and LEVEL==2 then
+		level2ReplicationStationDone()
+	end
+	
 	showBuilding(self)
 	hideConstruction(self)
 		

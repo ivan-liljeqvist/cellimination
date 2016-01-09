@@ -67,7 +67,7 @@ function level1TriggerCheck(x,y)
 		GAME_TIME = level1State.VOICE2_DONE_TIME
 		
 		msg.post("HUD","displayErrorMessage",{text="YOU ALREADY KNOW HOW TO PLAY!"})
-		msg.post("HUD","setMissionObjectiveText",{text="MISSION OBJECTIVE:\nFollow the path until you encounter viruses."})
+		msg.post("HUD","setMissionObjectiveText",{text="Follow the path until you encounter viruses."})
 
 		level1State.sub1=true
 		level1State.sub2=true

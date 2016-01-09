@@ -60,6 +60,66 @@ instances {
   }
 }
 instances {
+  id: "bloodEffect1"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 4983.2065
+    y: 3210.337
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffect10"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 3780.0515
+    y: 3202.2622
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffect11"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 3776.0142
+    y: 3511.1257
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "bloodEffect2"
   prototype: "/ground/terrainEffects/blood/bloodEffect.go"
   position {
@@ -145,6 +205,66 @@ instances {
   position {
     x: 4007.3318
     y: 3472.91
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffect7"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 4744.998
+    y: 3507.0884
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffect8"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 4537.0703
+    y: 3515.163
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bloodEffect9"
+  prototype: "/ground/terrainEffects/blood/bloodEffect.go"
+  position {
+    x: 4294.824
+    y: 3204.2808
     z: 0.0
   }
   rotation {

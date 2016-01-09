@@ -69,6 +69,9 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("mission2Voice3") and ENABLE_SOUND then
 		msg.post("#mission2Voice3", "play_sound", {delay = 0, gain = 0.5})
 		currentVoice="#mission2Voice3"
+	elseif message_id == hash("mission2Voice4") and ENABLE_SOUND then
+		msg.post("#mission2Voice4", "play_sound", {delay = 0, gain = 0.5})
+		currentVoice="#mission2Voice4"
 			
 		
 	--MISC

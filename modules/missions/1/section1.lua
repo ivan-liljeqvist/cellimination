@@ -24,7 +24,7 @@ function lvl1Section1Act()
 		
 	elseif (not level1State.playedVoice2) and (GAME_TIME>level1State.VOICE2_START_TIME) then
 		
-		msg.post("HUD","setMissionObjectiveText",{text="MISSION OBJECTIVE:\nFollow the path until you encounter viruses."})
+		msg.post("HUD","setMissionObjectiveText",{text="Follow the path until you encounter viruses."})
 		msg.post("mixer","lowerBackground")
 		msg.post("mixer","mission1Voice2")
 		level1State.resetBackground=false

@@ -534,6 +534,26 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "mission2Voice4"
+  type: "sound"
+  data: "sound: \"/audio/missions/2/Voice_Mission_Two_4.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "soldierCall1"
   type: "sound"
   data: "sound: \"/audio/soldier/Soldier_Call.ogg\"\n"

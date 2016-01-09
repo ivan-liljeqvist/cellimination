@@ -39,13 +39,32 @@ end
 
 function level2MissionObjectives()
 
-	--replication station
-	if level2State.playedVoice3 and 
-			GAME_TIME>(level2State.VOICE3_START_TIME+12) and not 
-			level2State.replicationStationDone then
+	--collect resourses
 	
-		local string="MISSION OBJECTIVES:\nBuild a REPLICATION STATION."
-		msg.post("HUD","setMissionObjectiveText",{text=string})
+	if level2State.playedVoice4 and 
+			level2State.VOICE4_DONE_TIME and 
+			GAME_TIME>level2State.VOICE4_DONE_TIME and not
+			level2State.collectedResources then
+			
+			msg.post("HUD","setMissionObjectiveText",{text="Collect 1000 FAT, 1000 PROTEIN and 1000 CARBS.\nSurvive the attacks."})
+			level2State.needMissionObjectiveUpdate=false
+	end
+
+	--replication station
+	if level2State.playedVoice3 and not level2State.VOICE4_START_TIME and 
+			GAME_TIME>(level2State.VOICE3_START_TIME+12) then
+	
+		
+		if not level2State.replicationStationDone then
+			local string="Build a REPLICATION STATION."
+			msg.post("HUD","setMissionObjectiveText",{text=string})
+		else
+			msg.post("HUD","setMissionObjectiveText",{text=""})
+			level2State.VOICE4_START_TIME=GAME_TIME
+			level2State.VOICE4_DONE_TIME=level2State.VOICE4_START_TIME+7
+		end
+		
+		level2State.needMissionObjectiveUpdate=false
 	end
 
 	--objective about extractors
@@ -55,7 +74,7 @@ function level2MissionObjectives()
 		   not level2State.proteinExtractorDone or
 		   not level2State.fatExtractorDone then
 		   
-			local string="MISSION OBJECTIVES:\n"
+			local string=""
 			
 			if not level2State.fatExtractorDone then
 				string=string.."\nBuild one FAT EXTRACTOR."
@@ -77,7 +96,7 @@ function level2MissionObjectives()
 		else
 			print("fat, prtoa "..WORKERS_EXTRACTING_PROTEIN.." "..WORKERS_EXTRACTING_FAT.." "..WORKERS_EXTRACTING_CARB)
 			if WORKERS_EXTRACTING_PROTEIN<=0 or WORKERS_EXTRACTING_FAT<=0 or WORKERS_EXTRACTING_CARB<=0 then
-				local string="MISSION OBJECTIVES:\n\nPut at least one RED BLOOD CELL (WORKER) in each extractor."
+				local string="Put at least one RED BLOOD CELL (WORKER) in each extractor."
 				msg.post("HUD","setMissionObjectiveText",{text=string})
 				level2State.needMissionObjectiveUpdate=false
 			else	
@@ -95,24 +114,32 @@ function level2MissionObjectives()
 end
 
 function level2ReplicationStationDone()
-	level2State.replicationStationDone=true
-	level2State.needMissionObjectiveUpdate=true
+	if not level2State.replicationStationDone then
+		level2State.replicationStationDone=true
+		level2State.needMissionObjectiveUpdate=true
+	end
 end
 
 
 function level2FatExtractorDone()
-	level2State.fatExtractorDone=true
-	level2State.needMissionObjectiveUpdate=true
+	if not level2State.fatExtractorDone then
+		level2State.fatExtractorDone=true
+		level2State.needMissionObjectiveUpdate=true
+	end
 end
 
 function level2ProteinExtractorDone()
-	level2State.proteinExtractorDone=true
-	level2State.needMissionObjectiveUpdate=true
+	if not level2State.proteinExtractorDone then
+		level2State.proteinExtractorDone=true
+		level2State.needMissionObjectiveUpdate=true
+	end
 end
 
 function level2CarbsExtractorDone()
-	level2State.carbsExtractorDone=true
-	level2State.needMissionObjectiveUpdate=true
+	if not level2State.carbsExtractorDone then
+		level2State.carbsExtractorDone=true
+		level2State.needMissionObjectiveUpdate=true
+	end
 end
 
 
