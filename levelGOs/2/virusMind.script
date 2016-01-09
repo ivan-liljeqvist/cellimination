@@ -15,20 +15,25 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("attack") then
-		attack(self)
-
-
+		attack(self,message.fromRight)
+		print("virus mind recieved message")
 	end
+	
+
 end	
 
-function attack(self)
+function attack(self,fromRight)
+
+
 	
-	msg.post(spawnVirus(self),"attackPlayer")
-	msg.post(spawnVirus(self),"attackPlayer")
-	msg.post(spawnVirus(self),"attackPlayer")
-	msg.post(spawnVirus(self),"attackPlayer")
-	msg.post(spawnVirus(self),"attackPlayer")
-	msg.post(spawnVirus(self),"attackPlayer")
+	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
+	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
+	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
+	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
+	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
+	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
+	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
+
 	
 	
 end

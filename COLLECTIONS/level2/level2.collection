@@ -360,6 +360,426 @@ instances {
   }
 }
 instances {
+  id: "purple"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 1899.6106
+    y: 3160.4011
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple1"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 1625.6794
+    y: 3567.1472
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple10"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 4448.0
+    y: 1300.9899
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple11"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 4954.3574
+    y: 2031.4728
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple12"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 5037.3667
+    y: 1633.0276
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple13"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 5502.2197
+    y: 1790.7455
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple14"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 4879.649
+    y: 670.11816
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple15"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 7328.4272
+    y: 2795.1594
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple16"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 7328.4272
+    y: 3093.9934
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple17"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 7552.5527
+    y: 3758.0688
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple18"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 8141.9194
+    y: 4081.8057
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple19"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 8191.725
+    y: 2919.6736
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple2"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 1891.3097
+    y: 3874.282
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple20"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 8382.646
+    y: 3583.749
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple3"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 2015.8237
+    y: 3550.5454
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple4"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 1492.8644
+    y: 2388.4133
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple5"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 546.55695
+    y: 2388.4133
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple6"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 895.19653
+    y: 2230.6953
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple7"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 571.4597
+    y: 2795.1594
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple8"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 488.45032
+    y: 3442.633
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple9"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 853.6918
+    y: 3351.3228
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "selection"
   prototype: "/gui/selection/selection.go"
   position {
@@ -383,8 +803,8 @@ instances {
   id: "soldier"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 6261.0376
-    y: 3657.4055
+    x: 5987.7163
+    y: 3704.9807
     z: 0.0
   }
   rotation {
@@ -403,8 +823,68 @@ instances {
   id: "soldier1"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 6335.9565
-    y: 3417.6648
+    x: 6178.4775
+    y: 3500.5935
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier2"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 6055.845
+    y: 3309.8323
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier3"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 6028.5938
+    y: 3459.716
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier4"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 6232.9805
+    y: 3704.9807
     z: 0.0
   }
   rotation {
@@ -460,6 +940,26 @@ instances {
   }
 }
 instances {
+  id: "virusMind1"
+  prototype: "/levelGOs/2/virusMind.go"
+  position {
+    x: 1166.4509
+    y: 3537.4346
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "weakPurpleSpawner"
   prototype: "/levelGOs/1/weakPurpleSpawner/weakPurpleSpawner.go"
   position {
@@ -485,7 +985,7 @@ instances {
   position {
     x: 4789.931
     y: 4002.0513
-    z: 0.0
+    z: 1.0
   }
   rotation {
     x: 0.0
@@ -520,3 +1020,113 @@ instances {
   }
 }
 scale_along_z: 0
+embedded_instances {
+  id: "extractorHelp"
+  data: "components {\n"
+  "  id: \"script\"\n"
+  "  component: \"/tutorialGOs/tutorialGO.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/graphicalAssets/gui/gui.atlas\\\"\\n"
+  "default_animation: \\\"extractorHelper\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 1.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 4157.63
+    y: 3373.083
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "marrowHelp"
+  data: "components {\n"
+  "  id: \"script\"\n"
+  "  component: \"/tutorialGOs/tutorialGO.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/graphicalAssets/gui/gui.atlas\\\"\\n"
+  "default_animation: \\\"marrowHelper\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: -330.8501\n"
+  "    y: -77.74289\n"
+  "    z: 1.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 4306.5376
+    y: 4013.3865
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}

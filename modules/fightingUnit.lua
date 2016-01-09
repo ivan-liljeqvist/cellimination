@@ -105,10 +105,15 @@ function shootOrChase(self)
 			shootTarget(self)
 		--we need to chase
 		else
-			if table.getn(self.currentPath)<=0 and self.orderedToMove==false then
+			
+			
+			if table.getn(self.currentPath)<=0 and self.orderedToMove==false or self.zombieMode then
+				
 				if targetWithinVisionRange(self) then
+				
 					moveTowardsTarget(self) --only move if we see target
 				else
+					
 					resetTargetEnemy(self)
 				end
 			end
@@ -132,7 +137,7 @@ function shootTarget(self)
 		
 		self.timeSinceLastShot=0
 		
-		if self.teamNumber~=PLAYER_TEAM then
+		if self.teamNumber~=PLAYER_TEAM then  
 				turnOffZombieMode(self)
 		end
 		
@@ -219,7 +224,7 @@ function searchForTarget(self)
 		if target then
 			self.targetEnemyId = target.id
 		elseif self.teamNumber==2 then
-			--print("no target ")
+
 		end
 	else
 		print("already ahve target")

@@ -77,9 +77,16 @@ function constructionDone(self)
 	
 	msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
 	
-	if self.isFatExtractor==true then FAT_EXTRACTORS_MADE=FAT_EXTRACTORS_MADE+1
-	elseif self.isCarbExtractor==true then CARB_EXTRACTORS_MADE=CARB_EXTRACTORS_MADE+1
-	elseif self.isProteinExtractor==true then PROTEIN_EXTRACTORS_MADE=PROTEIN_EXTRACTORS_MADE+1 end
+	if self.isFatExtractor==true then 
+		FAT_EXTRACTORS_MADE=FAT_EXTRACTORS_MADE+1
+		if LEVEL==2 then level2FatExtractorDone() end
+	elseif self.isCarbExtractor==true then 
+		CARB_EXTRACTORS_MADE=CARB_EXTRACTORS_MADE+1
+		if LEVEL==2 then level2CarbsExtractorDone() end
+	elseif self.isProteinExtractor==true then 
+		PROTEIN_EXTRACTORS_MADE=PROTEIN_EXTRACTORS_MADE+1 
+		if LEVEL==2 then level2ProteinExtractorDone() end
+	end
 	
 	showBuilding(self)
 	hideConstruction(self)
@@ -368,7 +375,7 @@ function setTilesUnderMeToOccupied(self,x,y)
 			TILEMAP_NODES[nodeIndex].blocked=true
 			TILEMAP_NODES[nodeIndex].occupiedByID=self.id
 			
-			--tilemapObject.set_tile("world#tilemap", "reachable", currentX, currentY, 0)
+			--.set_tile("world#tilemap", "reachable", currentX, currentY, 0)
 
 			 		
 		end
@@ -401,6 +408,9 @@ function canBuildAtTile(self,tileX,tileY)
 		
 		if tileNode.type~=TILE_NOT_REACHABLE_CODE and tileNode.occupied==false and not isFatTile(tileNode.blockedType) then
 			return true
+		else
+			print("cant build: "..tileNode.type)
+			if tileNode.occupied then print("and occupied") end
 		end
 	
 	elseif self.isProteinExtractor then

@@ -94,6 +94,26 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "enteringExtractor"
+  type: "sound"
+  data: "sound: \"/audio/worker/Worker_Extractor.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "healerCall1"
   type: "sound"
   data: "sound: \"/audio/healer/Healer_Call_1.ogg\"\n"
@@ -437,6 +457,66 @@ embedded_components {
   id: "mission1Voice5"
   type: "sound"
   data: "sound: \"/audio/missions/1/Voice_Mission_One_5.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "mission2Voice1"
+  type: "sound"
+  data: "sound: \"/audio/missions/2/Voice_Mission_Two_1.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "mission2Voice2"
+  type: "sound"
+  data: "sound: \"/audio/missions/2/Voice_Mission_Two_2.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "mission2Voice3"
+  type: "sound"
+  data: "sound: \"/audio/missions/2/Voice_Mission_Two_3.ogg\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

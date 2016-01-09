@@ -283,7 +283,7 @@ end
 function showHealthBarTemporarily(self)
 	
 	if not self.showingHelthTemp then
-		print("showHealthBarTemporarily")
+		--print("showHealthBarTemporarily")
 		msg.post(msg.url("healthBars#gui"),"show",{unitId=self.id})
 		self.timeSinceTempShowHealth=0
 		self.showingHelthTemp=true
@@ -346,9 +346,15 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 		
 		
 	elseif message_id == hash("requestPosition") then
+	
 		
 		if sender~=self.id then
-			msg.post(sender,"positionCallback",{position={x=self.x,y=self.y}})
+			
+			if self.isBuilding then
+				msg.post(sender,"positionCallback",{position={x=self.x+self.orOffX,y=self.y+self.orOffY}})
+			else
+				msg.post(sender,"positionCallback",{position={x=self.x,y=self.y}})
+			end
 		end
 		
 	elseif message_id == hash("contact_point_response") then
@@ -356,7 +362,7 @@ function basicUnitMessageHandler(self,go,message_id,message,sender)
 	
 		if BULLET_OWNER[message.other_id]~=self.id  then
 		
-			print("I'm shot! "..self.name)
+			--print("I'm shot! "..self.name)
 			
 			--get owner and damage
 			msg.post(message.other_id,"requestOwner",{}) --request the shot for it's owner

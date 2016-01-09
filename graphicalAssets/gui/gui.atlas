@@ -86,7 +86,10 @@ images {
   image: "/graphicalAssets/minimap/raw/mark.png"
 }
 images {
-  image: "/graphicalAssets/gui/back.png"
+  image: "/graphicalAssets/helpers/extractorHelper.png"
+}
+images {
+  image: "/graphicalAssets/helpers/marrowHelper.png"
 }
 margin: 0
 extrude_borders: 0
