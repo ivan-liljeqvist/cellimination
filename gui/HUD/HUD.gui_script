@@ -712,7 +712,6 @@ function hideEverything()
 		hideProductionSection()
 		hideUnitCostAndDesc()
 		
-		gui.set_text(gui.get_node("upgradeInfo"),"")
 end
 
 function updateStorageAndHouseLabels(self,dt)

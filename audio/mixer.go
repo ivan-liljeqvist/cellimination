@@ -616,7 +616,7 @@ embedded_components {
 embedded_components {
   id: "mission2Voice5"
   type: "sound"
-  data: "sound: \"/audio/test.ogg\"\n"
+  data: "sound: \"/audio/missions/2/evilMission2.ogg\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

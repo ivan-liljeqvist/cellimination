@@ -41,7 +41,11 @@ function lvl2Section1Act()
 		   then
 		
 		level2State.needMissionObjectiveUpdate=true
-		msg.post("extractorHelp","show")
+		
+		if not level2State.carbsExtractorDone and not level2State.proteinExtractorDone and not level2State.fatExtractorDone then
+			msg.post("extractorHelp","show")
+		end
+		
 		level2State.cantSkipIntro=true
 		
 		msg.post("HUD","setTopBigText",{text=""})

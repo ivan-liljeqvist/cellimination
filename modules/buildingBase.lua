@@ -319,7 +319,7 @@ end
 --check we can fit a building at x,y
 function canBuildAt(self,x,y)
 
-	if y<HUD_RIGHT_HEIGHT and x>getScreenWidth()-HUD_RIGHT_WIDTH then return false end
+	--if y<HUD_RIGHT_HEIGHT and x>getScreenWidth()-HUD_RIGHT_WIDTH then return false end
 	
 	local centerTileX, centerTileY = pixelToTileCoords(x*ZOOM_LEVEL,y*ZOOM_LEVEL)
 	

@@ -61,10 +61,10 @@ function init(self)
 
 	
 	self.GUILayoutComplete={button1={icon="deselectIcon", action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
-					button2={icon="RBCIcon", action=buildWorkerAction, hover=function() return HOVER_LAYOUT[WORKER_NAME] end},
+					button2=nil,
 					button3=nil,
 					button4=nil,
-					button5=nil,
+					button5={icon="RBCIcon", action=buildWorkerAction, hover=function() return HOVER_LAYOUT[WORKER_NAME] end},
 					button6=nil,
 					button7=nil,
 					button8=nil,

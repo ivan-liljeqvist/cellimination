@@ -1,5 +1,21 @@
 
 
+function level2Subtitles()
+
+	--EVIL VOIDE
+	
+	if level2State.VOICE5_START_TIME and GAME_TIME>level2State.VOICE5_START_TIME and not level2State.sub28 then
+		msg.post("HUD","setSubtitleText",{text="Minions! Attack their base!\nAND TAKE ALL THEIR GAINS!"})
+		level2State.sub28=true
+	elseif level2State.VOICE5_START_TIME and GAME_TIME>level2State.VOICE5_START_TIME+6 and not level2State.sub29 then
+		msg.post("HUD","setSubtitleText",{text=""})
+		level2State.sub29=true
+	
+	end
+
+end
+
+
 function level2SubtitlesIntroduction()
 
 	--TRACK1
@@ -11,10 +27,10 @@ function level2SubtitlesIntroduction()
 		msg.post("HUD","setSubtitleText",{text="in order to put an end to the viruses."})
 		level2State.sub2=true
 	elseif GAME_TIME>level2State.VOICE1_START_TIME+6.4 and not level2State.sub3 then
-		msg.post("HUD","setSubtitleText",{text="They have chosen you to gather the resources required to build an army."})
+		msg.post("HUD","setSubtitleText",{text="They have chosen you to gather the resources\nrequired to build an army."})
 		level2State.sub3=true
 	elseif GAME_TIME>level2State.VOICE1_START_TIME+10 and not level2State.sub4 then
-		msg.post("HUD","setSubtitleText",{text="Your objective is to gather 1000 of each resource possible in this area."})
+		msg.post("HUD","setSubtitleText",{text="Your objective is to gather 1000 of each\nresource possible in this area."})
 		level2State.sub4=true
 	elseif GAME_TIME>level2State.VOICE1_START_TIME+14 and not level2State.sub5e then
 		msg.post("HUD","setSubtitleText",{text=""})
@@ -23,7 +39,7 @@ function level2SubtitlesIntroduction()
 	
 	--TRACK2
 	elseif GAME_TIME>level2State.VOICE2_START_TIME and not level2State.sub5 then
-		msg.post("HUD","setSubtitleText",{text="In front of you, you have a worker unit and a Central Marrow structure."})
+		msg.post("HUD","setSubtitleText",{text="In front of you, you have a worker unit\nand a Central Marrow structure."})
 		level2State.sub5=true
 	elseif GAME_TIME>level2State.VOICE2_START_TIME+4 and not level2State.sub6 then
 		msg.post("HUD","setSubtitleText",{text="These are under your command."})
@@ -35,16 +51,16 @@ function level2SubtitlesIntroduction()
 		msg.post("HUD","setSubtitleText",{text="The Central Marrow can supply you with workers."})
 		level2State.sub8=true
 	elseif GAME_TIME>level2State.VOICE2_START_TIME+13.5 and not level2State.sub9 then
-		msg.post("HUD","setSubtitleText",{text="The resources you need to keep track of are FAT, PROTEIN and CARBS."})
+		msg.post("HUD","setSubtitleText",{text="The resources you need to keep track of are\nFAT, PROTEIN and CARBS."})
 		level2State.sub9=true
 	elseif GAME_TIME>level2State.VOICE2_START_TIME+17.5 and not level2State.sub10 then
 		msg.post("HUD","setSubtitleText",{text="You can see your current resources at the top left of the screen."})
 		level2State.sub10=true
 	elseif GAME_TIME>level2State.VOICE2_START_TIME+21 and not level2State.sub11 then
-		msg.post("HUD","setSubtitleText",{text="To create a resource income you will have to select the worker unit\nand build the three different EXTRACTORS."})
+		msg.post("HUD","setSubtitleText",{text="To create a resource income you will have to select the\nworker unit and build the three different EXTRACTORS."})
 		level2State.sub11=true
 	elseif GAME_TIME>level2State.VOICE2_START_TIME+27 and not level2State.sub12 then
-		msg.post("HUD","setSubtitleText",{text="You build these by placing them on the brighter region of the ground,\nin the middle of the map."})
+		msg.post("HUD","setSubtitleText",{text="You build these by placing them on the brighter region\nof the ground, in the middle of the map."})
 		level2State.sub12=true
 	elseif GAME_TIME>level2State.VOICE2_START_TIME+32 and not level2State.sub13 then
 		msg.post("HUD","setSubtitleText",{text="This region is nutrient-rich tissue."})

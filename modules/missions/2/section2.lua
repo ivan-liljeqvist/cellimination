@@ -37,8 +37,6 @@ function lvl2Section2Act()
 		
 		level2State.section2Done=true
 		
-		level2State.VOICE5_START_TIME=GAME_TIME+10
-		
 		level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET
 	end
 

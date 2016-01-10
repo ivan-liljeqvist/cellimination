@@ -23,7 +23,7 @@ level2State.VOICE3_DONE_TIME=nil
 level2State.VOICE4_START_TIME=nil
 level2State.VOICE4_DONE_TIME=nil
 
-level2State.VOICE5_START_TIME=0
+level2State.VOICE5_START_TIME=nil
 level2State.VOICE5_DONE_TIME=nil
 
 level2State.tutorialSkipped=false
@@ -34,20 +34,24 @@ local attackCounter=0
 
 function level2Act()
 
+	--section 1 and 2 are introduction
 	if not level2State.tutorialSkipped then
 		
 		if not level2State.section1Done then
 			lvl2Section1Act()
 		elseif not level2State.section2Done then
 			lvl2Section2Act()
-		elseif not level2State.section3Done then
-			lvl2Section3Act()
 		end
 		
 		level2SubtitlesIntroduction()
 	end
 	
+	--section 3 is evil voice
+	if level2State.section2Done and level2State.section1Done then
+		lvl2Section3Act()
+	end
 	
+	level2Subtitles()
 	
 	level2MissionObjectives()
 	
@@ -61,6 +65,11 @@ function level2Act()
 		attackCounter=attackCounter+1
 	end
 
+end
+
+function queueVoice5()
+	level2State.VOICE5_START_TIME=GAME_TIME+10
+	level2State.VOICE5_DONE_TIME=level2State.VOICE5_START_TIME+6
 end
 
 function skipTutorial()
@@ -91,6 +100,7 @@ function level2MissionObjectives()
 				msg.post("HUD","setMissionObjectiveText",{text=LVL2_COLLECT_1000_OBJ})
 				level2State.needMissionObjectiveUpdate=false
 				
+				queueVoice5()
 		end
 	
 		--replication station
@@ -138,9 +148,8 @@ function level2MissionObjectives()
 			
 			--ALL EXTRACTORS ARE BUILT
 			else
-				print("fat, prtoa "..WORKERS_EXTRACTING_PROTEIN.." "..WORKERS_EXTRACTING_FAT.." "..WORKERS_EXTRACTING_CARB)
 				if WORKERS_EXTRACTING_PROTEIN<=0 or WORKERS_EXTRACTING_FAT<=0 or WORKERS_EXTRACTING_CARB<=0 then
-					local string="Put at least one RED BLOOD CELL (WORKER) in each extractor."
+					local string=LVL2_PUT_WORKERS_IN_EXTRACTORS
 					msg.post("HUD","setMissionObjectiveText",{text=string})
 					level2State.needMissionObjectiveUpdate=false
 				else	
@@ -154,9 +163,16 @@ function level2MissionObjectives()
 			end
 			
 		end
-	else
+	elseif not level2State.setVoice5 then
 		msg.post("HUD","setMissionObjectiveText",{text=LVL2_COLLECT_1000_OBJ})
 		level2State.needMissionObjectiveUpdate=false
+		queueVoice5()
+		level2State.setVoice5=true
+		
+		level2State.section2Done=true
+		level2State.section1Done=true
+		
+		print("level2State.VOICE5_START_TIME "..level2State.VOICE5_START_TIME)
 	end
 	
 end
