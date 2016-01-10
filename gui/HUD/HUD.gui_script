@@ -333,10 +333,20 @@ function displayNodesOnHover(nodesToDisplay)
 			showUnitCostAndDesc()
 
 			
-
-			setCarbPrice(math.ceil(nodesToDisplay.price.carb+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name]))
-			setProteinPrice(math.ceil(nodesToDisplay.price.protein+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name]))
-			setFatPrice(math.ceil(nodesToDisplay.price.fat+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name]))
+			local carbPrice=math.ceil(nodesToDisplay.price.carb+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name])
+			local proteinPrice=math.ceil(nodesToDisplay.price.protein+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name])
+			local fatPrice=math.ceil(nodesToDisplay.price.fat+(NUMBER_BOUGHT[nodesToDisplay.name]+1+NUMBER_QUEUED[nodesToDisplay.name])*INFLATION[nodesToDisplay.name])
+			
+			if nodesToDisplay.name==STORAGE_NAME then
+				proteinPrice=math.floor(PROTEIN*0.05)
+				carbPrice=math.floor(CARBS*0.05)
+				fatPrice=math.floor(FAT*0.05)
+			end
+			
+			setCarbPrice(carbPrice)
+			setProteinPrice(proteinPrice)
+			setFatPrice(fatPrice)
+			
 			setUnitDescription(nodesToDisplay.description,nodesToDisplay.name)
 			
 		elseif nodesToDisplay.description then

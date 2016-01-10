@@ -21,6 +21,7 @@ function queue(self,unitName)
 			NUMBER_QUEUED[unitName]=NUMBER_QUEUED[unitName]+1
 		end
 	else
+	
 		msg.post("HUD","displayErrorMessage",{text=NOT_ENOUGH_RESOURCES})
 	end
 end

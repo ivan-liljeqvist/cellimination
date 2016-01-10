@@ -24,7 +24,7 @@ function init(self)
 	self.factory=factory
 	self.sprite=sprite
 	
-	self.needsWaypoint=true
+	self.needsWaypoint=false
 	
     initBasicUnit(self,STORAGE_NAME,go.get_id())
 	initBuilding(self,sprite,{startPointFromCenter={x=-1,y=-1},width=3,height=2},go)

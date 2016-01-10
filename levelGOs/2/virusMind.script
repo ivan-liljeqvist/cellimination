@@ -25,12 +25,12 @@ end
 function attack(self,fromRight,attackNumber)
 
 	--easy waves
-	if attackNumber<20 then
+	if attackNumber<7 then
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
+	elseif attackNumber<15 then
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
 		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
 	elseif attackNumber<30 then
-		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
-		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
-	elseif attackNumber<40 then
 		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
 		msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})
 

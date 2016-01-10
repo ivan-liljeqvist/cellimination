@@ -11,7 +11,7 @@ level2State.fatExtractorDone=false
 level2State.proteinExtractorDone=false
 level2State.carbsExtractorDone=false
 
-level2State.VOICE1_START_TIME=2
+level2State.VOICE1_START_TIME=3
 level2State.VOICE1_DONE_TIME=16.5
 
 level2State.VOICE2_START_TIME=level2State.VOICE1_DONE_TIME+1.5

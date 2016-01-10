@@ -302,6 +302,8 @@ function destroyBuilding(self)
 			MAX_POPULATION=MAX_POPULATION-HOUSING_INCREASE
 		end
 		
+		BUILDINGS_FOG_ALREADY_UPDATED[self.id]=nil
+		
 		if self.name==BASE_NAME and LEVEL==2 then
 			centralMarrowDead()
 		end
@@ -520,8 +522,13 @@ function buildingUpdate(self,dt,go)
 		self.constructionProgress=self.constructionProgress+dt
 		
 		local ratio=self.constructionProgress/self.constructionTime
-		msg.post(msg.url("progressBars#gui"),"show",{unitId=self.id})
-		msg.post(msg.url("progressBars#gui"),"updateSize",{ratio=ratio,unitId=self.id})
+		
+		if self.constructionProgress>1 then
+			msg.post(msg.url("progressBars#gui"),"show",{unitId=self.id})
+			msg.post(msg.url("progressBars#gui"),"updateSize",{ratio=ratio,unitId=self.id})
+		else
+			msg.post(msg.url("progressBars#gui"),"hide",{unitId=self.id})
+		end
 		
 		
 		
