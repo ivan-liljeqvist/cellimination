@@ -134,26 +134,6 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "engineer2"
-  type: "sound"
-  data: "sound: \"/audio/missions/2/engineer2.ogg\"\n"
-  "looping: 0\n"
-  "group: \"master\"\n"
-  "gain: 1.0\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
   id: "enteringExtractor"
   type: "sound"
   data: "sound: \"/audio/worker/Worker_Extractor.ogg\"\n"
@@ -556,7 +536,7 @@ embedded_components {
 embedded_components {
   id: "mission2Voice1"
   type: "sound"
-  data: "sound: \"/audio/missions/2/Voice_Mission_Two_1.ogg\"\n"
+  data: "sound: \"/audio/missions/2/Voice_Mission_Two_1_Revised.ogg\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"
@@ -634,11 +614,11 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "mission2Voice5"
+  id: "roamingUnit1"
   type: "sound"
-  data: "sound: \"/audio/missions/2/engineer1.ogg\"\n"
-  "looping: 0\n"
-  "group: \"master\"\n"
+  data: "sound: \"/audio/music/roamingUnits/Roaming_Theme_Brass.ogg\"\n"
+  "looping: 1\n"
+  "group: \"main\"\n"
   "gain: 1.0\n"
   ""
   position {
@@ -656,7 +636,7 @@ embedded_components {
 embedded_components {
   id: "roamingUnit2"
   type: "sound"
-  data: "sound: \"/audio/music/roamingUnits/2Roaming_Theme_French_Horn_Unit.ogg\"\n"
+  data: "sound: \"/audio/music/roamingUnits/Roaming_Theme_Cello.ogg\"\n"
   "looping: 1\n"
   "group: \"main\"\n"
   "gain: 1.0\n"
@@ -676,26 +656,6 @@ embedded_components {
 embedded_components {
   id: "roamingUnit3"
   type: "sound"
-  data: "sound: \"/audio/music/roamingUnits/3Roaming_Theme_Trumpet_Block.ogg\"\n"
-  "looping: 1\n"
-  "group: \"main\"\n"
-  "gain: 1.0\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "roamingUnit4"
-  type: "sound"
   data: "sound: \"/audio/music/roamingUnits/4Romaing_Theme_Harp_Block.ogg\"\n"
   "looping: 1\n"
   "group: \"main\"\n"
@@ -714,7 +674,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "roamingUnit5"
+  id: "roamingUnit4"
   type: "sound"
   data: "sound: \"/audio/music/roamingUnits/5Romaing_Theme_Pluck_Block.ogg\"\n"
   "looping: 1\n"
@@ -1157,6 +1117,26 @@ embedded_components {
   id: "workerCall3"
   type: "sound"
   data: "sound: \"/audio/worker/Worker_Call_3.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "workerCall4"
+  type: "sound"
+  data: "sound: \"/audio/worker/Worker_Call_4.ogg\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

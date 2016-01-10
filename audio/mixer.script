@@ -20,10 +20,31 @@ timeCurrentRoamingPlaying=0
 
 timeSincePlayedHitLast=0
 
+NUM_ROAMING_UNITS=4
+ROAMING_IDS_TO_PLAY={}
+ROAMING_IDS_USED={}
+
 function init(self)
 	--
 	startSoundscapeMusic()
 	startMainBackgroundMusic()
+	
+	math.randomseed(os.time())  --seed
+	math.random(1,NUM_ROAMING_UNITS) --the first random is always constant for some reason so we call it here
+	
+	for c=1,NUM_ROAMING_UNITS,1 do
+	
+		
+		local nextId=math.random(1,NUM_ROAMING_UNITS)
+		
+		while ROAMING_IDS_USED[nextId] do	
+			nextId=math.random(1,NUM_ROAMING_UNITS)
+		end
+		
+		ROAMING_IDS_USED[nextId]=true
+		ROAMING_IDS_TO_PLAY[c]=nextId	
+		
+	end
 end
 
 function on_message(self, message_id, message, sender)
@@ -152,8 +173,7 @@ function on_message(self, message_id, message, sender)
 	
 end
 
-local counter=4
-
+local roamingCount=1
 function update(self, dt)
 
 	checkIfCanPlaySFX(dt)
@@ -162,13 +182,14 @@ function update(self, dt)
 	timeCurrentRoamingPlaying=timeCurrentRoamingPlaying+dt
 	timeSincePlayedHitLast=timeSincePlayedHitLast+dt
 	
-	--msg.post("HUD","displayErrorMessage",{text=timeCurrentRoamingPlaying})
-	
-	if timeCurrentRoamingPlaying>=ROAMING_UNIT_LENGTH and counter<=5 then
+	if timeCurrentRoamingPlaying>=ROAMING_UNIT_LENGTH and roamingCount<=NUM_ROAMING_UNITS then
 		
-		msg.post("#roamingUnit"..counter, "set_gain", {gain = 0.5})
+
+		msg.post("#roamingUnit"..ROAMING_IDS_TO_PLAY[roamingCount], "set_gain", {gain = 0.5})
+		
 		timeCurrentRoamingPlaying=0
-		counter=counter+1
+		roamingCount=roamingCount+1
+		
 	end
 	
 end

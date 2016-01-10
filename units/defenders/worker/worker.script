@@ -101,7 +101,7 @@ function init(self)
 					button4={icon="proteinExtractorIcon",action=buildProteinExtractor,hover= function() return HOVER_LAYOUT[PROTEIN_EXTRACTOR_NAME] end},
 					button5={icon="fatExtractorIcon",action=buildFatExtractor, hover=function() return HOVER_LAYOUT[FAT_EXTRACTOR_NAME] end},
 					button6={icon="carbExtractorIcon",action=buildCarbExtractor, hover=function() return HOVER_LAYOUT[CARB_EXTRACTOR_NAME] end},
-					button7={icon="baseIcon",action=buildBaseAction,hover=function() return HOVER_LAYOUT[BASE_NAME] end},
+					button7=nil,
 					button8={icon="houseIcon",action=buildHouse,hover= function() return HOVER_LAYOUT[HOUSE_NAME] end},
 					button9={icon="storageIcon",action=buildStorage,hover= function() return HOVER_LAYOUT[STORAGE_NAME] end}}
 

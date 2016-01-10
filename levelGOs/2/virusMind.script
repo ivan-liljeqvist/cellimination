@@ -15,30 +15,46 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("attack") then
-		attack(self,message.fromRight)
+		attack(self,message.fromRight,message.attackNumber)
 		print("virus mind recieved message")
 	end
 	
 
 end	
 
-function attack(self,fromRight)
+function attack(self,fromRight,attackNumber)
 
-
-	
-	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
-	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
-	msg.post(spawnVirus(self),"attack",{fromRight=fromRight})
+	--easy waves
+	if attackNumber<4 then
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
+	elseif attackNumber<7 then
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
+	elseif attackNumber<10 then
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})
+	else
+		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
+	end
 
 	
 	
 end
 
-function spawnVirus(self)
+function spawnVirus(self,fac)
 	local pos = go.get_position()
 	pos.x=pos.x+math.random(-200, 200)
 	pos.y=pos.y+math.random(-200, 200)
-	return factory.create("#factory",pos)
+	return factory.create(fac,pos)
 end
 
 

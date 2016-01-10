@@ -87,7 +87,7 @@ end
 
 function updateStorage(self,dt)
 
-	if self.timeSinceLastStorageUpdate>= 1.0 then
+	if self.timeSinceLastStorageUpdate>= 1.0 and TOTAL_STORAGE<MAX_STORAGE then
 	
 		self.timeSinceLastStorageUpdate=0
 		

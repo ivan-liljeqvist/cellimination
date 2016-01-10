@@ -13,6 +13,9 @@ function init(self)
 	self.boundsWidthScale=0.9
 	self.boundsHeightScale=0.4
 	
+	go.set("#sprite", "scale.y",0.5)
+	go.set("#sprite", "scale.x",0.7)
+	
 	self.initialScale=0.7
 	self.constructionScale=0.5
 	self.fogRadius=BASE_FOG_RADIUS

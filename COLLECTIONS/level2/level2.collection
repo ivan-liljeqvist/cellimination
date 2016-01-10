@@ -23,8 +23,8 @@ instances {
   id: "base"
   prototype: "/buildings/base/base.go"
   position {
-    x: 4393.0303
-    y: 3983.9392
+    x: 4398.5283
+    y: 3703.5347
     z: 0.0
   }
   rotation {
@@ -1243,8 +1243,8 @@ instances {
   id: "soldier"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 5137.574
-    y: 3500.413
+    x: 5517.6367
+    y: 3559.1218
     z: 0.0
   }
   rotation {
@@ -1263,7 +1263,7 @@ instances {
   id: "soldier1"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 5197.5625
+    x: 5435.488
     y: 3308.0835
     z: 0.0
   }
@@ -1283,8 +1283,8 @@ instances {
   id: "soldier2"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 3341.8733
-    y: 3421.2947
+    x: 3233.7256
+    y: 3439.8342
     z: 0.0
   }
   rotation {
@@ -1303,8 +1303,8 @@ instances {
   id: "soldier3"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 3294.4714
-    y: 3828.8716
+    x: 3207.9531
+    y: 3692.9143
     z: 0.0
   }
   rotation {
@@ -1323,8 +1323,8 @@ instances {
   id: "soldier4"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 3364.4182
-    y: 3166.1968
+    x: 3132.6729
+    y: 3178.5566
     z: 0.0
   }
   rotation {
@@ -1403,8 +1403,8 @@ instances {
   id: "worker"
   prototype: "/units/defenders/worker/worker.go"
   position {
-    x: 4586.4155
-    y: 3989.0686
+    x: 4572.6704
+    y: 3708.664
     z: 1.0
   }
   rotation {

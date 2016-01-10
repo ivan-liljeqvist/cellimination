@@ -7,7 +7,7 @@ ENABLE_SOUND_EFFECTS=true
 --sound effects have variations, for example slime1, slime2
 NUMBER_OF_VARIATIONS={}
 
-NUMBER_OF_VARIATIONS["workerCall"]=3
+NUMBER_OF_VARIATIONS["workerCall"]=4
 NUMBER_OF_VARIATIONS["workerResponse"]=4
 NUMBER_OF_VARIATIONS["tankCall"]=4
 NUMBER_OF_VARIATIONS["tankResponse"]=4
@@ -108,10 +108,10 @@ end
 function startMainBackgroundMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
 	
+		msg.post("#roamingUnit1","play_sound", {delay = 0, gain = 0.0})
 		msg.post("#roamingUnit2","play_sound", {delay = 0, gain = 0.0})
     	msg.post("#main", "play_sound", {delay = 0, gain = 0.5})
     	msg.post("#roamingUnit3","play_sound", {delay = 0, gain = 0.0})
-    	msg.post("#roamingUnit5","play_sound", {delay = 0, gain = 0.0})
     	msg.post("#roamingUnit4","play_sound", {delay = 0, gain = 0.0})
     	
     end

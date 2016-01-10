@@ -17,7 +17,7 @@ function init(self)
 	go.set_position(pos)
 	
 	if LEVEL==2 then
-		look(5100,4440)
+		look(5100,3840)
 	end
 end
 

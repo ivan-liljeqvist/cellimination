@@ -39,8 +39,15 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	
 	print("self.constructionScale "..self.constructionScale)
 	
-	go.set_scale(vmath.vector3(self.constructionScale, self.constructionScale, self.constructionScale),self.construction)
-	go.set_scale(vmath.vector3(self.initialScale, self.initialScale, self.initialScale),self.building)
+	
+	
+	if self.isCarbExtractor or self.isFatExtractor or self.isProteinExtractor then
+		go.set_scale(vmath.vector3(0.75, 0.75, 0.75),self.building)
+		go.set_scale(vmath.vector3(0.5, 0.5, 0.5),self.construction)
+	else
+		go.set_scale(vmath.vector3(self.initialScale, self.initialScale, self.initialScale),self.building)
+		go.set_scale(vmath.vector3(self.constructionScale, self.constructionScale, self.constructionScale),self.construction)
+	end
 
 	
 	
@@ -157,17 +164,20 @@ function buildHere(x,y,self)
 end
 
 function hideWaypoint(self)
-	if not self.waypointHidden then
+	
+
+
 		msg.post(self.waypoint,"hide")
-		self.waypointHidden=true
-	end
+
 end
 
 function tempHideWP(self)
+	print("hide wp")
 	msg.post(self.waypoint,"hide")
 end
 
 function tempShowWP(self)
+	print("show wp")
 	msg.post(self.waypoint,"show")
 end
 
@@ -279,6 +289,12 @@ end
 function destroyBuilding(self)
 	if not self.prototypeMode then
 		setTilesUnderMeToNotOccupied(self,self.builtAtX,self.builtAtY)
+		
+		if self.name==STORAGE_NAME then
+			MAX_STORAGE=MAX_STORAGE-STORAGE_INCREASE
+		elseif self.name==HOUSE_NAME then
+			MAX_POPULATION=MAX_POPULATION-HOUSING_INCREASE
+		end
 	end
 end
 

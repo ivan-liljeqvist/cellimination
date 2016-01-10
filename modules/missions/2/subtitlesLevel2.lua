@@ -5,17 +5,20 @@ function level2SubtitlesIntroduction()
 	--TRACK1
 	
 	if GAME_TIME>level2State.VOICE1_START_TIME and not level2State.sub1 then
-		msg.post("HUD","setSubtitleText",{text="The viruses that have entered the body are posing the greatest threat\nwe have ever encountered."})
+		msg.post("HUD","setSubtitleText",{text="The Immune System is doing everything in their power\nto assemble all forces possible"})
 		level2State.sub1=true
-	elseif GAME_TIME>level2State.VOICE1_START_TIME+5 and not level2State.sub2 then
-		msg.post("HUD","setSubtitleText",{text="They are advancing quickly and we need to retaliate now!"})
+	elseif GAME_TIME>level2State.VOICE1_START_TIME+4 and not level2State.sub2 then
+		msg.post("HUD","setSubtitleText",{text="in order to put an end to the viruses."})
 		level2State.sub2=true
-	elseif GAME_TIME>level2State.VOICE1_START_TIME+7.5 and not level2State.sub3 then
-		msg.post("HUD","setSubtitleText",{text="Time is of the essence!"})
+	elseif GAME_TIME>level2State.VOICE1_START_TIME+6.4 and not level2State.sub3 then
+		msg.post("HUD","setSubtitleText",{text="They have chosen you to gather the resources required to build an army."})
 		level2State.sub3=true
-	elseif GAME_TIME>level2State.VOICE1_START_TIME+9 and not level2State.sub4 then
-		msg.post("HUD","setSubtitleText",{text=""})
+	elseif GAME_TIME>level2State.VOICE1_START_TIME+10 and not level2State.sub4 then
+		msg.post("HUD","setSubtitleText",{text="Your objective is to gather 1000 of each resource possible in this area."})
 		level2State.sub4=true
+	elseif GAME_TIME>level2State.VOICE1_START_TIME+14 and not level2State.sub5e then
+		msg.post("HUD","setSubtitleText",{text=""})
+		level2State.sub5e=true
 	
 	
 	--TRACK2

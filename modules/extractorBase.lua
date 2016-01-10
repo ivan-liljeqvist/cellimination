@@ -15,6 +15,9 @@ function initExtractor(self)
 	
 	self.timeSinceUpdatedWorkers=0
 	
+	go.set("#sprite", "scale.y",1)
+	go.set("#sprite", "scale.x",1.3)
+	
 	
 
 end
@@ -93,7 +96,7 @@ function handleWorkerAndRPMGUI(self)
 	
 		local pos = go.get_position()
 		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
-		pos.y=(pos.y-30-CAMERA_OFFSETY)/ZOOM_LEVEL
+		pos.y=(pos.y-43-CAMERA_OFFSETY)/ZOOM_LEVEL
 		--msg.post(msg.url("#workerAndRPMGUI"),"setPosition",{position=pos})
 		
 		local resource="protein"

@@ -11,7 +11,7 @@ function init(self)
 	self.boundsWidthScale=0.8
 	self.boundsHeightScale=0.8
 	
-	self.initialScale=0.7
+	self.initialScale=0.9
 	self.constructionScale=0.5
 	self.fogRadius=BASE_FOG_RADIUS
 	

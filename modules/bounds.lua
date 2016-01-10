@@ -69,23 +69,25 @@ function massSelect(self,title,go)
 		
 		playCallSound(self.name)
 		
-		if self.waypointHidden~=true then
-			 tempShowWP(self)
-		end
+		
+		tempShowWP(self)
+
 		
 		moveHealthbar(self)
 	end
 end
 
 function deselect(self,go)
-	self.selected=false
-    go.set_scale(self.initialScale)
-    
-	if self.waypointHidden~=true then
-		 tempHideWP(self)
-	end
+	if self.selected then
+		self.selected=false
+	    go.set_scale(self.initialScale)
+	    
 		
-    hideHealthBar(self)
+		tempHideWP(self)
+
+			
+	    hideHealthBar(self)
+	   end
 end
 
 function select(self,title,go)

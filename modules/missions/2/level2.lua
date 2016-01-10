@@ -12,9 +12,9 @@ level2State.proteinExtractorDone=false
 level2State.carbsExtractorDone=false
 
 level2State.VOICE1_START_TIME=2
-level2State.VOICE1_DONE_TIME=12.5
+level2State.VOICE1_DONE_TIME=16.5
 
-level2State.VOICE2_START_TIME=level2State.VOICE1_DONE_TIME+1
+level2State.VOICE2_START_TIME=level2State.VOICE1_DONE_TIME+1.5
 level2State.VOICE2_DONE_TIME=level2State.VOICE2_START_TIME+40
 
 level2State.VOICE3_START_TIME=nil
@@ -51,11 +51,11 @@ function level2Act()
 	
 
 	if level2State.FIRST_ATTACK_TIME and GAME_TIME>level2State.FIRST_ATTACK_TIME and not level2State.attacked then
-		msg.post("virusMind","attack",{fromRight=true})
-		msg.post("virusMind1","attack",{fromRight=false})
+		msg.post("virusMind","attack",{fromRight=true,attackNumber=attackCounter})
+		msg.post("virusMind1","attack",{fromRight=false,attackNumber=attackCounter})
 		--level2State.attacked=true
 		
-		level2State.FIRST_ATTACK_TIME=level2State.FIRST_ATTACK_TIME+(60-attackCounter*3)
+		level2State.FIRST_ATTACK_TIME=level2State.FIRST_ATTACK_TIME+80
 		attackCounter=attackCounter+1
 	end
 
@@ -71,7 +71,7 @@ function skipTutorial()
 		msg.post("mixer","normalBackground")
 		level2State.resetBackground=true
 		
-		level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET+70
+		level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET+150
 	end
 end
 
@@ -86,7 +86,7 @@ function level2MissionObjectives()
 				GAME_TIME>level2State.VOICE4_DONE_TIME and not
 				level2State.collectedResources then
 				
-				msg.post("HUD","setMissionObjectiveText",{text="Collect 1000 FAT, 1000 PROTEIN and 1000 CARBS.\nSurvive the attacks."})
+				msg.post("HUD","setMissionObjectiveText",{text=LVL2_COLLECT_1000_OBJ})
 				level2State.needMissionObjectiveUpdate=false
 				
 		end
@@ -153,7 +153,7 @@ function level2MissionObjectives()
 			
 		end
 	else
-		msg.post("HUD","setMissionObjectiveText",{text="Collect 1000 FAT, 1000 PROTEIN and 1000 CARBS.\nSurvive the attacks."})
+		msg.post("HUD","setMissionObjectiveText",{text=LVL2_COLLECT_1000_OBJ})
 		level2State.needMissionObjectiveUpdate=false
 	end
 	
