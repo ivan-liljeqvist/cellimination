@@ -234,14 +234,16 @@ function buildingInput(self,action,action_id)
 				local workerPos=go.get_position()
 				workerPos.x=workerPos.x-CAMERA_OFFSETX
 				workerPos.y=workerPos.y-CAMERA_OFFSETY
-				workerPos.x=workerPos.x+TILE_SIZE
+				workerPos.x=workerPos.x+TILE_SIZE*2
 				
 				if self.isExtractor then
 					workerPos.x=workerPos.x+TILE_SIZE*2
 				end
 				
+				local workerPosBackup=vmath.vector3(workerPos.x-TILE_SIZE*6,workerPos.y,workerPos.z)
 				
-				msg.post(self.workerID,"goToBuildingSite",{pos=workerPos})
+				
+				msg.post(self.workerID,"goToBuildingSite",{pos=workerPos,backupPos=workerPosBackup})
 				
 				deductResources(self.name)	
 				NUMBER_BOUGHT[self.name]=NUMBER_BOUGHT[self.name]+1
@@ -395,11 +397,13 @@ function setTilesUnderMeToOccupied(self,x,y)
 	for currentX=minTileX, maxTileX, 1 do
 		for currentY=minTileY, maxTileY, 1 do
 		
-			local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX+1][currentY+1] 
-			TILEMAP_NODES[nodeIndex].occupied=true
-			TILEMAP_NODES[nodeIndex].occupiedBy=self
-			TILEMAP_NODES[nodeIndex].blocked=true
-			TILEMAP_NODES[nodeIndex].occupiedByID=self.id
+			if currentX<maxTileX then
+				local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX+1][currentY+1] 
+				TILEMAP_NODES[nodeIndex].occupied=true
+				TILEMAP_NODES[nodeIndex].occupiedBy=self
+				TILEMAP_NODES[nodeIndex].blocked=true
+				TILEMAP_NODES[nodeIndex].occupiedByID=self.id
+			end
 			
 			--.set_tile("world#tilemap", "reachable", currentX, currentY, 0)
 

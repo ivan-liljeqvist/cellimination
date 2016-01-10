@@ -126,6 +126,7 @@ function destroyUnit(self)
 		end
 		
 		if self.isBuilding then
+			setTilesUnderMeToNotOccupied(self,self.builtAtX,self.builtAtY)
 			if self.building then
 				go.delete(self.building)
 			end

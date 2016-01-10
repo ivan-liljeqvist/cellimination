@@ -28,9 +28,14 @@ function workerMessageHandler(self,go,message_id,message,sender)
 	if message_id == hash("goToBuildingSite") then
 
 		local tileX,tileY = pixelToTileCoords(message.pos.x,message.pos.y)
-		generateNewPathToTileCoords(self,tileX,tileY)
-		self.headingToBuilding=true
-		playResponseSound(self.name)
+		
+		if generateNewPathToTileCoords(self,tileX,tileY) then
+		
+			self.headingToBuilding=true
+			
+			playResponseSound(self.name)
+			
+		end
 	
 	elseif message_id == hash("setCurrentBuilding") then
 		abortConstruction(self)

@@ -107,6 +107,11 @@ function generateNewPathToTileCoords(self,tileX,tileY)
     		--now use indeces to get start and finish nodes
     		local startNode,finishNode=TILEMAP_NODES[startIndex],TILEMAP_NODES[destIndex]
     		
+    		if finishNode.blocked then 
+    			print("Destination is blocked! ")
+    			return false
+    		end
+    		
     		--see if some other unit has already occupied the finish-node
     		if finishNode.occupied==false then
     			--do nothing
