@@ -301,6 +301,10 @@ function destroyBuilding(self)
 		elseif self.name==HOUSE_NAME then
 			MAX_POPULATION=MAX_POPULATION-HOUSING_INCREASE
 		end
+		
+		if self.name==BASE_NAME and LEVEL==2 then
+			centralMarrowDead()
+		end
 	end
 end
 
@@ -478,9 +482,9 @@ function prototypeColorPositionInvalid(self,x,y)
 	self.spriteObject.set_constant("#sprite", "tint", vmath.vector4(1,1,1,1))
 	
 	if self.isFatExtractor or self.isCarbExtractor or self.isProteinExtractor then
-		showStatusText(self,"INVALID POSITION\n\nToo close to other buildings or not on nutrient rich tissue.")
+		showStatusText(self,INVALID_POSITION_STATUS)
 	else
-		showStatusText(self,"INVALID POSITION\n\nToo close to other buildings or bad terrain.")
+		showStatusText(self,INVALID_POSITION_STATUS_EXTRACTOR)
 	end
 end
 

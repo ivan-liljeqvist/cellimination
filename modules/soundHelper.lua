@@ -80,9 +80,11 @@ function startVictoryMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
 	
 		if BATTLE_MODE then
-			msg.post("#battle", "stop_sound")
+			--msg.post("#battle", "stop_sound")
+			sound.set_group_gain("battle",0.0)
 		else
-			msg.post("#main", "stop_sound")
+			--msg.post("#main", "stop_sound")
+			sound.set_group_gain("main",0.0)
 		end
 		
 		msg.post("#victory", "play_sound", {delay = 0, gain = 0.2})
@@ -93,10 +95,13 @@ end
 function startDefeatMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
 	
+	
 		if BATTLE_MODE then
-			msg.post("#battle", "stop_sound")
+			--msg.post("#battle", "stop_sound")
+			sound.set_group_gain("battle",0.0)
 		else
-			msg.post("#main", "stop_sound")
+			--msg.post("#main", "stop_sound")
+			sound.set_group_gain("main",0.0)
 		end
 		
 		msg.post("#defeat", "play_sound", {delay = 0, gain = 0.2})

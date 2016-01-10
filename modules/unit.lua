@@ -468,6 +468,8 @@ end
 function decreaseHealth(self,amount)
 	self.health=self.health-amount
 	
+	
+	msg.post("mixer","underAttack")
 	msg.post("mixer","hit")
 	
 	if self.teamNumber~=PLAYER_TEAM then

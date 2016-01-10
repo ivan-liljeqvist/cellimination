@@ -37,7 +37,7 @@ function lvl2Section2Act()
 		
 		level2State.section2Done=true
 		
-		level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET
+		queueFirstAttack()
 	end
 
 end

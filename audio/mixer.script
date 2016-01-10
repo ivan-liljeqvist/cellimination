@@ -21,6 +21,8 @@ timeCurrentRoamingPlaying=0
 timeSincePlayedHitLast=0
 
 timeSincePlayedHealingLast=0
+timeSincePlayedUnderAttack=0
+timeSincePlayerNotEnoughResources=0
 
 NUM_ROAMING_UNITS=4
 ROAMING_IDS_TO_PLAY={}
@@ -172,6 +174,22 @@ function on_message(self, message_id, message, sender)
 		
 	elseif message_id == hash("death") then
 		msg.post("#death","play_sound", {delay = 0, gain =0.5})
+		
+	--timeSincePlayedUnderAttack=timeSincePlayedUnderAttack+dt
+	--timeSincePlayerNotEnoughResources=timeSincePlayerNotEnoughResources+dt
+	
+	elseif message_id == hash("underAttack") then
+		if timeSincePlayedUnderAttack>20 then
+			msg.post("#underAttack","play_sound", {delay = 0, gain =0.5})
+			timeSincePlayedUnderAttack=0
+		end
+		
+	elseif message_id==hash("notEnoughResources") then
+		if timeSincePlayerNotEnoughResources>3 then
+			timeSincePlayerNotEnoughResources=0
+			msg.post("#notEnoughResources","play_sound", {delay = 0, gain =0.5})
+		end
+		
 	elseif message_id == hash("constructionDone") then
 		local gain=0.2
 		if BACKGROUND_LOWERED then gain=0.1 end
@@ -186,9 +204,12 @@ function update(self, dt)
 	checkIfCanPlaySFX(dt)
 	
 	sinceLastError=sinceLastError+dt
+	
 	timeCurrentRoamingPlaying=timeCurrentRoamingPlaying+dt
 	timeSincePlayedHitLast=timeSincePlayedHitLast+dt
 	timeSincePlayedHealingLast=timeSincePlayedHealingLast+dt
+	timeSincePlayedUnderAttack=timeSincePlayedUnderAttack+dt
+	timeSincePlayerNotEnoughResources=timeSincePlayerNotEnoughResources+dt
 	
 	if timeCurrentRoamingPlaying>=ROAMING_UNIT_LENGTH and roamingCount<=NUM_ROAMING_UNITS then
 		

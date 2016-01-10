@@ -18,7 +18,7 @@ function act()
 	
 		--this is the same for all levels, if you lose all your units, you lose
 		if numberOfPlayerUnits()<=0 then
-			gameOver(false)
+			gameOver(false,LVL1_DEFEAT) --LVL1_DEFEAT works for all levels
 		end
 		
 	end
@@ -41,7 +41,7 @@ end
 
 
 
-function gameOver(victory)
+function gameOver(victory,text)
 	if victory and not CURRENT_LEVEL_COMPLETE then
 		msg.post("mixer","stopHealing")
 		msg.post("HUD","setSubtitleText",{text=""})
@@ -49,7 +49,7 @@ function gameOver(victory)
 		msg.post("mixer","stopVoice")
 		msg.post("mixer","victory")
 		msg.post("HUD","setGameOverTitle",{text="VICTORY"})
-		msg.post("HUD","setGameOverText",{text="You managed to survive!"})
+		msg.post("HUD","setGameOverText",{text=text})
 		CURRENT_LEVEL_COMPLETE=true
 	elseif not victory and not CURRENT_LEVEL_COMPLETE then
 		msg.post("mixer","stopHealing")
@@ -58,7 +58,7 @@ function gameOver(victory)
 		msg.post("mixer","stopVoice")
 		msg.post("mixer","defeat")
 		msg.post("HUD","setGameOverTitle",{text="DEFEAT"})
-		msg.post("HUD","setGameOverText",{text="Your forces were crushed!"})
+		msg.post("HUD","setGameOverText",{text=text})
 		CURRENT_LEVEL_COMPLETE=true
 	end
 end

@@ -32,15 +32,17 @@ function attack(self,fromRight,attackNumber)
 		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
 	elseif attackNumber<40 then
 		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
-		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
 		msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})
 
+	elseif attackNumber<50 then
+		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
+	elseif attackNumber<60 then
+		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})
 	else
 		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
-		msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})
 		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
-		msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})
-		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
 	end
 
 	

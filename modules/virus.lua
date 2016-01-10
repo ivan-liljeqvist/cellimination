@@ -13,6 +13,9 @@ function virusMessageHandler(self,go,message_id,message,sender)
 		self.zombieMode=true
 		self.timeSinceNotZombie=0
 		
+		self.shouldTerminate=true
+		self.terminateIn=80
+		
 		self.attackingFromRight=message.fromRight
 		
 		print("attack recieved")
@@ -43,6 +46,16 @@ end
 
 
 function virusUpdate(self,dt)
+
+	if self.shouldTerminate then --zombie viruses auto terminate, they can get stuck and pile up somewhere otherwise
+	
+		self.terminateIn=self.terminateIn-dt
+		
+		if self.terminateIn<=0 then
+			destroyUnit(self)
+		end
+		
+	end
 	
 	if math.abs(self.goalX-go.get_position().x)<10 and math.abs(self.goalY-go.get_position().y)<10 and self.zombieMode then 
 		self.movingTowardsPlayer=false 

@@ -3,7 +3,7 @@
 level2State={}
 
 level2State.FIRST_ATTACK_TIME=nil
-level2State.FIRST_ATTACK_TIME_OFFSET=5
+level2State.FIRST_ATTACK_TIME_OFFSET=100
 
 level2State.attacked=false
 
@@ -64,15 +64,31 @@ function level2Act()
 		level2State.FIRST_ATTACK_TIME=level2State.FIRST_ATTACK_TIME+15
 		attackCounter=attackCounter+1
 	end
-
+	
+	checkResources()
+	
 end
 
-function queueVoice5()
+function queueFirstAttack()
+	level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET
+	
 	if not level2State.VOICE5_START_TIME then	
-		level2State.VOICE5_START_TIME=GAME_TIME+10
+		level2State.VOICE5_START_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET
 		level2State.VOICE5_DONE_TIME=level2State.VOICE5_START_TIME+6
 	end
 end
+
+
+function centralMarrowDead()
+	gameOver(false,LVL2_DEFEAT)
+end
+
+function checkResources()
+	if FAT>=1000 and PROTEIN>=1000 and CARBS>=1000 then
+		gameOver(true,LVL2_VICTORY)
+	end
+end
+
 
 function skipTutorial()
 	if not level2State.tutorialSkipped and not level2State.cantSkipIntro then
@@ -84,7 +100,7 @@ function skipTutorial()
 		msg.post("mixer","normalBackground")
 		level2State.resetBackground=true
 		
-		level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET+150
+		queueFirstAttack()
 	end
 end
 
@@ -101,8 +117,6 @@ function level2MissionObjectives()
 				
 				msg.post("HUD","setMissionObjectiveText",{text=LVL2_COLLECT_1000_OBJ})
 				level2State.needMissionObjectiveUpdate=false
-				
-				queueVoice5()
 		end
 	
 		--replication station
@@ -168,7 +182,6 @@ function level2MissionObjectives()
 	elseif not level2State.setVoice5 then
 		msg.post("HUD","setMissionObjectiveText",{text=LVL2_COLLECT_1000_OBJ})
 		level2State.needMissionObjectiveUpdate=false
-		queueVoice5()
 		level2State.setVoice5=true
 		
 		level2State.section2Done=true

@@ -154,6 +154,10 @@ function on_message(self, message_id, message, sender)
 	elseif message_id==hash("refreshLayout")then
 		
 	elseif message_id==hash("displayErrorMessage")then
+	
+		if message.text==NOT_ENOUGH_RESOURCES then
+			msg.post("mixer","notEnoughResources")
+		end
 		--errorText
 		displayingError=true
 		displayingErrorTimeSinceStarted=0
