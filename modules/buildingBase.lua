@@ -166,18 +166,20 @@ end
 function hideWaypoint(self)
 	
 
-
+	if not self.waypointHidden then
 		msg.post(self.waypoint,"hide")
+		self.waypointHidden=true
+	end
+	
 
 end
 
 function tempHideWP(self)
-	print("hide wp")
 	msg.post(self.waypoint,"hide")
 end
 
 function tempShowWP(self)
-	print("show wp")
+	
 	msg.post(self.waypoint,"show")
 end
 

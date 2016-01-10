@@ -15,8 +15,10 @@ function update(self, dt)
 end
 
 function makeHealthbar(self,unitId)
-	self.healthBars[unitId]=gui.clone(gui.get_node("healthBox"))
-	gui.set_color(self.healthBars[unitId], vmath.vector4(0,1,0,0.0))
+	if not self.healthBars[unitId] then
+		self.healthBars[unitId]=gui.clone(gui.get_node("healthBox"))
+		gui.set_color(self.healthBars[unitId], vmath.vector4(0,1,0,0.0))
+	end
 end
 
 function deleteHealthbar(self,unitId)

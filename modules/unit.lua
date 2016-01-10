@@ -89,6 +89,8 @@ function destroyUnit(self)
 	if ALIVE[self.id] then
 	
 		
+		msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
+		
 		if self.healing then msg.post("mixer","stopHealing") end
 
 		if self.teamNumber~=PLAYER_TEAM and LEVEL==1 then
@@ -113,7 +115,7 @@ function destroyUnit(self)
 			destroyLivingUnit(self)
 		end
 		
-		msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
+		
 		
 		if self.worker then
 			abortConstruction(self)
@@ -441,6 +443,7 @@ function decreaseHealth(self,amount)
 		end
 	else
 		if (self.health+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS) <= 0 then
+			msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
 			destroyUnit(self)
 		end
 	end

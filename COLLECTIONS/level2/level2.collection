@@ -23,8 +23,8 @@ instances {
   id: "base"
   prototype: "/buildings/base/base.go"
   position {
-    x: 4398.5283
-    y: 3703.5347
+    x: 4391.0166
+    y: 3878.1826
     z: 0.0
   }
   rotation {
@@ -363,8 +363,8 @@ instances {
   id: "bloodEffectBig"
   prototype: "/ground/terrainEffects/blood/bloodEffectBig.go"
   position {
-    x: 6592.027
-    y: 3574.0684
+    x: 3572.417
+    y: 3727.608
     z: 0.0
   }
   rotation {
@@ -383,8 +383,8 @@ instances {
   id: "bloodEffectBig1"
   prototype: "/ground/terrainEffects/blood/bloodEffectBig.go"
   position {
-    x: 6776.217
-    y: 3392.7122
+    x: 5343.1816
+    y: 3063.699
     z: 0.0
   }
   rotation {
@@ -1403,8 +1403,8 @@ instances {
   id: "worker"
   prototype: "/units/defenders/worker/worker.go"
   position {
-    x: 4572.6704
-    y: 3708.664
+    x: 4565.1587
+    y: 3883.312
     z: 1.0
   }
   rotation {

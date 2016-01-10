@@ -71,7 +71,7 @@ function skipTutorial()
 		msg.post("mixer","normalBackground")
 		level2State.resetBackground=true
 		
-		level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET+150
+		level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET--+150
 	end
 end
 

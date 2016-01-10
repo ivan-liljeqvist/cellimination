@@ -80,13 +80,16 @@ end
 function deselect(self,go)
 	if self.selected then
 		self.selected=false
+		
+		hideHealthBar(self)
+		
 	    go.set_scale(self.initialScale)
 	    
 		
 		tempHideWP(self)
 
 			
-	    hideHealthBar(self)
+	    
 	   end
 end
 
