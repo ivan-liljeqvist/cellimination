@@ -20,6 +20,8 @@ timeCurrentRoamingPlaying=0
 
 timeSincePlayedHitLast=0
 
+timeSincePlayedHealingLast=0
+
 NUM_ROAMING_UNITS=4
 ROAMING_IDS_TO_PLAY={}
 ROAMING_IDS_USED={}
@@ -149,8 +151,13 @@ function on_message(self, message_id, message, sender)
 		BACKGROUND_LOWERED=false
 		
 	elseif message_id == hash("healing") and HEALING_PLAYING==false then	
-		msg.post("#healing","play_sound", {delay = 0, gain = 0.5})	
-		HEALING_PLAYING=true
+	
+		if timeSincePlayedHealingLast>0.3 then
+			msg.post("#healing","play_sound", {delay = 0, gain = 0.5})
+			timeSincePlayedHealingLast=0
+			HEALING_PLAYING=true
+		end
+		
 	elseif message_id == hash("stopHealing") and HEALING_PLAYING==true then
 		msg.post("#healing","stop_sound")	
 		HEALING_PLAYING=false
@@ -181,6 +188,7 @@ function update(self, dt)
 	sinceLastError=sinceLastError+dt
 	timeCurrentRoamingPlaying=timeCurrentRoamingPlaying+dt
 	timeSincePlayedHitLast=timeSincePlayedHitLast+dt
+	timeSincePlayedHealingLast=timeSincePlayedHealingLast+dt
 	
 	if timeCurrentRoamingPlaying>=ROAMING_UNIT_LENGTH and roamingCount<=NUM_ROAMING_UNITS then
 		
