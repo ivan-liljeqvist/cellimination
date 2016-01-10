@@ -71,6 +71,33 @@ function initBasicUnit(self,name,goID)
 	self.producingSomething=false
 	hideProgressBar(self)
 	hideHealthBar(self)
+	
+	self.showingStatusText=false
+	
+
+end
+
+function showStatusText(self,text)
+
+	local pos = go.get_position()
+	pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
+	pos.y=(pos.y-CAMERA_OFFSETY)/ZOOM_LEVEL
+	
+	self.showingStatusText=true
+	msg.post(msg.url("healthBars#gui"),"showStatusText",{position=pos,unitId=self.id,text=text})	
+	
+end
+
+function hideStatusText(self)
+	msg.post(msg.url("healthBars#gui"),"hideStatusText",{unitId=self.id})	
+end
+
+function moveStatusText(self)
+	local pos = go.get_position()
+	pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
+	pos.y=(pos.y-CAMERA_OFFSETY)/ZOOM_LEVEL
+	
+	msg.post(msg.url("healthBars#gui"),"setPositionStatusText",{position=pos,unitId=self.id})	
 end
 
 
@@ -88,7 +115,7 @@ function destroyUnit(self)
 
 	if ALIVE[self.id] then
 	
-		
+		hideStatusText(self)
 		msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
 		
 		if self.healing then msg.post("mixer","stopHealing") end
@@ -168,6 +195,7 @@ function basicUnitUpdate(self,dt,go)
 	handleHealingStatus(self)
 	handleProgressbar(self)
 	handleHealthbar(self,dt)
+	handleStatusText(self,dt)
 	
 	if self.x == self.goalX and self.y==self.goalY then
 		self.tileCoordinates={pixelToTileCoords(self.x-CAMERA_OFFSETX,self.y-CAMERA_OFFSETY)}
@@ -226,6 +254,12 @@ function getHealthRatio(self)
 	end 
 	
 	return ratio
+end
+
+function handleStatusText(self,dt)
+	if self.showingStatusText then
+		moveStatusText(self)
+	end
 end
 
 function handleHealthbar(self,dt)

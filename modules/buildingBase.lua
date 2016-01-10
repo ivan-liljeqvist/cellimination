@@ -125,7 +125,7 @@ function putPrototypeHere(x,y,self)
 	self.builtAtX=x*ZOOM_LEVEL
 	self.builtAtY=y*ZOOM_LEVEL
 	
-	
+	showStatusText(self,"Waiting for worker...")
 	
 	self.putDownAndWaitingForWorker=true
 	
@@ -141,6 +141,8 @@ end
 function buildHere(x,y,self)
 
 	--msg.post("#sprite", "play_animation", {id = hash("construction")})
+	
+	hideStatusText(self)
 	
 	self.workerID=nil
 	self.prototypeMode=false
@@ -467,12 +469,19 @@ end
 function prototypeColorPositionValid(self,x,y)
 	showBuilding(self)
 	self.spriteObject.set_constant("#sprite", "tint", vmath.vector4(0,0,0,0))
+	hideStatusText(self)
 end
 
 function prototypeColorPositionInvalid(self,x,y)
 	
 	hideBuilding(self)
 	self.spriteObject.set_constant("#sprite", "tint", vmath.vector4(1,1,1,1))
+	
+	if self.isFatExtractor or self.isCarbExtractor or self.isProteinExtractor then
+		showStatusText(self,"INVALID POSITION\n\nToo close to other buildings or not on nutrient rich tissue.")
+	else
+		showStatusText(self,"INVALID POSITION\n\nToo close to other buildings or bad terrain.")
+	end
 end
 
 function hideConstruction(self)

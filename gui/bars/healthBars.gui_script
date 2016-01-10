@@ -1,6 +1,7 @@
 
 function init(self)
 	self.healthBars={}
+	self.statusTexts={}
 	
 	self.originalHealthWidth = gui.get_size(gui.get_node("healthBox")).x
 end
@@ -14,6 +15,16 @@ function update(self, dt)
 
 end
 
+function makeStatusText(self,unitId,text,pos)
+	print("makeStatusText")
+	if not self.statusTexts[unitId] then
+		self.statusTexts[unitId]=gui.clone(gui.get_node("statusText"))
+		
+		gui.set_position(self.statusTexts[unitId],pos)
+		gui.set_text(self.statusTexts[unitId], text)
+	end
+end
+
 function makeHealthbar(self,unitId)
 	if not self.healthBars[unitId] then
 		self.healthBars[unitId]=gui.clone(gui.get_node("healthBox"))
@@ -25,6 +36,13 @@ function deleteHealthbar(self,unitId)
 	if self.healthBars[unitId] then
 		gui.delete_node(self.healthBars[unitId])
 		self.healthBars[unitId]=nil
+	end
+end
+
+function deleteStatusText(self,unitId)
+	if self.statusTexts[unitId] then
+		gui.delete_node(self.statusTexts[unitId])
+		self.statusTexts[unitId]=nil
 	end
 end
 
@@ -55,6 +73,24 @@ function on_message(self, message_id, message, sender)
 	   	else
 	   		deleteHealthbar(self,message.unitId)
 	   	end
+	   	
+	elseif message_id == hash("setPositionStatusText") then
+	   	
+	   	
+	   	if self.statusTexts[message.unitId] then
+	   		message.position.y=message.position.y
+	   		gui.set_position(self.statusTexts[message.unitId],message.position)
+	   	end
+	   	
+	elseif message_id==hash("hideStatusText") then
+	
+		if self.statusTexts[message.unitId] then
+			deleteStatusText(self,message.unitId)
+		end
+	   	
+	elseif message_id == hash("showStatusText") then
+	
+		makeStatusText(self,message.unitId,message.text,message.position)
 	   	
 	elseif message_id == hash("show") then
 	   	makeHealthbar(self,message.unitId)
