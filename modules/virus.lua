@@ -1,5 +1,5 @@
 
-PLAYER_X=4000
+PLAYER_X=4400
 PLAYER_Y=3000
 
 function virusMessageHandler(self,go,message_id,message,sender)
@@ -79,8 +79,8 @@ end
 function avoidObstacles(self)
 
 	--try one tile down
-	if isGoalTileOccupied(self) and self.lastGoalY~=(self.goalY-TILE_SIZE) then
-		self.goalY=self.goalY-TILE_SIZE
+	if isGoalTileOccupied(self) and self.lastGoalY~=(self.goalY+TILE_SIZE) then
+		self.goalY=self.goalY+TILE_SIZE
 		
 		if self.attackingFromRight then
 			self.goalX=self.goalX+TILE_SIZE
@@ -90,7 +90,16 @@ function avoidObstacles(self)
 		
 		if isGoalTileOccupied(self) then 
 			if self.targetEnemyId==nil then
-				self.goalY=self.goalY+TILE_SIZE 
+				
+				
+				if LEVEL==2 then 
+					self.goalY=self.goalY+TILE_SIZE 
+				else
+					self.goalY=self.goalY+TILE_SIZE 
+				end
+				
+				
+				
 				self.virusExitZombieForever=true 
 			end
 			

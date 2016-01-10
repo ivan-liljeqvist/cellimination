@@ -8,8 +8,8 @@ function init(self)
 	self.x=go.get_position().x
 	self.y=go.get_position().y
 	
-	self.boundsWidthScale=0.8
-	self.boundsHeightScale=0.8
+	self.boundsWidthScale=0.9
+	self.boundsHeightScale=0.9
 	
 	self.initialScale=0.9
 	self.constructionScale=0.5

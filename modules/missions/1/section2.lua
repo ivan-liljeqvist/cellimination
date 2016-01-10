@@ -49,8 +49,8 @@ function lvl1Section2Act()
 		level1State.playedVoice5=true
 		level1State.resetBackground=false
 		
-		level1State.VOICE5_START_TIME=GAME_TIME
-		level1State.VOICE5_DONE_TIME=GAME_TIME+20
+		level1State.VOICE5_START_TIME=GAME_TIME+50
+		level1State.VOICE5_DONE_TIME=level1State.VOICE5_START_TIME+20
 		
 		msg.post("mark","show")
 		msg.post("weakPurpleSpawner","spawn")

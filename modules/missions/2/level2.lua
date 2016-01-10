@@ -40,6 +40,8 @@ function level2Act()
 			lvl2Section1Act()
 		elseif not level2State.section2Done then
 			lvl2Section2Act()
+		elseif not level2State.section3Done then
+			lvl2Section3Act()
 		end
 		
 		level2SubtitlesIntroduction()
@@ -55,7 +57,7 @@ function level2Act()
 		msg.post("virusMind1","attack",{fromRight=false,attackNumber=attackCounter})
 		--level2State.attacked=true
 		
-		level2State.FIRST_ATTACK_TIME=level2State.FIRST_ATTACK_TIME+80
+		level2State.FIRST_ATTACK_TIME=level2State.FIRST_ATTACK_TIME+15
 		attackCounter=attackCounter+1
 	end
 
@@ -71,7 +73,7 @@ function skipTutorial()
 		msg.post("mixer","normalBackground")
 		level2State.resetBackground=true
 		
-		level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET--+150
+		level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET+150
 	end
 end
 

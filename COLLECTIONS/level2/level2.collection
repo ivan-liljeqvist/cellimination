@@ -23,8 +23,8 @@ instances {
   id: "base"
   prototype: "/buildings/base/base.go"
   position {
-    x: 4391.0166
-    y: 3878.1826
+    x: 4427.8237
+    y: 3883.2383
     z: 0.0
   }
   rotation {
@@ -1363,8 +1363,8 @@ instances {
   id: "virusMind"
   prototype: "/levelGOs/2/virusMind.go"
   position {
-    x: 7804.3677
-    y: 3522.5513
+    x: 7683.8457
+    y: 3362.2812
     z: 0.0
   }
   rotation {
@@ -1383,8 +1383,8 @@ instances {
   id: "virusMind1"
   prototype: "/levelGOs/2/virusMind.go"
   position {
-    x: 1166.4509
-    y: 3537.4346
+    x: 1177.1862
+    y: 3773.6094
     z: 0.0
   }
   rotation {
@@ -1403,8 +1403,8 @@ instances {
   id: "worker"
   prototype: "/units/defenders/worker/worker.go"
   position {
-    x: 4565.1587
-    y: 3883.312
+    x: 4601.966
+    y: 3888.3677
     z: 1.0
   }
   rotation {

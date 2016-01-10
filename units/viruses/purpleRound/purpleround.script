@@ -27,7 +27,7 @@ function init(self)
 
 	end
 	
-    initBasicUnit(self,PURPLE_WEAK_NAME,go.get_id())
+    initBasicUnit(self,PURPLE_ROUND_NAME,go.get_id())
     initMovableUnit(self)
     initFightingUnit(self,false)
     

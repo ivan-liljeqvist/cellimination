@@ -25,19 +25,16 @@ end
 function attack(self,fromRight,attackNumber)
 
 	--easy waves
-	if attackNumber<4 then
+	if attackNumber<20 then
+		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
+	elseif attackNumber<30 then
 		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
 		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
-		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
-	elseif attackNumber<7 then
-		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
-		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
-		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
-	elseif attackNumber<10 then
+	elseif attackNumber<40 then
 		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
 		msg.post(spawnVirus(self,"#purpleFactory"),"attack",{fromRight=fromRight})
-		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
 		msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})
+
 	else
 		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
 		msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})

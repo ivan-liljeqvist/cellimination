@@ -614,6 +614,26 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "mission2Voice5"
+  type: "sound"
+  data: "sound: \"/audio/test.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "roamingUnit1"
   type: "sound"
   data: "sound: \"/audio/music/roamingUnits/Roaming_Theme_Brass.ogg\"\n"
