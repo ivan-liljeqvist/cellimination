@@ -19,6 +19,8 @@ function init(self)
 	if LEVEL==2 then
 		look(5100,3840)
 	end
+	
+	print("own camera init")
 end
 
 function final(self)

@@ -1,6 +1,8 @@
 
 GAME_PAUSED=false
 
+LOAD_MENU=false
+
 IN_GAME=false
 RELOAD_LEVEL=false
 
@@ -322,6 +324,76 @@ function resetGlobals()
 	EXTRACTORS={}
 	
 	alreadyPopulatedNodeArray=false
+	
+	ROAMING_IDS_TO_PLAY={}
+	ROAMING_IDS_USED={}
+	
+	SELECTED_UNITS={}
+	LAST_SELECTED_NAME=""
+	
+	
+	BUILDINGS_FOG_ALREADY_UPDATED={}
+	CLEARED_CELLS={}
+	TILES_ALREADY_CLEARED_THIS_ROUND={}
+	mouseDown=false
+	
+	SHOWING_SELECTION=false
+	currentlyHighlightedPauseButton=0
+	
+	level1State={}
+
+	level1State.VOICE1_START_TIME=1
+	level1State.VOICE1_DONE_TIME=25
+	
+	level1State.VOICE2_START_TIME=28
+	level1State.VOICE2_DONE_TIME=50
+	
+	level1State.FIRST_VIRUS_DEAD=false
+	
+	level1State.VOICE3_START_TIME=nil --will be set when it's triggered
+	level1State.VOICE3_DONE_TIME=nil --will be set when it's triggered
+	
+	level1State.VOICE4_START_TIME=nil --will be set when it's triggered
+	level1State.VOICE4_DONE_TIME=nil
+	
+	level1State.VOICE5_START_TIME=nil --will be set when it's triggered
+	level1State.VOICE5_DONE_TIME=nil
+	
+	level1State.KILLED_VIRUSES=0
+	
+	level2State={}
+
+	level2State.FIRST_ATTACK_TIME=nil
+	level2State.FIRST_ATTACK_TIME_OFFSET=100
+	
+	level2State.attacked=false
+	
+	level2State.fatExtractorDone=false
+	level2State.proteinExtractorDone=false
+	level2State.carbsExtractorDone=false
+	
+	level2State.VOICE1_START_TIME=3
+	level2State.VOICE1_DONE_TIME=16.5
+	
+	level2State.VOICE2_START_TIME=level2State.VOICE1_DONE_TIME+1.5
+	level2State.VOICE2_DONE_TIME=level2State.VOICE2_START_TIME+40
+	
+	level2State.VOICE3_START_TIME=nil
+	level2State.VOICE3_DONE_TIME=nil
+	
+	level2State.VOICE4_START_TIME=nil
+	level2State.VOICE4_DONE_TIME=nil
+	
+	level2State.VOICE5_START_TIME=nil
+	level2State.VOICE5_DONE_TIME=nil
+	
+	level2State.VOICE6_START_TIME=nil
+	level2State.VOICE6_DONE_TIME=nil
+	
+	level2State.tutorialSkipped=false
+	
+	level2State.topTextSet=false
+		
 end
 
 

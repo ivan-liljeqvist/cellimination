@@ -47,9 +47,24 @@ PAUSE_MENU_BOUNDS[3]={x=960,y=285}
 PAUSE_BUTTON_WIDTH=200
 PAUSE_BUTTON_HEIGHT=70
 
-function handlePauseMenuButton(action)
+currentlyHighlightedPauseButton=0
 
-	print("handlePauseMenuButton")
+function handlePauseMenuButton(action,action_id)
+
+	if action_id==hash("leftClicked") then 
+	
+		if currentlyHighlightedPauseButton==1 then
+			--continue
+		elseif currentlyHighlightedPauseButton==2 then
+			--menu
+			print("pressed menu")
+			startMenu()
+		elseif currentlyHighlightedPauseButton==3 then
+			--restart
+		end
+	
+	end
+
 
 	for btnNumber,bound in pairs(PAUSE_MENU_BOUNDS) do
 
@@ -61,12 +76,18 @@ function handlePauseMenuButton(action)
 		   action.y>(bound.y-PAUSE_BUTTON_HEIGHT/2) and action.y<(bound.y+PAUSE_BUTTON_HEIGHT/2)
 		   then
 		   
+		   		if btnNumber~=currentlyHighlightedPauseButton then
 		   		
-		   		
-		   		highlightNode(nodeToHighlight)
+		   			highlightNode(nodeToHighlight)
+		   			msg.post("mixer","click1")
+		   			currentlyHighlightedPauseButton=btnNumber
+		   		end
 
-		   else
-		   		dehighlightNode(nodeToHighlight)	   		
+		   else	
+		   		if btnNumber==currentlyHighlightedPauseButton then
+			   		dehighlightNode(nodeToHighlight)
+			   		currentlyHighlightedPauseButton=0	
+			   	end   		
 		   end
 		
 	end

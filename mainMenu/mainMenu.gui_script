@@ -146,9 +146,10 @@ function on_input(self, action_id, action)
 					goToMenu1()
 				--Mission 1 pressed
 				elseif MISSION_HIGHLIGHTED[1] then
+				
 					startLevel(1)
 					clickSound2()
-					BETWEEN_PROXIES=true
+					
 				end
 				
 			end

@@ -15,6 +15,8 @@ local currentSubtitleNode=1
 
 
 function init(self)
+
+   hidePauseMenu()
     
    --register all buttons
    addButton(BUTTON1)
@@ -47,6 +49,7 @@ function init(self)
 	gui.animate(gui.get_node("topBigText"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 0.5), gui.EASING_INOUTQUAD, 0.5, 0.0, on_animation_done)
  	
 
+	print("HUD inited")
 
 end
 
@@ -106,6 +109,9 @@ function update(self, dt)
 	end
 	
 	sinceUpdatedLarge=sinceUpdatedLarge+dt
+	
+	
+	
 	--[[
 	if sinceUpdatedLarge>0.1 then
 		local text="21:30, kidney"
@@ -115,6 +121,15 @@ function update(self, dt)
 		missionChar=missionChar+1
 		sinceUpdatedLarge=0
 	end--]]
+end
+
+function hidePauseMenu()
+	hideNode("continueButton")
+	hideNode("continueText")
+	hideNode("backToMenuButton")
+	hideNode("backToMenuText")
+	hideNode("restartButton")
+	hideNode("restartText")
 end
 
 
@@ -138,9 +153,8 @@ function on_message(self, message_id, message, sender)
     if message_id==hash("newInput") then
 		checkIfAnyButtonClicked(message.action,message.action_id)
 		
-		if not GAME_PAUSED then
-			print("newInput")
-			handlePauseMenuButton(message.action)
+		if GAME_PAUSED then
+			handlePauseMenuButton(message.action,message.action_id)
 		end
 	
 	elseif message_id == hash("setGameOverTitle") then

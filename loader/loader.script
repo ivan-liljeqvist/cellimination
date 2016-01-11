@@ -21,14 +21,24 @@ function update(self, dt)
 
 	if BETWEEN_PROXIES then IN_GAME=false end
 
+	if LOAD_MENU then
+		LOAD_MENU=false
+		IN_GAME=false
+		msg.post(self.currentLevel,"unload")
+		self.currentLevel="loader#menu"
+		msg.post(self.currentLevel, "load")
+		RELOAD_LEVEL=false
+	end
+
 	if RELOAD_LEVEL then
+		print("reloading level "..LEVEL)
+		
 		msg.post("mixer","stopMenuSong")
 		IN_GAME=true
 		msg.post(self.currentLevel,"unload")
 		self.currentLevel="loader#level"..LEVEL
 		msg.post(self.currentLevel, "load")
 		RELOAD_LEVEL=false
-		BETWEEN_PROXIES=true
 	end
 
     if CURRENT_LEVEL_COMPLETE then

@@ -45,7 +45,7 @@ function init(self)
 			end
 			
 			--this is called only when left click first time
-			if action_id==hash("leftClicked") and action.pressed and self.releasedSinceLast then
+			if action_id==hash("leftClicked") and action.pressed and self.releasedSinceLast and IN_GAME then
 				--mouse variables are in manager.script
 				mouseDown=true
 				
@@ -187,8 +187,16 @@ function hideSelection()
 end
 
 function final(self)
-    -- Add finalization code here
-    -- Remove this function if not needed
+    mouseDown=false
+    self.massSelectionMode=false
+	
+	self.pressedSinceLast=false
+	self.releasedSinceLast=true
+	self.rightPressedSinceLast=false
+	
+	self.timeSinceReleasedLeft=0
+	self.triedToSelectOnlyOneLast=false
+	self.doubleClicked=false
 end
 
 function update(self, dt)
