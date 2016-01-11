@@ -70,8 +70,6 @@ function update(self, dt)
     
     updateResourcesLabels()
     updateStorageAndHouseLabels(self,dt)
-    
-
 
 	if displayingError then
 		if displayingErrorTimeSinceStarted<displayingErrorTime then
@@ -139,6 +137,12 @@ function on_message(self, message_id, message, sender)
     
     if message_id==hash("newInput") then
 		checkIfAnyButtonClicked(message.action,message.action_id)
+		
+		if not GAME_PAUSED then
+			print("newInput")
+			handlePauseMenuButton(message.action)
+		end
+	
 	elseif message_id == hash("setGameOverTitle") then
 		gui.set_text(gui.get_node("gameOverTitle"),message.text)
 	elseif message_id == hash("setGameOverText") then

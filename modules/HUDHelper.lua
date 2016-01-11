@@ -42,6 +42,42 @@ displayingErrorTime=3
 PAUSE_MENU_BOUNDS={}
 PAUSE_MENU_BOUNDS[1]={x=960,y=455}
 PAUSE_MENU_BOUNDS[2]={x=960,y=370}
-PAUSE_MENU_BOUNDS[3]={x=960,y=252}
+PAUSE_MENU_BOUNDS[3]={x=960,y=285}
 
+PAUSE_BUTTON_WIDTH=200
+PAUSE_BUTTON_HEIGHT=70
+
+function handlePauseMenuButton(action)
+
+	print("handlePauseMenuButton")
+
+	for btnNumber,bound in pairs(PAUSE_MENU_BOUNDS) do
+
+		local nodeToHighlight="continueButton"
+   		if btnNumber==2 then nodeToHighlight="backToMenuButton" 
+   		elseif btnNumber==3 then nodeToHighlight="restartButton" end
+		
+		if action.x>(bound.x-PAUSE_BUTTON_WIDTH/2) and action.x<(bound.x+PAUSE_BUTTON_WIDTH/2) and
+		   action.y>(bound.y-PAUSE_BUTTON_HEIGHT/2) and action.y<(bound.y+PAUSE_BUTTON_HEIGHT/2)
+		   then
+		   
+		   		
+		   		
+		   		highlightNode(nodeToHighlight)
+
+		   else
+		   		dehighlightNode(nodeToHighlight)	   		
+		   end
+		
+	end
+
+end
+
+function highlightNode(id)
+	gui.set_scale(gui.get_node(id),vmath.vector3(1.1,1.1,1.1))
+end
+
+function dehighlightNode(id)
+	gui.set_scale(gui.get_node(id),vmath.vector3(1,1,1))
+end
 
