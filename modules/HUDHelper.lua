@@ -38,3 +38,10 @@ displayingErrorTimeSinceStarted=0
 displayingErrorTime=3
 
 
+
+PAUSE_MENU_BOUNDS={}
+PAUSE_MENU_BOUNDS[1]={x=960,y=455}
+PAUSE_MENU_BOUNDS[2]={x=960,y=370}
+PAUSE_MENU_BOUNDS[3]={x=960,y=252}
+
+

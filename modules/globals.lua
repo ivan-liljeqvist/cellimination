@@ -1,4 +1,6 @@
 
+GAME_PAUSED=false
+
 IN_GAME=false
 RELOAD_LEVEL=false
 
@@ -227,6 +229,9 @@ end
 
 
 function resetGlobals()
+
+	GAME_PAUSED=false
+	
 	BASES_SPAWNED_LEVEL2=0
 	CURRENT_LEVEL_COMPLETE=false
 	

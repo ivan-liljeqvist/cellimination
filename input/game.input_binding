@@ -2,6 +2,10 @@ key_trigger {
   input: KEY_ENTER
   action: "enterPressed"
 }
+key_trigger {
+  input: KEY_ESC
+  action: "escPressed"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_1
   action: "leftClicked"

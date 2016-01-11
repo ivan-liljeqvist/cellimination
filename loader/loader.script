@@ -4,7 +4,10 @@ function init(self)
     --msg.post("loader#mainMenuBackground","load")
     self.currentLevel="loader#menu"
     msg.post(self.currentLevel,"load")
-    msg.post("mixer","menuSong")
+    
+    if ENABLE_SOUND then
+    	msg.post("mixer","menuSong")
+    end
 end
 
 function final(self)
