@@ -57,7 +57,10 @@ function init(self)
 					productionButton3={icon="RBCIcon",action=productionButton3PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end},
 					productionButton4={icon="RBCIcon",action=productionButton4PressedExtractor, hover=function() return HOVER_LAYOUT[RELEASE_WORKER] end}}
 					
-						
+	
+	if not IN_GAME then
+		spawnNow(self,go.get_position().x,go.get_position().y)
+	end
 					
 end
 

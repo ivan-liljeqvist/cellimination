@@ -26,6 +26,7 @@ end
 
 function updateFoW(dt)
 
+	if not IN_GAME then return end
 
 	
 	sinceClearedLast=sinceClearedLast+dt

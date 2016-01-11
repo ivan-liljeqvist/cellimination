@@ -1,5 +1,10 @@
 
-LEVEL = 2
+IN_GAME=false
+RELOAD_LEVEL=false
+
+LEVEL = 0
+
+BETWEEN_PROXIES=false
 
 BASES_SPAWNED_LEVEL2=0
 CURRENT_LEVEL_COMPLETE=false
@@ -88,7 +93,7 @@ function getScreenHeight()
 	return tonumber(sys.get_config("display.height"))
 end
 
-local alreadyPopulatedNodeArray=false
+alreadyPopulatedNodeArray=false
 
 --populates the TILEMAP_NODES array with tiles in the tilemap
 function populateNodeArray()
@@ -218,6 +223,100 @@ function copyTable(orig)
         copy = orig
     end
     return copy
+end
+
+
+function resetGlobals()
+	BASES_SPAWNED_LEVEL2=0
+	CURRENT_LEVEL_COMPLETE=false
+	
+	RELOAD_LEVEL=false
+	
+	LIGHTHOUSES={}
+	GAME_TIME=0
+	
+	CURRENT_VIRUSES_ATTACKING={}
+	
+	WORKER_RPM = 70
+	
+	LAST_ACTIONX=0
+	LAST_ACTIONY=0
+	
+	SCREEN_HEIGHT=1920
+	SCREEN_WIDTH=1080
+	HUD_RIGHT_HEIGHT=250
+	HUD_RIGHT_WIDTH=250
+	
+	ZOOM_LEVEL=1.4
+	
+	TILE_SIZE=64
+	TILE_NOT_REACHABLE_CODE=0
+	
+	PLAYER_TEAM=1
+	ENEMY_TEAM=2
+	
+	SHOWING_SELECTION=false
+	
+	PLACING_NEW_BUILDING=false
+	
+	SPOT_ENEMY_RADIUS=3
+	
+	CAMERA_DIRECTION_UP=4
+	CAMERA_DIRECTION_DOWN=3
+	CAMERA_DIRECTION_LEFT=1
+	CAMERA_DIRECTION_RIGHT=2
+	
+	CAMERA_OFFSETX=0
+	CAMERA_OFFSETY=0
+	
+	CAMERA_SPEED=10
+	
+	JUST_CLICKED_MINIMAP=false
+	
+	GUI_CLICKED=false --when GUI is clicked, we shouldn't deselect any selection
+	
+	TILEMAP_NODES={}
+	
+	TILEMAP_WIDTH=0
+	TILEMAP_HEIGHT=0
+	
+	TILEMAP_MAXY=0
+	TILEMAP_MAXX=0
+	TILEMAP_MINY=0
+	TILEMAP_MINX=0
+	
+	TILEMAP_INDEX_LOOKUP={}
+	
+	tilemapIndex=1
+	
+	BASE_FOG_RADIUS = 2
+	JEEP_FOG_RADIUS = 1
+	WORKER_FOG_RADIUS = 1
+	
+	tilemapObject={}
+	
+	MAX_PRODUCTION_QUEUE = 4
+	
+	TIME_TO_PRODUCE={}
+	MY_UNITS={}
+	GAME_OBJECTS_THAT_REQUIRE_INPUT={}
+	DROPS={}
+	
+	MY_UNITS={}
+	ALIVE={}
+	DEAD_IDS={}
+	
+	BULLET_OWNER={}
+	BULLET_HIT_ALREADY={}
+	
+	GAME_OBJECTS_THAT_REQUIRE_INPUT={}
+	WORKERS_EXTRACTING_FAT=0
+	WORKERS_EXTRACTING_PROTEIN=0
+	WORKERS_EXTRACTING_CARB=0
+	
+	EXTRACTORS={}
+	
+	alreadyPopulatedNodeArray=false
 end
 
 

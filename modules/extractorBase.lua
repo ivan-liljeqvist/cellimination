@@ -79,6 +79,9 @@ function extractorMessages(self, message_id, message, sender,go)
 end
 
 function updateExtractor(self,dt)
+	
+	if not IN_GAME then return end
+	
 	handleWorkerAndRPMGUI(self)
 	
 	if self.timeSinceUpdatedWorkers>1.0 then

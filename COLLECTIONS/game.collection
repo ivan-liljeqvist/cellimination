@@ -1,4 +1,24 @@
 name: "game"
+instances {
+  id: "mixer"
+  prototype: "/audio/mixer.go"
+  position {
+    x: 720.10297
+    y: 672.22565
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "loader"
@@ -69,7 +89,7 @@ embedded_instances {
   "  }\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"mainMenuBackground\"\n"
+  "  id: \"menu\"\n"
   "  type: \"collectionproxy\"\n"
   "  data: \"collection: \\\"/COLLECTIONS/menu/menu.collection\\\"\\n"
   "\"\n"

@@ -1,4 +1,14 @@
 
+START_RESOURCES={}
+START_RESOURCES[1]={fat=400,protein=400,carbs=400}
+START_RESOURCES[2]={fat=400,protein=400,carbs=400}
+
+function setStartingResources(level)
+	FAT=START_RESOURCES[level].fat
+	PROTEIN=START_RESOURCES[level].protein
+	CARBS=START_RESOURCES[level].carbs
+end
+
 STORAGE_INCREASE=300
 HOUSING_INCREASE=5
 MAX_STORAGE=1300

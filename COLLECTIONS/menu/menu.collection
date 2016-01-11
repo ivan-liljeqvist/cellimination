@@ -1,50 +1,10 @@
 name: "default"
 instances {
-  id: "buildingManager"
-  prototype: "/buildings/buildingManager.go"
+  id: "baracks"
+  prototype: "/buildings/barracks/baracks.go"
   position {
-    x: 845.08307
-    y: 614.66876
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "extractorInfo"
-  prototype: "/gui/extractor/extractorInfo.go"
-  position {
-    x: 3072.0
-    y: 2528.0
-    z: 0.35
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "fog"
-  prototype: "/ground/menu/fog/menuGameFog.go"
-  position {
-    x: 0.0
-    y: 0.0
+    x: 433.81586
+    y: 973.15015
     z: 0.0
   }
   rotation {
@@ -60,12 +20,12 @@ instances {
   }
 }
 instances {
-  id: "healthBars"
-  prototype: "/gui/bars/healthBars.go"
+  id: "base"
+  prototype: "/buildings/base/base.go"
   position {
-    x: 3072.0
-    y: 2528.0
-    z: 0.35
+    x: 273.33383
+    y: 331.06818
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -80,12 +40,52 @@ instances {
   }
 }
 instances {
-  id: "inputLayer"
-  prototype: "/inputLayer/inputLayer.go"
+  id: "carbExtractor"
+  prototype: "/buildings/carbExtractor/carbExtractor.go"
   position {
-    x: 845.08307
-    y: 614.66876
-    z: 0.5
+    x: 2397.2236
+    y: 230.07565
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "fatExtractor"
+  prototype: "/buildings/fatExtractor/fatExtractor.go"
+  position {
+    x: 2371.8127
+    y: 941.5814
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mainMenu"
+  prototype: "/mainMenu/mainMenu.go"
+  position {
+    x: 1639.6445
+    y: 941.26184
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -120,32 +120,12 @@ instances {
   }
 }
 instances {
-  id: "miniRectangle"
-  prototype: "/minimap/miniRectangle.go"
-  position {
-    x: 3703.6409
-    y: 2720.0
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "mixer"
   prototype: "/audio/mixer.go"
   position {
-    x: 826.8083
-    y: 801.13135
-    z: 0.5
+    x: 0.0
+    y: 0.0
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -160,91 +140,11 @@ instances {
   }
 }
 instances {
-  id: "ownCamera"
-  prototype: "/render/ownCamera.go"
+  id: "proteinExtractor"
+  prototype: "/buildings/proteinExtractor/proteinExtractor.go"
   position {
-    x: 1984.0
-    y: 1663.8071
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "progressBars"
-  prototype: "/gui/bars/progressBars.go"
-  position {
-    x: 3072.0
-    y: 2528.0
-    z: 0.35
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "selection"
-  prototype: "/gui/selection/selection.go"
-  position {
-    x: 448.0
-    y: 623.71063
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "unitManager"
-  prototype: "/units/unitManager.go"
-  position {
-    x: 864.0
-    y: 671.6624
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "world"
-  prototype: "/ground/menu/ground/menuGameGround.go"
-  position {
-    x: 0.0
-    y: 0.0
+    x: 2188.854
+    y: 621.4038
     z: 0.0
   }
   rotation {
@@ -260,3 +160,73 @@ instances {
   }
 }
 scale_along_z: 0
+embedded_instances {
+  id: "fog"
+  data: "components {\n"
+  "  id: \"tilemap\"\n"
+  "  component: \"/mainMenu/menufog.tilemap\"\n"
+  "  position {\n"
+  "    x: -882.94183\n"
+  "    y: -697.5728\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 731.7725
+    y: 646.83466
+    z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "world"
+  data: "components {\n"
+  "  id: \"tilemap\"\n"
+  "  component: \"/mainMenu/menubackground.tilemap\"\n"
+  "  position {\n"
+  "    x: -885.3141\n"
+  "    y: -689.3036\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 731.7725
+    y: 646.83466
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}

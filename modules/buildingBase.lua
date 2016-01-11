@@ -25,7 +25,9 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	
 	self.workerID = nil -- worker building the building
 
-	hideWaypoint(self)
+	if IN_GAME then
+		hideWaypoint(self)
+	end
 	
 	self.constructionStarted=false
 	self.constructionDone=false
@@ -36,8 +38,6 @@ function initBuilding(self,spriteObject,buildingSize,go)
 	self.building = self.factory.create("#buildingFactory")
 	
 	hideConstruction(self)
-	
-	print("self.constructionScale "..self.constructionScale)
 	
 	
 	
@@ -81,9 +81,10 @@ end
 
 function constructionDone(self)
 	
-	msg.post(msg.url("mixer"),"constructionDone")
-	
-	msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
+	if IN_GAME then
+		msg.post(msg.url("mixer"),"constructionDone")
+		msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
+	end
 	
 	if self.isFatExtractor==true then 
 		FAT_EXTRACTORS_MADE=FAT_EXTRACTORS_MADE+1
@@ -392,6 +393,7 @@ end
 
 function setTilesUnderMeToOccupied(self,x,y)
 
+	if not IN_GAME then return end
 	
 	local centerTileX, centerTileY = pixelToTileCoords(x,y)
 	
@@ -503,7 +505,7 @@ function showConstruction(self)
 end
 
 function hideBuilding(self)
-	if self.building then
+	if self.building and IN_GAME then
 		msg.post(self.building,"hide")
 	end
 end

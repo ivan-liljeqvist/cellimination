@@ -30,24 +30,29 @@ ROAMING_IDS_USED={}
 
 function init(self)
 	--
-	startSoundscapeMusic()
-	startMainBackgroundMusic()
 	
-	math.randomseed(os.time())  --seed
-	math.random(1,NUM_ROAMING_UNITS) --the first random is always constant for some reason so we call it here
-	
-	for c=1,NUM_ROAMING_UNITS,1 do
-	
+	if IN_GAME then
+		print("init mixer")
 		
-		local nextId=math.random(1,NUM_ROAMING_UNITS)
+		startSoundscapeMusic()
+		startMainBackgroundMusic()
 		
-		while ROAMING_IDS_USED[nextId] do	
-			nextId=math.random(1,NUM_ROAMING_UNITS)
+		math.randomseed(os.time())  --seed
+		math.random(1,NUM_ROAMING_UNITS) --the first random is always constant for some reason so we call it here
+		
+		for c=1,NUM_ROAMING_UNITS,1 do
+		
+			
+			local nextId=math.random(1,NUM_ROAMING_UNITS)
+			
+			while ROAMING_IDS_USED[nextId] do	
+				nextId=math.random(1,NUM_ROAMING_UNITS)
+			end
+			
+			ROAMING_IDS_USED[nextId]=true
+			ROAMING_IDS_TO_PLAY[c]=nextId	
+			
 		end
-		
-		ROAMING_IDS_USED[nextId]=true
-		ROAMING_IDS_TO_PLAY[c]=nextId	
-		
 	end
 end
 
@@ -202,6 +207,15 @@ function on_message(self, message_id, message, sender)
 		local gain=0.2
 		if BACKGROUND_LOWERED then gain=0.1 end
 		msg.post("#constructionComplete","play_sound", {delay = 0, gain=gain})
+		
+	elseif message_id==hash("menuSong") then 
+		msg.post("#menuSong","play_sound", {delay = 0, gain =0.5})
+	elseif message_id==hash("stopMenuSong")then
+		msg.post("#menuSong","stop_sound", {delay = 0, gain =0.5})
+	elseif message_id==hash("click1") then 
+		msg.post("#click1","play_sound", {delay = 0, gain = 0.4})
+	elseif message_id==hash("click2") then 
+		msg.post("#click2","play_sound", {delay = 0, gain = 0.4})
 	end
 	
 end
@@ -209,23 +223,27 @@ end
 local roamingCount=1
 function update(self, dt)
 
-	checkIfCanPlaySFX(dt)
+	if IN_GAME then
 	
-	sinceLastError=sinceLastError+dt
-	
-	timeCurrentRoamingPlaying=timeCurrentRoamingPlaying+dt
-	timeSincePlayedHitLast=timeSincePlayedHitLast+dt
-	timeSincePlayedHealingLast=timeSincePlayedHealingLast+dt
-	timeSincePlayedUnderAttack=timeSincePlayedUnderAttack+dt
-	timeSincePlayerNotEnoughResources=timeSincePlayerNotEnoughResources+dt
-	
-	if timeCurrentRoamingPlaying>=ROAMING_UNIT_LENGTH and roamingCount<=NUM_ROAMING_UNITS then
+		checkIfCanPlaySFX(dt)
 		
-
-		msg.post("#roamingUnit"..ROAMING_IDS_TO_PLAY[roamingCount], "set_gain", {gain = 0.5})
+		sinceLastError=sinceLastError+dt
 		
-		timeCurrentRoamingPlaying=0
-		roamingCount=roamingCount+1
+		timeCurrentRoamingPlaying=timeCurrentRoamingPlaying+dt
+		timeSincePlayedHitLast=timeSincePlayedHitLast+dt
+		timeSincePlayedHealingLast=timeSincePlayedHealingLast+dt
+		timeSincePlayedUnderAttack=timeSincePlayedUnderAttack+dt
+		timeSincePlayerNotEnoughResources=timeSincePlayerNotEnoughResources+dt
+		
+		if timeCurrentRoamingPlaying>=ROAMING_UNIT_LENGTH and roamingCount<=NUM_ROAMING_UNITS then
+			
+	
+			msg.post("#roamingUnit"..ROAMING_IDS_TO_PLAY[roamingCount], "set_gain", {gain = 0.5})
+			
+			timeCurrentRoamingPlaying=0
+			roamingCount=roamingCount+1
+			
+		end
 		
 	end
 	

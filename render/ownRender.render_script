@@ -25,7 +25,10 @@ end
 function update(self)
 	
     renderGame(self)
-    renderMinimap(self)
+    
+    if IN_GAME then
+    	renderMinimap(self)
+    end
 end
 
 function renderMinimap(self)

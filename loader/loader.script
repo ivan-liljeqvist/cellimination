@@ -1,7 +1,10 @@
 function init(self)
 	msg.post(".", "acquire_input_focus")
-    msg.post("loader#level"..LEVEL, "load")
+    --msg.post("loader#level"..LEVEL, "load")
     --msg.post("loader#mainMenuBackground","load")
+    self.currentLevel="loader#menu"
+    msg.post(self.currentLevel,"load")
+    msg.post("mixer","menuSong")
 end
 
 function final(self)
@@ -12,12 +15,28 @@ end
 local timeSinceLevelComplete=0
 
 function update(self, dt)
+
+	if BETWEEN_PROXIES then IN_GAME=false end
+
+	if RELOAD_LEVEL then
+		msg.post("mixer","stopMenuSong")
+		IN_GAME=true
+		msg.post(self.currentLevel,"unload")
+		self.currentLevel="loader#level"..LEVEL
+		msg.post(self.currentLevel, "load")
+		RELOAD_LEVEL=false
+		BETWEEN_PROXIES=true
+	end
+
     if CURRENT_LEVEL_COMPLETE then
+    	
     	timeSinceLevelComplete=timeSinceLevelComplete+dt
     	if timeSinceLevelComplete >0.5 then
     	 	msg.post("loader#level"..LEVEL, "set_time_step", {factor = 0, mode = 1})
     	 end
     end
+    
+    
 end
 
 function on_message(self, message_id, message, sender)
@@ -25,13 +44,16 @@ function on_message(self, message_id, message, sender)
     if message_id == hash("proxy_loaded") 
     --and sender.fragment == hash("level1") 
     then
-   -- 
-   --WHEN STARTING LEVEL2, move camera to the middle
-            msg.post(sender, "init")
-            msg.post(sender, "enable")
-          print("proxy loaded")
-          
-          msg.post(sender,"set_time_step", {factor = 5, mode = 1})
+	   -- 
+	   --WHEN STARTING LEVEL2, move camera to the middle
+	   msg.post(sender, "init")
+	   msg.post(sender, "enable")
+	   print("proxy loaded")
+	          
+	   msg.post(sender,"set_time_step", {factor = 5, mode = 1})
+	   
+	   BETWEEN_PROXIES=false
+	   
     end
     
 end

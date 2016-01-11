@@ -4,7 +4,7 @@
 function lvl1Section2Act()
 
 	--voice 3 is triggered, after it we need to reset the background 
-	if  level1State.playedVoice3 and GAME_TIME>level1State.VOICE3_DONE_TIME and not level1State.playedVoice4 and not level1State.resetBackground then
+	if  level1State.playedVoice3 and GAME_TIME>level1State.VOICE3_DONE_TIME and not level1State.playedVoice4 and not level1State.resetBackground and not level1State.playedVoice4 then
 	
 		msg.post("HUD","setMissionObjectiveText",{text="Follow the path until you encounter viruses.\nIf you see a virus, kill it!"})
 		print("normalBackground3")
@@ -30,7 +30,7 @@ function lvl1Section2Act()
 		level1State.VOICE4_DONE_TIME=GAME_TIME+8
 		level1State.resetBackground=false
 	
-	elseif level1State.playedVoice4 and GAME_TIME>level1State.VOICE4_DONE_TIME and not level1State.resetBackground then
+	elseif level1State.playedVoice4 and GAME_TIME>level1State.VOICE4_DONE_TIME and not level1State.resetBackground and not level1State.playedVoice5 then
 		print("normalBackground4")
 		msg.post("mixer","normalBackground")
 		level1State.resetBackground=true
@@ -49,17 +49,18 @@ function lvl1Section2Act()
 		level1State.playedVoice5=true
 		level1State.resetBackground=false
 		
-		level1State.VOICE5_START_TIME=GAME_TIME+50
-		level1State.VOICE5_DONE_TIME=level1State.VOICE5_START_TIME+20
+		level1State.VOICE5_START_TIME=GAME_TIME
+		level1State.VOICE5_DONE_TIME=level1State.VOICE5_START_TIME+21
 		
 		msg.post("mark","show")
 		msg.post("weakPurpleSpawner","spawn")
 		
 		hideClearedCells()
 	
-	elseif level1State.playedVoice5 and GAME_TIME>level1State.VOICE5_DONE_TIME and not level1State.resetBackground then
+	elseif level1State.playedVoice5 and GAME_TIME>level1State.VOICE5_DONE_TIME and not level1State.resetBack5 then
 		print("normalBackground5")
 		
+		level1State.resetBack5=true
 		
 		msg.post("mixer","normalBackground")
 		

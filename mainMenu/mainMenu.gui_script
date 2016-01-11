@@ -1,0 +1,255 @@
+
+require "modules.mainMenuHelper"
+
+
+BUTTON_WIDTH=500
+NEW_BUTTON_Y=571
+NEW_BUTTON_HEIGHT=100
+
+CONTINUE_BUTTON_Y=357
+CONTINUE_BUTTON_HEIGHT=100
+
+NEW_GAME=false
+CONTINUE_GAME=false
+
+releasedSinceLast=true
+
+ENABLED_MISSIONS={}
+ENABLED_MISSIONS[1]=true
+
+MISSION_BOX_SIZE=300
+
+MISSION_BOXES_BOUND={}
+MISSION_BOXES_BOUND[1]={x=352,y=252}
+MISSION_BOXES_BOUND[2]={x=755,y=252}
+MISSION_BOXES_BOUND[3]={x=1156,y=252}
+MISSION_BOXES_BOUND[4]={x=1556,y=252}
+
+MISSION_HIGHLIGHTED={}
+MISSION_HIGHLIGHTED[1]=false
+MISSION_HIGHLIGHTED[2]=false
+MISSION_HIGHLIGHTED[3]=false
+MISSION_HIGHLIGHTED[4]=false
+
+MENU1_VISIBLE=false
+MENU2_VISIBLE=true
+
+MAX_MISSIONS=4
+
+MISSIONS_COMPLETE=0
+
+local hoveringOverBack=false
+
+function init(self)
+
+    msg.post(".", "acquire_input_focus")
+    hideEverything()
+    showMenu2()
+    setLabels()
+    
+end
+
+
+
+function handleBackButtonHover(action)
+
+	if action.x>(94-120/2) and action.x<(94+120/2) and
+		   action.y>(1008-90/2) and action.y<(1008+90/2)  
+		    then
+		   
+		   if not hoveringOverBack then
+		   	 highlightNode("backButton")
+		   	 clickSound()
+		   end
+		   
+		   hoveringOverBack=true
+		   
+	else
+		dehighlightNode("backButton")
+		hoveringOverBack=false
+	end
+	
+end
+
+function handleMissionBoxHover(action)
+	
+	for mission,bound in pairs(MISSION_BOXES_BOUND) do
+	
+		if action.x>(bound.x-MISSION_BOX_SIZE/2) and action.x<(bound.x+MISSION_BOX_SIZE/2) and
+		   action.y>(bound.y-MISSION_BOX_SIZE/2) and action.y<(bound.y+MISSION_BOX_SIZE/2) and 
+		   ENABLED_MISSIONS[mission] 
+		   then
+	
+		 	if not MISSION_HIGHLIGHTED[mission] then
+			 	highlightMissionBox(mission)
+			 	clickSound()
+			end
+			 
+		else
+			dehighlightMissionBox(mission)
+		end
+	
+	end
+	
+end
+
+
+function highlightNode(id)
+	gui.set_scale(gui.get_node(id),vmath.vector3(1.1,1.1,1.1))
+end
+
+function dehighlightNode(id)
+	gui.set_scale(gui.get_node(id),vmath.vector3(1,1,1))
+end
+
+function highlightMissionBox(mission)
+	MISSION_HIGHLIGHTED[mission]=true
+	gui.set_scale(gui.get_node("mission"..mission.."Container"),vmath.vector3(1.1,1.1,1.1))
+end
+
+function dehighlightMissionBox(mission)
+	MISSION_HIGHLIGHTED[mission]=false
+	gui.set_scale(gui.get_node("mission"..mission.."Container"),vmath.vector3(1,1,1))
+end
+
+function on_input(self, action_id, action)
+  
+  	if MENU1_VISIBLE then
+    	handleButtonHover(action)
+    elseif MENU2_VISIBLE then
+    	handleMissionBoxHover(action)
+    end 
+    
+    if MENU2_VISIBLE or MENU3_VISIBLE then
+    	handleBackButtonHover(action)
+    end
+    
+    
+  	if action_id==hash("leftClicked") then
+		
+		
+		if action.released then 
+			releasedSinceLast=true 
+		end
+		
+		if action.pressed then
+			if MENU1_VISIBLE then
+				if NEW_GAME or CONTINUE_GAME then
+					clickSound2()
+					handleClick(NEW_GAME,CONTINUE_GAME)
+				end
+			elseif MENU2_VISIBLE then
+				
+				--Back pressed
+				if hoveringOverBack then
+					clickSound2()
+					goToMenu1()
+				--Mission 1 pressed
+				elseif MISSION_HIGHLIGHTED[1] then
+					startLevel(1)
+					clickSound2()
+					BETWEEN_PROXIES=true
+				end
+				
+			end
+		end
+	end
+end
+
+function setLabels()
+	gui.set_text(gui.get_node("mission1Description"),LVL1_DESC)
+	gui.set_text(gui.get_node("mission2Description"),LVL2_DESC)
+	gui.set_text(gui.get_node("mission3Description"),LVL3_DESC)
+	gui.set_text(gui.get_node("mission4Description"),LVL4_DESC)
+end
+
+function goToMenu1()
+	hideEverything()
+	showMenu1()
+	MENU1_VISIBLE=true
+	MENU2_VISIBLE=false
+	hoveringOverBack=false
+end
+
+function goToMenu2()
+	hideEverything()
+	showMenu2()
+	MENU1_VISIBLE=false
+	MENU2_VISIBLE=true
+	hoveringOverBack=false
+end
+
+
+function handleClick(new,continue)
+	if new then
+		goToMenu2()
+	elseif continue then
+	end
+end
+
+
+function showMenu2()
+	for c=1,MAX_MISSIONS,1 do
+		showNode("mission"..c.."Container")
+		showNode("mission"..c.."Title")
+		showNode("mission"..c.."Description")
+		showNode("clickToStart"..c)
+		showNode("selectMissionText")
+		
+	end
+	showNode("backButton")
+	showNode("backText")
+	
+	for s=MAX_MISSIONS,(MISSIONS_COMPLETE+2),-1 do
+		    setMissionDisabled(s)
+	end
+   	
+end
+
+function hideMenu2()
+	for c=1,MAX_MISSIONS,1 do
+		hideNode("mission"..c.."Container")
+		hideNode("mission"..c.."Title")
+		hideNode("mission"..c.."Description")
+		hideNode("clickToStart"..c)
+		hideNode("selectMissionText")
+	end
+	hideNode("backButton")
+	hideNode("backText")
+end
+
+function hideMenu1()
+
+	hideNode("newButton")
+	hideNode("newCampaign") 
+	
+	hideNode("continueButton") 
+	hideNode("continue") 
+	
+	hideNode("bottomText") 
+	hideNode("gameTitle") 
+	
+end
+
+function showMenu1()
+
+	showNode("newButton") 
+	showNode("newCampaign") 
+	
+	showNode("continueButton") 
+	showNode("continue") 
+	
+	showNode("bottomText") 
+	showNode("gameTitle") 
+	
+end
+
+function hideEverything()
+	hideMenu1()
+	hideMenu2()
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+end
+

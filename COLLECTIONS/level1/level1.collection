@@ -1,4 +1,4 @@
-name: "default"
+name: "level1"
 instances {
   id: "HUD"
   prototype: "/gui/HUD/HUD.go"
@@ -26,6 +26,26 @@ instances {
     x: 845.08307
     y: 614.66876
     z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "drops"
+  prototype: "/gui/drops/drops.go"
+  position {
+    x: 4448.0
+    y: 4032.0
+    z: 0.0
   }
   rotation {
     x: 0.0

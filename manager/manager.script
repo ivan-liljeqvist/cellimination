@@ -40,6 +40,7 @@ require "modules.virus"
 require "modules.transactions"
 
 require "modules.storyteller"
+require "modules.levelSwitcher"
 
 require "modules.missions.1.subtitlesLevel1"
 require "modules.missions.1.section2"

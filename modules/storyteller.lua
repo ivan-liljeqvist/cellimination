@@ -7,8 +7,9 @@
 
 function act()
 
-	if not CURRENT_LEVEL_COMPLETE then
 	
+	if not CURRENT_LEVEL_COMPLETE then
+		
 		
 		if LEVEL==1 then
 			level1Act()
@@ -42,6 +43,11 @@ end
 
 
 function gameOver(victory,text)
+
+	if not IN_GAME or BETWEEN_PROXIES then return end	
+	
+	print("game over "..text.." "..LEVEL)
+
 	if victory and not CURRENT_LEVEL_COMPLETE then
 		msg.post("mixer","stopHealing")
 		msg.post("HUD","setSubtitleText",{text=""})
