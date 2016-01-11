@@ -11,6 +11,19 @@ function level2Subtitles()
 		msg.post("HUD","setSubtitleText",{text=""})
 		level2State.sub29=true
 	
+	elseif level2State.VOICE6_START_TIME and GAME_TIME>level2State.VOICE6_START_TIME and not level2State.sub30 then
+		msg.post("HUD","setSubtitleText",{text="Hello Commander! I'm your engineer."})
+		level2State.sub30=true
+	elseif level2State.VOICE6_START_TIME and GAME_TIME>level2State.VOICE6_START_TIME+2.8 and not level2State.sub31 then
+		msg.post("HUD","setSubtitleText",{text="Remember that you can always build an RnD structure."})
+		level2State.sub31=true
+	elseif level2State.VOICE6_START_TIME and GAME_TIME>level2State.VOICE6_START_TIME+6.3 and not level2State.sub32 then
+		msg.post("HUD","setSubtitleText",{text="The RnD structure will allow you to upgrade your units."})
+		level2State.sub32=true
+	elseif level2State.VOICE6_START_TIME and GAME_TIME>level2State.VOICE6_START_TIME+11 and not level2State.sub33 then
+		msg.post("HUD","setSubtitleText",{text=""})
+		level2State.sub33=true
+		
 	end
 
 end

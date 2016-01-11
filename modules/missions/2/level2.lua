@@ -26,6 +26,9 @@ level2State.VOICE4_DONE_TIME=nil
 level2State.VOICE5_START_TIME=nil
 level2State.VOICE5_DONE_TIME=nil
 
+level2State.VOICE6_START_TIME=nil
+level2State.VOICE6_DONE_TIME=nil
+
 level2State.tutorialSkipped=false
 
 level2State.topTextSet=false
@@ -75,6 +78,11 @@ function queueFirstAttack()
 	if not level2State.VOICE5_START_TIME then	
 		level2State.VOICE5_START_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET
 		level2State.VOICE5_DONE_TIME=level2State.VOICE5_START_TIME+6
+	end
+	
+	if not level2State.tutorialSkipped then
+		level2State.VOICE6_START_TIME=GAME_TIME+15
+		level2State.VOICE6_DONE_TIME = level2State.VOICE6_START_TIME+11
 	end
 end
 

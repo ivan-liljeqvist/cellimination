@@ -29,7 +29,7 @@ function deductResources(unitName)
 
 	local proteinPrice=math.ceil(PRICES[unitName].protein+(NUMBER_BOUGHT[unitName]+1+NUMBER_QUEUED[unitName])*INFLATION[unitName])
 	local carbPrice=math.ceil(PRICES[unitName].carb+(NUMBER_BOUGHT[unitName]+1+NUMBER_QUEUED[unitName])*INFLATION[unitName])
-	local fatPrice=math.ceil(PRICES[unitName].carb+(NUMBER_BOUGHT[unitName]+1+NUMBER_QUEUED[unitName])*INFLATION[unitName])
+	local fatPrice=math.ceil(PRICES[unitName].fat+(NUMBER_BOUGHT[unitName]+1+NUMBER_QUEUED[unitName])*INFLATION[unitName])
 
 	if unitName==STORAGE_NAME then
 		proteinPrice=PROTEIN*0.05
@@ -37,7 +37,7 @@ function deductResources(unitName)
 		fatPrice=FAT*0.05
 	end
 
-	print("deductiong :", fatPrice,proteinPrice,fatPrice)
+	print("deductiong (fatPrice,proteinPrice,carbPrice)  :", fatPrice,proteinPrice,carbPrice)
 
 	if proteinPrice<=PROTEIN and
 	   carbPrice<=CARBS and 
@@ -47,7 +47,6 @@ function deductResources(unitName)
 	   FAT=FAT-fatPrice
 	   CARBS=CARBS-carbPrice
 	end
-	
-	PRICES[STORAGE_NAME]={carb=CARBS*0.05,protein=PROTEIN*0.05,fat=FAT*0.05}
+
 	
 end

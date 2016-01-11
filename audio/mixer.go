@@ -134,6 +134,26 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "engineer1"
+  type: "sound"
+  data: "sound: \"/audio/missions/2/engineer1.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "enteringExtractor"
   type: "sound"
   data: "sound: \"/audio/worker/Worker_Extractor.ogg\"\n"
@@ -358,7 +378,7 @@ embedded_components {
   type: "sound"
   data: "sound: \"/audio/misc/Attack_Impact_1.ogg\"\n"
   "looping: 0\n"
-  "group: \"master\"\n"
+  "group: \"sfx\"\n"
   "gain: 1.0\n"
   ""
   position {
@@ -378,7 +398,7 @@ embedded_components {
   type: "sound"
   data: "sound: \"/audio/misc/Attack_Impact_2.ogg\"\n"
   "looping: 0\n"
-  "group: \"master\"\n"
+  "group: \"sfx\"\n"
   "gain: 1.0\n"
   ""
   position {
@@ -398,7 +418,7 @@ embedded_components {
   type: "sound"
   data: "sound: \"/audio/misc/Attack_Impact_3.ogg\"\n"
   "looping: 0\n"
-  "group: \"master\"\n"
+  "group: \"sfx\"\n"
   "gain: 1.0\n"
   ""
   position {
@@ -1078,7 +1098,7 @@ embedded_components {
   type: "sound"
   data: "sound: \"/audio/misc/We_Are_Under_Attack.ogg\"\n"
   "looping: 0\n"
-  "group: \"master\"\n"
+  "group: \"sfx\"\n"
   "gain: 1.0\n"
   ""
   position {

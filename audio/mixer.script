@@ -109,6 +109,9 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("mission2Voice5") and ENABLE_SOUND then
 		msg.post("#mission2Voice5", "play_sound", {delay = 0, gain = 0.5})
 		currentVoice="#mission2Voice5"
+	elseif message_id == hash("engineer1") and ENABLE_SOUND then
+		msg.post("#engineer1", "play_sound", {delay = 0, gain = 0.5})
+		currentVoice="#engineer1"
 			
 		
 	--MISC
@@ -142,6 +145,9 @@ function on_message(self, message_id, message, sender)
 		else
 			sound.set_group_gain("battle",0.2)
 		end
+		
+		sound.set_group_gain("sfx",0.2)
+		
 		BACKGROUND_LOWERED=true
 		
 	elseif message_id == hash("normalBackground")then
@@ -151,6 +157,8 @@ function on_message(self, message_id, message, sender)
 			sound.set_group_gain("battle",0.5)
 		end
 		BACKGROUND_LOWERED=false
+		
+		sound.set_group_gain("sfx",1.0)
 		
 	elseif message_id == hash("healing") and HEALING_PLAYING==false then	
 	
