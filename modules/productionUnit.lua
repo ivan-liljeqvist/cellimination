@@ -52,6 +52,13 @@ function updateProductionUnit(self,dt)
 			end
 	    end
 	    
+	 else
+	 
+	 	print("productoin unit "..table.getn(self.toProduce).."  "..self.currentlyProducingItem)
+	 	print("TOTAL_POPULATION ,MAX_POPULATION ",TOTAL_POPULATION ,MAX_POPULATION)
+	 	if self.currentlyProducing then print("self.currentlyProducing") end
+	 	if self.currentlyProducingItem then print("self.currentlyProducingItem") end
+	    
     end
 end
 

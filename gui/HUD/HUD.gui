@@ -5036,7 +5036,7 @@ nodes {
   position {
     x: 960.0
     y: 370.0
-    z: 0.0
+    z: 1.0
     w: 1.0
   }
   rotation {
@@ -5089,7 +5089,7 @@ nodes {
   position {
     x: 961.40106
     y: 374.49957
-    z: 0.0
+    z: 1.0
     w: 1.0
   }
   rotation {
@@ -5152,7 +5152,7 @@ nodes {
   position {
     x: 960.0
     y: 285.0
-    z: 0.0
+    z: 1.0
     w: 1.0
   }
   rotation {
@@ -5205,7 +5205,7 @@ nodes {
   position {
     x: 961.40106
     y: 288.0
-    z: 0.0
+    z: 1.0
     w: 1.0
   }
   rotation {

@@ -311,7 +311,6 @@ function resetGlobals()
 	
 	MAX_PRODUCTION_QUEUE = 4
 	
-	TIME_TO_PRODUCE={}
 	MY_UNITS={}
 	GAME_OBJECTS_THAT_REQUIRE_INPUT={}
 	DROPS={}

@@ -188,6 +188,7 @@ function on_input(self, action_id, action)
 				elseif CONTINUE_GAME then
 					
 					validateCode(CURRENT_CODE_INPUT)
+					clickSound2()
 				
 				end
 				

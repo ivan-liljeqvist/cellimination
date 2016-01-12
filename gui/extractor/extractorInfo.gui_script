@@ -17,7 +17,13 @@ function on_message(self, message_id, message, sender)
   	
   		if self.extractorInfos[message.userId] then
   			gui.set_text(self.extractorInfos[message.userId],message.text)
-  			gui.set_position(self.extractorInfos[message.userId],message.position)		
+  			gui.set_position(self.extractorInfos[message.userId],message.position)	
+  			
+  			if GAME_PAUSED then 
+  				gui.set_color(self.extractorInfos[message.userId],vmath.vector4(0,0,0,0))
+  			else
+  				gui.set_color(self.extractorInfos[message.userId],vmath.vector4(1,1,1,1))
+  			end
   		end
   		
   		

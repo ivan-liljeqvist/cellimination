@@ -1,6 +1,6 @@
 
 JUST_STARTED=true
-MISSIONS_COMPLETE=0
+MISSIONS_COMPLETE=1
 
 function init(self)
 	msg.post(".", "acquire_input_focus")

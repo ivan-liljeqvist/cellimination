@@ -70,6 +70,12 @@ function on_message(self, message_id, message, sender)
 			
 			message.position.y=message.position.y+5
 	   		gui.set_position(self.healthBars[message.unitId],message.position)
+	   		
+	   		if GAME_PAUSED then 
+  				gui.set_color(self.healthBars[message.unitId],vmath.vector4(0,0,0,0))
+  			else
+  				gui.set_color(self.healthBars[message.unitId],vmath.vector4(0,1,0,0.5))
+  			end
 	   	else
 	   		deleteHealthbar(self,message.unitId)
 	   	end
@@ -80,6 +86,12 @@ function on_message(self, message_id, message, sender)
 	   	if self.statusTexts[message.unitId] then
 	   		message.position.y=message.position.y
 	   		gui.set_position(self.statusTexts[message.unitId],message.position)
+	   		
+	   		if GAME_PAUSED then 
+  				gui.set_color(self.statusTexts[message.unitId],vmath.vector4(0,0,0,0))
+  			else
+  				gui.set_color(self.statusTexts[message.unitId],vmath.vector4(1,1,1,1))
+  			end
 	   	end
 	   	
 	elseif message_id==hash("hideStatusText") then

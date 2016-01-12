@@ -121,8 +121,6 @@ function checkPauseMenu(action,action_id)
 		
 		if GAME_PAUSED then
 			msg.post("mixer","stopVoice")
-		else
-			msg.post("mixer","mission1Voice1")
 		end
 		
 		spaceReleasedSinceLast=false

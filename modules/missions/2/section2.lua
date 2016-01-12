@@ -17,6 +17,7 @@ function lvl2Section2Act()
 		
 		msg.post("mixer","normalBackground")
 		level2State.resetBackground=true
+		
 	
 	elseif not level2State.playedVoice4 and level2State.VOICE4_START_TIME and GAME_TIME>level2State.VOICE4_START_TIME then
 		msg.post("mixer","stopVoice")
@@ -37,6 +38,7 @@ function lvl2Section2Act()
 		
 		level2State.section2Done=true
 		
+		level2State.VOICE5_START_TIME=nil
 		queueFirstAttack()
 	end
 

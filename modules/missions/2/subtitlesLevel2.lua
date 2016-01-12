@@ -39,7 +39,7 @@ function level2SubtitlesIntroduction()
 	elseif GAME_TIME>level2State.VOICE1_START_TIME+4 and not level2State.sub2 then
 		msg.post("HUD","setSubtitleText",{text="in order to put an end to the viruses."})
 		level2State.sub2=true
-	elseif GAME_TIME>level2State.VOICE1_START_TIME+6.4 and not level2State.sub3 then
+	elseif GAME_TIME>level2State.VOICE1_START_TIME+6.1 and not level2State.sub3 then
 		msg.post("HUD","setSubtitleText",{text="They have chosen you to gather the resources\nrequired to build an army."})
 		level2State.sub3=true
 	elseif GAME_TIME>level2State.VOICE1_START_TIME+10 and not level2State.sub4 then
