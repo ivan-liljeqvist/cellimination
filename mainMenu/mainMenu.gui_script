@@ -37,14 +37,17 @@ MENU3_VISIBLE=false
 
 MAX_MISSIONS=4
 
-MISSIONS_COMPLETE=0
-
 local hoveringOverBack=false
 
 function init(self)
 
     msg.post(".", "acquire_input_focus")
     hideEverything()
+    
+    setMissionEnabled(2)
+	setMissionEnabled(3)
+	setMissionEnabled(4)
+	
     showMenu2()
     setLabels()
     
@@ -163,11 +166,10 @@ function on_input(self, action_id, action)
 					
 				elseif MISSION_HIGHLIGHTED[3] then
 				
-					startLevel(3)
+					--startLevel(3)
 					clickSound2()
 					
 				
-					
 				end
 			elseif MENU3_VISIBLE then
 				
