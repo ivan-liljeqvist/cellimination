@@ -3,7 +3,7 @@
 level2State={}
 
 level2State.FIRST_ATTACK_TIME=nil
-level2State.FIRST_ATTACK_TIME_OFFSET=100
+level2State.FIRST_ATTACK_TIME_OFFSET=70
 
 level2State.attacked=false
 
@@ -32,6 +32,8 @@ level2State.VOICE6_DONE_TIME=nil
 level2State.tutorialSkipped=false
 
 level2State.topTextSet=false
+
+level2State.replicationStationDone=false
 
 attackCounter=0
 
@@ -127,8 +129,13 @@ function level2MissionObjectives()
 				GAME_TIME>level2State.VOICE4_DONE_TIME and not
 				level2State.collectedResources then
 				
-				msg.post("HUD","setMissionObjectiveText",{text=LVL2_COLLECT_1000_OBJ})
+				msg.post("HUD","setMissionObjectiveText",{text=LVL2_COLLECT_1000_OBJ1})
 				level2State.needMissionObjectiveUpdate=false
+		end
+		
+		if level2State.VOICE5_DONE_TIME and GAME_TIME>level2State.VOICE5_DONE_TIME then
+			msg.post("HUD","setMissionObjectiveText",{text=LVL2_COLLECT_1000_OBJ2})
+			level2State.needMissionObjectiveUpdate=false
 		end
 	
 		--replication station
@@ -192,14 +199,14 @@ function level2MissionObjectives()
 			
 		end
 	elseif not level2State.setVoice5 then
-		msg.post("HUD","setMissionObjectiveText",{text=LVL2_COLLECT_1000_OBJ})
+		msg.post("HUD","setMissionObjectiveText",{text=LVL2_COLLECT_1000_OBJ1})
 		level2State.needMissionObjectiveUpdate=false
 		level2State.setVoice5=true
 		
 		level2State.section2Done=true
 		level2State.section1Done=true
 		
-		print("level2State.VOICE5_START_TIME "..level2State.VOICE5_START_TIME)
+
 	end
 	
 end

@@ -103,28 +103,8 @@ instances {
   id: "heal1"
   prototype: "/units/defenders/healers/heal1/heal1.go"
   position {
-    x: 98.55323
-    y: 380.35132
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "heal2"
-  prototype: "/units/defenders/healers/heal1/heal1.go"
-  position {
-    x: 319.497
-    y: 367.3546
+    x: 613.72235
+    y: 476.7721
     z: 0.0
   }
   rotation {
@@ -483,8 +463,8 @@ instances {
   id: "soldier"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 297.6709
-    y: 581.82574
+    x: 616.69354
+    y: 615.50037
     z: 0.0
   }
   rotation {
@@ -503,8 +483,8 @@ instances {
   id: "soldier1"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 462.4427
-    y: 460.41495
+    x: 781.46533
+    y: 494.08957
     z: 0.0
   }
   rotation {
@@ -523,8 +503,8 @@ instances {
   id: "soldier2"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 349.7041
-    y: 720.58093
+    x: 686.45026
+    y: 320.03027
     z: 0.0
   }
   rotation {
@@ -543,68 +523,8 @@ instances {
   id: "soldier3"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 106.882515
-    y: 590.4979
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "soldier4"
-  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
-  position {
-    x: 176.26012
-    y: 729.2531
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "soldier5"
-  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
-  position {
-    x: 653.2311
-    y: 330.33197
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "soldier6"
-  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
-  position {
-    x: 635.88666
-    y: 599.17017
+    x: 454.26273
+    y: 438.076
     z: 0.0
   }
   rotation {

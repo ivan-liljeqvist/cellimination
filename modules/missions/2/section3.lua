@@ -19,6 +19,8 @@ function lvl2Section3Act()
 		msg.post("mixer","normalBackground")
 		level2State.resetBackground=true
 		
+		level2State.needMissionObjectiveUpdate=true
+		
 
 		
 	elseif level2State.VOICE6_START_TIME and GAME_TIME>level2State.VOICE6_START_TIME and not level2State.playedVoice6 then

@@ -4,8 +4,22 @@ function init(self)
 	
 end
 
+releasedLeftClick=true
+releasedRightClick=true
 
 function on_input(self, action_id, action)
+
+	if action_id==hash("leftClicked") and IN_GAME and releasedLeftClick and action.pressed then
+		msg.post("mixer","gameClick")
+		releasedLeftClick=false
+	elseif action_id==hash("leftClicked") and action.released then
+		releasedLeftClick=true
+	elseif action_id==hash("rightClicked") and IN_GAME and releasedRightClick and action.pressed then
+		msg.post("mixer","gameClick")
+		releasedRightClick=false
+	elseif action_id==hash("rightClicked") and action.released then
+		releasedRightClick=true
+	end
 
 	LAST_ACTIONX=action.x
 	LAST_ACTIONY=action.y

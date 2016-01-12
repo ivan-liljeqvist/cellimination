@@ -9,9 +9,9 @@ function init(self)
     self.currentLevel="loader#menu"
     msg.post(self.currentLevel,"load")
     
-    if ENABLE_SOUND then
+    --if ENABLE_SOUND then
     	msg.post("mixer","menuSong")
-    end
+    --end
 end
 
 function final(self)

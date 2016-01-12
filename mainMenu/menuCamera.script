@@ -1,0 +1,36 @@
+
+
+function init(self)
+	msg.post("#camera", "acquire_camera_focus")
+	local pos=go.get_position()
+	pos.x=pos.x-415
+	pos.y=pos.y-300
+	pos.z=pos.z+3000
+	
+	go.set_rotation(vmath.quat_rotation_z(0.314*10))
+	go.set_position(pos)
+end
+
+function final(self)
+
+end
+
+function update(self, dt)
+	local pos=go.get_position()
+	
+	
+	pos.z=pos.z+(100*dt)
+	
+	if pos.z<8500 then
+		go.set_position(pos)
+	end
+end
+
+
+function on_input(self, action_id, action)
+
+end
+
+function on_reload(self)
+
+end

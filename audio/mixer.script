@@ -216,12 +216,27 @@ function on_message(self, message_id, message, sender)
 		msg.post("#click1","play_sound", {delay = 0, gain = 0.4})
 	elseif message_id==hash("click2") then 
 		msg.post("#click2","play_sound", {delay = 0, gain = 0.4})
+	elseif message_id==hash("gameClick") then 
+		msg.post("#gameClick","play_sound", {delay = 0, gain =1.5})
 	end
 	
 end
 
-local roamingCount=1
+roamingCount=1
+currentlyEnteringRoaming=nil
+currentlyEnteringRoamingGain=0
+
 function update(self, dt)
+
+	if currentlyEnteringRoaming then
+		currentlyEnteringRoamingGain=currentlyEnteringRoamingGain+0.01
+		msg.post(currentlyEnteringRoaming, "set_gain", {gain = currentlyEnteringRoamingGain})
+		
+		if currentlyEnteringRoamingGain>=0.5 then
+			currentlyEnteringRoaming=nil
+			currentlyEnteringRoamingGain=0
+		end
+	end
 
 	if IN_GAME then
 	
@@ -237,8 +252,8 @@ function update(self, dt)
 		
 		if timeCurrentRoamingPlaying>=ROAMING_UNIT_LENGTH and roamingCount<=NUM_ROAMING_UNITS then
 			
-	
-			msg.post("#roamingUnit"..ROAMING_IDS_TO_PLAY[roamingCount], "set_gain", {gain = 0.5})
+			currentlyEnteringRoaming="#roamingUnit"..ROAMING_IDS_TO_PLAY[roamingCount]
+			
 			
 			timeCurrentRoamingPlaying=0
 			roamingCount=roamingCount+1
@@ -247,6 +262,84 @@ function update(self, dt)
 		
 	end
 	
+end
+
+function final(self)
+    msg.post("battle","stop_sound")
+    msg.post("click1","stop_sound")
+    msg.post("click2","stop_sound")
+    msg.post("constructionComplete","stop_sound")
+    msg.post("death","stop_sound")
+    msg.post("deathVoice1","stop_sound")
+    msg.post("deathVoice2","stop_sound")
+    msg.post("defeat","stop_sound")
+    msg.post("engineer1","stop_sound")
+    msg.post("enteringExtractor","stop_sound")
+    msg.post("errorSound","stop_sound")
+    msg.post("healerCall1","stop_sound")
+    msg.post("healerCall2","stop_sound")
+    msg.post("healerCall3","stop_sound")
+    msg.post("healerCall4","stop_sound")
+    msg.post("healerResponse1","stop_sound")
+    msg.post("healerResponse2","stop_sound")
+    msg.post("healerResponse3","stop_sound")
+    msg.post("healerResponse4","stop_sound")
+    msg.post("healing","stop_sound")
+    msg.post("hit1","stop_sound")
+    msg.post("hit2","stop_sound")
+    msg.post("hit3","stop_sound")
+    msg.post("main","stop_sound")
+    msg.post("menuSong","stop_sound")
+    msg.post("mission1Voice1","stop_sound")
+    msg.post("mission1Voice2","stop_sound")
+    msg.post("mission1Voice3","stop_sound")
+    msg.post("mission1Voice4","stop_sound")
+    msg.post("mission1Voice5","stop_sound")
+    msg.post("mission2Voice1","stop_sound")
+    msg.post("mission2Voice2","stop_sound")
+    msg.post("mission2Voice3","stop_sound")
+    msg.post("mission2Voice4","stop_sound")
+    msg.post("mission2Voice5","stop_sound")
+    msg.post("notEnoughResources","stop_sound")
+    msg.post("roamingUnit1","stop_sound")
+    msg.post("roamingUnit2","stop_sound")
+    msg.post("roamingUnit3","stop_sound")
+    msg.post("roamingUnit4","stop_sound")
+    msg.post("soldierCall1","stop_sound")
+    msg.post("soldierCall2","stop_sound")
+    msg.post("soldierCall3","stop_sound")
+    msg.post("soldierCall4","stop_sound")
+    
+    msg.post("soldierResponse1","stop_sound")
+    msg.post("soldierResponse2","stop_sound")
+    msg.post("soldierResponse3","stop_sound")
+    msg.post("soldierResponse4","stop_sound")
+    
+    msg.post("soundscape","stop_sound")
+    
+    msg.post("tankCall1","stop_sound")
+    msg.post("tankCall2","stop_sound")
+    msg.post("tankCall3","stop_sound")
+    msg.post("tankCall4","stop_sound")
+    
+    msg.post("tankResponse1","stop_sound")
+    msg.post("tankResponse2","stop_sound")
+    msg.post("tankResponse3","stop_sound")
+    msg.post("tankResponse4","stop_sound")
+
+	msg.post("underAttack","stop_sound")
+	msg.post("upgradeComplete","stop_sound")
+	
+	msg.post("victory","stop_sound")
+	msg.post("workerCall1","stop_sound")
+	msg.post("workerCall2","stop_sound")
+	msg.post("workerCall3","stop_sound")
+	msg.post("workerCall4","stop_sound")
+	
+	msg.post("workerResponse1","stop_sound")
+	msg.post("workerResponse2","stop_sound")
+	msg.post("workerResponse3","stop_sound")
+	msg.post("workerResponse4","stop_sound")
 end
 
 

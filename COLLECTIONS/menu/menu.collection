@@ -1,10 +1,10 @@
 name: "menu"
 instances {
-  id: "baracks"
+  id: "baracks2"
   prototype: "/buildings/barracks/baracks.go"
   position {
-    x: 433.81586
-    y: 973.15015
+    x: 842.1882
+    y: 389.95935
     z: 0.0
   }
   rotation {
@@ -23,8 +23,28 @@ instances {
   id: "base"
   prototype: "/buildings/base/base.go"
   position {
-    x: 273.33383
-    y: 331.06818
+    x: 436.78284
+    y: 1223.4114
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "base1"
+  prototype: "/buildings/base/base.go"
+  position {
+    x: 1451.3137
+    y: 830.25116
     z: 0.0
   }
   rotation {
@@ -60,11 +80,51 @@ instances {
   }
 }
 instances {
+  id: "evolution"
+  prototype: "/buildings/evolution/evolution.go"
+  position {
+    x: 290.0157
+    y: 680.6138
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "fatExtractor"
   prototype: "/buildings/fatExtractor/fatExtractor.go"
   position {
     x: 2371.8127
     y: 941.5814
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "house3"
+  prototype: "/buildings/house/house.go"
+  position {
+    x: 1899.3895
+    y: 22.992725
     z: 0.0
   }
   rotation {
@@ -120,6 +180,26 @@ instances {
   }
 }
 instances {
+  id: "menuCamera"
+  prototype: "/mainMenu/menuCamera.go"
+  position {
+    x: 1703.0515
+    y: 985.26184
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "mixer"
   prototype: "/audio/mixer.go"
   position {
@@ -159,29 +239,13 @@ instances {
     z: 1.0
   }
 }
-scale_along_z: 0
-embedded_instances {
-  id: "fog"
-  data: "components {\n"
-  "  id: \"tilemap\"\n"
-  "  component: \"/mainMenu/menufog.tilemap\"\n"
-  "  position {\n"
-  "    x: -882.94183\n"
-  "    y: -697.5728\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
+instances {
+  id: "storage"
+  prototype: "/buildings/storage/storage.go"
   position {
-    x: 731.7725
-    y: 646.83466
-    z: 0.1
+    x: 454.47913
+    y: -277.11447
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -195,6 +259,7 @@ embedded_instances {
     z: 1.0
   }
 }
+scale_along_z: 0
 embedded_instances {
   id: "world"
   data: "components {\n"

@@ -234,6 +234,26 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "gameClick"
+  type: "sound"
+  data: "sound: \"/audio/misc/gameClick.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "healerCall1"
   type: "sound"
   data: "sound: \"/audio/healer/Healer_Call_1.ogg\"\n"

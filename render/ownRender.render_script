@@ -60,8 +60,11 @@ function renderGame(self)
     render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())
 
 
-    render.set_projection(vmath.matrix4_orthographic(0, render.get_window_width()*ZOOM_LEVEL, 0, render.get_window_height()*ZOOM_LEVEL, -1, 5))
-    
+	if IN_GAME then
+    	render.set_projection(vmath.matrix4_orthographic(0, render.get_window_width()*ZOOM_LEVEL, 0, render.get_window_height()*ZOOM_LEVEL, -1, 5))
+    else
+    	render.set_projection(self.projection)
+    end
 
     render.enable_state(render.STATE_BLEND)
     render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
@@ -93,6 +96,10 @@ function on_message(self, message_id, message)
     elseif message_id == hash("set_view_projection") then
 
         self.view = message.view
+        
+        if not IN_GAME then
+        	self.projection = message.projection
+        end
 
     end
 end

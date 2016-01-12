@@ -120,6 +120,16 @@ function updateStorage(self,dt)
 
 	if self.timeSinceLastStorageUpdate>= 1.0 and TOTAL_STORAGE<MAX_STORAGE then
 	
+		if (FAT>400 or PROTEIN>400 or CARBS>400) and LEVEL==2 and 
+			not level2State.tutorialSkipped and
+			not level2State.section2Done and
+			not level2State.replicationStationDone then
+			
+			msg.post("HUD","displayErrorMessage",{text=LVL2_BUILD_BARACKS_NO_RES})
+			
+			return
+		end
+	
 		self.timeSinceLastStorageUpdate=0
 		
 		local proteinIncrease=0
@@ -223,5 +233,6 @@ function on_input(self, action_id, action)
 end
 
 function on_reload(self)
-	
+	startMainBackgroundMusic()
+	msg.post("mixer","normalBackground")
 end

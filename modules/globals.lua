@@ -397,11 +397,14 @@ function resetGlobals()
 	level2State.VOICE6_DONE_TIME=nil
 	
 	level2State.tutorialSkipped=false
-	
+	level2State.replicationStationDone=false
 	level2State.topTextSet=false
 	
 	attackCounter=0
-		
+	
+	roamingCount=1
+	currentlyEnteringRoaming=nil
+	currentlyEnteringRoamingGain=0
 end
 
 
