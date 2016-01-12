@@ -1,10 +1,13 @@
 
 
 function startMenu()
+
 	if not LOAD_MENU then
-	
-		print("startMenu")
+		
+		if LEVEL==2 then msg.post("ownCamera","look",{x=0,y=0}) end
+		
 		resetGlobals()
+		
 		GAME_TIME=0
 		IN_GAME=false
 		BETWEEN_PROXIES=true
@@ -12,12 +15,15 @@ function startMenu()
 		LEVEL=0
 		
 	end
+	
 end
 
 
 function startLevel(level)
 
 	resetGlobals()
+	
+	JUST_STARTED=false
 	
 	RELOAD_LEVEL=true
 	

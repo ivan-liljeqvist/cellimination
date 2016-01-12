@@ -78,6 +78,7 @@ function init(self)
 		spawnNow(self,go.get_position().x,go.get_position().y)
 		BASES_SPAWNED_LEVEL2=BASES_SPAWNED_LEVEL2+1
 	elseif not IN_GAME then
+		print("NOT IN GAME SPAWN")
 		spawnNow(self,go.get_position().x,go.get_position().y)
 	end
 	

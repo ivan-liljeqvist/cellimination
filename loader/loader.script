@@ -1,4 +1,5 @@
 
+JUST_STARTED=true
 MISSIONS_COMPLETE=0
 
 function init(self)

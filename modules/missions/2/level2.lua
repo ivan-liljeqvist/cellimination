@@ -33,7 +33,7 @@ level2State.tutorialSkipped=false
 
 level2State.topTextSet=false
 
-local attackCounter=0
+attackCounter=0
 
 function level2Act()
 

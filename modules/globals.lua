@@ -400,6 +400,8 @@ function resetGlobals()
 	level2State.tutorialSkipped=false
 	
 	level2State.topTextSet=false
+	
+	attackCounter=0
 		
 end
 

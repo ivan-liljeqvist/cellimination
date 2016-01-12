@@ -1,4 +1,4 @@
-name: "default"
+name: "menu"
 instances {
   id: "baracks"
   prototype: "/buildings/barracks/baracks.go"

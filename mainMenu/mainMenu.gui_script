@@ -31,8 +31,8 @@ MISSION_HIGHLIGHTED[2]=false
 MISSION_HIGHLIGHTED[3]=false
 MISSION_HIGHLIGHTED[4]=false
 
-MENU1_VISIBLE=false
-MENU2_VISIBLE=true
+MENU1_VISIBLE=true
+MENU2_VISIBLE=false
 MENU3_VISIBLE=false
 
 MAX_MISSIONS=4
@@ -47,8 +47,16 @@ function init(self)
     setMissionEnabled(2)
 	setMissionEnabled(3)
 	setMissionEnabled(4)
+	 hideEverything()
 	
-    showMenu2()
+	if JUST_STARTED then
+    	showMenu1()
+ 
+    else
+    	showMenu2()
+    	MENU2_VISIBLE=true
+    	MENU1_VISIBLE=false
+    end
     setLabels()
     
 end

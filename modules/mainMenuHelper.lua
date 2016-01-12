@@ -12,7 +12,7 @@ end
 
 function validateCode(code)
 
-	if code=="1" then
+	if code=="MISSION2" then
 		MISSIONS_COMPLETE=1
 		goToMenu2()
 	else	
@@ -114,7 +114,7 @@ end
 
 function setMissionDisabled(mission)
 
-	print("setMissionDisabled "..mission)
+	
 
 	ENABLED_MISSIONS[mission]=false
 	hideNode("mission"..mission.."Description")
@@ -128,8 +128,6 @@ function setMissionDisabled(mission)
 end
 
 function setMissionEnabled(mission)
-
-	print("setMissionEnabled "..mission)
 
 	ENABLED_MISSIONS[mission]=true
 	showNode("mission"..mission.."Description")
