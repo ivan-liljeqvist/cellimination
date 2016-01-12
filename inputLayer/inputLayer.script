@@ -38,6 +38,8 @@ function on_input(self, action_id, action)
 	if action_id == hash("enterPressed") and action.released and LEVEL==2 then
 		skipTutorial()
 	end
+	
+	return true
 end
 
 

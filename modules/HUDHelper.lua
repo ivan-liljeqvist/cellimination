@@ -55,12 +55,14 @@ function handlePauseMenuButton(action,action_id)
 	
 		if currentlyHighlightedPauseButton==1 then
 			--continue
+			GAME_PAUSED=false
 		elseif currentlyHighlightedPauseButton==2 then
 			--menu
 			print("pressed menu")
 			startMenu()
 		elseif currentlyHighlightedPauseButton==3 then
 			--restart
+			startLevel(LEVEL)
 		end
 	
 	end

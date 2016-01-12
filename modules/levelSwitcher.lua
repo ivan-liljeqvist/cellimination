@@ -9,6 +9,7 @@ function startMenu()
 		IN_GAME=false
 		BETWEEN_PROXIES=true
 		LOAD_MENU=true
+		LEVEL=0
 		
 	end
 end
@@ -18,12 +19,14 @@ function startLevel(level)
 
 	resetGlobals()
 	
+	RELOAD_LEVEL=true
+	
 	BETWEEN_PROXIES=true
 
 	LEVEL=level
 	setStartingResources(LEVEL)
 	GAME_TIME=0
 	IN_GAME=true
-	RELOAD_LEVEL=true
+	
 	
 end

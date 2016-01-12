@@ -13,6 +13,8 @@ local missionChar=1
 
 local currentSubtitleNode=1
 
+local spaceReleasedSinceLast=true
+
 
 function init(self)
 
@@ -63,8 +65,48 @@ function on_animation_done(self, node)
     	end
 end
 
+function hidePauseMenu()
+	hideNode("continueButton")
+	hideNode("continueText")
+	hideNode("backToMenuButton")
+	hideNode("backToMenuText")
+	hideNode("restartButton")
+	hideNode("restartText")
+end
 
+function showPauseMenu()
+	showNode("continueButton")
+	showNode("continueText")
+	showNode("backToMenuButton")
+	showNode("backToMenuText")
+	showNode("restartButton")
+	showNode("restartText")
+end
 
+function maybeShowPauseMenu()
+
+	if GAME_PAUSED then showPauseMenu()
+	else hidePauseMenu() end
+
+end
+
+function checkPauseMenu(action,action_id)
+
+	if action_id==hash("escPressed") and action.pressed and spaceReleasedSinceLast then
+		
+		GAME_PAUSED=not GAME_PAUSED
+		
+		if GAME_PAUSED then
+			msg.post("mixer","stopVoice")
+		end
+		
+		spaceReleasedSinceLast=false
+		
+	elseif action_id==hash("escPressed") and action.released then
+		spaceReleasedSinceLast=true
+	end
+
+end
 
 function update(self, dt)
     
@@ -73,6 +115,8 @@ function update(self, dt)
     
     updateResourcesLabels()
     updateStorageAndHouseLabels(self,dt)
+    
+    maybeShowPauseMenu()
 
 	if displayingError then
 		if displayingErrorTimeSinceStarted<displayingErrorTime then
@@ -123,15 +167,6 @@ function update(self, dt)
 	end--]]
 end
 
-function hidePauseMenu()
-	hideNode("continueButton")
-	hideNode("continueText")
-	hideNode("backToMenuButton")
-	hideNode("backToMenuText")
-	hideNode("restartButton")
-	hideNode("restartText")
-end
-
 
 function upgradeInfoUpdate()
 
@@ -146,6 +181,8 @@ function upgradeInfoUpdate()
 
 end
 
+
+
 function on_message(self, message_id, message, sender)
     -- Add message-handling code here
     -- Remove this function if not needed
@@ -156,6 +193,8 @@ function on_message(self, message_id, message, sender)
 		if GAME_PAUSED then
 			handlePauseMenuButton(message.action,message.action_id)
 		end
+		
+		checkPauseMenu(message.action,message.action_id)
 	
 	elseif message_id == hash("setGameOverTitle") then
 		gui.set_text(gui.get_node("gameOverTitle"),message.text)

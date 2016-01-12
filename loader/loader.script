@@ -16,6 +16,7 @@ function final(self)
 end
 
 local timeSinceLevelComplete=0
+local pausedTime=false
 
 function update(self, dt)
 
@@ -26,27 +27,36 @@ function update(self, dt)
 		IN_GAME=false
 		msg.post(self.currentLevel,"unload")
 		self.currentLevel="loader#menu"
-		msg.post(self.currentLevel, "load")
+		--msg.post(self.currentLevel, "load")
 		RELOAD_LEVEL=false
 	end
 
 	if RELOAD_LEVEL then
-		print("reloading level "..LEVEL)
+		
+		msg.post(self.currentLevel,"unload")
 		
 		msg.post("mixer","stopMenuSong")
 		IN_GAME=true
-		msg.post(self.currentLevel,"unload")
+		
 		self.currentLevel="loader#level"..LEVEL
-		msg.post(self.currentLevel, "load")
+		
 		RELOAD_LEVEL=false
 	end
 
     if CURRENT_LEVEL_COMPLETE then
-    	
-    	timeSinceLevelComplete=timeSinceLevelComplete+dt
-    	if timeSinceLevelComplete >0.5 then
-    	 	msg.post("loader#level"..LEVEL, "set_time_step", {factor = 0, mode = 1})
-    	 end
+
+    	msg.post(self.currentLevel, "set_time_step", {factor = 0, mode = 1})
+		pausedTime=true
+    end
+    
+    if not pausedTime and GAME_PAUSED then
+    	msg.post(self.currentLevel, "set_time_step", {factor = 0, mode = 0})
+    	pausedTime=true
+    end
+    
+    if not GAME_PAUSED and pausedTime then
+    	pausedTime=false
+    	msg.post(self.currentLevel, "set_time_step", {factor = 1, mode = 1})
     end
     
     
@@ -66,6 +76,10 @@ function on_message(self, message_id, message, sender)
 	   msg.post(sender,"set_time_step", {factor = 5, mode = 1})
 	   
 	   BETWEEN_PROXIES=false
+	   
+	elseif message_id==hash("proxy_unloaded")then
+	
+		msg.post(self.currentLevel, "load")
 	   
     end
     
