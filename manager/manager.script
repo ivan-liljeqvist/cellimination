@@ -68,7 +68,37 @@ function init(self)
 	self.timeSinceLastStorageUpdate=0
 	
 	TOTAL_POPULATION=START_POPULATION[LEVEL]
+	
+--[[if IN_GAME then
+
+		local my_table = {}
+		my_table.hej=1
+		local error=false
+
+		
+		local my_file_path = sys.get_save_file("my_game", "my_filee.lua")
+		
+		msg.post("HUD","displayErrorMessage",{text=my_file_path})
+		
+		my_table = sys.load(my_file_path)
+		if not next(my_table) then
+		   --sg.post("HUD","displayErrorMessage",{text="couldnt load"})
+		   error=true
+		else
+			--msg.post("HUD","displayErrorMessage",{text=my_table.hej})
+		end
+		
+		if error then my_table={} my_table.hej=1 end
+		
+	    my_table.hej=my_table.hej+1
+		local my_file_path = sys.get_save_file("my_game", "my_filee.lua")
+		if not sys.save(my_file_path, my_table) then
+		    
+		end
+end--]]
 end
+
+
 
 
 

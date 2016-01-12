@@ -46,7 +46,6 @@ function gameOver(victory,text)
 
 	if not IN_GAME or BETWEEN_PROXIES then return end	
 	
-	print("game over "..text.." "..LEVEL)
 
 	if victory and not CURRENT_LEVEL_COMPLETE then
 		msg.post("mixer","stopHealing")

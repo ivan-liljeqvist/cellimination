@@ -66,43 +66,69 @@ function on_animation_done(self, node)
 end
 
 function hidePauseMenu()
-	hideNode("continueButton")
-	hideNode("continueText")
+
 	hideNode("backToMenuButton")
 	hideNode("backToMenuText")
 	hideNode("restartButton")
 	hideNode("restartText")
 end
 
+
 function showPauseMenu()
-	showNode("continueButton")
-	showNode("continueText")
-	showNode("backToMenuButton")
-	showNode("backToMenuText")
-	showNode("restartButton")
-	showNode("restartText")
+	if not VICTORY  then
+
+		showNode("backToMenuButton")
+		showNode("backToMenuText")
+		showNode("restartButton")
+		showNode("restartText")
+		gui.set_text(gui.get_node("backToMenuText"),"Menu")
+	elseif VICTORY then
+		showNode("backToMenuButton")
+		showNode("backToMenuText")
+		
+		gui.set_text(gui.get_node("backToMenuText"),"Continue")
+	end
 end
 
 function maybeShowPauseMenu()
 
+	
+
 	if GAME_PAUSED then showPauseMenu()
-	else hidePauseMenu() end
+	else 
+		hidePauseMenu() 
+	end
 
 end
 
 function checkPauseMenu(action,action_id)
 
+	if VICTORY or DEFEAT then return end
+	
 	if action_id==hash("escPressed") and action.pressed and spaceReleasedSinceLast then
 		
 		GAME_PAUSED=not GAME_PAUSED
 		
 		if GAME_PAUSED then
+			gui.set_text(gui.get_node("gameOverTitle"),"PAUSED")
+			gui.set_text(gui.get_node("gameOverText"),"Press SPACE to resume")
+			gui.set_text(gui.get_node("topMiddleText"),"SPACE to resume")
+		else
+			gui.set_text(gui.get_node("gameOverTitle"),"")
+			gui.set_text(gui.get_node("gameOverText"),"")
+			gui.set_text(gui.get_node("topMiddleText"),"SPACE to pause")
+		end
+		
+		if GAME_PAUSED then
 			msg.post("mixer","stopVoice")
+		else
+			msg.post("mixer","mission1Voice1")
 		end
 		
 		spaceReleasedSinceLast=false
 		
 	elseif action_id==hash("escPressed") and action.released then
+		
 		spaceReleasedSinceLast=true
 	end
 
@@ -198,6 +224,15 @@ function on_message(self, message_id, message, sender)
 	
 	elseif message_id == hash("setGameOverTitle") then
 		gui.set_text(gui.get_node("gameOverTitle"),message.text)
+		
+		if message.text=="VICTORY" then 
+			VICTORY=true
+			GAME_PAUSED=true
+		elseif message.text=="DEFEAT" then 
+			DEFEAT=true
+			GAME_PAUSED=true
+		end
+		
 	elseif message_id == hash("setGameOverText") then
 		gui.set_text(gui.get_node("gameOverText"),message.text)
 	elseif message_id==hash("unitDestroyed")then

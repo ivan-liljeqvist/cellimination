@@ -40,9 +40,9 @@ displayingErrorTime=3
 
 
 PAUSE_MENU_BOUNDS={}
-PAUSE_MENU_BOUNDS[1]={x=960,y=455}
-PAUSE_MENU_BOUNDS[2]={x=960,y=370}
-PAUSE_MENU_BOUNDS[3]={x=960,y=285}
+
+PAUSE_MENU_BOUNDS[1]={x=960,y=370}
+PAUSE_MENU_BOUNDS[2]={x=960,y=285}
 
 PAUSE_BUTTON_WIDTH=200
 PAUSE_BUTTON_HEIGHT=70
@@ -54,13 +54,10 @@ function handlePauseMenuButton(action,action_id)
 	if action_id==hash("leftClicked") then 
 	
 		if currentlyHighlightedPauseButton==1 then
-			--continue
-			GAME_PAUSED=false
-		elseif currentlyHighlightedPauseButton==2 then
 			--menu
 			print("pressed menu")
 			startMenu()
-		elseif currentlyHighlightedPauseButton==3 then
+		elseif currentlyHighlightedPauseButton==2 then
 			--restart
 			startLevel(LEVEL)
 		end
@@ -70,9 +67,8 @@ function handlePauseMenuButton(action,action_id)
 
 	for btnNumber,bound in pairs(PAUSE_MENU_BOUNDS) do
 
-		local nodeToHighlight="continueButton"
-   		if btnNumber==2 then nodeToHighlight="backToMenuButton" 
-   		elseif btnNumber==3 then nodeToHighlight="restartButton" end
+		local nodeToHighlight="backToMenuButton"
+   		if btnNumber==2 then nodeToHighlight="restartButton" end
 		
 		if action.x>(bound.x-PAUSE_BUTTON_WIDTH/2) and action.x<(bound.x+PAUSE_BUTTON_WIDTH/2) and
 		   action.y>(bound.y-PAUSE_BUTTON_HEIGHT/2) and action.y<(bound.y+PAUSE_BUTTON_HEIGHT/2)

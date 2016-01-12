@@ -1,4 +1,7 @@
 
+VICTORY=false
+DEFEAT=false
+
 GAME_PAUSED=false
 
 LOAD_MENU=false
@@ -231,6 +234,10 @@ end
 
 
 function resetGlobals()
+
+	
+	VICTORY=false
+	DEFEAT=false
 
 	GAME_PAUSED=false
 	

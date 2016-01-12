@@ -42,7 +42,7 @@ end
 
 function level1TriggerCheck(x,y)
 
-	
+	--gameOver(false,LVL1_VICTORY)
 
 	--walked back to safety
 	
