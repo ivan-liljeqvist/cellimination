@@ -71,6 +71,7 @@ function hidePauseMenu()
 	hideNode("backToMenuText")
 	hideNode("restartButton")
 	hideNode("restartText")
+	hideNode("pauseBackground")
 end
 
 
@@ -88,6 +89,8 @@ function showPauseMenu()
 		
 		gui.set_text(gui.get_node("backToMenuText"),"Continue")
 	end
+	
+	showNode("pauseBackground")
 end
 
 function maybeShowPauseMenu()
@@ -789,7 +792,11 @@ function hideNode(id)
 end
 
 function showNode(id)
-	gui.set_color(gui.get_node(id), vmath.vector4(1, 1, 1, 1))
+	if id=="pauseBackground" then
+		gui.set_color(gui.get_node(id), vmath.vector4(0, 0, 0, 0.4))
+	else
+		gui.set_color(gui.get_node(id), vmath.vector4(1, 1, 1, 1))
+	end
 end
 
 function showButtonWithIcon(id,iconId)

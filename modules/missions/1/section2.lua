@@ -35,7 +35,7 @@ function lvl1Section2Act()
 		msg.post("mixer","normalBackground")
 		level1State.resetBackground=true
 		
-	elseif level1State.KILLED_VIRUSES>=7 and not level1State.playedVoice5 then
+	elseif level1State.KILLED_VIRUSES>=7 and not level1State.playedVoice5 and not level1State.levelOver then
 	
 		msg.post("HUD","setMissionObjectiveText",{text="GET BACK TO THE STARTING POINT WITH AT LEAST ONE CELL!"})
 		

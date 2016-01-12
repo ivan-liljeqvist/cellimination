@@ -134,7 +134,7 @@ function setMissionEnabled(mission)
 	showNode("clickToStart"..mission)
 	
 	local titlePos=gui.get_position(gui.get_node("mission"..mission.."Title"))
-	titlePos.y=355
+	titlePos.y=400
 	
 	gui.set_position(gui.get_node("mission"..mission.."Title"),titlePos)
 	gui.set_text(gui.get_node("mission"..mission.."Title"),"MISSION "..mission)

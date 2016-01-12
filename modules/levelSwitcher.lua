@@ -13,7 +13,7 @@ function startMenu()
 		BETWEEN_PROXIES=true
 		LOAD_MENU=true
 		LEVEL=0
-		
+		msg.post("mixer","stopBetween1and2")
 	end
 	
 end

@@ -463,7 +463,7 @@ nodes {
 nodes {
   position {
     x: 960.0
-    y: 738.47845
+    y: 740.4179
     z: 0.0
     w: 1.0
   }
@@ -525,8 +525,8 @@ nodes {
 }
 nodes {
   position {
-    x: 352.06964
-    y: 252.797
+    x: 259.15152
+    y: 260.55457
     z: 0.0
     w: 1.0
   }
@@ -543,8 +543,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 300.0
-    y: 300.0
+    x: 400.0
+    y: 400.0
     z: 0.0
     w: 1.0
   }
@@ -578,8 +578,8 @@ nodes {
 }
 nodes {
   position {
-    x: 353.90195
-    y: 355.0
+    x: 260.0
+    y: 399.60605
     z: 0.0
     w: 1.0
   }
@@ -641,8 +641,8 @@ nodes {
 }
 nodes {
   position {
-    x: 350.06964
-    y: 299.1939
+    x: 258.0606
+    y: 349.61813
     z: 0.0
     w: 1.0
   }
@@ -704,8 +704,8 @@ nodes {
 }
 nodes {
   position {
-    x: 353.5697
-    y: 140.0
+    x: 258.0606
+    y: 112.84848
     z: 0.0
     w: 1.0
   }
@@ -767,8 +767,8 @@ nodes {
 }
 nodes {
   position {
-    x: 755.3397
-    y: 252.797
+    x: 723.1515
+    y: 262.494
     z: 0.0
     w: 1.0
   }
@@ -785,8 +785,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 300.0
-    y: 300.0
+    x: 400.0
+    y: 400.0
     z: 0.0
     w: 1.0
   }
@@ -820,8 +820,8 @@ nodes {
 }
 nodes {
   position {
-    x: 757.172
-    y: 355.0
+    x: 723.0
+    y: 401.54547
     z: 0.0
     w: 1.0
   }
@@ -883,8 +883,8 @@ nodes {
 }
 nodes {
   position {
-    x: 755.3397
-    y: 299.1939
+    x: 721.0606
+    y: 351.55756
     z: 0.0
     w: 1.0
   }
@@ -946,8 +946,8 @@ nodes {
 }
 nodes {
   position {
-    x: 756.8398
-    y: 140.0
+    x: 721.0606
+    y: 114.787895
     z: 0.0
     w: 1.0
   }
@@ -1009,8 +1009,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1156.2169
-    y: 252.797
+    x: 1187.1515
+    y: 264.43335
     z: 0.0
     w: 1.0
   }
@@ -1027,8 +1027,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 300.0
-    y: 300.0
+    x: 400.0
+    y: 400.0
     z: 0.0
     w: 1.0
   }
@@ -1062,8 +1062,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1158.0492
-    y: 360.0
+    x: 1187.0
+    y: 408.48483
     z: 0.0
     w: 1.0
   }
@@ -1125,8 +1125,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1156.2169
-    y: 299.1939
+    x: 1185.0605
+    y: 353.49692
     z: 0.0
     w: 1.0
   }
@@ -1188,8 +1188,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1157.7169
-    y: 140.0
+    x: 1185.0605
+    y: 116.72726
     z: 0.0
     w: 1.0
   }
@@ -1251,8 +1251,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1560.2017
-    y: 252.797
+    x: 1651.1515
+    y: 264.43338
     z: 0.0
     w: 1.0
   }
@@ -1269,8 +1269,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 300.0
-    y: 300.0
+    x: 400.0
+    y: 400.0
     z: 0.0
     w: 1.0
   }
@@ -1304,8 +1304,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1562.0339
-    y: 360.0
+    x: 1651.0
+    y: 408.48486
     z: 0.0
     w: 1.0
   }
@@ -1367,8 +1367,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1560.2017
-    y: 299.1939
+    x: 1649.0605
+    y: 353.49695
     z: 0.0
     w: 1.0
   }
@@ -1430,8 +1430,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1561.7017
-    y: 140.0
+    x: 1649.0605
+    y: 116.727264
     z: 0.0
     w: 1.0
   }
@@ -1759,6 +1759,69 @@ nodes {
   text: "INVALID CODE"
   font: "megaFont"
   id: "codeError"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  layer: ""
+  inherit_alpha: true
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+}
+nodes {
+  position {
+    x: 960.0
+    y: 655.58856
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Remember the MISSION CODE below each new mission to be able to continue from that mission if you reload the page."
+  font: "gameFont"
+  id: "codeDesc"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER

@@ -265,6 +265,9 @@ function showMenu2()
 		    setMissionDisabled(s)
 	end
    	
+   	if MISSIONS_COMPLETE>0 then
+   		showNode("codeDesc")
+   	end
 end
 
 function hideMenu3()
@@ -335,6 +338,8 @@ function hideEverything()
 	hideMenu1()
 	hideMenu2()
 	hideMenu3()
+	
+	hideNode("codeDesc")
 end
 
 function final(self)

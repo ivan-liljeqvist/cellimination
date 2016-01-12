@@ -9,11 +9,11 @@ MORE_HOUSE = "CONSTRUCT MORE "..HOUSE_NAME.."S TO SPAWN MORE UNITS"
 INVALID_POSITION_STATUS="INVALID POSITION\n\nToo close to other buildings\nor not on nutrient rich tissue."
 INVALID_POSITION_STATUS_EXTRACTOR="INVALID POSITION\n\nToo close to other buildings\nor bad terrain."
 
-LVL1_DESC="The Immune System has recieved\nreports of disturbances.\n\nCommand a squad of White Blood Cells\nand figure out what's wrong."
+LVL1_DESC="The Immune System has recieved\nreports of disturbances.\n\nCommand a squad of\nWhite Blood Cells\nand figure out what's wrong."
 LVL1_VICTORY="You managed to survive!"
 LVL1_DEFEAT="Your forces were crushed!"
 
-LVL2_DESC="You managed to survive!\n\n Now we need to take action\nagainst the viruses."
+LVL2_DESC="You managed to survive!\n\n Now we need to take action\nagainst the viruses.\n\nMISSION CODE: m2"
 LVL2_VICTORY="You managed to collect the resources!"
 LVL2_DEFEAT="The Central Marrow was destroyed!"
 LVL2_BUILD_BARACKS_NO_RES="You can't gather more resources before building a Replication Station."

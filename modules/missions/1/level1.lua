@@ -39,16 +39,27 @@ function level1PurpleDeath()
 		level1State.FIRST_VIRUS_DEAD=true
 	end
 end
-
+local a=0
 function level1TriggerCheck(x,y)
 
 	--gameOver(false,LVL1_VICTORY)
 
 	--walked back to safety
 	
-	if level1State.VOICE5_DONE_TIME and  GAME_TIME>level1State.VOICE5_DONE_TIME  and y<780 and x <740 and not level1State.levelOver then
-		level1State.levelOver=true
+	a=a+1
+	print(a)
+	if (level1State.VOICE5_DONE_TIME and  GAME_TIME>level1State.VOICE5_DONE_TIME  and y<780 and x <740 and not level1State.levelOver) then
+		
+		
 		gameOver(true,LVL1_VICTORY)
+		JUST_COMPLETED_MISSION=1
+		
+		
+		level1State.levelOver=true
+		if MISSIONS_COMPLETE < 1 then MISSIONS_COMPLETE=1 end
+		
+		
+		
 	end
 	
 	--WALKED AND SHOWED THAT PLAYER CAN PLAY

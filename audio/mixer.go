@@ -34,6 +34,26 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "between1and2"
+  type: "sound"
+  data: "sound: \"/audio/misc/between1and2.ogg\"\n"
+  "looping: 0\n"
+  "group: \"voice\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "click1"
   type: "sound"
   data: "sound: \"/audio/misc/click1.ogg\"\n"
@@ -518,7 +538,7 @@ embedded_components {
   type: "sound"
   data: "sound: \"/audio/misc/Roaming_Theme_Main_Unit_2.ogg\"\n"
   "looping: 1\n"
-  "group: \"master\"\n"
+  "group: \"menuSong\"\n"
   "gain: 1.0\n"
   ""
   position {
