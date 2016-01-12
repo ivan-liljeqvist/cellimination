@@ -2,7 +2,10 @@ function init(self)
     -- Add initialization code here
     -- Remove this function if not needed
     
-    msg.post("#sprite", "play_animation", {id = hash("anim")})
+     msg.post("#sprite", "play_animation", {id = hash("anim")})
+    
+     go.set("#sprite", "scale.y", 0.8)
+     go.set("#sprite", "scale.x", 0.8)
     
      particlefx.play("#particlefx")
 end

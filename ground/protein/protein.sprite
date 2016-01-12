@@ -1,2 +1,4 @@
 tile_set: "/graphicalAssets/buildings/protein/protein.atlas"
 default_animation: "anim"
+material: "/render/proteinMaterial/protein.material"
+blend_mode: BLEND_MODE_ALPHA

@@ -18,6 +18,8 @@ function init(self)
 	
 	if LEVEL==2 then
 		look(5100,3940)
+	elseif LEVEL==3 then
+		look(7100,2870)
 	end
 	
 	print("own camera init")

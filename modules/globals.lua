@@ -9,7 +9,7 @@ LOAD_MENU=false
 IN_GAME=false
 RELOAD_LEVEL=false
 
-LEVEL = 0
+LEVEL = 3
 
 BETWEEN_PROXIES=false
 

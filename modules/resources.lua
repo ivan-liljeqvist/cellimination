@@ -2,6 +2,7 @@
 START_RESOURCES={}
 START_RESOURCES[1]={fat=10,protein=10,carbs=10}
 START_RESOURCES[2]={fat=400,protein=400,carbs=400}
+START_RESOURCES[3]={fat=400,protein=400,carbs=400}
 
 function setStartingResources(level)
 	FAT=START_RESOURCES[level].fat

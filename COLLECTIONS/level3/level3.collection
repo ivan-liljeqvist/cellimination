@@ -1,0 +1,742 @@
+name: "level2"
+instances {
+  id: "HUD"
+  prototype: "/gui/HUD/HUD.go"
+  position {
+    x: 384.0
+    y: 447.8071
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "base"
+  prototype: "/buildings/base/base.go"
+  position {
+    x: 6217.089
+    y: 2444.2517
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildingManager"
+  prototype: "/buildings/buildingManager.go"
+  position {
+    x: 845.08307
+    y: 614.66876
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "drops"
+  prototype: "/gui/drops/drops.go"
+  position {
+    x: 4448.0
+    y: 4032.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "extractorInfo"
+  prototype: "/gui/extractor/extractorInfo.go"
+  position {
+    x: 3072.0
+    y: 2528.0
+    z: 0.35
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "fog"
+  prototype: "/ground/level3/fog/level3fog.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "healthBars"
+  prototype: "/gui/bars/healthBars.go"
+  position {
+    x: 444.1659
+    y: 381.9355
+    z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "inputLayer"
+  prototype: "/inputLayer/inputLayer.go"
+  position {
+    x: 845.08307
+    y: 614.66876
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "manager"
+  prototype: "/manager/manager.go"
+  position {
+    x: 384.0
+    y: 447.8071
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mark"
+  prototype: "/graphicalAssets/minimap/mark.go"
+  position {
+    x: 768.8461
+    y: 7379.587
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "miniRectangle"
+  prototype: "/minimap/miniRectangle.go"
+  position {
+    x: 3703.6409
+    y: 2720.0
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mixer"
+  prototype: "/audio/mixer.go"
+  position {
+    x: 826.8083
+    y: 801.13135
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "ownCamera"
+  prototype: "/render/ownCamera.go"
+  position {
+    x: 1984.0
+    y: 1663.8071
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "progressBars"
+  prototype: "/gui/bars/progressBars.go"
+  position {
+    x: 3072.0
+    y: 2528.0
+    z: 0.35
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "protein"
+  prototype: "/ground/protein/protein.go"
+  position {
+    x: 634.22406
+    y: 7454.3765
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "selection"
+  prototype: "/gui/selection/selection.go"
+  position {
+    x: 448.0
+    y: 623.71063
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 7281.481
+    y: 1718.6393
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier1"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 7571.004
+    y: 1748.798
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier2"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 7806.241
+    y: 1706.5758
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soldier3"
+  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
+  position {
+    x: 8089.7324
+    y: 1784.9883
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank1"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 5306.7217
+    y: 2234.969
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank10"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 7072.7676
+    y: 1819.9963
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank11"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 5345.3237
+    y: 1897.2006
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank12"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 5340.4985
+    y: 2490.708
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank13"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 5403.2266
+    y: 2688.5437
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank2"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 5567.2856
+    y: 2809.1753
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank3"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 5880.9277
+    y: 2963.5837
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank4"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 6242.8228
+    y: 2973.2341
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank5"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 6575.7656
+    y: 2963.5837
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank6"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 6874.932
+    y: 2900.8552
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank7"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 7154.7974
+    y: 2683.7185
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank8"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 7323.681
+    y: 2403.8533
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank9"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 7314.031
+    y: 2046.7837
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "unitManager"
+  prototype: "/units/unitManager.go"
+  position {
+    x: 2815.2449
+    y: 1183.3221
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "virusMind1"
+  prototype: "/levelGOs/2/virusMind.go"
+  position {
+    x: 1177.1862
+    y: 3773.6094
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "worker"
+  prototype: "/units/defenders/worker/worker.go"
+  position {
+    x: 6477.4634
+    y: 2420.1987
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "world"
+  prototype: "/ground/level3/ground/level3World.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

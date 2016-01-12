@@ -74,7 +74,7 @@ function init(self)
 					productionButton3={icon="deselectIcon",action=productionButton3Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
 					productionButton4={icon="deselectIcon",action=productionButton4Pressed, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end}}
 	
-	if (LEVEL==2) and BASES_SPAWNED_LEVEL2<1  then
+	if (LEVEL==2 or LEVEL==3) and BASES_SPAWNED_LEVEL2<1  then
 		spawnNow(self,go.get_position().x,go.get_position().y)
 		BASES_SPAWNED_LEVEL2=BASES_SPAWNED_LEVEL2+1
 	elseif not IN_GAME then
