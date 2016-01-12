@@ -242,7 +242,7 @@ end
 
 function handleClick(new,continue)
 	if new then
-		goToMenu2()
+		startLevel(1)
 	elseif continue then
 		goToMenu3()
 	end
