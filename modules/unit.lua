@@ -4,7 +4,7 @@ require "modules.coordinates"
 
 function initBasicUnit(self,name,goID)
 	
-	if IN_GAME then
+	if IN_GAME and not BETWEEN_PROXIES then
 		populateNodeArray()
 	end
 	
@@ -67,14 +67,14 @@ function initBasicUnit(self,name,goID)
 	self.lastHealth=self.health
 	self.needsHealing=false
 	
-	if IN_GAME then
+	if IN_GAME and not BETWEEN_PROXIES then
 		moveHealthbar(self)
 	end
 	
 	self.showingProgressBar=true
 	self.producingSomething=false
 	
-	if IN_GAME then	
+	if IN_GAME and not BETWEEN_PROXIES then	
 		hideProgressBar(self)
 		hideHealthBar(self)
 	end
@@ -86,7 +86,7 @@ end
 
 function showStatusText(self,text)
 
-	if not IN_GAME then return end
+	if not IN_GAME or BETWEEN_PROXIES then return end
 
 	local pos = go.get_position()
 	pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
@@ -98,7 +98,7 @@ function showStatusText(self,text)
 end
 
 function hideStatusText(self)
-	if not IN_GAME then return end
+	if not IN_GAME or BETWEEN_PROXIES then return end
 	
 	msg.post(msg.url("healthBars#gui"),"hideStatusText",{unitId=self.id})	
 end
@@ -202,7 +202,7 @@ end
 
 function basicUnitUpdate(self,dt,go)
 
- 	if not IN_GAME then return end
+ 	if not IN_GAME or BETWEEN_PROXIES then return end
 
 	handleHealingStatus(self)
 	handleProgressbar(self)
@@ -331,7 +331,7 @@ function checkIfShouldShowProgress(self)
 end
 
 function hideHealthBar(self)
-	if not IN_GAME then return end
+	if not IN_GAME or BETWEEN_PROXIES then return end
 	msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
 	self.showingHealthBar=false
 end
@@ -492,7 +492,7 @@ function decreaseHealth(self,amount)
 			destroyUnit(self)
 		end
 	else
-		if (self.health+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS) <= 0 and IN_GAME then
+		if (self.health+NUMBER_BOUGHT[UPGRADE_HEALTH_NAME]*HEALTH_UP_CONS) <= 0 and IN_GAME  and not BETWEEN_PROXIES then
 			msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
 			destroyUnit(self)
 		end

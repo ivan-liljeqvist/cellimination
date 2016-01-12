@@ -80,7 +80,7 @@ end
 
 function updateExtractor(self,dt)
 	
-	if not IN_GAME then return end
+	if not IN_GAME or BETWEEN_PROXIES then return end
 	
 	handleWorkerAndRPMGUI(self)
 	
