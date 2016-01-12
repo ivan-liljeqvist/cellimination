@@ -3,8 +3,7 @@ JUST_STARTED=true
 MISSIONS_COMPLETE=0
 
 JUST_COMPLETED_MISSION=nil
-MAKE_NORMAL_BACKGROUND_IN=nil
-NORMAL_BACKGROUND_COUNTUP=nil
+
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -27,18 +26,6 @@ local pausedTime=false
 
 function update(self, dt)
 
-	if NORMAL_BACKGROUND_COUNTUP and MAKE_NORMAL_BACKGROUND_IN then
-	
-		if NORMAL_BACKGROUND_COUNTUP>MAKE_NORMAL_BACKGROUND_IN then
-			--msg.post("mixer","normalBetween1and2")
-			NORMAL_BACKGROUND_COUNTUP=nil
-			MAKE_NORMAL_BACKGROUND_IN=nil
-		end
-		NORMAL_BACKGROUND_COUNTUP=NORMAL_BACKGROUND_COUNTUP+dt
-		
-	else 
-		print("no timer for normal background")
-	end
 
 	if BETWEEN_PROXIES then IN_GAME=false end
 
@@ -62,18 +49,16 @@ function update(self, dt)
 		
 		RELOAD_LEVEL=false
 		
-		if JUST_COMPLETED_MISSION==1 then
-			MAKE_NORMAL_BACKGROUND_IN=10
-			NORMAL_BACKGROUND_COUNTUP=0
-			msg.post("mixer","stopBetween1and2")
-		end
+		
+		msg.post("mixer","stopBetween1and2")
+		
 	end
 
-    if CURRENT_LEVEL_COMPLETE then
+    --[[if CURRENT_LEVEL_COMPLETE then
 
     	msg.post(self.currentLevel, "set_time_step", {factor = 0, mode = 1})
 		pausedTime=true
-    end
+    end--]]
     
     if not pausedTime and GAME_PAUSED then
     	msg.post(self.currentLevel, "set_time_step", {factor = 0, mode = 0})
@@ -99,7 +84,9 @@ function on_message(self, message_id, message, sender)
 	   msg.post(sender, "enable")
 	   print("proxy loaded")
 	          
-	 
+	   msg.post(self.currentLevel, "set_time_step", {factor = 1, mode = 1})
+	   
+	   if self.currentLevel~="loader#menu" then IN_GAME=true end
 	   
 	   BETWEEN_PROXIES=false
 	   
@@ -114,6 +101,9 @@ function on_message(self, message_id, message, sender)
 	   			msg.post("mixer","between1and2")
 	   			JUST_COMPLETED_MISSION=nil
 	   		end
+	   	else
+	   		print("start MAIN BG MUSICC!")
+	   		
 	   		
 	   	end
 	   

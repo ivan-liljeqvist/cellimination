@@ -405,6 +405,8 @@ function resetGlobals()
 	roamingCount=1
 	currentlyEnteringRoaming=nil
 	currentlyEnteringRoamingGain=0
+	
+	
 end
 
 

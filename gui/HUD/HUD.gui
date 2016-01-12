@@ -86,7 +86,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "palcegolde"
+  text: ""
   font: "bigFont"
   id: "selectionText"
   xanchor: XANCHOR_NONE
@@ -3656,7 +3656,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Morphing Red Blood Cell"
+  text: ""
   font: "smallerFont"
   id: "productionTitle"
   xanchor: XANCHOR_NONE
@@ -3719,7 +3719,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "49%"
+  text: ""
   font: "smallerFont"
   id: "productionPercent"
   xanchor: XANCHOR_NONE

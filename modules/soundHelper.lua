@@ -116,7 +116,7 @@ end
 function startMainBackgroundMusic()
 	if ENABLE_SOUND and ENABLE_MUSIC then
 	
-		print("startMainBackgroundMusic")
+		print("STARR T BG MUSK!")
 	
 		msg.post("#roamingUnit1","play_sound", {delay = 0, gain = 0.0})
 		msg.post("#roamingUnit2","play_sound", {delay = 0, gain = 0.0})
@@ -124,7 +124,7 @@ function startMainBackgroundMusic()
     	msg.post("#roamingUnit3","play_sound", {delay = 0, gain = 0.0})
     	msg.post("#roamingUnit4","play_sound", {delay = 0, gain = 0.0})
     	
-    	
+    	sound.set_group_gain("main",1)
     	sound.set_group_gain("battle",0)
     end
 end

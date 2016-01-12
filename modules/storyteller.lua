@@ -55,7 +55,7 @@ function gameOver(victory,text)
 		msg.post("mixer","victory")
 		msg.post("HUD","setGameOverTitle",{text="VICTORY"})
 		msg.post("HUD","setGameOverText",{text=text})
-		CURRENT_LEVEL_COMPLETE=true
+		
 	elseif not victory and not CURRENT_LEVEL_COMPLETE then
 		msg.post("mixer","stopHealing")
 		msg.post("HUD","setSubtitleText",{text=""})
@@ -64,6 +64,6 @@ function gameOver(victory,text)
 		msg.post("mixer","defeat")
 		msg.post("HUD","setGameOverTitle",{text="DEFEAT"})
 		msg.post("HUD","setGameOverText",{text=text})
-		CURRENT_LEVEL_COMPLETE=true
+		
 	end
 end

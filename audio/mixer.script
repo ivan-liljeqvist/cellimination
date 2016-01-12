@@ -29,7 +29,8 @@ ROAMING_IDS_TO_PLAY={}
 ROAMING_IDS_USED={}
 
 function init(self)
-	--
+
+	
 	
 	if IN_GAME then
 		
@@ -260,7 +261,9 @@ function update(self, dt)
 		
 		if timeCurrentRoamingPlaying>=ROAMING_UNIT_LENGTH and roamingCount<=NUM_ROAMING_UNITS then
 			
-			currentlyEnteringRoaming="#roamingUnit"..ROAMING_IDS_TO_PLAY[roamingCount]
+			if ROAMING_IDS_TO_PLAY[roamingCount] then
+				currentlyEnteringRoaming="#roamingUnit"..ROAMING_IDS_TO_PLAY[roamingCount]
+			end
 			
 			
 			timeCurrentRoamingPlaying=0
@@ -269,6 +272,10 @@ function update(self, dt)
 		end
 		
 	end
+	
+end
+
+function reload(self)
 	
 end
 
