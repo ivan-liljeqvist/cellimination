@@ -104,6 +104,20 @@ function init(self)
 					button7=nil,
 					button8={icon="houseIcon",action=buildHouse,hover= function() return HOVER_LAYOUT[HOUSE_NAME] end},
 					button9={icon="storageIcon",action=buildStorage,hover= function() return HOVER_LAYOUT[STORAGE_NAME] end}}
+					
+	if LEVEL==3 then
+		
+			self.GUILayout={button1={icon="deselectIcon",action=deselectAction, hover=function() return HOVER_LAYOUT[CANCEL_PRODUCTION] end},
+					button2={icon="evolutionIcon",action=buildEvolution,hover= function() return HOVER_LAYOUT[EVOLUTION_NAME] end},
+					button3={icon="barracksIcon",action=buildBarracks,hover= function() return HOVER_LAYOUT[BARACKS_NAME] end},
+					button4=nil,
+					button5={icon="fatExtractorIcon",action=buildFatExtractor, hover=function() return HOVER_LAYOUT[FAT_EXTRACTOR_NAME] end},
+					button6={icon="carbExtractorIcon",action=buildCarbExtractor, hover=function() return HOVER_LAYOUT[CARB_EXTRACTOR_NAME] end},
+					button7=nil,
+					button8={icon="houseIcon",action=buildHouse,hover= function() return HOVER_LAYOUT[HOUSE_NAME] end},
+					button9={icon="storageIcon",action=buildStorage,hover= function() return HOVER_LAYOUT[STORAGE_NAME] end}}
+		
+	end
 
 				
 	self.originalHealth=100

@@ -36,6 +36,8 @@ function triggerCheck(x,y)
 		level1TriggerCheck(x,y)
 	elseif LEVEL==2 then
 		level2TriggerCheck(x,y)
+	elseif LEVEL==3 then
+		level3TriggerCheck(x,y)
 	end
 	
 	

@@ -23,8 +23,8 @@ instances {
   id: "base"
   prototype: "/buildings/base/base.go"
   position {
-    x: 6217.089
-    y: 2444.2517
+    x: 5943.137
+    y: 2294.3005
     z: 0.0
   }
   rotation {
@@ -283,8 +283,8 @@ instances {
   id: "heal1"
   prototype: "/units/defenders/healers/heal1/heal1.go"
   position {
-    x: 5289.9316
-    y: 2417.1414
+    x: 5345.131
+    y: 2117.2263
     z: 0.5
   }
   rotation {
@@ -303,68 +303,8 @@ instances {
   id: "heal2"
   prototype: "/units/defenders/healers/heal1/heal1.go"
   position {
-    x: 5286.89
-    y: 2119.7935
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "heal3"
-  prototype: "/units/defenders/healers/heal1/heal1.go"
-  position {
-    x: 5252.223
-    y: 2247.5525
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "heal4"
-  prototype: "/units/defenders/healers/heal1/heal1.go"
-  position {
-    x: 5282.1113
-    y: 2307.547
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "heal5"
-  prototype: "/units/defenders/healers/heal1/heal1.go"
-  position {
-    x: 5286.477
-    y: 2187.2856
+    x: 5467.207
+    y: 2003.8754
     z: 0.5
   }
   rotation {
@@ -563,8 +503,8 @@ instances {
   id: "purple1"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 2857.5015
-    y: 6476.72
+    x: 2964.006
+    y: 6603.32
     z: 0.5
   }
   rotation {
@@ -583,8 +523,8 @@ instances {
   id: "purple2"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 2630.937
-    y: 6196.0386
+    x: 2673.137
+    y: 6097.5723
     z: 0.5
   }
   rotation {
@@ -603,8 +543,8 @@ instances {
   id: "purple5"
   prototype: "/units/viruses/purple/purple.go"
   position {
-    x: 2218.9426
-    y: 5902.3765
+    x: 2198.8474
+    y: 5956.6333
     z: 0.5
   }
   rotation {
@@ -623,28 +563,8 @@ instances {
   id: "purpleround1"
   prototype: "/units/viruses/purpleRound/purpleround.go"
   position {
-    x: 2755.4768
-    y: 6336.7144
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "purpleround10"
-  prototype: "/units/viruses/purpleRound/purpleround.go"
-  position {
-    x: 2741.6467
-    y: 6473.4946
+    x: 2874.0386
+    y: 6292.505
     z: 0.5
   }
   rotation {
@@ -663,28 +583,8 @@ instances {
   id: "purpleround11"
   prototype: "/units/viruses/purpleRound/purpleround.go"
   position {
-    x: 2830.7104
-    y: 6621.934
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "purpleround3"
-  prototype: "/units/viruses/purpleRound/purpleround.go"
-  position {
-    x: 2969.2224
-    y: 6618.162
+    x: 2850.8057
+    y: 6477.2485
     z: 0.5
   }
   rotation {
@@ -703,28 +603,8 @@ instances {
   id: "purpleround5"
   prototype: "/units/viruses/purpleRound/purpleround.go"
   position {
-    x: 2496.647
-    y: 6085.696
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "purpleround6"
-  prototype: "/units/viruses/purpleRound/purpleround.go"
-  position {
-    x: 2379.454
-    y: 5927.237
+    x: 2526.7898
+    y: 6051.534
     z: 0.5
   }
   rotation {
@@ -743,28 +623,8 @@ instances {
   id: "purpleround7"
   prototype: "/units/viruses/purpleRound/purpleround.go"
   position {
-    x: 2331.9534
-    y: 6057.864
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "purpleround8"
-  prototype: "/units/viruses/purpleRound/purpleround.go"
-  position {
-    x: 2492.268
-    y: 6212.2407
+    x: 2337.982
+    y: 6104.0825
     z: 0.5
   }
   rotation {
@@ -783,8 +643,8 @@ instances {
   id: "purpleround9"
   prototype: "/units/viruses/purpleRound/purpleround.go"
   position {
-    x: 2611.0198
-    y: 6325.0547
+    x: 2715.515
+    y: 6270.798
     z: 0.5
   }
   rotation {
@@ -903,8 +763,8 @@ instances {
   id: "soldier"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 5157.7183
-    y: 2372.55
+    x: 5159.558
+    y: 2223.5125
     z: 0.5
   }
   rotation {
@@ -923,8 +783,8 @@ instances {
   id: "soldier1"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 5162.799
-    y: 2327.8562
+    x: 5440.6343
+    y: 1862.3438
     z: 0.5
   }
   rotation {
@@ -943,88 +803,8 @@ instances {
   id: "soldier2"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 5183.3203
-    y: 2193.9163
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "soldier3"
-  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
-  position {
-    x: 5167.78
-    y: 2278.9944
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "soldier4"
-  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
-  position {
-    x: 5173.498
-    y: 2372.9775
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "soldier5"
-  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
-  position {
-    x: 5187.966
-    y: 2138.9673
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "soldier6"
-  prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
-  position {
-    x: 5197.627
-    y: 2101.1724
+    x: 5312.118
+    y: 1940.0004
     z: 0.5
   }
   rotation {
@@ -1043,8 +823,8 @@ instances {
   id: "soldier7"
   prototype: "/units/defenders/fighters/soldiers/soldier1/soldier.go"
   position {
-    x: 5186.876
-    y: 2443.7917
+    x: 5188.716
+    y: 2066.598
     z: 0.5
   }
   rotation {
@@ -1063,8 +843,8 @@ instances {
   id: "tank10"
   prototype: "/units/defenders/tanks/tank1/tank1.go"
   position {
-    x: 5253.818
-    y: 2362.0288
+    x: 5202.299
+    y: 2341.789
     z: 0.5
   }
   rotation {
@@ -1103,29 +883,9 @@ instances {
   id: "virusMind"
   prototype: "/levelGOs/2/virusMind.go"
   position {
-    x: 1119.8826
-    y: 2413.4258
+    x: 2351.8774
+    y: 1907.6713
     z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "virusMind1"
-  prototype: "/levelGOs/2/virusMind.go"
-  position {
-    x: 1177.1862
-    y: 3773.6094
-    z: 0.0
   }
   rotation {
     x: 0.0
@@ -1143,8 +903,8 @@ instances {
   id: "worker"
   prototype: "/units/defenders/worker/worker.go"
   position {
-    x: 6477.4634
-    y: 2420.1987
+    x: 6256.5347
+    y: 2278.8044
     z: 1.0
   }
   rotation {

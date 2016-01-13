@@ -22,8 +22,9 @@ LVL2_COLLECT_1000_OBJ1="Collect 1000 FAT, 1000 PROTEIN and 1000 CARBS.\nYou lose
 LVL2_COLLECT_1000_OBJ2="Collect 1000 FAT, 1000 PROTEIN and 1000 CARBS.\nYou lose if the Central Marrow gets destroyed."
 LVL2_PUT_WORKERS_IN_EXTRACTORS="Put at least one RED BLOOD CELL (WORKER) in each extractor.\nTIP: Select a Red Blood Cell and right-click on an extractor to put the cell inside."
 
-
 LVL3_DESC="The Immune System has now\nresources to raise an army!\n\nBut there is one problem.."
+LVL3_VICTORY="The Ribosome is captured!"
+LVL3_DEFEAT="The viruses reinforced the area!"
 
 LVL4_DESC="Coming soon..."
 

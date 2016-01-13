@@ -33,6 +33,8 @@ function playSoundEffect(soundEffectId)
 		local gain=0.15
 		if BACKGROUND_LOWERED then gain=0.02 end
 		
+		if soundEffectId=="healerCall" or soundEffectId=="healerResponse" then gain=gain/3.5 end
+		
 		if OLD_PLAYED_IDS[soundEffectId]~=newSoundId then
 			msg.post(OLD_PLAYED_IDS[soundEffectId], "stop_sound")
 			

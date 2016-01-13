@@ -1,9 +1,26 @@
 
 
 
-
-
 function level3Subtitles()
+
+	if GAME_TIME>level3State.VOICE2_START_TIME and not level3State.sub10 then
+		msg.post("HUD","setSubtitleText",{text="THE RIBOSOME IS UNDER MY CONTROL!"})
+		level3State.sub10=true
+	elseif GAME_TIME>level3State.VOICE2_START_TIME+3.5 and not level3State.sub11 then
+		msg.post("HUD","setSubtitleText",{text="We will use our protein gains to take\nthe virus into a new era!"})
+		level3State.sub11=true
+	elseif GAME_TIME>level3State.VOICE2_START_TIME+10 and not level3State.sub12 then
+		msg.post("HUD","setSubtitleText",{text="*EVIL LAUGH*"})
+		level3State.sub12=true
+	elseif GAME_TIME>level3State.VOICE2_START_TIME+12 and not level3State.sub13 then
+		msg.post("HUD","setSubtitleText",{text=""})
+		level3State.sub13=true
+	end
+
+end
+
+
+function level3SubtitlesIntro()
 
 
 	if GAME_TIME>level3State.VOICE1_START_TIME and not level3State.sub1 then
@@ -30,11 +47,11 @@ function level3Subtitles()
 	elseif GAME_TIME>level3State.VOICE1_START_TIME+37.5 and not level3State.sub8 then
 		msg.post("HUD","setSubtitleText",{text="Act quickly for this is a race against time!"})
 		level3State.sub8=true
-	elseif GAME_TIME>level3State.VOICE1_START_TIME+41 and not level3State.sub9 then
+	elseif GAME_TIME>level3State.VOICE1_START_TIME+40 and not level3State.sub9 then
 		msg.post("HUD","setSubtitleText",{text=""})
 		level3State.sub9=true
 		
-		level3State.peaceOver=true
+		setPeaceOver()
 	end
 
 end

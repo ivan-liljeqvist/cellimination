@@ -133,6 +133,8 @@ function destroyUnit(self)
 
 		if self.teamNumber~=PLAYER_TEAM and LEVEL==1 then
 			level1PurpleDeath()
+		elseif self.name==PURPLE_TALL_NAME then
+			level3TallDeath()
 		end
 		
 		if self.isExtractor then

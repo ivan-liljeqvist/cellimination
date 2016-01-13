@@ -305,7 +305,7 @@ function destroyBuilding(self)
 		
 		BUILDINGS_FOG_ALREADY_UPDATED[self.id]=nil
 		
-		if self.name==BASE_NAME and LEVEL==2 then
+		if self.name==BASE_NAME and LEVEL==2 or LEVEL==3 then
 			centralMarrowDead()
 		end
 	end
@@ -372,15 +372,17 @@ function setTilesUnderMeToNotOccupied(self,x,y)
 	for currentX=minTileX, maxTileX, 1 do
 		for currentY=minTileY, maxTileY, 1 do
 		
-			local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX+1][currentY+1] 
-			
-			if TILEMAP_NODES[nodeIndex].occupiedBy == self then
-				TILEMAP_NODES[nodeIndex].occupied=false
-				TILEMAP_NODES[nodeIndex].occupiedBy=nil
-				TILEMAP_NODES[nodeIndex].blocked=false
-				TILEMAP_NODES[nodeIndex].occupiedByID=nil
+			if TILEMAP_INDEX_LOOKUP[currentX+1] then
+				local nodeIndex = TILEMAP_INDEX_LOOKUP[currentX+1][currentY+1] 
 				
-				--tilemapObject.set_tile("world#tilemap", "blocked", currentX, currentY, 0)
+				if TILEMAP_NODES[nodeIndex].occupiedBy == self then
+					TILEMAP_NODES[nodeIndex].occupied=false
+					TILEMAP_NODES[nodeIndex].occupiedBy=nil
+					TILEMAP_NODES[nodeIndex].blocked=false
+					TILEMAP_NODES[nodeIndex].occupiedByID=nil
+					
+					--tilemapObject.set_tile("world#tilemap", "blocked", currentX, currentY, 0)
+				end
 			end
 
 			 		

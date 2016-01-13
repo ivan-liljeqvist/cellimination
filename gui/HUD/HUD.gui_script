@@ -223,6 +223,10 @@ function on_message(self, message_id, message, sender)
 		
 		checkPauseMenu(message.action,message.action_id)
 	
+	elseif message_id==hash("setTimeText") then
+	
+		gui.set_text(gui.get_node("timeText"),message.text)
+	
 	elseif message_id == hash("setGameOverTitle") then
 		gui.set_text(gui.get_node("gameOverTitle"),message.text)
 		

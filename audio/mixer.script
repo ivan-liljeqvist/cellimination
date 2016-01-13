@@ -123,6 +123,9 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("mission3Voice1") and ENABLE_SOUND then
 		msg.post("#mission3Voice1", "play_sound", {delay = 0, gain = 0.5})
 		currentVoice="#mission3Voice1"
+	elseif message_id == hash("mission3Voice2") and ENABLE_SOUND then
+		msg.post("#mission3Voice2", "play_sound", {delay = 0, gain = 0.5})
+		currentVoice="#mission3Voice2"
 		
 	--MISC
 	elseif message_id == hash("errorSound") then
@@ -172,7 +175,7 @@ function on_message(self, message_id, message, sender)
 		
 	elseif message_id == hash("healing") and HEALING_PLAYING==false then	
 	
-		if timeSincePlayedHealingLast>0.3 then
+		if timeSincePlayedHealingLast>1 then
 			msg.post("#healing","play_sound", {delay = 0, gain = 0.5})
 			timeSincePlayedHealingLast=0
 			HEALING_PLAYING=true

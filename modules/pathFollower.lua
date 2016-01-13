@@ -18,7 +18,8 @@ end
 
 function goStraightToNode(self,nodeIndex)
 	
-	self.tileCoordinates={pixelToTileCoords(self.goalX,self.goalY)}
+	self.tileCoordinates={pixelToTileCoords(self.goalX-CAMERA_OFFSETX,self.goalY-CAMERA_OFFSETY)}
+	
     local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
    
     if TILEMAP_NODES[currentNodeIndex] then

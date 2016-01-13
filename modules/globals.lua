@@ -406,7 +406,23 @@ function resetGlobals()
 	currentlyEnteringRoaming=nil
 	currentlyEnteringRoamingGain=0
 	
+	level3State={}
+
+	level3State.ATTACK_TIME=2
+	level3State.shouldAttack=false
 	
+	level3State.VOICE1_START_TIME=2
+	level3State.VOICE1_DONE_TIME=39
+	
+	level3State.tutorialSkipped=false
+	
+	level3State.peaceOver=false
+	level3State.peaceTimeOverStartTime=0
+	
+	level3State.purpleTallKilled=0
+	level3State.allGuardsKilled=false
+	
+	level3State.secondsUntilLost=20*60 --20 minutes
 end
 
 

@@ -11,9 +11,9 @@ function init(self)
 	
 	self.id=go.get_id()
 	
-	self.boundsWidthScale=0.5
+	self.boundsWidthScale=0.3
 	
-	self.boundsHeightScale=0.4
+	self.boundsHeightScale=0.3
 	self.initialScale=0.4
 	self.fogRadius=JEEP_FOG_RADIUS
 	
