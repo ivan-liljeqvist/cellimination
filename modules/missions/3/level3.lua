@@ -19,7 +19,7 @@ level3State.peaceTimeOverStartTime=0
 level3State.purpleTallKilled=0
 level3State.allGuardsKilled=false
 
-level3State.secondsUntilLost=20*60+2 --20 minutes
+level3State.secondsUntilLost=10*60+2 --20 minutes
 
 level3State.updateObjective=false
 
@@ -132,7 +132,7 @@ function handleAttacks()
 	if not level3State.peaceOver then return end
 
 	if GAME_TIME>level3State.ATTACK_TIME then
-		level3State.ATTACK_TIME=GAME_TIME+25
+		level3State.ATTACK_TIME=GAME_TIME+12
 		level3State.shouldAttack=true
 	end
 	

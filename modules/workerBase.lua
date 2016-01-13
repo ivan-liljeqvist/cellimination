@@ -46,7 +46,6 @@ function workerMessageHandler(self,go,message_id,message,sender)
 		
 		self.currentBuilding = message.building
 	elseif message_id == hash("resetBuilding") then
-		print("resetBuildingresetBuilding")
 		abortConstruction(self)
 		self.currentBuilding = nil
 		self.headingToBuilding=false

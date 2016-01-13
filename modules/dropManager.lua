@@ -15,7 +15,7 @@ function generateDrop(self)
 		elseif res==3 then FAT=FAT+dropAmount  return "+"..dropAmount.." fat"  end
 	elseif LEVEL==3 then
 	
-		dropAmount=dropAmount*5
+		dropAmount=dropAmount*2
 		PROTEIN=PROTEIN+dropAmount 
 		
 		return "+"..dropAmount.." protein" 

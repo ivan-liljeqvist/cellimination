@@ -7,7 +7,7 @@ function init(self)
     self.scaleBeforeHide=0
     self.hidden=false
     
-    print(self.tint)
+
     
     --spine.set_constant("#spinemodel","tint", vmath.vector4(1,0,1,1))
 end
@@ -32,7 +32,7 @@ function on_message(self, message_id, message, sender)
 		go.set_scale(vmath.vector3(0.01, 0.01, 0.01))
 		self.hidden=true
 	elseif message_id == hash("show") and self.hidden then
-		print(self.scaleBeforeHide)
+
 		go.set_scale(self.scaleBeforeHide)
 		self.hidden=false
 	end    

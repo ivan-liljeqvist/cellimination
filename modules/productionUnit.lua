@@ -17,7 +17,7 @@ function resetProduction(self)
 	self.currentlyProducingItem=""
 	
 	self.showingProgressBar=true
-	hideProgressBar(self)
+	--hideProgressBar(self)
 end
 
 function updateProductionUnit(self,dt)
@@ -41,6 +41,7 @@ function updateProductionUnit(self,dt)
 	    	
 	    	if self.constructionDone then
 		    	local ratio=percent
+		    	
 				msg.post(msg.url("progressBars#gui"),"show",{unitId=self.id})
 				msg.post(msg.url("progressBars#gui"),"updateSize",{ratio=ratio,unitId=self.id})
 			end

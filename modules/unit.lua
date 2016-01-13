@@ -309,11 +309,16 @@ end
 function hideProgressBar(self)
 	if  self.showingProgressBar then
 		
-		print("hide progress bar")
 		if self.isBuilding or self.willBecomeBuilding then
-			msg.post(msg.url("progressBars#gui"),"hide",{unitId=self.id})
+		
+			if self.constructionDone then
+				print("HIDE PROGRESSBAR")
+				msg.post(msg.url("progressBars#gui"),"hide",{unitId=self.id})
+				self.showingProgressBar=false
+			end
+			
 		end
-		self.showingProgressBar=false
+		
 	end
 end
 

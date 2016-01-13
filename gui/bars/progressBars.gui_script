@@ -4,7 +4,9 @@ function init(self)
 end
 
 function makeProgressbar(self,unitId)
+	
 	if not self.progressBars[unitId] then
+		
 		self.progressBars[unitId]=gui.clone(gui.get_node("progressBox"))
 		gui.set_color(self.progressBars[unitId], vmath.vector4(1,1,1,0))
 	end
