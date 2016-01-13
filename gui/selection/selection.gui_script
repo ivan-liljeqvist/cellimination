@@ -17,7 +17,7 @@ function init(self)
 	
 	self.parseInput=function(self, action_id, action)
 	
-			if action_id==hash("rightClicked") and action.released and self.rightPressedSinceLast then
+			if action_id==hash("rightClicked") and action.released and self.rightPressedSinceLast and next(SELECTED_UNITS) then
 				self.rightPressedSinceLast=false
 				
 				
@@ -26,7 +26,9 @@ function init(self)
 				
 
 				if foundWay then
-					playResponseSound(unitWithGUI.name)
+					
+						playResponseSound(unitWithGUI.name)
+					
 				end
 				
 				
@@ -107,6 +109,7 @@ function init(self)
 					if self.massSelectionMode~=true then
 						self.massSelectionMode=true
 						msg.post("manager","deselectAll",{})
+						
 					end
 					
 					--send the selection to the manager.script and manager will send it to all selectable units

@@ -67,7 +67,6 @@ function workerMessageHandler(self,go,message_id,message,sender)
 		
 		playResponseSound(self.name)
 		
-		playResponseSound(self.name)
 		
 		print("path to etract size: "..table.getn(self.currentPath))
 		
