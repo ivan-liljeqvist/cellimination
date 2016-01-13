@@ -118,7 +118,11 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("engineer1") and ENABLE_SOUND then
 		msg.post("#engineer1", "play_sound", {delay = 0, gain = 0.5})
 		currentVoice="#engineer1"
-			
+		
+	--MISSION 3 VOICE
+	elseif message_id == hash("mission3Voice1") and ENABLE_SOUND then
+		msg.post("#mission3Voice1", "play_sound", {delay = 0, gain = 0.5})
+		currentVoice="#mission3Voice1"
 		
 	--MISC
 	elseif message_id == hash("errorSound") then
@@ -149,7 +153,7 @@ function on_message(self, message_id, message, sender)
 		if not BATTLE_MODE then
 			sound.set_group_gain("main",0.2)
 		else
-			sound.set_group_gain("battle",0.2)
+			sound.set_group_gain("battle",0.5)
 		end
 		
 		sound.set_group_gain("sfx",0.2)
@@ -160,7 +164,7 @@ function on_message(self, message_id, message, sender)
 		if not BATTLE_MODE then
 			sound.set_group_gain("main",0.5)
 		else
-			sound.set_group_gain("battle",0.5)
+			sound.set_group_gain("battle",1)
 		end
 		BACKGROUND_LOWERED=false
 		

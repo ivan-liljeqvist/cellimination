@@ -5,6 +5,11 @@ PLAYER_Y=3000
 function virusMessageHandler(self,go,message_id,message,sender)
 	
 	if message_id == hash("attack")  then
+	
+		if LEVEL==3 then
+			PLAYER_X=6217
+			PLAYER_Y=2444
+		end
 		
 		CURRENT_VIRUSES_ATTACKING[self]=true
 		self.shouldAttackPlayer=true

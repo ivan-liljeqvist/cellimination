@@ -15,6 +15,8 @@ function act()
 			level1Act()
 		elseif LEVEL==2 then
 			level2Act()
+		elseif LEVEL==3 then
+			level3Act()
 		end
 	
 		--this is the same for all levels, if you lose all your units, you lose

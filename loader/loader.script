@@ -10,6 +10,7 @@ function init(self)
     --msg.post("loader#level"..LEVEL, "load")
     --msg.post("loader#mainMenuBackground","load")
     self.currentLevel="loader#level3"
+    
     msg.post(self.currentLevel,"load")
     
     --if ENABLE_SOUND then
