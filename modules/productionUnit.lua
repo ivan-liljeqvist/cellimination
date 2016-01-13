@@ -15,6 +15,9 @@ function resetProduction(self)
     self.currentlyProducing=false
 	self.currentProductionProgress=0
 	self.currentlyProducingItem=""
+	
+	self.showingProgressBar=true
+	hideProgressBar(self)
 end
 
 function updateProductionUnit(self,dt)

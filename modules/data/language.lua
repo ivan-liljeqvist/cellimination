@@ -25,6 +25,7 @@ LVL2_PUT_WORKERS_IN_EXTRACTORS="Put at least one RED BLOOD CELL (WORKER) in each
 LVL3_DESC="The Immune System has now\nresources to raise an army!\n\nBut there is one problem.."
 LVL3_VICTORY="The Ribosome is captured!"
 LVL3_DEFEAT="The viruses reinforced the area!"
+LVL3_OBJECTIVE="Get to the RIBOSOME and kill all of the 4 one-eyed guards.\nYou lose if the time runs out or if the Central Marrow gets destroyed."
 
 LVL4_DESC="Coming soon..."
 

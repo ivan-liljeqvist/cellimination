@@ -21,6 +21,7 @@ level3State.allGuardsKilled=false
 
 level3State.secondsUntilLost=20*60+2 --20 minutes
 
+level3State.updateObjective=false
 
 function level3Act()
 
@@ -38,6 +39,7 @@ function level3Act()
 		level3Subtitles()
 	end
 	
+	handleMissionObjectiveLevel3()
 	
 	--msg.post("HUD","setTimeText",{text="HEEEJ"})
 	
@@ -66,12 +68,29 @@ function handleTime()
 	end
 end
 
+function handleMissionObjectiveLevel3()
+
+	if level3State.updateObjective then
+		
+
+		
+			msg.post("HUD","setMissionObjectiveText",{text=LVL3_OBJECTIVE})
+			level3State.updateObjective=false
+			
+
+		
+	end
+
+end
+
 function setPeaceOver()
 	level3State.peaceOver=true
 	level3State.peaceTimeOverStartTime=GAME_TIME
 	
 	level3State.VOICE2_START_TIME=GAME_TIME+10
 	level3State.VOICE2_DONE_TIME=level3State.VOICE2_START_TIME+12
+	
+	level3State.updateObjective=true
 end
 
 function skipTutorialLvl3()

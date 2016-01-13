@@ -4,7 +4,7 @@ function canAfford(unitName)
 
 	local proteinPrice=math.ceil(PRICES[unitName].protein+(NUMBER_BOUGHT[unitName]+1+NUMBER_QUEUED[unitName])*INFLATION[unitName])
 	local carbPrice=math.ceil(PRICES[unitName].carb+(NUMBER_BOUGHT[unitName]+1+NUMBER_QUEUED[unitName])*INFLATION[unitName])
-	local fatPrice=math.ceil(PRICES[unitName].carb+(NUMBER_BOUGHT[unitName]+1+NUMBER_QUEUED[unitName])*INFLATION[unitName])
+	local fatPrice=math.ceil(PRICES[unitName].fat+(NUMBER_BOUGHT[unitName]+1+NUMBER_QUEUED[unitName])*INFLATION[unitName])
 
 	if unitName==STORAGE_NAME then
 		proteinPrice=PROTEIN*0.05

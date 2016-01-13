@@ -243,6 +243,7 @@ function handleHealingStatus(self)
 end
 
 function handleProgressbar(self)
+
 	if self.isBuilding then
 		local pos = go.get_position()
 		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
@@ -308,8 +309,9 @@ end
 function hideProgressBar(self)
 	if  self.showingProgressBar then
 		
+		print("hide progress bar")
 		if self.isBuilding or self.willBecomeBuilding then
-			--msg.post(msg.url("progressBars#gui"),"hide",{unitId=self.id})
+			msg.post(msg.url("progressBars#gui"),"hide",{unitId=self.id})
 		end
 		self.showingProgressBar=false
 	end
