@@ -23,15 +23,15 @@ function update(self, dt)
    introTime=introTime+dt
    
    if introTime>0.2 and not introState.sub1 then 
-   		displaySubtitles("The IMMUNE SYSTEM - the largest combat force in the entire organism.") 
+   		displaySubtitles("The IMMUNE SYSTEM - the largest combat force in the organism.") 
    		introState.sub1=true
-   	elseif introTime>5.0 and not introState.sub2 then 
+   	elseif introTime>4.4 and not introState.sub2 then 
    		displaySubtitles("The System is responsible for peace and stability\nand requires your Strategical Leadership.") 
    		introState.sub2=true
-    elseif introTime>11.3 and not introState.sub3 then 
+    elseif introTime>9.5 and not introState.sub3 then 
    		displaySubtitles("LEAD US COMMANDER!") 
    		introState.sub3=true
-    elseif introTime>13 and not introState.sub5 then 
+    elseif introTime>11 and not introState.sub5 then 
    		displaySubtitles("") 
    		introState.sub5=true
    		
