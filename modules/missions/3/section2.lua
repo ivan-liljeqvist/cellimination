@@ -21,6 +21,7 @@ function lvl3Section2Act()
 		
 	elseif level3State.VOICE3_DONE_TIME and GAME_TIME>level3State.VOICE3_DONE_TIME and not level3State.resetBackground then
 		
+		level3State.section2Done=true
 		msg.post("mixer","normalBackground")
 		level3State.resetBackground=true
 	end

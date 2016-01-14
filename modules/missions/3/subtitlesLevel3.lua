@@ -25,6 +25,18 @@ function level3Subtitles()
 	elseif level3State.VOICE3_START_TIME and GAME_TIME>level3State.VOICE3_START_TIME+13 and not level3State.sub16 then
 		msg.post("HUD","setSubtitleText",{text=""})
 		level3State.sub16=true
+		
+	elseif level3State.VOICE4_START_TIME and GAME_TIME>level3State.VOICE4_START_TIME and not level3State.sub17 then
+		msg.post("HUD","setSubtitleText",{text="AH! I can sense a big virus south of our camp."})
+		level3State.sub17=true
+		
+	elseif level3State.VOICE4_START_TIME and GAME_TIME>level3State.VOICE4_START_TIME+4 and not level3State.sub18 then
+		msg.post("HUD","setSubtitleText",{text="Exterminate it and we will get a lot of resources."})
+		level3State.sub18=true
+		
+	elseif level3State.VOICE4_START_TIME and GAME_TIME>level3State.VOICE4_START_TIME+8.5 and not level3State.sub19 then
+		msg.post("HUD","setSubtitleText",{text=""})
+		level3State.sub19=true
 	end
 
 end

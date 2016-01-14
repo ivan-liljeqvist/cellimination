@@ -14,6 +14,9 @@ level3State.VOICE2_DONE_TIME=nil
 level3State.VOICE3_START_TIME=nil
 level3State.VOICE3_DONE_TIME=nil
 
+level3State.VOICE4_START_TIME=nil
+level3State.VOICE4_DONE_TIME=nil
+
 level3State.tutorialSkipped=false
 
 level3State.peaceOver=false
@@ -35,12 +38,20 @@ function level3Act()
 		end
 		
 		level3SubtitlesIntro()
+		
+	else
+	
+		if level3State.section1Done and not level3State.section2Done then
+			lvl3Section2Act()
+		elseif level3State.section2Done and not level3State.section3Done then
+			lvl3Section3Act()
+		end
+		
+		level3Subtitles()
+		
 	end
 	
-	if level3State.section1Done and not level3State.section2Done then
-		lvl3Section2Act()
-		level3Subtitles()
-	end
+	
 	
 	handleMissionObjectiveLevel3()
 	
@@ -95,6 +106,9 @@ function setPeaceOver()
 	
 	level3State.VOICE3_START_TIME=GAME_TIME+28
 	level3State.VOICE3_DONE_TIME=level3State.VOICE3_START_TIME+13
+	
+	level3State.VOICE4_START_TIME=level3State.VOICE3_DONE_TIME+10
+	level3State.VOICE4_DONE_TIME=level3State.VOICE4_START_TIME+9
 	
 	level3State.updateObjective=true
 end
