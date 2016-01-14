@@ -35,10 +35,10 @@ images {
   image: "/graphicalAssets/units/viruses/purple/redEyes.png"
 }
 images {
-  image: "/graphicalAssets/units/viruses/tallPurple/purpletall.png"
+  image: "/graphicalAssets/units/viruses/roundPurple/roundPurple.png"
 }
 images {
-  image: "/graphicalAssets/units/viruses/roundPurple/roundPurple.png"
+  image: "/graphicalAssets/units/viruses/purple/cloudyBodySmall.png"
 }
 margin: 0
 extrude_borders: 0

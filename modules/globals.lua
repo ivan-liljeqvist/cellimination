@@ -1,4 +1,7 @@
 
+
+LVL3_BOSS=nil
+
 VICTORY=false
 DEFEAT=false
 
@@ -272,6 +275,7 @@ function resetGlobals()
 	
 	SHOWING_SELECTION=false
 	
+	
 	PLACING_NEW_BUILDING=false
 	
 	SPOT_ENEMY_RADIUS=3
@@ -424,6 +428,8 @@ function resetGlobals()
 	level3State.allGuardsKilled=false
 	
 	level3State.secondsUntilLost=20*60 --20 minutes
+	
+	LVL3_BOSS=nil
 end
 
 

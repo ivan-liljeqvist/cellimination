@@ -200,6 +200,9 @@ function final(self)
 	self.timeSinceReleasedLeft=0
 	self.triedToSelectOnlyOneLast=false
 	self.doubleClicked=false
+	
+	SHOWING_SELECTION=false
+	savedMouseDownCoordinates=false
 end
 
 function update(self, dt)

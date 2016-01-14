@@ -15,11 +15,15 @@ function generateDrop(self)
 		elseif res==3 then FAT=FAT+dropAmount  return "+"..dropAmount.." fat"  end
 	elseif LEVEL==3 then
 	
-		dropAmount=dropAmount*2
-		PROTEIN=PROTEIN+dropAmount 
-		
-		return "+"..dropAmount.." protein" 
-		
+		if self.name~=CLOUDY_STRONG4_NAME then
+			dropAmount=dropAmount*2
+			PROTEIN=PROTEIN+dropAmount 
+			
+			return "+"..dropAmount.." protein" 
+		else --boss
+			PROTEIN=PROTEIN+500 
+			return "+ 500 protein" 
+		end
 	end
 	
 	

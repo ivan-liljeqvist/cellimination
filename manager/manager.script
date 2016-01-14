@@ -72,6 +72,10 @@ function init(self)
 	self.timeSinceLastStorageUpdate=0
 	
 	
+	if LEVEL==3 then
+		msg.post("ribosomeMark","show")
+	end
+	
 	
 --[[if IN_GAME then
 

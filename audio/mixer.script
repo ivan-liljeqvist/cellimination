@@ -181,7 +181,7 @@ function on_message(self, message_id, message, sender)
 		
 	elseif message_id == hash("healing") and HEALING_PLAYING==false then	
 	
-		if timeSincePlayedHealingLast>1 then
+		if timeSincePlayedHealingLast>3 then
 			msg.post("#healing","play_sound", {delay = 0, gain = 0.5})
 			timeSincePlayedHealingLast=0
 			HEALING_PLAYING=true

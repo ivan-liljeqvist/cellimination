@@ -133,8 +133,11 @@ function isGoalTileOccupied(self)
 	if self.tileCoordinates and TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1] then
 	
 		local currentNodeIndex=TILEMAP_INDEX_LOOKUP[self.tileCoordinates[1]+1][self.tileCoordinates[2]+1]
-		if (TILEMAP_NODES[currentNodeIndex].occupied and TILEMAP_NODES[currentNodeIndex].occupiedBy.teamNumber~=self.teamNumber) or 
-			TILEMAP_NODES[currentNodeIndex].type==0 then return true end
+		
+		if TILEMAP_NODES[currentNodeIndex] then
+			if (TILEMAP_NODES[currentNodeIndex].occupied and TILEMAP_NODES[currentNodeIndex].occupiedBy.teamNumber~=self.teamNumber) or 
+				TILEMAP_NODES[currentNodeIndex].type==0 then return true end
+		end
 		
 	end
 end

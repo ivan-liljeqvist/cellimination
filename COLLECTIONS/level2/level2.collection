@@ -43,8 +43,8 @@ instances {
   id: "bloodEffect"
   prototype: "/ground/terrainEffects/blood/bloodEffect.go"
   position {
-    x: 4946.8696
-    y: 3462.6765
+    x: 4871.9604
+    y: 3435.4368
     z: 0.0
   }
   rotation {
@@ -63,8 +63,8 @@ instances {
   id: "bloodEffect1"
   prototype: "/ground/terrainEffects/blood/bloodEffect.go"
   position {
-    x: 4983.2065
-    y: 3210.337
+    x: 4874.2476
+    y: 3227.3618
     z: 0.0
   }
   rotation {
@@ -83,8 +83,8 @@ instances {
   id: "bloodEffect10"
   prototype: "/ground/terrainEffects/blood/bloodEffect.go"
   position {
-    x: 3780.0515
-    y: 3202.2622
+    x: 4077.986
+    y: 3185.2373
     z: 0.0
   }
   rotation {
@@ -103,8 +103,8 @@ instances {
   id: "bloodEffect11"
   prototype: "/ground/terrainEffects/blood/bloodEffect.go"
   position {
-    x: 3776.0142
-    y: 3511.1257
+    x: 4107.9985
+    y: 3345.9849
     z: 0.0
   }
   rotation {

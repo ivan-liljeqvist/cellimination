@@ -13,6 +13,7 @@ BUILDINGS_FOG_ALREADY_UPDATED={}
 TILES_ALREADY_CLEARED_THIS_ROUND={}
 
 local sinceClearedLast=0
+local clearedBoss=false
 
 local clearFogFunc=function(x,y)
 		
@@ -28,6 +29,9 @@ function updateFoW(dt)
 
 	if not IN_GAME then return end
 
+	if LVL3_BOSS and LEVEL==3 and not clearedBoss then
+		clearFogForUnit(LVL3_BOSS)
+	end
 	
 	sinceClearedLast=sinceClearedLast+dt
 	
@@ -50,63 +54,67 @@ function updateFoW(dt)
 
 			if not (unit.isBuilding and unit.prototypeMode) then  --dont reveal if building in prototype mode
 				
-				local shouldContinue=true
 				
-				if  unit.isBuilding and BUILDINGS_FOG_ALREADY_UPDATED[unit.id] then shouldContinue=false end
-			
-				if shouldContinue then
-				
-						BUILDINGS_FOG_ALREADY_UPDATED[unit.id]=true
-						
-						--get the coordinates in pixels
-						local pixelX=unit.x-CAMERA_OFFSETX
-						local pixelY=unit.y-CAMERA_OFFSETY
-						
-						if unit.isBuilding then
-							pixelX=pixelX+unit.orOffX
-							pixelY=pixelY+unit.orOffY
-						end
-						
-						--translate to tile coordinates
-						local tileX,tileY=pixelToTileCoords(pixelX,pixelY)
-						
-						local alreadyCleared=false
-						
-						if TILES_ALREADY_CLEARED_THIS_ROUND[tileX] then
-							if TILES_ALREADY_CLEARED_THIS_ROUND[tileX][tileY] then
-								alreadyCleared=true
-							end
-						else
-							TILES_ALREADY_CLEARED_THIS_ROUND[tileX]={}
-							TILES_ALREADY_CLEARED_THIS_ROUND[tileX][tileY]=true
-						end
-						
-						if not alreadyCleared then
-							--make the tile the unit stands on visible
-							if tileX+1<TILEMAP_MAXX and tileY+1<TILEMAP_MAXY then
-								
-								
-								clearedIndex=tileX..","..tileY
-								CLEARED_CELLS[clearedIndex]={x=tileX,y=tileY}  --save the cells we clear
-								
-								
-								tilemapObject.set_tile("fog#tilemap", "fog", tileX, tileY,0)
-							end
-							
-							--for counter=1, unit.fogRadius, 1 do
-						
-							loopAreaAroundTile(tileX,tileY,3,clearFogFunc)
-							
-							--end
-						end
-				end
-					
+					clearFogForUnit(unit)
 			
 			else
 				--print("prototype mode!")
 			end
 		end
 		
+	end
+end
+
+function clearFogForUnit(unit)
+	local shouldContinue=true
+				
+	if  unit.isBuilding and BUILDINGS_FOG_ALREADY_UPDATED[unit.id] then shouldContinue=false end
+
+	if shouldContinue then
+	
+			BUILDINGS_FOG_ALREADY_UPDATED[unit.id]=true
+			
+			--get the coordinates in pixels
+			local pixelX=unit.x-CAMERA_OFFSETX
+			local pixelY=unit.y-CAMERA_OFFSETY
+			
+			if unit.isBuilding then
+				pixelX=pixelX+unit.orOffX
+				pixelY=pixelY+unit.orOffY
+			end
+			
+			--translate to tile coordinates
+			local tileX,tileY=pixelToTileCoords(pixelX,pixelY)
+			
+			local alreadyCleared=false
+			
+			if TILES_ALREADY_CLEARED_THIS_ROUND[tileX] then
+				if TILES_ALREADY_CLEARED_THIS_ROUND[tileX][tileY] then
+					alreadyCleared=true
+				end
+			else
+				TILES_ALREADY_CLEARED_THIS_ROUND[tileX]={}
+				TILES_ALREADY_CLEARED_THIS_ROUND[tileX][tileY]=true
+			end
+			
+			if not alreadyCleared then
+				--make the tile the unit stands on visible
+				if tileX+1<TILEMAP_MAXX and tileY+1<TILEMAP_MAXY then
+					
+					
+					clearedIndex=tileX..","..tileY
+					CLEARED_CELLS[clearedIndex]={x=tileX,y=tileY}  --save the cells we clear
+					
+					
+					tilemapObject.set_tile("fog#tilemap", "fog", tileX, tileY,0)
+				end
+				
+				--for counter=1, unit.fogRadius, 1 do
+			
+				loopAreaAroundTile(tileX,tileY,3,clearFogFunc)
+				
+				--end
+			end
 	end
 end
 

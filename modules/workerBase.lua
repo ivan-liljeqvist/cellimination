@@ -57,7 +57,8 @@ function workerMessageHandler(self,go,message_id,message,sender)
 		self.headingForExtractor=true
 		self.extractorLocation=message.preciseLocation
 		
-		self.extractorLocation.x = self.extractorLocation.x*ZOOM_LEVEL+TILE_SIZE*3--+CAMERA_OFFSETX	
+		self.extractorLocation.x = self.extractorLocation.x*ZOOM_LEVEL+TILE_SIZE*2--+CAMERA_OFFSETX
+		self.extractorLocation.y = self.extractorLocation.y*ZOOM_LEVEL+TILE_SIZE	
 		--print("extractor at ",self.extractorLocation.x,self.extractorLocation.y)
 		
 		self.headingToExtractorID=message.extractorID

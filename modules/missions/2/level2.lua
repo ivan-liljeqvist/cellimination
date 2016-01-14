@@ -3,7 +3,7 @@
 level2State={}
 
 level2State.FIRST_ATTACK_TIME=nil
-level2State.FIRST_ATTACK_TIME_OFFSET=70
+level2State.FIRST_ATTACK_TIME_OFFSET=40
 
 level2State.attacked=false
 

@@ -11,6 +11,8 @@ function lvl3Section3Act()
 		level3State.playedVoice4=true
 		level3State.resetBackground=false
 		
+		msg.post("bossSpawner","spawn")
+		
 	elseif level3State.VOICE4_DONE_TIME and GAME_TIME>level3State.VOICE4_DONE_TIME and not level3State.resetBackground then
 		
 		msg.post("mixer","normalBackground")

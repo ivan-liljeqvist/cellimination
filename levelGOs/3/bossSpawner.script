@@ -1,5 +1,5 @@
 function init(self)
-    go.set_scale(0.1)
+    
 end
 
 function final(self)
@@ -14,11 +14,12 @@ end
 
 function on_message(self, message_id, message, sender)
 
-	if message_id == hash("show") then
-		go.set_scale(3)
-	elseif message_id == hash("hide") then
-		go.set_scale(0.1)
+
+	if message_id == hash("spawn") then
+		factory.create("#factory")
+		msg.post("bossMark","show")
 	end    
+
 
 end
 

@@ -120,6 +120,26 @@ instances {
   }
 }
 instances {
+  id: "heal2"
+  prototype: "/units/defenders/healers/heal1/heal1.go"
+  position {
+    x: 692.24066
+    y: 491.38016
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "healthBars"
   prototype: "/gui/bars/healthBars.go"
   position {
@@ -301,7 +321,7 @@ instances {
 }
 instances {
   id: "purple1"
-  prototype: "/units/viruses/purple/purple.go"
+  prototype: "/units/viruses/clodyStrong/cloudyStrong.go"
   position {
     x: 1991.6581
     y: 1814.0547
@@ -321,7 +341,7 @@ instances {
 }
 instances {
   id: "purple2"
-  prototype: "/units/viruses/purple/purple.go"
+  prototype: "/units/viruses/clodyStrong2/cloudyStrong2.go"
   position {
     x: 702.72516
     y: 2668.173
@@ -341,7 +361,7 @@ instances {
 }
 instances {
   id: "purple3"
-  prototype: "/units/viruses/purple/purple.go"
+  prototype: "/units/viruses/purpletall/purpletall.go"
   position {
     x: 522.5612
     y: 2828.4214
@@ -421,7 +441,7 @@ instances {
 }
 instances {
   id: "purple7"
-  prototype: "/units/viruses/purple/purple.go"
+  prototype: "/units/viruses/clodyStrong/cloudyStrong.go"
   position {
     x: 450.50195
     y: 2730.5425

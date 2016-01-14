@@ -240,7 +240,7 @@ function buildingInput(self,action,action_id)
 				workerPos.x=workerPos.x+TILE_SIZE*2
 				
 				if self.isExtractor then
-					workerPos.x=workerPos.x+TILE_SIZE*2
+					workerPos.x=workerPos.x+TILE_SIZE
 				end
 				
 				local workerPosBackup=vmath.vector3(workerPos.x-TILE_SIZE*6,workerPos.y,workerPos.z)

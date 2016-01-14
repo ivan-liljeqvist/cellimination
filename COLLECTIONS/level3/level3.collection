@@ -200,11 +200,111 @@ instances {
   }
 }
 instances {
+  id: "bossMark"
+  prototype: "/graphicalAssets/minimap/mark.go"
+  position {
+    x: 5383.5273
+    y: 539.4697
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bossSpawner"
+  prototype: "/levelGOs/3/bossSpawner.go"
+  position {
+    x: 5402.03
+    y: 490.10883
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "buildingManager"
   prototype: "/buildings/buildingManager.go"
   position {
     x: 845.08307
     y: 614.66876
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "cloudyStrong3"
+  prototype: "/units/viruses/cloudyStrong3/cloudyStrong3.go"
+  position {
+    x: 5667.2344
+    y: 632.5971
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "cloudyStrong4"
+  prototype: "/units/viruses/cloudyStrong3/cloudyStrong3.go"
+  position {
+    x: 5826.395
+    y: 497.92273
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "cloudyStrong5"
+  prototype: "/units/viruses/cloudyStrong3/cloudyStrong3.go"
+  position {
+    x: 5834.0474
+    y: 220.92194
     z: 0.5
   }
   rotation {
@@ -365,26 +465,6 @@ instances {
   position {
     x: 384.0
     y: 447.8071
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "mark"
-  prototype: "/graphicalAssets/minimap/mark.go"
-  position {
-    x: 1261.7692
-    y: 6886.664
     z: 0.5
   }
   rotation {
@@ -880,6 +960,26 @@ instances {
   }
 }
 instances {
+  id: "ribosomeMark"
+  prototype: "/graphicalAssets/minimap/mark.go"
+  position {
+    x: 1261.7692
+    y: 6886.664
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "selection"
   prototype: "/gui/selection/selection.go"
   position {
@@ -1023,8 +1123,8 @@ instances {
   id: "virusMind"
   prototype: "/levelGOs/2/virusMind.go"
   position {
-    x: 2351.8774
-    y: 1907.6713
+    x: 2399.8625
+    y: 2029.8154
     z: 0.5
   }
   rotation {

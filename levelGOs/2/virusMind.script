@@ -46,7 +46,7 @@ function attack(self,fromRight,attackNumber)
 			msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
 		end
 	elseif LEVEL==3 then
-		msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight})
+		msg.post(spawnVirus(self,"#cloudyStrong3Factory"),"attack",{fromRight=fromRight})
 	end
 
 	
@@ -55,8 +55,14 @@ end
 
 function spawnVirus(self,fac)
 	local pos = go.get_position()
-	pos.x=pos.x+math.random(-200, 200)
-	pos.y=pos.y+math.random(-200, 200)
+	
+	local offset=200
+	
+	if LEVEL==3 then offset=50 end
+	
+	pos.x=pos.x+math.random(-offset, offset)
+	pos.y=pos.y+math.random(-offset, offset)
+	
 	return factory.create(fac,pos)
 end
 

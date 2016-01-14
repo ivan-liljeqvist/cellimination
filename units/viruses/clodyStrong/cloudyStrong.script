@@ -1,0 +1,94 @@
+
+
+
+function init(self)
+
+	tilemapObject=tilemap
+	self.go=go
+	
+	self.x=go.get_position().x
+	self.y=go.get_position().y
+	
+	self.id=go.get_id()
+	
+	self.teamNumber=2
+	
+	self.boundsWidthScale=0.5
+	self.boundsHeightScale=0.4
+	
+	self.initialScale=0.7
+	self.fogRadius=JEEP_FOG_RADIUS
+	
+	self.spotEnemiesRadius=2
+	
+	self.factory=factory
+	
+	    self.parseInput=function(self, action_id, action)
+
+	end
+	
+    initBasicUnit(self,CLOUDY_STRONG_NAME,go.get_id())
+    initMovableUnit(self)
+    initFightingUnit(self,false)
+    
+    self.currentAnimation="normal"
+
+	self.selectEffect="slime"
+    
+	
+	
+	self.requiresGUI=true
+	local deselectAction=function() msg.post("manager","deselectAll",{}) end
+	self.GUILayout={button1={icon="deselectIcon",action=deselectAction, hover=function() return HOVER_LAYOUT[DESELECT]  end},
+					button2=nil,
+					button3=nil,
+					button4=nil,
+					button5=nil,
+					button6=nil,
+					button7=nil,
+					button8=nil,
+					button9=nil}
+				
+	
+end
+
+
+function update(self, dt)
+    -- Add update code here
+    -- Remove this function if not needed
+	
+	basicUnitUpdate(self,dt,go)
+	unitUpdate(self,go,dt)
+	virusUpdate(self,dt)
+	
+    
+end
+
+function on_message(self, message_id, message, sender)
+
+	
+	handleSelectMethods(self,go,message_id,message,sender)
+	basicUnitMessageHandler(self,go,message_id,message,sender)
+	virusMessageHandler(self,go,message_id,message,sender)
+	
+	if self.canFight then
+		fightingUnitMessageHandler(self,go,message_id,message,sender)
+	end
+	
+	if message_id == hash("deleteGO")then
+		go.delete(go.get_id())
+	end
+	
+end
+
+function on_reload(self)
+    -- Add reload-handling code here
+    -- Remove this function if not needed
+end
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+
