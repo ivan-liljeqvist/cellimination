@@ -100,6 +100,7 @@ end
 function checkResources()
 	if FAT>=1000 and PROTEIN>=1000 and CARBS>=1000 then
 		gameOver(true,LVL2_VICTORY)
+		if MISSIONS_COMPLETE < 2 then MISSIONS_COMPLETE=2 end
 	end
 end
 

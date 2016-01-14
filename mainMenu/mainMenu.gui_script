@@ -266,8 +266,10 @@ function showMenu2()
 	showNode("backButton")
 	showNode("backText")
 	
-	for s=MAX_MISSIONS,(MISSIONS_COMPLETE+2),-1 do
-		    setMissionDisabled(s)
+	if MISSIONS_COMPLETE<3 then
+		for s=MAX_MISSIONS,(MISSIONS_COMPLETE+2),-1 do
+			    setMissionDisabled(s)
+		end
 	end
    	
    	if MISSIONS_COMPLETE>0 then

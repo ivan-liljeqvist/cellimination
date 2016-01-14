@@ -134,6 +134,7 @@ function level3TriggerCheck(x,y)
 	
 	if x<1048 and y>6500 and level3State.allGuardsKilled then
 		gameOver(true,LVL3_VICTORY)
+		if MISSIONS_COMPLETE < 3 then MISSIONS_COMPLETE=3 end
 	end
 	
 end
