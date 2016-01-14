@@ -247,7 +247,8 @@ end
 
 function handleClick(new,continue)
 	if new then
-		startLevel(1)
+		--startLevel(1)
+		LOAD_INTRO=true
 	elseif continue then
 		goToMenu3()
 	end
@@ -324,6 +325,7 @@ function hideMenu1()
 	hideNode("continue") 
 	
 	hideNode("bottomText") 
+	hideNode("bottomTextSmall")
 	hideNode("gameTitle") 
 	
 end
@@ -337,6 +339,11 @@ function showMenu1()
 	showNode("continue") 
 	
 	showNode("bottomText") 
+	showNode("bottomTextSmall") 
+	
+	gui.set_text(gui.get_node("bottomText"),"Turn on the sound and play using a mouse.")
+	gui.set_text(gui.get_node("bottomTextSmall"),"If you hear no sound, please reload the page.")
+	
 	showNode("gameTitle") 
 	
 end

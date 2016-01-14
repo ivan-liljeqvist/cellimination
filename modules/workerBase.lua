@@ -57,14 +57,14 @@ function workerMessageHandler(self,go,message_id,message,sender)
 		self.headingForExtractor=true
 		self.extractorLocation=message.preciseLocation
 		
-		self.extractorLocation.x = self.extractorLocation.x*ZOOM_LEVEL+TILE_SIZE*2--+CAMERA_OFFSETX
-		self.extractorLocation.y = self.extractorLocation.y*ZOOM_LEVEL+TILE_SIZE	
+		self.extractorLocation.x = self.extractorLocation.x+TILE_SIZE*2-(CAMERA_OFFSETX-message.orOffX)
+		self.extractorLocation.y = self.extractorLocation.y-(CAMERA_OFFSETY-message.orOffY)
 		--print("extractor at ",self.extractorLocation.x,self.extractorLocation.y)
 		
 		self.headingToExtractorID=message.extractorID
 		
 		local tileX,tileY = pixelToTileCoords(self.extractorLocation.x,self.extractorLocation.y)
-		generateNewPathToTileCoords(self,tileX,tileY)
+		generateNewPathToTileCoords(self,tileX+1,tileY+1)
 		
 		playResponseSound(self.name)
 		

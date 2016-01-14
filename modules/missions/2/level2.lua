@@ -35,6 +35,10 @@ level2State.topTextSet=false
 
 level2State.replicationStationDone=false
 
+level2State.virusesOnTheirWay=false
+
+level2State.sinceUpdatedTimeLast=999
+
 attackCounter=0
 
 function level2Act()
@@ -73,8 +77,20 @@ function level2Act()
 	
 	checkResources()
 	
+	
+	if level2State.virusesOnTheirWay then
+	
+		local timeLeft=math.floor(level2State.VOICE5_START_TIME-GAME_TIME)
+		if timeLeft>0 then
+			msg.post("HUD","setTimeText",{text="viruses arrive in\n"..secondsToTimeString(timeLeft)})
+		else
+			msg.post("HUD","setTimeText",{text=""})
+			level2State.virusesOnTheirWay=false
+		end
+	
+	end
+	
 end
-
 
 function queueFirstAttack()
 	level2State.FIRST_ATTACK_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET
@@ -83,6 +99,8 @@ function queueFirstAttack()
 		print("queueFirstAttack")
 		level2State.VOICE5_START_TIME=GAME_TIME+level2State.FIRST_ATTACK_TIME_OFFSET
 		level2State.VOICE5_DONE_TIME=level2State.VOICE5_START_TIME+6
+		
+		level2State.virusesOnTheirWay=true
 	end
 	
 	--engineer

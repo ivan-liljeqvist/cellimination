@@ -36,6 +36,7 @@ function lvl2Section2Act()
 		level2State.resetBackground=true
 		level2State.needMissionObjectiveUpdate=true
 		
+		
 		level2State.section2Done=true
 		
 		level2State.VOICE5_START_TIME=nil

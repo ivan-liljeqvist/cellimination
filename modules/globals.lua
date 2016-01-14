@@ -430,6 +430,8 @@ function resetGlobals()
 	level3State.secondsUntilLost=20*60 --20 minutes
 	
 	LVL3_BOSS=nil
+	
+	START_MISSION_ONE=false
 end
 
 

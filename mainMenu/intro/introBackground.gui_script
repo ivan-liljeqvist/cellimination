@@ -1,0 +1,157 @@
+
+
+local currentSubtitleNode=1
+local introTime=0
+local introState={}
+
+local showingStartButton=false
+local hoveringOverStart=false
+
+function init(self)
+    
+    msg.post(".", "acquire_input_focus")
+    
+    hideStartButton()
+    
+end
+
+function final(self)
+    msg.post(".", "release_input_focus")
+end
+
+function update(self, dt)
+   introTime=introTime+dt
+   
+   if introTime>0.2 and not introState.sub1 then 
+   		displaySubtitles("The IMMUNE SYSTEM - the largest combat force in the entire organism.") 
+   		introState.sub1=true
+   	elseif introTime>5.0 and not introState.sub2 then 
+   		displaySubtitles("The System is responsible for peace and stability\nand requires your Strategical Leadership.") 
+   		introState.sub2=true
+    elseif introTime>11.3 and not introState.sub3 then 
+   		displaySubtitles("LEAD US COMMANDER!") 
+   		introState.sub3=true
+    elseif introTime>13 and not introState.sub5 then 
+   		displaySubtitles("") 
+   		introState.sub5=true
+   		
+   		gui.animate(gui.get_node("blackBackground"), gui.PROP_COLOR, vmath.vector4(0, 0, 0, 0.85), gui.EASING_INOUTQUAD, 3.0)
+   	
+   	elseif introTime>13.5 and not introState.sub6 then
+   		showStartButton()
+   		introState.sub6=true
+   	end
+end
+
+
+function displaySubtitles(text)
+
+
+		local function on_animation_done(self, node)
+		    
+		    if currentSubtitleNode == 1 then
+		    	gui.animate(gui.get_node("subtitleText2"), gui.PROP_POSITION, vmath.vector3(964, 197,0), gui.EASING_INOUTQUAD,0.1)
+		    else
+		    	gui.animate(gui.get_node("subtitleText1"), gui.PROP_POSITION, vmath.vector3(964, 197,0), gui.EASING_INOUTQUAD,0.1)
+		    end
+
+		end
+
+		if currentSubtitleNode==1 then
+		
+			--gui.set_text(gui.get_node("subtitleText1"), "")
+			gui.set_text(gui.get_node("subtitleText2"), text)
+			currentSubtitleNode=2
+			
+			gui.animate(gui.get_node("subtitleText2"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_INOUTQUAD, 0.4)
+			gui.animate(gui.get_node("subtitleText1"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 0), gui.EASING_INOUTQUAD, 0.4,0.0,on_animation_done)
+			gui.animate(gui.get_node("subtitleText1"), gui.PROP_POSITION, vmath.vector3(964, 237,0), gui.EASING_INOUTQUAD, 0.4,0.0,on_animation_done)
+			
+		elseif currentSubtitleNode==2 then
+		
+			--gui.set_text(gui.get_node("subtitleText2"), "")
+			gui.set_text(gui.get_node("subtitleText1"), text)
+			currentSubtitleNode=1
+			
+			gui.animate(gui.get_node("subtitleText1"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_INOUTQUAD, 0.4)
+			gui.animate(gui.get_node("subtitleText2"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 0), gui.EASING_INOUTQUAD, 0.4,0.0,on_animation_done)
+			gui.animate(gui.get_node("subtitleText2"), gui.PROP_POSITION, vmath.vector3(964, 237,0), gui.EASING_INOUTQUAD, 0.4)
+			
+		end
+end
+
+function on_message(self, message_id, message, sender)
+    
+end
+
+function on_input(self, action_id, action)
+    
+    if showingStartButton then
+    
+    	if action_id==hash("leftClicked") and action.pressed and hoveringOverStart then
+    		clickSound2()
+    		startLevel(1)
+    	end
+    
+    	--highlight and dehighlight
+    	if gui.pick_node(gui.get_node("startButton"),action.x,action.y) then
+    		
+    		if not hoveringOverStart then
+	    		print("hover over button")
+	    		hoveringOverStart=true
+	    		highlightNode("startButton")
+	    		clickSound()
+	    	end
+	    
+	    else
+	    	hoveringOverStart=false
+	    	dehighlightNode("startButton")
+    	end
+    	
+    end
+    
+end
+
+function on_reload(self)
+    
+end
+
+function hideStartButton()
+	showingStartButton=false
+	hideNode("buttonText1")
+	hideNode("buttonText2")
+	hideNode("startButton")
+end
+
+function showStartButton()
+	showingStartButton=true
+	showNode("buttonText1")
+	showNode("buttonText2")
+	showNode("startButton")
+end
+
+function hideNode(id)
+	gui.set_color(gui.get_node(id), vmath.vector4(0, 0, 0, 0))
+end
+
+function showNode(id)
+	gui.set_color(gui.get_node(id), vmath.vector4(1, 1, 1, 1))
+end
+
+
+function highlightNode(id)
+	gui.set_scale(gui.get_node(id),vmath.vector3(1.1,1.1,1.1))
+end
+
+function dehighlightNode(id)
+	gui.set_scale(gui.get_node(id),vmath.vector3(1,1,1))
+end
+
+
+function clickSound()
+	msg.post("mixer","click1")
+end
+
+function clickSound2()
+	msg.post("mixer","click2")
+end

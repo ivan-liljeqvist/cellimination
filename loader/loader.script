@@ -4,13 +4,17 @@ MISSIONS_COMPLETE=0
 
 JUST_COMPLETED_MISSION=nil
 
+START_MISSION_ONE=false
+
+LOAD_INTRO=false
+
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
     --msg.post("loader#level"..LEVEL, "load")
     --msg.post("loader#mainMenuBackground","load")
     
-    self.currentLevel="loader#intro"
+    self.currentLevel="loader#menu"
     
     msg.post(self.currentLevel,"load")
     
@@ -30,6 +34,15 @@ function update(self, dt)
 
 
 	if BETWEEN_PROXIES then IN_GAME=false end
+
+	if LOAD_INTRO then
+		 msg.post("mixer","stopMenuSong")
+		 IN_GAME=false
+		 msg.post(self.currentLevel,"unload")
+		 self.currentLevel="loader#intro"
+    	 msg.post(self.currentLevel,"load")
+    	 LOAD_INTRO=false
+	end
 
 	if LOAD_MENU then
 		LOAD_MENU=false
@@ -99,7 +112,9 @@ function on_message(self, message_id, message, sender)
 	   		end
 	   		
 	   		print("menu song sosa")
-	   		msg.post("mixer","menuSong") 
+	   		if sender.fragment==hash("menu") then
+	   			msg.post("mixer","menuSong") 
+	   		end
 	   		
 	   		
 	   		if JUST_COMPLETED_MISSION and JUST_COMPLETED_MISSION==1 then

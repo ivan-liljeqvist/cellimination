@@ -239,7 +239,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id==hash("normalBetween1and2") then 
 		msg.post("#between1and2","play_sound", {delay = 0, gain =0.5})
 	elseif message_id==hash("introVoice") then 
-		msg.post("#introVoice","play_sound", {delay = 0, gain =0.5})
+		msg.post("#introVoice","play_sound", {delay = 0, gain =0.3})
 	elseif message_id==hash("stopIntroVoice") then 
 		msg.post("#introVoice","stop_sound")
 	elseif message_id==hash("stopBetween1and2") then 

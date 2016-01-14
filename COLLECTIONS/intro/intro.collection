@@ -83,8 +83,8 @@ instances {
   id: "introCamera"
   prototype: "/mainMenu/intro/introCamera.go"
   position {
-    x: 1292.923
-    y: 819.5327
+    x: 1291.663
+    y: 966.95013
     z: 0.0
   }
   rotation {
@@ -103,8 +103,8 @@ instances {
   id: "introSquad"
   prototype: "/mainMenu/intro/introSquad.go"
   position {
-    x: 895.6122
-    y: 452.19357
+    x: 900.6521
+    y: 542.912
     z: 1.0
   }
   rotation {
@@ -163,8 +163,8 @@ instances {
   id: "tank2"
   prototype: "/units/defenders/tanks/tank1/tank1.go"
   position {
-    x: 852.162
-    y: 341.45767
+    x: 857.2019
+    y: 432.1761
     z: 1.0
   }
   rotation {
@@ -180,6 +180,26 @@ instances {
   }
 }
 scale_along_z: 0
+embedded_instances {
+  id: "subtitles"
+  data: ""
+  position {
+    x: 1318.4585
+    y: 981.53107
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 embedded_instances {
   id: "world"
   data: "components {\n"

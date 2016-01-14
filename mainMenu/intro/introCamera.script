@@ -6,7 +6,7 @@ function init(self)
 	local pos=go.get_position()
 	pos.x=pos.x-415
 	pos.y=pos.y-500
-	pos.z=pos.z+5000
+	pos.z=pos.z+4500
 	
 	go.set_rotation(vmath.quat_rotation_z(0.314*10))
 	go.set_position(pos)
@@ -22,7 +22,7 @@ function update(self, dt)
 	
 	pos.z=pos.z+(100*dt)
 	
-	if pos.z<8500 then
+	if pos.z<7700 then
 		go.set_position(pos)
 	end
 end

@@ -18,7 +18,7 @@ LVL2_VICTORY="You managed to collect the resources!"
 LVL2_DEFEAT="The Central Marrow was destroyed!"
 LVL2_BUILD_BARACKS_NO_RES="You can't gather more resources before building a Replication Station."
 
-LVL2_COLLECT_1000_OBJ1="Collect 1000 FAT, 1000 PROTEIN and 1000 CARBS.\nYou lose if the Central Marrow gets destroyed.\nThe viruses are coming."
+LVL2_COLLECT_1000_OBJ1="Collect 1000 FAT, 1000 PROTEIN and 1000 CARBS.\nYou lose if the Central Marrow gets destroyed."
 LVL2_COLLECT_1000_OBJ2="Collect 1000 FAT, 1000 PROTEIN and 1000 CARBS.\nYou lose if the Central Marrow gets destroyed."
 LVL2_PUT_WORKERS_IN_EXTRACTORS="Put at least one RED BLOOD CELL (WORKER) in each extractor.\nTIP: Select a Red Blood Cell and right-click on an extractor to put the cell inside."
 

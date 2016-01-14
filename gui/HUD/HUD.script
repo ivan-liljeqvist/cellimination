@@ -4,7 +4,7 @@ function init(self)
      registerForInput(go.get_id())
      
    
-    --ProFi:start()
+   -- ProFi:start()
 
 
 	

@@ -1,7 +1,6 @@
 
 
 
-
 function level1Subtitles()
 
 	--TRACK1
@@ -9,7 +8,7 @@ function level1Subtitles()
 	if GAME_TIME>level1State.VOICE1_START_TIME and not level1State.sub1 then
 		msg.post("HUD","setSubtitleText",{text="The cells you see in front of you are a Patrol Squad."})
 		level1State.sub1=true
-	elseif GAME_TIME>level1State.VOICE1_START_TIME+2 and not level1State.sub2 then
+	elseif GAME_TIME>level1State.VOICE1_START_TIME+2.3 and not level1State.sub2 then
 		msg.post("HUD","setSubtitleText",{text="They have been deployed to inspect this area, due to reports of disturbances."})
 		level1State.sub2=true
 	elseif GAME_TIME>level1State.VOICE1_START_TIME+7 and not level1State.sub3 then

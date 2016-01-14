@@ -43,9 +43,9 @@ function extractorMessages(self, message_id, message, sender,go)
 
 		if isInsideSelection(message.start,message.current,message.pivot,self) then
 			
-			local action={x=message.start[1],y=message.start[2]}
+			local action={x=self.builtAtX,y=self.builtAtY}
 			
-			msg.post(message.workerID,"goToExtractor",{preciseLocation=action,extractorID=self.id})
+			msg.post(message.workerID,"goToExtractor",{preciseLocation=action,extractorID=self.id,orOffX=self.orOffX,orOffY=self.orOffY})
 		else
 			--if not foundWay then
 				--msg.post("mixer","errorSound")
