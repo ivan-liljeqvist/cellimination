@@ -69,11 +69,12 @@ function level3SubtitlesIntro()
 	elseif GAME_TIME>level3State.VOICE1_START_TIME+37.5 and not level3State.sub8 then
 		msg.post("HUD","setSubtitleText",{text="Act quickly for this is a race against time!"})
 		level3State.sub8=true
+		
 	elseif GAME_TIME>level3State.VOICE1_START_TIME+40 and not level3State.sub9 then
 		msg.post("HUD","setSubtitleText",{text=""})
 		level3State.sub9=true
-		
 		setPeaceOver()
+		
 	end
 
 end

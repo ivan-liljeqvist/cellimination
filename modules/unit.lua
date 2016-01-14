@@ -341,8 +341,10 @@ end
 
 function hideHealthBar(self)
 	if not IN_GAME or BETWEEN_PROXIES then return end
-	msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
-	self.showingHealthBar=false
+	if not self.selected then
+		msg.post(msg.url("healthBars#gui"),"hide",{unitId=self.id})
+		self.showingHealthBar=false
+	end
 end
 
 function showHealthBar(self)

@@ -116,7 +116,7 @@ function on_message(self, message_id, message, sender)
 		msg.post("#mission2Voice5", "play_sound", {delay = 0, gain = 0.5})
 		currentVoice="#mission2Voice5"
 	elseif message_id == hash("engineer1") and ENABLE_SOUND then
-		msg.post("#engineer1", "play_sound", {delay = 0, gain = 0.5})
+		msg.post("#engineer1", "play_sound", {delay = 0, gain = 0.8})
 		currentVoice="#engineer1"
 		
 	--MISSION 3 VOICE

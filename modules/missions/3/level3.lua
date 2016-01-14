@@ -39,8 +39,9 @@ function level3Act()
 		
 		level3SubtitlesIntro()
 		
-	else
+	end
 	
+	if level3State.section1Done then
 		if level3State.section1Done and not level3State.section2Done then
 			lvl3Section2Act()
 		elseif level3State.section2Done and not level3State.section3Done then
@@ -98,6 +99,7 @@ function handleMissionObjectiveLevel3()
 end
 
 function setPeaceOver()
+	print("PEACE OVER!!")
 	level3State.peaceOver=true
 	level3State.peaceTimeOverStartTime=GAME_TIME
 	
