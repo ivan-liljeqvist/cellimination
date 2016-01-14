@@ -12,8 +12,8 @@ function init(self)
 	self.constructionScale=0.5
 	self.fogRadius=BASE_FOG_RADIUS
 	
-	self.boundsWidthScale=0.5
-	self.boundsHeightScale=0.4
+	self.boundsWidthScale=1.0
+	self.boundsHeightScale=0.8
 	
 	self.willBecomeBuilding=true
 	self.factory=factory
