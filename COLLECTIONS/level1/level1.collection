@@ -60,6 +60,26 @@ instances {
   }
 }
 instances {
+  id: "evacuationSquad"
+  prototype: "/levelGOs/1/evacuationSquad/evacuationSquad.go"
+  position {
+    x: 461.81485
+    y: 479.58868
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "extractorInfo"
   prototype: "/gui/extractor/extractorInfo.go"
   position {

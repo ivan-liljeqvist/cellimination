@@ -39,6 +39,7 @@ function lvl1Section2Act()
 	
 		msg.post("HUD","setMissionObjectiveText",{text="GET BACK TO THE STARTING POINT WITH AT LEAST ONE CELL!"})
 		
+		msg.post("evacuationSquad","spawn")
 
 		level1State.playedVoice5=true
 		

@@ -108,7 +108,8 @@ function on_message(self, message_id, message)
 
         self.view = message.view
         
-        if not IN_GAME then
+        if not IN_GAME or INTRO then
+
         	self.projection = message.projection
         end
 

@@ -9,7 +9,8 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
     --msg.post("loader#level"..LEVEL, "load")
     --msg.post("loader#mainMenuBackground","load")
-    self.currentLevel="loader#menu"
+    
+    self.currentLevel="loader#intro"
     
     msg.post(self.currentLevel,"load")
     
@@ -87,11 +88,15 @@ function on_message(self, message_id, message, sender)
 	          
 	   msg.post(self.currentLevel, "set_time_step", {factor = 1, mode = 1})
 	   
-	   if self.currentLevel~="loader#menu" then IN_GAME=true end
+	   if self.currentLevel~="loader#menu" and self.currentLevel~="loader#intro"  then IN_GAME=true end
 	   
 	   BETWEEN_PROXIES=false
 	   
-	   if sender.fragment==hash("menu") then 
+	   if sender.fragment==hash("menu") or sender.fragment==hash("intro")  then 
+	   		
+	   		if sender.fragment==hash("intro") then
+	   			msg.post("mixer","introVoice")
+	   		end
 	   		
 	   		print("menu song sosa")
 	   		msg.post("mixer","menuSong") 

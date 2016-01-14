@@ -5,6 +5,8 @@ function init(self)
 
 	self.go=go
 	
+	tilemapObject=tilemap
+	
 	self.x=go.get_position().x
 	self.y=go.get_position().y
 	

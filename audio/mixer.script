@@ -223,7 +223,7 @@ function on_message(self, message_id, message, sender)
 		msg.post("#constructionComplete","play_sound", {delay = 0, gain=gain})
 		
 	elseif message_id==hash("menuSong") then 
-		msg.post("#menuSong","play_sound", {delay = 0, gain =0.4})
+		msg.post("#menuSong","play_sound", {delay = 0, gain =0.2})
 	elseif message_id==hash("stopMenuSong")then
 		msg.post("#menuSong","stop_sound")
 	elseif message_id==hash("click1") then 
@@ -238,6 +238,10 @@ function on_message(self, message_id, message, sender)
 		msg.post("#between1and2","play_sound", {delay = 0, gain =0.2})
 	elseif message_id==hash("normalBetween1and2") then 
 		msg.post("#between1and2","play_sound", {delay = 0, gain =0.5})
+	elseif message_id==hash("introVoice") then 
+		msg.post("#introVoice","play_sound", {delay = 0, gain =0.5})
+	elseif message_id==hash("stopIntroVoice") then 
+		msg.post("#introVoice","stop_sound")
 	elseif message_id==hash("stopBetween1and2") then 
 		msg.post("#between1and2","stop_sound")
 	end

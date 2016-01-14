@@ -1,0 +1,217 @@
+name: "intro"
+instances {
+  id: "backgroungIntro"
+  prototype: "/mainMenu/intro/backgroungIntro.go"
+  position {
+    x: 775.3971
+    y: 658.96436
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "baracks2"
+  prototype: "/buildings/barracks/baracks.go"
+  position {
+    x: 1037.2114
+    y: 738.6337
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "baracks3"
+  prototype: "/buildings/barracks/baracks.go"
+  position {
+    x: 683.0437
+    y: 730.9998
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "base1"
+  prototype: "/buildings/base/base.go"
+  position {
+    x: 837.17474
+    y: 1074.0994
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "introCamera"
+  prototype: "/mainMenu/intro/introCamera.go"
+  position {
+    x: 1292.923
+    y: 819.5327
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "introSquad"
+  prototype: "/mainMenu/intro/introSquad.go"
+  position {
+    x: 895.6122
+    y: 452.19357
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "manager"
+  prototype: "/manager/manager.go"
+  position {
+    x: 1021.80505
+    y: 986.0965
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mixer"
+  prototype: "/audio/mixer.go"
+  position {
+    x: 637.80505
+    y: 538.28937
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tank2"
+  prototype: "/units/defenders/tanks/tank1/tank1.go"
+  position {
+    x: 852.162
+    y: 341.45767
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "world"
+  data: "components {\n"
+  "  id: \"tilemap\"\n"
+  "  component: \"/mainMenu/menubackground.tilemap\"\n"
+  "  position {\n"
+  "    x: -885.3141\n"
+  "    y: -689.3036\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 731.7725
+    y: 646.83466
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
