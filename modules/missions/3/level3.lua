@@ -11,6 +11,9 @@ level3State.VOICE1_DONE_TIME=39
 level3State.VOICE2_START_TIME=nil
 level3State.VOICE2_DONE_TIME=nil
 
+level3State.VOICE3_START_TIME=nil
+level3State.VOICE3_DONE_TIME=nil
+
 level3State.tutorialSkipped=false
 
 level3State.peaceOver=false
@@ -90,6 +93,9 @@ function setPeaceOver()
 	level3State.VOICE2_START_TIME=GAME_TIME+10
 	level3State.VOICE2_DONE_TIME=level3State.VOICE2_START_TIME+12
 	
+	level3State.VOICE3_START_TIME=GAME_TIME+28
+	level3State.VOICE3_DONE_TIME=level3State.VOICE3_START_TIME+13
+	
 	level3State.updateObjective=true
 end
 
@@ -111,7 +117,7 @@ function skipTutorialLvl3()
 end
 
 function level3TriggerCheck(x,y)
-
+	
 	if x<1048 and y>6500 and level3State.allGuardsKilled then
 		gameOver(true,LVL3_VICTORY)
 	end

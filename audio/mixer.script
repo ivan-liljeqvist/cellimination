@@ -126,6 +126,12 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("mission3Voice2") and ENABLE_SOUND then
 		msg.post("#mission3Voice2", "play_sound", {delay = 0, gain = 0.5})
 		currentVoice="#mission3Voice2"
+	elseif message_id == hash("mission3Voice3") and ENABLE_SOUND then
+		msg.post("#mission3Voice3", "play_sound", {delay = 0, gain = 0.5})
+		currentVoice="#mission3Voice3"
+	elseif message_id == hash("mission3Voice4") and ENABLE_SOUND then
+		msg.post("#mission3Voice4", "play_sound", {delay = 0, gain = 0.5})
+		currentVoice="#mission3Voice4"
 		
 	--MISC
 	elseif message_id == hash("errorSound") then
@@ -217,9 +223,9 @@ function on_message(self, message_id, message, sender)
 		msg.post("#constructionComplete","play_sound", {delay = 0, gain=gain})
 		
 	elseif message_id==hash("menuSong") then 
-		msg.post("#menuSong","play_sound", {delay = 0, gain =0.5})
+		msg.post("#menuSong","play_sound", {delay = 0, gain =0.4})
 	elseif message_id==hash("stopMenuSong")then
-		msg.post("#menuSong","stop_sound", {delay = 0, gain =0.5})
+		msg.post("#menuSong","stop_sound")
 	elseif message_id==hash("click1") then 
 		msg.post("#click1","play_sound", {delay = 0, gain = 0.4})
 	elseif message_id==hash("click2") then 

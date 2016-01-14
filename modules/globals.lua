@@ -9,7 +9,7 @@ LOAD_MENU=false
 IN_GAME=false
 RELOAD_LEVEL=false
 
-LEVEL = 3
+LEVEL = 0
 
 BETWEEN_PROXIES=false
 
@@ -235,6 +235,7 @@ end
 
 function resetGlobals()
 
+	BATTLE_MODE=false
 	
 	VICTORY=false
 	DEFEAT=false

@@ -58,10 +58,7 @@ require "modules.missions.3.section2"
 require "modules.missions.3.section1"
 require "modules.missions.3.level3"
 
-START_POPULATION={}
-START_POPULATION[1]=7
-START_POPULATION[2]=7
-START_POPULATION[3]=15
+
 
 function init(self)
     
@@ -73,7 +70,7 @@ function init(self)
 	
 	self.timeSinceLastStorageUpdate=0
 	
-	TOTAL_POPULATION=START_POPULATION[LEVEL]
+	
 	
 --[[if IN_GAME then
 

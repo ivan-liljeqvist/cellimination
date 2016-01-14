@@ -520,6 +520,66 @@ instances {
   }
 }
 instances {
+  id: "purple10"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 7769.9834
+    y: 3113.2314
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple11"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 4505.3784
+    y: 2643.0862
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple12"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3739.4111
+    y: 1750.3381
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
   id: "purple2"
   prototype: "/units/viruses/purple/purple.go"
   position {
@@ -545,6 +605,86 @@ instances {
   position {
     x: 2198.8474
     y: 5956.6333
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple6"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 3068.5295
+    y: 5189.2666
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple7"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 4605.7466
+    y: 5564.3267
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple8"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 4584.616
+    y: 3984.8494
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "purple9"
+  prototype: "/units/viruses/purple/purple.go"
+  position {
+    x: 6158.811
+    y: 4185.5854
     z: 0.5
   }
   rotation {

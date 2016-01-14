@@ -51,11 +51,16 @@ function init(self)
 	
 	if JUST_STARTED then
     	showMenu1()
- 
+ 		JUST_STARTED=false
+ 		
+ 		MENU2_VISIBLE=false
+    	MENU1_VISIBLE=true
+    	MENU3_VISIBLE=false
     else
     	showMenu2()
     	MENU2_VISIBLE=true
     	MENU1_VISIBLE=false
+    	MENU3_VISIBLE=false
     end
     setLabels()
     
@@ -174,7 +179,7 @@ function on_input(self, action_id, action)
 					
 				elseif MISSION_HIGHLIGHTED[3] then
 				
-					--startLevel(3)
+					startLevel(3)
 					clickSound2()
 					
 				

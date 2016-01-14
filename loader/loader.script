@@ -9,7 +9,7 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
     --msg.post("loader#level"..LEVEL, "load")
     --msg.post("loader#mainMenuBackground","load")
-    self.currentLevel="loader#level3"
+    self.currentLevel="loader#menu"
     
     msg.post(self.currentLevel,"load")
     

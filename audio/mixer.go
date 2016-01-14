@@ -438,7 +438,7 @@ embedded_components {
   type: "sound"
   data: "sound: \"/audio/healer/Healing_Short_1_.ogg\"\n"
   "looping: 1\n"
-  "group: \"master\"\n"
+  "group: \"sfx\"\n"
   "gain: 1.0\n"
   ""
   position {
@@ -777,6 +777,46 @@ embedded_components {
   id: "mission3Voice2"
   type: "sound"
   data: "sound: \"/audio/missions/3/Evil_Genius_Mission_Three.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "mission3Voice3"
+  type: "sound"
+  data: "sound: \"/audio/missions/3/engineerM3V1.ogg\"\n"
+  "looping: 0\n"
+  "group: \"master\"\n"
+  "gain: 1.0\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "mission3Voice4"
+  type: "sound"
+  data: "sound: \"/audio/missions/3/engineerM3V2.ogg\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

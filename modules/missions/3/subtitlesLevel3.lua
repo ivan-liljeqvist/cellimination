@@ -15,6 +15,16 @@ function level3Subtitles()
 	elseif GAME_TIME>level3State.VOICE2_START_TIME+12 and not level3State.sub13 then
 		msg.post("HUD","setSubtitleText",{text=""})
 		level3State.sub13=true
+		
+	elseif level3State.VOICE3_START_TIME and GAME_TIME>level3State.VOICE3_START_TIME and not level3State.sub14 then
+		msg.post("HUD","setSubtitleText",{text="Commander, as the viruses control RIBOSOME we cannot\nextract any protein at all!"})
+		level3State.sub14=true
+	elseif level3State.VOICE3_START_TIME and GAME_TIME>level3State.VOICE3_START_TIME+5.7 and not level3State.sub15 then
+		msg.post("HUD","setSubtitleText",{text="The only way for us to get protein is to kill the viruses\nand collect the protein and they drop."})
+		level3State.sub15=true
+	elseif level3State.VOICE3_START_TIME and GAME_TIME>level3State.VOICE3_START_TIME+13 and not level3State.sub16 then
+		msg.post("HUD","setSubtitleText",{text=""})
+		level3State.sub16=true
 	end
 
 end

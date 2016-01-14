@@ -12,8 +12,11 @@ end
 
 function validateCode(code)
 
-	if code=="MISSION2" then
+	if code=="m2" then
 		MISSIONS_COMPLETE=1
+		goToMenu2()
+	elseif code=="m3" then
+		MISSIONS_COMPLETE=2
 		goToMenu2()
 	else	
 		showNode("codeError")

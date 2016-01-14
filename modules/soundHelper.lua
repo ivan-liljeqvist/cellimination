@@ -126,7 +126,7 @@ function startMainBackgroundMusic()
     	msg.post("#roamingUnit3","play_sound", {delay = 0, gain = 0.0})
     	msg.post("#roamingUnit4","play_sound", {delay = 0, gain = 0.0})
     	
-    	sound.set_group_gain("main",1)
+    	sound.set_group_gain("main",0.5)
     	sound.set_group_gain("battle",0)
     end
 end

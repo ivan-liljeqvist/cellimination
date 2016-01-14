@@ -23,6 +23,8 @@ level1State.KILLED_VIRUSES=0
 
 function level1Act()
 
+	print("level1Act")
+
 	if not level1State.section1Done then
 		lvl1Section1Act()
 	elseif not level1State.section2Done then

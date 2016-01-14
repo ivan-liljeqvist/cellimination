@@ -76,6 +76,9 @@ end
 
 
 function showPauseMenu()
+
+	msg.post("HUD","setSubtitleText",{text=""})
+
 	if not VICTORY  then
 
 		showNode("backToMenuButton")
