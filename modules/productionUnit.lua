@@ -66,24 +66,40 @@ function productionButton1Pressed(self)
 	resetProduction(self)
 	
 	NUMBER_QUEUED[unitName]=NUMBER_QUEUED[unitName]-1
+	
+	PROTEIN=PROTEIN+PRICES[unitName].protein*INFLATION[unitName]
+	FAT=FAT+PRICES[unitName].fat*INFLATION[unitName]
+	CARBS=CARBS+PRICES[unitName].carb*INFLATION[unitName]
 end
 
 function productionButton2Pressed(self)
 	local unitName=table.remove(self.toProduce,2)
 	resetProduction(self)	
 	NUMBER_QUEUED[unitName]=NUMBER_QUEUED[unitName]-1
+	
+	PROTEIN=PROTEIN+PRICES[unitName].protein*INFLATION[unitName]
+	FAT=FAT+PRICES[unitName].fat*INFLATION[unitName]
+	CARBS=CARBS+PRICES[unitName].carb*INFLATION[unitName]
 end
 
 function productionButton3Pressed(self)
 	local unitName=table.remove(self.toProduce,3)
 	resetProduction(self)	
 	NUMBER_QUEUED[unitName]=NUMBER_QUEUED[unitName]-1
+	
+	PROTEIN=PROTEIN+PRICES[unitName].protein*INFLATION[unitName]
+	FAT=FAT+PRICES[unitName].fat*INFLATION[unitName]
+	CARBS=CARBS+PRICES[unitName].carb*INFLATION[unitName]
 end
 
 function productionButton4Pressed(self)
 	local unitName=table.remove(self.toProduce,4)
 	resetProduction(self)	
 	NUMBER_QUEUED[unitName]=NUMBER_QUEUED[unitName]-1
+	
+	PROTEIN=PROTEIN+PRICES[unitName].protein*INFLATION[unitName]
+	FAT=FAT+PRICES[unitName].fat*INFLATION[unitName]
+	CARBS=CARBS+PRICES[unitName].carb*INFLATION[unitName]
 end
 
 
