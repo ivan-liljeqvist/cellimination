@@ -244,6 +244,11 @@ function on_message(self, message_id, message, sender)
 		msg.post("#introVoice","stop_sound")
 	elseif message_id==hash("stopBetween1and2") then 
 		msg.post("#between1and2","stop_sound")
+	elseif message_id==hash("introMusic") then 
+		msg.post("#introMusic","play_sound",{delay = 0, gain =0.35})	
+	elseif message_id==hash("stopIntroMusic") then 
+		msg.post("#introMusic","stop_sound")	
+		
 	end
 	
 end

@@ -58,6 +58,7 @@ function update(self, dt)
 		msg.post(self.currentLevel,"unload")
 		
 		msg.post("mixer","stopMenuSong")
+		msg.post("mixer","stopIntroMusic")
 		IN_GAME=true
 		
 		self.currentLevel="loader#level"..LEVEL
@@ -109,6 +110,8 @@ function on_message(self, message_id, message, sender)
 	   		
 	   		if sender.fragment==hash("intro") then
 	   			msg.post("mixer","introVoice")
+	   			
+	   			msg.post("mixer","introMusic")
 	   		end
 	   		
 	   		print("menu song sosa")

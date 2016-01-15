@@ -305,7 +305,7 @@ function destroyBuilding(self)
 		
 		BUILDINGS_FOG_ALREADY_UPDATED[self.id]=nil
 		
-		if self.name==BASE_NAME and LEVEL==2 or LEVEL==3 then
+		if self.name==BASE_NAME and (LEVEL==2 or LEVEL==3) then
 			centralMarrowDead()
 		end
 	end
