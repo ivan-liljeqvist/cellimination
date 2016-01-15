@@ -77,33 +77,6 @@ function init(self)
 	end
 	
 	
---[[if IN_GAME then
-
-		local my_table = {}
-		my_table.hej=1
-		local error=false
-
-		
-		local my_file_path = sys.get_save_file("my_game", "my_filee.lua")
-		
-		msg.post("HUD","displayErrorMessage",{text=my_file_path})
-		
-		my_table = sys.load(my_file_path)
-		if not next(my_table) then
-		   --sg.post("HUD","displayErrorMessage",{text="couldnt load"})
-		   error=true
-		else
-			--msg.post("HUD","displayErrorMessage",{text=my_table.hej})
-		end
-		
-		if error then my_table={} my_table.hej=1 end
-		
-	    my_table.hej=my_table.hej+1
-		local my_file_path = sys.get_save_file("my_game", "my_filee.lua")
-		if not sys.save(my_file_path, my_table) then
-		    
-		end
-end--]]
 end
 
 
@@ -128,7 +101,7 @@ function updateStorage(self,dt)
 
 	if self.timeSinceLastStorageUpdate>= 1.0 and TOTAL_STORAGE<MAX_STORAGE then
 	
-		if (FAT>400 or PROTEIN>400 or CARBS>400) and LEVEL==2 and 
+		if (FAT>400 and PROTEIN>400 and CARBS>400) and LEVEL==2 and 
 			not level2State.tutorialSkipped and
 			not level2State.section2Done and
 			not level2State.replicationStationDone then

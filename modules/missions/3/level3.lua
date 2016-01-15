@@ -29,6 +29,8 @@ level3State.secondsUntilLost=10*60+2 --20 minutes
 
 level3State.updateObjective=false
 
+level3State.attackNumber=1
+
 function level3Act()
 
 	if not level3State.tutorialSkipped then
@@ -160,7 +162,11 @@ function handleAttacks()
 	end
 	
 	if level3State.shouldAttack then 
-		msg.post("virusMind","attack",{fromRight=false,attackNumber=1})
+	
+		if not level3State.attackNumber then level3State.attackNumber=1 end
+		
+		msg.post("virusMind","attack",{fromRight=false,attackNumber=level3State.attackNumber})
 		level3State.shouldAttack=false
+		level3State.attackNumber=level3State.attackNumber+1
 	end
 end

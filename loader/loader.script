@@ -40,8 +40,6 @@ function update(self, dt)
 		 IN_GAME=false
 		 msg.post(self.currentLevel,"unload")
 		 self.currentLevel="loader#intro"
-    	 msg.post(self.currentLevel,"load")
-    	 LOAD_INTRO=false
 	end
 
 	if LOAD_MENU then
@@ -134,6 +132,10 @@ function on_message(self, message_id, message, sender)
 	elseif message_id==hash("proxy_unloaded")then
 	
 		msg.post(self.currentLevel, "load")
+		
+		 if LOAD_INTRO then
+    	 	LOAD_INTRO=false
+    	 end
 	   
     end
     

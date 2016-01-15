@@ -47,13 +47,24 @@ function attack(self,fromRight,attackNumber)
 		
 		end
 	elseif LEVEL==3 then
-		msg.post(spawnVirus(self,"#cloudyStrong3Factory"),"attack",{fromRight=fromRight})
+	
+		if attackNumber<7 then
+			msg.post(spawnVirus(self,"#cloudyStrong2Factory"),"attack",{fromRight=fromRight})
+			msg.post(spawnVirus(self,"#cloudyStrong3Factory"),"attack",{fromRight=fromRight})
+		elseif attackNumber<15 then
+			msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight}) 
+			msg.post(spawnVirus(self,"#cloudyStrong3Factory"),"attack",{fromRight=fromRight})
+		else
+			msg.post(spawnVirus(self,"#cloudyStrong3Factory"),"attack",{fromRight=fromRight})
+			local hard=math.random(1,8)
+			if hard==1 then msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})  
+			
+			elseif hard==3 then msg.post(spawnVirus(self,"#cloudyStrong2Factory"),"attack",{fromRight=fromRight}) 
+			elseif hard==4 then msg.post(spawnVirus(self,"#cloudyStrong3Factory"),"attack",{fromRight=fromRight}) end
+		end
 		
-		local hard=math.random(1,8)
-		if hard==1 then msg.post(spawnVirus(self,"#purpleTallFactory"),"attack",{fromRight=fromRight})  
-		elseif hard==2 then msg.post(spawnVirus(self,"#purpleRoundFactory"),"attack",{fromRight=fromRight}) 
-		elseif hard==3 then msg.post(spawnVirus(self,"#cloudyStrong2Factory"),"attack",{fromRight=fromRight}) 
-		elseif hard==4 then msg.post(spawnVirus(self,"#cloudyStrong3Factory"),"attack",{fromRight=fromRight}) end
+		
+		
 	end
 
 	

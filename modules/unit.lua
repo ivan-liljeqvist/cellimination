@@ -244,7 +244,8 @@ end
 
 function handleProgressbar(self)
 
-	if self.isBuilding then
+	if self.isBuilding and self.showingProgressBar then
+	
 		local pos = go.get_position()
 		pos.x=(pos.x-CAMERA_OFFSETX)/ZOOM_LEVEL
 		pos.y=(pos.y+30-CAMERA_OFFSETY)/ZOOM_LEVEL
@@ -311,7 +312,7 @@ function hideProgressBar(self)
 		
 		if self.isBuilding or self.willBecomeBuilding then
 		
-			if self.constructionDone then
+			if self.constructionDone and not self.currentlyProducing then
 				print("HIDE PROGRESSBAR")
 				msg.post(msg.url("progressBars#gui"),"hide",{unitId=self.id})
 				self.showingProgressBar=false
@@ -332,7 +333,10 @@ function showProgressBar(self)
 end
 
 function checkIfShouldShowProgress(self)
-	if self.producing and not self.showingProgressBar then
+
+	
+	if self.currentlyProducing and not self.showingProgressBar then
+		print("should show progressbar")
 		showProgressBar(self)
 	elseif not self.producing and self.showingProgressBar then
 		hideProgressBar(self)

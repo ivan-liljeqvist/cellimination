@@ -78,6 +78,11 @@ function workerMessageHandler(self,go,message_id,message,sender)
 			
 			if LEVEL==2 then level2State.needMissionObjectiveUpdate=true end
 			
+			abortConstruction(self)
+			self.currentBuilding = nil
+			self.headingToBuilding=false
+			self.generateCounter=1
+		
 			destroyUnit(self)
 			self.headingForExtractor=false
 		else
