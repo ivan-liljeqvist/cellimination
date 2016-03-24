@@ -157,7 +157,7 @@ function handleAttacks()
 	if not level3State.peaceOver then return end
 
 	if GAME_TIME>level3State.ATTACK_TIME then
-		level3State.ATTACK_TIME=GAME_TIME+12
+		level3State.ATTACK_TIME=GAME_TIME+20
 		level3State.shouldAttack=true
 	end
 	
